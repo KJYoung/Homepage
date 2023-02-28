@@ -1,24 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CV from './CV';
 import Private from './Private';
+import styled from "styled-components";
 
-function HomePage() {
-  const [tabState, setTabState] = useState(0);
+interface IPropsTab {
+    tabState: number;
+}  
+
+function HomePage({ tabState }: IPropsTab) {
+  
   return (
-    <div className="App">
-      <div>
-        <button onClick={() => setTabState(0)}>MAIN</button>
-        <button onClick={() => setTabState(1)}>PUBLIC</button>
-        <button onClick={() => setTabState(2)}>PRIVATE</button>
-      </div>
+    <HomePageBody className="App">
       <p>
         홈페이지.
       </p>
       {tabState === 0 && <span> 기본 화면 </span>}
       {tabState === 1 && <CV/>}
       {tabState === 2 && <Private/>}
-    </div>
+    </HomePageBody>
   );
 }
 
+const HomePageBody = styled.div`
+    width: 100%;
+    height: 100%;
+    border: 1px solid red;
+`
 export default HomePage;
