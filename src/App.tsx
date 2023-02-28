@@ -1,25 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
-import CV from './containers/CV';
-import Private from './containers/Private';
+import HomePage from './containers/HomePage';
+import styled from "styled-components";
 
 function App() {
-  const [tabState, setTabState] = useState(0);
   return (
-    <div className="App">
-      <div>
-        <button onClick={() => setTabState(0)}>MAIN</button>
-        <button onClick={() => setTabState(1)}>PUBLIC</button>
-        <button onClick={() => setTabState(2)}>PRIVATE</button>
+    <Background>
+      <Header>
+        Welcome to the Homepage.
+      </Header>
+      <div className="App">
+        <HomePage />
       </div>
-      <p>
-        홈페이지.
-      </p>
-      {tabState === 0 && <span> 기본 화면 </span>}
-      {tabState === 1 && <CV/>}
-      {tabState === 2 && <Private/>}
-    </div>
+    </Background>
   );
 }
 
+const Background = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background-color: blanchedalmond;
+`;
+
+const Header = styled.div`
+  width: 100%;
+  height: 250px;
+  background-color: aliceblue;
+`;
 export default App;
