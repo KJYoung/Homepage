@@ -3,8 +3,12 @@ import styled from "styled-components";
 
 const Header = () => {
     const navigate = useNavigate();
-    return <HeaderDiv>
-            <HeaderBtn onClick={() => navigate("/Homepage")}>
+    return <HeaderRoot>
+        <HeaderLeft onClick={() => navigate("/Homepage/")}>
+            Junyoung Kim(김준영).
+        </HeaderLeft>
+        <HeaderCenter>
+            <HeaderBtn onClick={() => navigate("/Homepage/")}>
                 <span>HOME</span>
             </HeaderBtn>
             <HeaderBtn onClick={() => navigate("/Homepage/public")}>
@@ -16,10 +20,35 @@ const Header = () => {
             <HeaderBtn onClick={() => navigate("/Homepage/new")}>
                 <span>NEW 🚧</span>
             </HeaderBtn>
-    </HeaderDiv>
+        </HeaderCenter>
+        <HeaderRight>
+            LANG.
+            DARK.
+        </HeaderRight>
+    </HeaderRoot>
 };
 
-const HeaderDiv = styled.div`
+const HeaderRoot = styled.div`
+  width: 100%;
+  height: 40px;
+  background-color: var(--hp-white);
+
+  display: grid;
+  grid-template-columns: 2fr 8fr 2fr;
+`;
+
+const HeaderLeft = styled.div`
+    background-color: var(--hp-header-left);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    cursor: pointer;
+`;
+const HeaderRight = styled.div`
+    background-color: var(--hp-header-right);
+`;
+const HeaderCenter = styled.div`
   width: 100%;
   height: 40px;
   background-color: var(--hp-white);

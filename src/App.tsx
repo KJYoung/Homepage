@@ -127,5 +127,9 @@ const Body = styled.div`
   min-height: 95vh;
   height: 100%;
   padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 export default App;

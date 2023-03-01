@@ -8,7 +8,7 @@ const Footer = () => {
 
 const FooterDiv = styled.div`
   width: 100%;
-  height: 40px;
+  height: 100px;
   background-color: var(--hp-footer);
 
   display: flex;
