@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import './styles/color.css';
-import HomePage from './containers/HomePage';
 import styled from "styled-components";
 import reset from 'styled-reset';
 import { createGlobalStyle } from 'styled-components';
-import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import CV from './containers/Public';
+import Private from './containers/Private';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import New from './containers/New';
+import MainPage from './containers/MainPage';
 
 const GlobalStyles = createGlobalStyle`
   ${reset}
@@ -78,57 +83,48 @@ function App() {
 }
 
 const InsideComponent = () => {
-  const [tabState, setTabState] = useState(0);
-  const navigate = useNavigate();
   return (
     <Routes>
       <Route
-        path="*"
+        path="Homepage/*"
         element={
           <>
             <Background>
-              <Header>
-                Welcome to the Homepage.
-                <div>
-                  <button onClick={() => navigate("/")}>GO TO HOME</button>
-                  <button onClick={() => setTabState(0)}>MAIN</button>
-                  <button onClick={() => setTabState(1)}>PUBLIC</button>
-                  <button onClick={() => setTabState(2)}>PRIVATE</button>
-                  <button onClick={() => navigate("/new")}>GO TO NEW</button>
-                </div>
-              </Header>
+              <Header />
               <Body>
                 <Routes>
-                  <Route path="" element={<HomePage tabState={tabState}/>} />
-                  <Route path="new" element={<div><span>NEW PAGE</span></div>} />
+                  <Route path="public" element={<CV />} />
+                  <Route path="private" element={<Private />} />
+                  <Route path="new" element={<New />} />
+                  <Route path="*" element={<MainPage />} />
                 </Routes>
               </Body>
+              <Footer />
             </Background>
           </>
         }
       />
+      <Route
+        path="*"
+        element={
+          <>
+            Something Wrong.
+          </>
+        } />
     </Routes>
   );
 };
 
 const Background = styled.div`
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   background-color: var(--hp-back);
-`;
-
-const Header = styled.div`
-  width: 100%;
-  height: 40px;
-  background-color: var(--hp-white);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 const Body = styled.div`
   width: 100%;
+  min-height: 95vh;
   height: 100%;
   padding: 10px;
 `

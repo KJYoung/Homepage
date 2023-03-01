@@ -1,42 +1,5 @@
 :root {
-    --hp-back: #e1f0ff;
+    --hp-back: #eef5fd;
     --hp-white: #ffffff;
-    
-    /* White */
-    --hp-white-green: #bbffbb;
-    --hp-black: #000000;
-
-    /* Gray */
-    --hp-gray: #f4f4f4;
-    --hp-disabled-gray: #9b9b9b;
-    --hp-disabled-gray-deep: #5b5b5b;
-    --hp-support-gray: #939393;
-    --hp-support-gray-bright: #d3d3d3;
-    --hp-modal-background: rgba(0, 0, 0, 0.3);
-    --hp-unselected-tag: #dbdbdb;
-
-    /* Red */
-    --hp-red-neg: #f790a8;
-    --hp-red-neg-hover: #ff5454;
-    --hp-red-neg-active: #bf3434;
-
-    /* Green */
-    --hp-green-back: #deefde;
-    /* --hp-green-back: #d7efe3; */
-    --hp-green-paginator: #18ad49;
-    --hp-green-text: #008e2f;
-    --hp-green-pos-big-btn1: #00be5f;
-    --hp-green-small-btn1: #54dd6d;
-    --hp-green-mid-btn1: #8ee5b9;
-
-    --hp-green-btn: #8ee5b9;
-    --hp-green-btn-hover: #54dd6d;
-    --hp-green-btn-active: #00be5f;
-
-    
-    --hp-green-deep: #60bf43; /* Used in Paginator */
-    /* Blue */
-    --hp-blue-pos: #38B8F1;
-    --hp-blue-pos-hover: #45d9fa;
-    --hp-blue-pos-active: #25a9da;
+    --hp-footer: #474747;
 }
