@@ -1,23 +1,24 @@
-import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { coreActions } from "../store/slices/core";
 
 const Header = () => {
-    const navigate = useNavigate();
+    const dispatch = useDispatch();
     return <HeaderRoot>
-        <HeaderLeft onClick={() => navigate("/Homepage/")}>
+        <HeaderLeft onClick={() => dispatch(coreActions.setTab({selectedTab: 0}))}>
             Junyoung Kim(김준영).
         </HeaderLeft>
         <HeaderCenter>
-            <HeaderBtn onClick={() => navigate("/Homepage/")}>
+            <HeaderBtn onClick={() => dispatch(coreActions.setTab({selectedTab: 0}))}>
                 <span>HOME</span>
             </HeaderBtn>
-            <HeaderBtn onClick={() => navigate("/Homepage/public")}>
+            <HeaderBtn onClick={() => dispatch(coreActions.setTab({selectedTab: 1}))}>
                 <span>PUBLIC</span>
             </HeaderBtn>
-            <HeaderBtn onClick={() => navigate("/Homepage/private")}>
+            <HeaderBtn onClick={() => dispatch(coreActions.setTab({selectedTab: 2}))}>
                 <span>PRIVATE</span>
             </HeaderBtn>
-            <HeaderBtn onClick={() => navigate("/Homepage/new")}>
+            <HeaderBtn onClick={() => dispatch(coreActions.setTab({selectedTab: 3}))}>
                 <span>NEW 🚧</span>
             </HeaderBtn>
         </HeaderCenter>

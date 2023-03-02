@@ -5,12 +5,14 @@ import styled from "styled-components";
 import reset from 'styled-reset';
 import { createGlobalStyle } from 'styled-components';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import CV from './containers/Public';
+import Public from './containers/Public';
 import Private from './containers/Private';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import New from './containers/New';
 import MainPage from './containers/MainPage';
+import { useSelector } from 'react-redux';
+import { selectCore } from './store/slices/core';
 
 const GlobalStyles = createGlobalStyle`
   ${reset}
@@ -83,6 +85,8 @@ function App() {
 }
 
 const InsideComponent = () => {
+  const coreState = useSelector(selectCore);
+
   return (
     <Routes>
       <Route
@@ -92,12 +96,10 @@ const InsideComponent = () => {
             <Background>
               <Header />
               <Body>
-                <Routes>
-                  <Route path="public" element={<CV />} />
-                  <Route path="private" element={<Private />} />
-                  <Route path="new" element={<New />} />
-                  <Route path="*" element={<MainPage />} />
-                </Routes>
+                {coreState.selectedTab === 0 && <MainPage />}
+                {coreState.selectedTab === 1 && <Public />}
+                {coreState.selectedTab === 2 && <Private />}
+                {coreState.selectedTab === 3 && <New />}
               </Body>
               <Footer />
             </Background>
