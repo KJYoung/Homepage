@@ -10,7 +10,7 @@ const Header = () => {
     const dispatch = useDispatch();
     return <HeaderRoot>
         <HeaderLeft onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.MAIN}))}>
-            Junyoung Kim(김준영).
+            VKJY, Junyoung Kim(김준영).
         </HeaderLeft>
         <HeaderCenter>
             <HeaderBtn onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.MAIN}))}>
