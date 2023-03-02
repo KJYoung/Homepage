@@ -19,7 +19,6 @@ const images = [
     { url: process.env.PUBLIC_URL + "/gallery/20230121_Paris14.jpg" },
     { url: process.env.PUBLIC_URL + "/gallery/20230121_Paris15.jpg" },
     { url: process.env.PUBLIC_URL + "/gallery/20230121_Paris16.jpg" },
-    { url: process.env.PUBLIC_URL + "/gallery/20230122_Paris17.jpg" },
     { url: process.env.PUBLIC_URL + "/gallery/20230122_Paris18.jpg" },
     { url: process.env.PUBLIC_URL + "/gallery/20230123_Paris19.jpg" },
     { url: process.env.PUBLIC_URL + "/gallery/20230123_Paris20.jpg" },
