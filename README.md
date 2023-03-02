@@ -8,4 +8,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 `yarn start`
 
 ## Update Notes
-2023.03.02. Remove the Navigation stuff. Introduce Redux.   
+2023.03.02. Remove the Navigation stuff. Introduce Redux. "Gallery". TODO: CUSTOM_IMG_SLIDERS
