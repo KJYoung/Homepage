@@ -1,56 +1,16 @@
 import React, { useState } from 'react';
 import styled from "styled-components";
 import SimpleImageSlider from "react-simple-image-slider";
+import { BELGIUM_images, FRANCE_images, GREECE_images, ITALY_images, NETHERLANDS_images, SWISS_images, TURKIYE_images } from './Gallery_URL';
 
 enum CATEGORY {
    NONE = 0,
    FRANCE = 1,
-   BELGIUM = 2, NETHERLAND = 3,
+   BELGIUM = 2, NETHERLANDS = 3,
    SWISS = 4,
    TURKIYE = 5, GREECE = 6,
    ITALY = 7
 };
-
-const FRANCE_images = [
-    { url: process.env.PUBLIC_URL + "/gallery/FRANCE/20230117_Paris1.jpg" },
-    { url: process.env.PUBLIC_URL + "/gallery/FRANCE/20230117_Paris2.jpg" },
-    { url: process.env.PUBLIC_URL + "/gallery/FRANCE/20230118_Paris3.jpg" },
-    { url: process.env.PUBLIC_URL + "/gallery/FRANCE/20230118_Paris4.jpg" },
-    { url: process.env.PUBLIC_URL + "/gallery/FRANCE/20230118_Paris5.jpg" },
-    { url: process.env.PUBLIC_URL + "/gallery/FRANCE/20230119_Paris6.jpg" },
-    { url: process.env.PUBLIC_URL + "/gallery/FRANCE/20230119_Paris7.jpg" },
-    { url: process.env.PUBLIC_URL + "/gallery/FRANCE/20230120_Paris8.jpg" },
-    { url: process.env.PUBLIC_URL + "/gallery/FRANCE/20230120_Paris9.jpg" },
-    { url: process.env.PUBLIC_URL + "/gallery/FRANCE/20230120_Paris10.jpg" },
-    { url: process.env.PUBLIC_URL + "/gallery/FRANCE/20230120_Paris11.jpg" },
-    { url: process.env.PUBLIC_URL + "/gallery/FRANCE/20230121_Paris12.jpg" },
-    { url: process.env.PUBLIC_URL + "/gallery/FRANCE/20230122_Paris13.jpg" },
-    { url: process.env.PUBLIC_URL + "/gallery/FRANCE/20230123_Paris14.jpg" },
-    { url: process.env.PUBLIC_URL + "/gallery/FRANCE/20230123_Paris15.jpg" },
-    { url: process.env.PUBLIC_URL + "/gallery/FRANCE/20230124_Paris16.png" },
-    { url: process.env.PUBLIC_URL + "/gallery/FRANCE/20230124_Paris17.jpg" },
-    { url: process.env.PUBLIC_URL + "/gallery/FRANCE/20230126_Strasbourg18.jpg" },
-    { url: process.env.PUBLIC_URL + "/gallery/FRANCE/20230126_Strasbourg19.jpg" },
-    { url: process.env.PUBLIC_URL + "/gallery/FRANCE/20230127_Paris20.jpg" },
-  ];
-const BELGIUM_images = [
-    { url: process.env.PUBLIC_URL + "/gallery/BELGIUM/20230127_Brussel1.jpg" },
-];
-const NETHERLAND_images = [
-    { url: process.env.PUBLIC_URL + "/gallery/FRANCE/20230117_Paris1.jpg" },
-];
-const SWISS_images = [
-    { url: process.env.PUBLIC_URL + "/gallery/FRANCE/20230117_Paris1.jpg" },
-];
-const TURKIYE_images = [
-    { url: process.env.PUBLIC_URL + "/gallery/FRANCE/20230117_Paris1.jpg" },
-];
-const GREECE_images = [
-    { url: process.env.PUBLIC_URL + "/gallery/FRANCE/20230117_Paris1.jpg" },
-];
-const ITALY_images = [
-    { url: process.env.PUBLIC_URL + "/gallery/FRANCE/20230117_Paris1.jpg" },
-];
 
 function Gallery() {
   const [category, setCategory] = useState(0);
@@ -62,7 +22,7 @@ function Gallery() {
                 <option value={0}>CHOOSE CATEGORY!</option>
                 <option value={CATEGORY.FRANCE}>🇫🇷Paris, Colmar, Strasbourg</option>
                 <option value={CATEGORY.BELGIUM}>🇧🇪Brussels</option>
-                <option value={CATEGORY.NETHERLAND}>🇳🇱Amsterdam</option>
+                <option value={CATEGORY.NETHERLANDS}>🇳🇱Amsterdam</option>
                 <option value={CATEGORY.SWISS}>🇨🇭Bern, Interlaken, Jungfrau</option>
                 <option value={CATEGORY.TURKIYE}>🇹🇷Istanbul, Cappadocia</option>
                 <option value={CATEGORY.GREECE}>🇬🇷Santorini, Athens</option>
@@ -74,7 +34,7 @@ function Gallery() {
                 {category === CATEGORY.NONE && <span> Choose the Category! </span>}
                 {category === CATEGORY.FRANCE && <SimpleImageSlider width={1200} height={600} images={FRANCE_images} showBullets={true} showNavs={true}/>}
                 {category === CATEGORY.BELGIUM && <SimpleImageSlider width={1200} height={600} images={BELGIUM_images} showBullets={true} showNavs={true}/>}
-                {category === CATEGORY.NETHERLAND && <SimpleImageSlider width={1200} height={600} images={NETHERLAND_images} showBullets={true} showNavs={true}/>}
+                {category === CATEGORY.NETHERLANDS && <SimpleImageSlider width={1200} height={600} images={NETHERLANDS_images} showBullets={true} showNavs={true}/>}
                 {category === CATEGORY.SWISS && <SimpleImageSlider width={1200} height={600} images={SWISS_images} showBullets={true} showNavs={true}/>}
                 {category === CATEGORY.TURKIYE && <SimpleImageSlider width={1200} height={600} images={TURKIYE_images} showBullets={true} showNavs={true}/>}
                 {category === CATEGORY.GREECE && <SimpleImageSlider width={1200} height={600} images={GREECE_images} showBullets={true} showNavs={true}/>}
