@@ -7,12 +7,13 @@ import { createGlobalStyle } from 'styled-components';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Public from './containers/Public';
 import Private from './containers/Private';
-import Header from './components/Header';
+import Header, { TabState } from './components/Header';
 import Footer from './components/Footer';
 import New from './containers/New';
 import MainPage from './containers/MainPage';
 import { useSelector } from 'react-redux';
 import { selectCore } from './store/slices/core';
+import Gallery from './containers/Gallery';
 
 const GlobalStyles = createGlobalStyle`
   ${reset}
@@ -96,10 +97,11 @@ const InsideComponent = () => {
             <Background>
               <Header />
               <Body>
-                {coreState.selectedTab === 0 && <MainPage />}
-                {coreState.selectedTab === 1 && <Public />}
-                {coreState.selectedTab === 2 && <Private />}
-                {coreState.selectedTab === 3 && <New />}
+                {coreState.selectedTab === TabState.MAIN && <MainPage />}
+                {coreState.selectedTab === TabState.PUBLIC && <Public />}
+                {coreState.selectedTab === TabState.PRIVATE && <Private />}
+                {coreState.selectedTab === TabState.GALLERY && <Gallery />}
+                {coreState.selectedTab === TabState.NEW && <New />}
               </Body>
               <Footer />
             </Background>

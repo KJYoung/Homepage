@@ -2,23 +2,30 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { coreActions } from "../store/slices/core";
 
+export enum TabState {
+    MAIN = 0, PUBLIC = 1, PRIVATE = 2, GALLERY = 3, NEW = 4
+};
+
 const Header = () => {
     const dispatch = useDispatch();
     return <HeaderRoot>
-        <HeaderLeft onClick={() => dispatch(coreActions.setTab({selectedTab: 0}))}>
+        <HeaderLeft onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.MAIN}))}>
             Junyoung Kim(김준영).
         </HeaderLeft>
         <HeaderCenter>
-            <HeaderBtn onClick={() => dispatch(coreActions.setTab({selectedTab: 0}))}>
+            <HeaderBtn onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.MAIN}))}>
                 <span>HOME</span>
             </HeaderBtn>
-            <HeaderBtn onClick={() => dispatch(coreActions.setTab({selectedTab: 1}))}>
+            <HeaderBtn onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.PUBLIC}))}>
                 <span>PUBLIC</span>
             </HeaderBtn>
-            <HeaderBtn onClick={() => dispatch(coreActions.setTab({selectedTab: 2}))}>
+            <HeaderBtn onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.PRIVATE}))}>
                 <span>PRIVATE</span>
             </HeaderBtn>
-            <HeaderBtn onClick={() => dispatch(coreActions.setTab({selectedTab: 3}))}>
+            <HeaderBtn onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.GALLERY}))}>
+                <span>Gallery</span>
+            </HeaderBtn>
+            <HeaderBtn onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.NEW}))}>
                 <span>NEW 🚧</span>
             </HeaderBtn>
         </HeaderCenter>

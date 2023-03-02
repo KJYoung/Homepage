@@ -1,23 +1,25 @@
 import React from 'react';
 import styled from "styled-components";
 
-function MainPage() {
+function Gallery() {
   return (
-    <MainPageBody>
+    <GalleryBody>
       <div>
-        Welcome to the MainPage.
-        메인 페이지.
+        Welcome to the Gallery.
       </div>
       <div>
-        <span>2017.03 ~ 2019.02 한성과학고등학교 조기졸업</span>
-        <span>2019.03 ~ 2023.02 서울대학교 졸업(생명과학부, 컴퓨터공학부 복수전공)</span>
-        <span>2023.06 ~ 2026.05 ROND 복무</span>
+        <GalleryIMG src={process.env.PUBLIC_URL + "/gallery/20230117_Paris1.jpg"} alt="Paris1_Test" />
       </div>
-    </MainPageBody>
+    </GalleryBody>
   );
 }
 
-const MainPageBody = styled.div`
+const GalleryIMG = styled.img`
+    max-width: 1200px;
+    max-height: 600px;
+`
+
+const GalleryBody = styled.div`
     width: 100%;
     max-width: 1200px;
     height: 100%;
@@ -44,4 +46,4 @@ const MainPageBody = styled.div`
     background-clip: padding-box;
 `;
 
-export default MainPage;
+export default Gallery;

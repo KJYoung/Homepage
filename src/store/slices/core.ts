@@ -13,14 +13,7 @@ export const coreSlice = createSlice({
     name: "core",
     initialState,
     reducers: {
-      getAll: (state: any, action: PayloadAction<{ todos: TodoType[] }>) => {},
-      getTodo: (state: any, action: PayloadAction<{ targetId: number }>) => {},
-      toggleDone: (state: any, action: PayloadAction<{ targetId: number }>) => {},
-      deleteTodo: (state: any, action: PayloadAction<{ targetId: number }>) => {},
-      setTab: (
-        state: any,
-        action: PayloadAction<{ selectedTab: number; }>
-      )=>{
+      setTab: (state: any, action: PayloadAction<{ selectedTab: number; }>) => {
         state.selectedTab = action.payload.selectedTab;
       },
    }, });
