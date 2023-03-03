@@ -64,7 +64,22 @@ export const SWISS_images = [
     { url: ROOT_DIR + "SWISS/20230203_Interlaken13.jpg" },
 ];
 export const TURKIYE_images = [
-    { url: ROOT_DIR + "TURKIYE/20230117_Paris1.jpg" },
+    { url: ROOT_DIR + "TURKIYE/20230207_Istanbul1.jpg" },
+    { url: ROOT_DIR + "TURKIYE/20230207_Istanbul2.jpg" },
+    { url: ROOT_DIR + "TURKIYE/20230207_Istanbul3.jpg" },
+    { url: ROOT_DIR + "TURKIYE/20230207_Istanbul4.jpg" },
+    { url: ROOT_DIR + "TURKIYE/20230207_Istanbul5.jpg" },
+    { url: ROOT_DIR + "TURKIYE/20230207_Istanbul6.jpg" },
+    { url: ROOT_DIR + "TURKIYE/20230207_Istanbul7.jpg" },
+    { url: ROOT_DIR + "TURKIYE/20230208_Istanbul8.jpg" },
+    { url: ROOT_DIR + "TURKIYE/20230208_Istanbul9.jpg" },
+    { url: ROOT_DIR + "TURKIYE/20230208_Cappadocia10.jpg" },
+    { url: ROOT_DIR + "TURKIYE/20230209_Cappadocia11.jpg" },
+    { url: ROOT_DIR + "TURKIYE/20230210_Istanbul12.jpg" },
+    { url: ROOT_DIR + "TURKIYE/20230210_Istanbul13.jpg" },
+    { url: ROOT_DIR + "TURKIYE/20230211_Istanbul14.jpg" },
+    { url: ROOT_DIR + "TURKIYE/20230211_Istanbul15.jpg" },
+    { url: ROOT_DIR + "TURKIYE/20230211_Istanbul16.jpg" },
 ];
 export const GREECE_images = [
     { url: ROOT_DIR + "GREECE/20230117_Paris1.jpg" },
