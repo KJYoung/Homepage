@@ -26,7 +26,7 @@ function Gallery() {
                 <option value={CATEGORY.SWISS}>🇨🇭Bern, Interlaken, Jungfrau ({SWISS_images.length})</option>
                 <option value={CATEGORY.TURKIYE}>🇹🇷Istanbul, Cappadocia ({TURKIYE_images.length})</option>
                 <option value={CATEGORY.GREECE}>🇬🇷Santorini, Athens ({GREECE_images.length})</option>
-                <option value={CATEGORY.ITALY}>🇮🇹Rome, Venice ({ITALY_images.length})</option>
+                <option value={CATEGORY.ITALY}>🇮🇹Rome, Vatican, Venice ({ITALY_images.length})</option>
             </select>
         </div>
         <GalleryBody>
