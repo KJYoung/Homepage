@@ -55,6 +55,13 @@ export const SWISS_images = [
     { url: ROOT_DIR + "SWISS/20230202_Bern4.jpg" },
     { url: ROOT_DIR + "SWISS/20230202_Bern5.jpg" },
     { url: ROOT_DIR + "SWISS/20230202_Bern6.jpg" },
+    { url: ROOT_DIR + "SWISS/20230202_Train7.jpg" },
+    { url: ROOT_DIR + "SWISS/20230203_Jungfrau8.jpg" },
+    { url: ROOT_DIR + "SWISS/20230203_Jungfrau9.jpg" },
+    { url: ROOT_DIR + "SWISS/20230203_Mannlichen10.jpg" },
+    { url: ROOT_DIR + "SWISS/20230203_Mannlichen11.jpg" },
+    { url: ROOT_DIR + "SWISS/20230203_Interlaken12.jpg" },
+    { url: ROOT_DIR + "SWISS/20230203_Interlaken13.jpg" },
 ];
 export const TURKIYE_images = [
     { url: ROOT_DIR + "TURKIYE/20230117_Paris1.jpg" },
