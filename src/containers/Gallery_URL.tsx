@@ -82,7 +82,19 @@ export const TURKIYE_images = [
     { url: ROOT_DIR + "TURKIYE/20230211_Istanbul16.jpg" },
 ];
 export const GREECE_images = [
-    { url: ROOT_DIR + "GREECE/20230117_Paris1.jpg" },
+    { url: ROOT_DIR + "GREECE/20230213_Santorini1.jpg" },
+    { url: ROOT_DIR + "GREECE/20230213_Santorini2.jpg" },
+    { url: ROOT_DIR + "GREECE/20230213_Santorini3.jpg" },
+    { url: ROOT_DIR + "GREECE/20230214_Athens4.jpg" },
+    { url: ROOT_DIR + "GREECE/20230214_Athens5.jpg" },
+    { url: ROOT_DIR + "GREECE/20230214_Athens6.jpg" },
+    { url: ROOT_DIR + "GREECE/20230214_Athens7.jpg" },
+    { url: ROOT_DIR + "GREECE/20230215_Athens8.jpg" },
+    { url: ROOT_DIR + "GREECE/20230215_Athens9.jpg" },
+    { url: ROOT_DIR + "GREECE/20230215_Athens10.jpg" },
+    { url: ROOT_DIR + "GREECE/20230215_Athens11.jpg" },
+    { url: ROOT_DIR + "GREECE/20230215_Athens12.jpg" },
+    { url: ROOT_DIR + "GREECE/20230215_Athens13.jpg" },
 ];
 export const ITALY_images = [
     { url: ROOT_DIR + "ITALY/20230117_Paris1.jpg" },
