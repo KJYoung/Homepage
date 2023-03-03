@@ -20,13 +20,13 @@ function Gallery() {
             <span>Welcome to the Gallery. Choose the Category what you want to see.</span>
             <select onChange={e => setCategory(Number.parseInt(e.target.value))}>
                 <option value={0}>CHOOSE CATEGORY!</option>
-                <option value={CATEGORY.FRANCE}>🇫🇷Paris, Colmar, Strasbourg</option>
-                <option value={CATEGORY.BELGIUM}>🇧🇪Brussels</option>
-                <option value={CATEGORY.NETHERLANDS}>🇳🇱Amsterdam</option>
-                <option value={CATEGORY.SWISS}>🇨🇭Bern, Interlaken, Jungfrau</option>
-                <option value={CATEGORY.TURKIYE}>🇹🇷Istanbul, Cappadocia</option>
-                <option value={CATEGORY.GREECE}>🇬🇷Santorini, Athens</option>
-                <option value={CATEGORY.ITALY}>🇮🇹Rome, Venice</option>
+                <option value={CATEGORY.FRANCE}>🇫🇷Paris, Colmar, Strasbourg({FRANCE_images.length})</option>
+                <option value={CATEGORY.BELGIUM}>🇧🇪Brussels, Antwerpen({BELGIUM_images.length})</option>
+                <option value={CATEGORY.NETHERLANDS}>🇳🇱Amsterdam({NETHERLANDS_images.length})</option>
+                <option value={CATEGORY.SWISS}>🇨🇭Bern, Interlaken, Jungfrau({SWISS_images.length})</option>
+                <option value={CATEGORY.TURKIYE}>🇹🇷Istanbul, Cappadocia({TURKIYE_images.length})</option>
+                <option value={CATEGORY.GREECE}>🇬🇷Santorini, Athens({GREECE_images.length})</option>
+                <option value={CATEGORY.ITALY}>🇮🇹Rome, Venice({ITALY_images.length})</option>
             </select>
         </div>
         <GalleryBody>
