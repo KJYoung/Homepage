@@ -7,7 +7,7 @@ export const FRANCE_images: ImageInfoPairsType[] = [
         url: ROOT_DIR + "FRANCE/20230117_Paris1.jpg",
         title: "몽마르뜨 언덕에서(사크레-쾨르 대성당 앞)",
         subtitle: "Sacré-Cœur, colline de montmartre",
-        description: "23년 1월 17일 9시. 한적한 몽마르뜨 언덕에서 유럽여행을 본격적으로 시작했다. 앞으로 방문할 파리의 관광지를 한 눈에 볼 수 있었다.",
+        description: "AM 09:30. 한적한 몽마르뜨 언덕. 파리의 전경이 한 눈에 보인다.",
         location: "https://www.google.com/maps/place/Sacr%C3%A9-C%C5%93ur/",
     },
     { url: ROOT_DIR + "FRANCE/20230117_Paris2.jpg" },

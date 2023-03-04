@@ -16,6 +16,7 @@ function Gallery() {
   const [category, setCategory] = useState(0);
   const [periodicChange, setPeriodicChange] = useState(false);
 
+  const [galleryWidth, galleryHeight] = [1200, 560];
   return (
     <>
         <GalleryHeader>
@@ -43,13 +44,13 @@ function Gallery() {
         <GalleryBody>
             <div>
                 {category === CATEGORY.NONE && <span> Choose the Category! </span>}
-                {category === CATEGORY.FRANCE && <CustomImageSlider width={1200} height={560} images={FRANCE_images} showBullets={true} showNavs={true} periodicChange={periodicChange}/>}
-                {category === CATEGORY.BELGIUM && <CustomImageSlider width={1200} height={560} images={BELGIUM_images} showBullets={true} showNavs={true} periodicChange={periodicChange}/>}
-                {category === CATEGORY.NETHERLANDS && <CustomImageSlider width={1200} height={560} images={NETHERLANDS_images} showBullets={true} showNavs={true} periodicChange={periodicChange}/>}
-                {category === CATEGORY.SWISS && <CustomImageSlider width={1200} height={560} images={SWISS_images} showBullets={true} showNavs={true} periodicChange={periodicChange}/>}
-                {category === CATEGORY.TURKIYE && <CustomImageSlider width={1200} height={560} images={TURKIYE_images} showBullets={true} showNavs={true} periodicChange={periodicChange}/>}
-                {category === CATEGORY.GREECE && <CustomImageSlider width={1200} height={560} images={GREECE_images} showBullets={true} showNavs={true} periodicChange={periodicChange}/>}
-                {category === CATEGORY.ITALY && <CustomImageSlider width={1200} height={560} images={ITALY_images} showBullets={true} showNavs={true} periodicChange={periodicChange}/>}
+                {category === CATEGORY.FRANCE && <CustomImageSlider width={galleryWidth} height={galleryHeight} images={FRANCE_images} showBullets={true} showNavs={true} periodicChange={periodicChange}/>}
+                {category === CATEGORY.BELGIUM && <CustomImageSlider width={galleryWidth} height={galleryHeight} images={BELGIUM_images} showBullets={true} showNavs={true} periodicChange={periodicChange}/>}
+                {category === CATEGORY.NETHERLANDS && <CustomImageSlider width={galleryWidth} height={galleryHeight} images={NETHERLANDS_images} showBullets={true} showNavs={true} periodicChange={periodicChange}/>}
+                {category === CATEGORY.SWISS && <CustomImageSlider width={galleryWidth} height={galleryHeight} images={SWISS_images} showBullets={true} showNavs={true} periodicChange={periodicChange}/>}
+                {category === CATEGORY.TURKIYE && <CustomImageSlider width={galleryWidth} height={galleryHeight} images={TURKIYE_images} showBullets={true} showNavs={true} periodicChange={periodicChange}/>}
+                {category === CATEGORY.GREECE && <CustomImageSlider width={galleryWidth} height={galleryHeight} images={GREECE_images} showBullets={true} showNavs={true} periodicChange={periodicChange}/>}
+                {category === CATEGORY.ITALY && <CustomImageSlider width={galleryWidth} height={galleryHeight} images={ITALY_images} showBullets={true} showNavs={true} periodicChange={periodicChange}/>}
             </div>
         </GalleryBody>
     </>

@@ -1,7 +1,9 @@
-import { faMapLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { faMapLocationDot, faMaximize } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { useOnClickOutside } from "usehooks-ts";
+import CustomImageModal from "./CustomImageModal";
 
 export type ImageInfoPairsType = {
     url: string;
@@ -34,12 +36,26 @@ const CustomImageSlider = ({ width, height, images, periodicChange } : IPropsCus
     const [index, setIndex] = useState(1);
     const timeoutRef = useRef(setTimeout(() => {}, 10000));
 
+    // Image Modal ------------------------------------------
+    const [tagModalOpen, setTagModalOpen] = useState(false);
+    const modalRef = useRef(null);
+    const modalAnimRef = useRef(null);
+    const [imgSrc, setImgSrc] = useState<string | undefined>();
+    const [imgTitle, setImgTitle] = useState<string | undefined>();
+    const [imgSubtitle, setImgSubtitle] = useState<string | undefined>();
+
+    // Disable modal when OnClickOutside
+    const TagDetailOnClose = () => {
+        setTagModalOpen(false);
+    };
+    useOnClickOutside(modalRef, TagDetailOnClose, 'mousedown');
+    // Image Modal End --------------------------------------
     const resetTimeout = () => {
         if (timeoutRef.current) {
             clearTimeout(timeoutRef.current);
         }
     };
-
+    
     const leftIndicatorOnClick = () => { setIndex( index > 1 ? index - 1 : 1 ) };
     const rightIndicatorOnClick = () => { setIndex( index < imgLength ? index + 1 : imgLength ) };
     useEffect(() => {
@@ -52,7 +68,7 @@ const CustomImageSlider = ({ width, height, images, periodicChange } : IPropsCus
             resetTimeout();
         };
     }, [index, imgLength, periodicChange]);
-
+    
     return <CustomImageSliderWrapper>
         <Wrapper width={width}>
             <Slider width={width * imgLength} style={{ transform: `translateX(-${(width * (index - 1))}px)`}}>
@@ -65,10 +81,18 @@ const CustomImageSlider = ({ width, height, images, periodicChange } : IPropsCus
                             <nav className="BottomIndicator">
                                 {Array.from(Array(imgLength).keys()).map((_, i) => <NavBtn key={i} onClick={() => setIndex(i + 1)} current={index === i+1}/>)}
                             </nav>
+                            <nav className="FullScreenBtn">
+                                <FontAwesomeIcon icon={faMaximize} onClick={() => {
+                                    setImgSrc(img.url);
+                                    setImgTitle(img.title);
+                                    setImgSubtitle(img.subtitle);
+                                    setTagModalOpen(true);
+                                }}/>
+                            </nav>
                         </div>
                         <div style={{ position: 'relative', width: '100%'}}>
                             <TitleWrapper>
-                                <ImgTitle>{img.title ? img.title : "정보 없음."}</ImgTitle>
+                                <ImgTitle>{img.title ? img.title : "제목 없음."}</ImgTitle>
                                 <ImgSubtitle>{img.subtitle && img.subtitle}</ImgSubtitle>
                             </TitleWrapper>
                             {img.location && <ImgLocation>
@@ -77,7 +101,7 @@ const CustomImageSlider = ({ width, height, images, periodicChange } : IPropsCus
                                 </a>
                             </ImgLocation>}
                         </div>
-                        <ImgDescription>{img.description ? img.description : "정보 없음."}</ImgDescription>
+                        <ImgDescription>{img.description ? img.description : "설명 없음."}</ImgDescription>
                     </div>
                 })}
             </Slider>
@@ -88,12 +112,20 @@ const CustomImageSlider = ({ width, height, images, periodicChange } : IPropsCus
                 <LRIndicator onClick={rightIndicatorOnClick}>{'>'}</LRIndicator>
             </nav>
         </Wrapper>
+        {CustomImageModal({
+            isActive: tagModalOpen,
+            onClose: TagDetailOnClose,
+            modalRef,
+            modalAnimRef,
+            imgSrc,
+            imgTitle,
+            imgSubtitle,
+        })}
     </CustomImageSliderWrapper>
 }
 
 
 const CustomImageSliderWrapper = styled.div`
-    border: 1px solid blue;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -105,24 +137,34 @@ const Wrapper = styled.div<IPropsWH>`
     position: relative;
     overflow: hidden;
 
-    nav.BottomIndicator {
+    nav {
         position: absolute;
+    }
+
+    nav.BottomIndicator {
         left: 50%;
         transform: translateX(-50%);
         bottom: 1rem;
         display: flex;
-        gap: 5px;
+        align-items: center;
+        gap: 7px;
     };
     nav.LeftIndicator {
-        position: absolute;
         left: 1rem;
         top: 40%;
     };
     nav.RightIndicator {
-        position: absolute;
         right: 1rem;
         top: 40%;
     };
+    nav.FullScreenBtn {
+        right: 1rem;
+        top: 1rem;
+
+        font-size: 22px;
+        color: var(--hp-blue);
+        cursor: pointer;
+    }
 `;
 const ImgWrapper = styled.div`
     display: flex;
@@ -163,15 +205,23 @@ const ImgDescription = styled.span`
 
 const NavBtn = styled.button<IPropsActive>`
     padding: 0px;
-    width: 0.75rem;
-    height: 0.75rem;
+    width: 0.8rem;
+    height: 0.8rem;
     border-radius: 50%;
-
-    ${({ current }) =>
-    current &&
-    `
-      background-color: rgba(255, 0, 0, 0.9);
-    `};
+    background-color: var(--hp-white);
+    border: 1px solid black;
+    
+    cursor: pointer;
+    ${
+        ({ current }) =>
+        current &&
+        `
+            cursor: default;
+            width: 1rem;
+            height: 1rem;
+            background-color: var(--hp-blue);
+        `
+    };
 `;
 const LRIndicator = styled.button`
     border: none;
