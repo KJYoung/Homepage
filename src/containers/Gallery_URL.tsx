@@ -1,7 +1,15 @@
+import { ImageInfoPairsType } from "../customs/CustomImageSlider";
+
 const ROOT_DIR = process.env.PUBLIC_URL + "/gallery/";
 
-export const FRANCE_images = [
-    { url: ROOT_DIR + "FRANCE/20230117_Paris1.jpg", title: "몽마르뜨 언덕(사크레 쾨르 대성당 앞)에서" },
+export const FRANCE_images: ImageInfoPairsType[] = [
+    { 
+        url: ROOT_DIR + "FRANCE/20230117_Paris1.jpg",
+        title: "몽마르뜨 언덕에서(사크레-쾨르 대성당 앞)",
+        subtitle: "Sacré-Cœur, colline de montmartre",
+        description: "한적한 아침.",
+        location: "Paris",
+    },
     { url: ROOT_DIR + "FRANCE/20230117_Paris2.jpg" },
     { url: ROOT_DIR + "FRANCE/20230118_Paris3.jpg" },
     { url: ROOT_DIR + "FRANCE/20230118_Paris4.jpg" },
@@ -22,7 +30,7 @@ export const FRANCE_images = [
     { url: ROOT_DIR + "FRANCE/20230126_Strasbourg19.jpg" },
     { url: ROOT_DIR + "FRANCE/20230127_Paris20.jpg" },
 ];
-export const BELGIUM_images = [
+export const BELGIUM_images: ImageInfoPairsType[] = [
     { url: ROOT_DIR + "BELGIUM/20230127_Brussels1.jpg" },
     { url: ROOT_DIR + "BELGIUM/20230127_Brussels2.jpg" },
     { url: ROOT_DIR + "BELGIUM/20230128_Brussels3.jpg" },
@@ -36,7 +44,7 @@ export const BELGIUM_images = [
     { url: ROOT_DIR + "BELGIUM/20230129_Antwerpen11.jpg" },
     { url: ROOT_DIR + "BELGIUM/20230130_Brussels12.jpg" },
 ];
-export const NETHERLANDS_images = [
+export const NETHERLANDS_images: ImageInfoPairsType[] = [
     { url: ROOT_DIR + "NETHERLANDS/20230130_Amsterdam1.jpg" },
     { url: ROOT_DIR + "NETHERLANDS/20230131_Amsterdam2.jpg" },
     { url: ROOT_DIR + "NETHERLANDS/20230131_Amsterdam3.jpg" },
@@ -48,7 +56,7 @@ export const NETHERLANDS_images = [
     { url: ROOT_DIR + "NETHERLANDS/20230201_Amsterdam9.jpg" },
     { url: ROOT_DIR + "NETHERLANDS/20230201_Amsterdam10.jpg" },
 ];
-export const SWISS_images = [
+export const SWISS_images: ImageInfoPairsType[] = [
     { url: ROOT_DIR + "SWISS/20230202_Bern1.jpg" },
     { url: ROOT_DIR + "SWISS/20230202_Bern2.jpg" },
     { url: ROOT_DIR + "SWISS/20230202_Bern3.jpg" },
@@ -63,7 +71,7 @@ export const SWISS_images = [
     { url: ROOT_DIR + "SWISS/20230203_Interlaken12.jpg" },
     { url: ROOT_DIR + "SWISS/20230203_Interlaken13.jpg" },
 ];
-export const TURKIYE_images = [
+export const TURKIYE_images: ImageInfoPairsType[] = [
     { url: ROOT_DIR + "TURKIYE/20230207_Istanbul1.jpg" },
     { url: ROOT_DIR + "TURKIYE/20230207_Istanbul2.jpg" },
     { url: ROOT_DIR + "TURKIYE/20230207_Istanbul3.jpg" },
@@ -81,7 +89,7 @@ export const TURKIYE_images = [
     { url: ROOT_DIR + "TURKIYE/20230211_Istanbul15.jpg" },
     { url: ROOT_DIR + "TURKIYE/20230211_Istanbul16.jpg" },
 ];
-export const GREECE_images = [
+export const GREECE_images: ImageInfoPairsType[] = [
     { url: ROOT_DIR + "GREECE/20230213_Santorini1.jpg" },
     { url: ROOT_DIR + "GREECE/20230213_Santorini2.jpg" },
     { url: ROOT_DIR + "GREECE/20230213_Santorini3.jpg" },
@@ -96,7 +104,7 @@ export const GREECE_images = [
     { url: ROOT_DIR + "GREECE/20230215_Athens12.jpg" },
     { url: ROOT_DIR + "GREECE/20230215_Athens13.jpg" },
 ];
-export const ITALY_images = [
+export const ITALY_images: ImageInfoPairsType[] = [
     { url: ROOT_DIR + "ITALY/20230216_Rome1.jpg" },
     { url: ROOT_DIR + "ITALY/20230216_Rome2.jpg" },
     { url: ROOT_DIR + "ITALY/20230216_Rome3.png" },

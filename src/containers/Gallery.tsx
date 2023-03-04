@@ -19,7 +19,11 @@ function Gallery() {
   return (
     <>
         <GalleryHeader>
+          <div>
             <span>Welcome to the Gallery. Choose the Category what you want to see.</span>
+          </div>
+          <div>
+            <span>Gallery Category : </span>
             <select onChange={e => setCategory(Number.parseInt(e.target.value))}>
                 <option value={0}>CHOOSE CATEGORY!</option>
                 <option value={CATEGORY.FRANCE}>🇫🇷 Paris, Colmar, Strasbourg ({FRANCE_images.length})</option>
@@ -30,18 +34,22 @@ function Gallery() {
                 <option value={CATEGORY.GREECE}>🇬🇷 Santorini, Athens ({GREECE_images.length})</option>
                 <option value={CATEGORY.ITALY}>🇮🇹 Rome, Vatican, Venice ({ITALY_images.length})</option>
             </select>
-            <input type="checkbox" checked={periodicChange} onChange={e => setPeriodicChange(e.target.checked)}/>
+          </div>
+          <div>
+            <span>See a Slideshow : </span>
+            <CheckboxInput type="checkbox" checked={periodicChange} onChange={e => setPeriodicChange(e.target.checked)}/>
+          </div>
         </GalleryHeader>
         <GalleryBody>
             <div>
                 {category === CATEGORY.NONE && <span> Choose the Category! </span>}
-                {category === CATEGORY.FRANCE && <CustomImageSlider width={1200} height={600} images={FRANCE_images} showBullets={true} showNavs={true} periodicChange={periodicChange}/>}
-                {category === CATEGORY.BELGIUM && <CustomImageSlider width={1200} height={600} images={BELGIUM_images} showBullets={true} showNavs={true} periodicChange={periodicChange}/>}
-                {category === CATEGORY.NETHERLANDS && <CustomImageSlider width={1200} height={600} images={NETHERLANDS_images} showBullets={true} showNavs={true} periodicChange={periodicChange}/>}
-                {category === CATEGORY.SWISS && <CustomImageSlider width={1200} height={600} images={SWISS_images} showBullets={true} showNavs={true} periodicChange={periodicChange}/>}
-                {category === CATEGORY.TURKIYE && <CustomImageSlider width={1200} height={600} images={TURKIYE_images} showBullets={true} showNavs={true} periodicChange={periodicChange}/>}
-                {category === CATEGORY.GREECE && <CustomImageSlider width={1200} height={600} images={GREECE_images} showBullets={true} showNavs={true} periodicChange={periodicChange}/>}
-                {category === CATEGORY.ITALY && <CustomImageSlider width={1200} height={600} images={ITALY_images} showBullets={true} showNavs={true} periodicChange={periodicChange}/>}
+                {category === CATEGORY.FRANCE && <CustomImageSlider width={1200} height={560} images={FRANCE_images} showBullets={true} showNavs={true} periodicChange={periodicChange}/>}
+                {category === CATEGORY.BELGIUM && <CustomImageSlider width={1200} height={560} images={BELGIUM_images} showBullets={true} showNavs={true} periodicChange={periodicChange}/>}
+                {category === CATEGORY.NETHERLANDS && <CustomImageSlider width={1200} height={560} images={NETHERLANDS_images} showBullets={true} showNavs={true} periodicChange={periodicChange}/>}
+                {category === CATEGORY.SWISS && <CustomImageSlider width={1200} height={560} images={SWISS_images} showBullets={true} showNavs={true} periodicChange={periodicChange}/>}
+                {category === CATEGORY.TURKIYE && <CustomImageSlider width={1200} height={560} images={TURKIYE_images} showBullets={true} showNavs={true} periodicChange={periodicChange}/>}
+                {category === CATEGORY.GREECE && <CustomImageSlider width={1200} height={560} images={GREECE_images} showBullets={true} showNavs={true} periodicChange={periodicChange}/>}
+                {category === CATEGORY.ITALY && <CustomImageSlider width={1200} height={560} images={ITALY_images} showBullets={true} showNavs={true} periodicChange={periodicChange}/>}
             </div>
         </GalleryBody>
     </>
@@ -58,6 +66,19 @@ const GalleryHeader = styled.div`
     padding: 3px 5px 3px 5px;
     border-radius: 5px;
     width: 50%;
+  }
+  > div {
+    width: 100%;
+  }
+`;
+
+const CheckboxInput = styled.input`
+  width: 50px;
+  padding: 15px;
+  border: none;
+  background-color: red;
+  &:checked {
+    background-color: azure;
   }
 `;
 

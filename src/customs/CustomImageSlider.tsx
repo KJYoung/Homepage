@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
-type ImageInfoPairsType = {
+export type ImageInfoPairsType = {
     url: string;
     title?: string;
+    subtitle?: string;
+    description?: string;
+    location?: string;
 };
 
 interface IPropsCustomImageSlider {
@@ -15,8 +18,8 @@ interface IPropsCustomImageSlider {
     periodicChange: boolean;
 };
 interface IPropsWH {
-    width: number;
-    height: number;
+    width?: number;
+    height?: number;
 };
 interface IPropsActive {
     current: boolean;
@@ -49,24 +52,34 @@ const CustomImageSlider = ({ width, height, images, periodicChange } : IPropsCus
     }, [index, imgLength, periodicChange]);
 
     return <CustomImageSliderWrapper>
-        <span>커스텀 이미지 슬라이더 {index}</span>
-        <Wrapper width={width} height={height + 50}>
-            <Slider width={width * imgLength} height={height + 50} style={{ transform: `translateX(-${(width * (index - 1))}px)`}}>
+        <Wrapper width={width}>
+            <Slider width={width * imgLength} style={{ transform: `translateX(-${(width * (index - 1))}px)`}}>
                 {images.map((img, i) => {
                     return <div>
-                        <img key={i} src={img.url} style={{ width: `${width}px`}} alt="imgElement"/>
-                        {img.title && <span>TITLE : {img.title}</span>}
+                        <div style={{ position: 'relative'}}>
+                            <ImgWrapper style={{ width: `${width}px`, height: `${height}px`, backgroundColor: `var(--hp-gray)` }}>
+                                <img key={i} src={img.url} style={{ width: `${width}px`, maxHeight: `${height}px`}} alt="imgElement"/>
+                            </ImgWrapper>
+                            <nav className="BottomIndicator">
+                                {Array.from(Array(imgLength).keys()).map((_, i) => <NavBtn key={i} onClick={() => setIndex(i + 1)} current={index === i+1}/>)}
+                            </nav>
+                        </div>
+                        <div style={{ position: 'relative', width: '100%'}}>
+                            <TitleWrapper>
+                                <ImgTitle>{img.title ? img.title : "정보 없음."}</ImgTitle>
+                                <ImgSubtitle>{img.subtitle && img.subtitle}</ImgSubtitle>
+                            </TitleWrapper>
+                            {img.location && <ImgLocation>LOC</ImgLocation>}
+                        </div>
+                        <ImgDescription>{img.description ? img.description : "정보 없음."}</ImgDescription>
                     </div>
                 })}
             </Slider>
-            <nav className="BottomIndicator">
-                {Array.from(Array(imgLength).keys()).map((_, i) => <NavBtn key={i} onClick={() => setIndex(i + 1)} current={index === i+1}/>)}
-            </nav>
             <nav className="LeftIndicator">
-                <button onClick={leftIndicatorOnClick}>{'<'}</button>
+                <LRIndicator onClick={leftIndicatorOnClick}>{'<'}</LRIndicator>
             </nav>
             <nav className="RightIndicator">
-                <button onClick={rightIndicatorOnClick}>{'>'}</button>
+                <LRIndicator onClick={rightIndicatorOnClick}>{'>'}</LRIndicator>
             </nav>
         </Wrapper>
     </CustomImageSliderWrapper>
@@ -81,7 +94,8 @@ const CustomImageSliderWrapper = styled.div`
 `;
 const Wrapper = styled.div<IPropsWH>`
     width: ${({ width }) => `${width}px`};;
-    height: ${({ height }) => `${height}px`};;
+    height: 100%;
+    padding-bottom: 40px;
     position: relative;
     overflow: hidden;
 
@@ -96,13 +110,45 @@ const Wrapper = styled.div<IPropsWH>`
     nav.LeftIndicator {
         position: absolute;
         left: 1rem;
-        top: 50%;
+        top: 40%;
     };
     nav.RightIndicator {
         position: absolute;
         right: 1rem;
-        top: 50%;
+        top: 40%;
     };
+`;
+const ImgWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+const TitleWrapper = styled.div`
+    display: flex;
+    align-items: flex-end;
+`;
+const ImgTitle = styled.span`
+    margin: 10px 5px 5px 10px;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--hp-text);
+`;
+const ImgSubtitle = styled.span`
+    margin: 10px 0px 5px 10px;
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--hp-subtext);
+`;
+const ImgLocation = styled.span`
+    position: absolute;
+    right: 1rem;
+    top: 35%;
+`;
+const ImgDescription = styled.span`
+    margin: 5px 0px 5px 10px;
+    font-size: 19px;
+    font-weight: 400;
+    color: var(--hp-subtext);
 `;
 
 const NavBtn = styled.button<IPropsActive>`
@@ -116,12 +162,21 @@ const NavBtn = styled.button<IPropsActive>`
     `
       background-color: rgba(255, 0, 0, 0.9);
     `};
+`;
+const LRIndicator = styled.button`
+    border: none;
+    background: none;
+    padding: 15px;
+    font-size: 40px;
+    color: var(--hp-white);
 
+    cursor: pointer;
 `;
 
 const Slider = styled.div<IPropsWH>`
     display: flex;
-    /* transition: transform 1.2s ease-in-out; */
+    align-items: center;
+    /* transition: transform 0.5s ease-in-out; */
     img {
         object-fit: cover;
     }

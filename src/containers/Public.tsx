@@ -6,7 +6,7 @@ const Public = () => {
             <h2>Education</h2>
             <span>2017.03 ~ 2019.02 한성과학고등학교 조기졸업</span>
             <span>2019.03 ~ 2023.02 서울대학교 졸업(생명과학부, 컴퓨터공학부 복수전공)</span>
-            <span>ㄴㄴ</span>
+            <span>TBA.</span>
         </EducationDiv>
         <InternshipDiv>
             <h2>Internship</h2>

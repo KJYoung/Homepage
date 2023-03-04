@@ -1,6 +1,12 @@
 :root {
     --hp-back: #eef5fd;
     --hp-white: #ffffff;
+    --hp-gray: #333333;
+
+    /* Text Color */
+    --hp-text: #111111;
+    --hp-subtext: #333333;
+
     --hp-footer: #474747;
     --hp-header-left: #ff777783;
     --hp-header-right: #777cffc5;
