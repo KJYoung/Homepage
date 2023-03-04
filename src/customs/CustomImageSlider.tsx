@@ -1,3 +1,5 @@
+import { faMapLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
@@ -69,7 +71,11 @@ const CustomImageSlider = ({ width, height, images, periodicChange } : IPropsCus
                                 <ImgTitle>{img.title ? img.title : "정보 없음."}</ImgTitle>
                                 <ImgSubtitle>{img.subtitle && img.subtitle}</ImgSubtitle>
                             </TitleWrapper>
-                            {img.location && <ImgLocation>LOC</ImgLocation>}
+                            {img.location && <ImgLocation>
+                                <a target="_blank" href={img.location} rel="noreferrer">
+                                    <FontAwesomeIcon icon={faMapLocationDot}/>
+                                </a>
+                            </ImgLocation>}
                         </div>
                         <ImgDescription>{img.description ? img.description : "정보 없음."}</ImgDescription>
                     </div>
@@ -142,7 +148,11 @@ const ImgSubtitle = styled.span`
 const ImgLocation = styled.span`
     position: absolute;
     right: 1rem;
-    top: 35%;
+    top: 30%;
+    font-size: 24px;
+    color: var(--hp-text-blue);
+
+    cursor: pointer;
 `;
 const ImgDescription = styled.span`
     margin: 5px 0px 5px 10px;

@@ -87,7 +87,7 @@ const GalleryBody = styled.div`
   max-width: 1200px;
   height: 100%;
   min-height: 600px;
-  margin-top: 100px;
+  margin-top: 40px;
   background-color: var(--hp-white);
 
   display: flex;
