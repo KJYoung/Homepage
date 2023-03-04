@@ -114,11 +114,6 @@ const CategoryWrapper = styled.div`
   align-items: center;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
-  background-color: var(--fit-white);
-
-  div:nth-child(2) {
-    border-left: 1px solid black;
-  }
 `;
 const TitleWrapper = styled.div`
     display: flex;
