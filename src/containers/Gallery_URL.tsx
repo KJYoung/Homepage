@@ -1,7 +1,7 @@
 const ROOT_DIR = process.env.PUBLIC_URL + "/gallery/";
 
 export const FRANCE_images = [
-    { url: ROOT_DIR + "FRANCE/20230117_Paris1.jpg" },
+    { url: ROOT_DIR + "FRANCE/20230117_Paris1.jpg", title: "몽마르뜨 언덕(사크레 쾨르 대성당 앞)에서" },
     { url: ROOT_DIR + "FRANCE/20230117_Paris2.jpg" },
     { url: ROOT_DIR + "FRANCE/20230118_Paris3.jpg" },
     { url: ROOT_DIR + "FRANCE/20230118_Paris4.jpg" },

@@ -10,10 +10,10 @@ const Public = () => {
         </EducationDiv>
         <InternshipDiv>
             <h2>Internship</h2>
-            <span>2020.Winter. Prof.공</span>
-            <span>2021.Summer. Prof.김</span>
-            <span>2021.Winter, 2022.Spring, 2022.Summer. Prof.MS</span>
-            <span>2022.Fall. Prof.이</span>
+            <span>2020.Winter. Laboratory of Development & Disease Modeling @SNU Biology department, Prof. 공영윤</span>
+            <span>2021.Summer. [COGNITIVE CIRCUITRY LAB](https://cocila.net/) @SNU Biology department, Prof. 김형</span>
+            <span>2021.Winter, 2022.Spring, 2022.Summer. [Steinegger Lab](https://steineggerlab.com/) @SNU Biology department, Prof. Martin Steinegger</span>
+            <span>2022.Fall. [Programming Research Laboratory (ROPAS)](http://ropas.snu.ac.kr/) @SNU CSE department, Prof. 이광근</span>
         </InternshipDiv>
         <PublicationDiv>
             <h2>Publication</h2>
