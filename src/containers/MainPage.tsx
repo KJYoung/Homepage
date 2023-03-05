@@ -23,7 +23,7 @@ const MainPageBody = styled.div`
     height: 100%;
     min-height: 600px;
     margin-top: 100px;
-    border: 1px solid red;
+    border: 1px solid black;
     background-color: var(--hp-white);
 
     display: flex;
