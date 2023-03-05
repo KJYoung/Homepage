@@ -1,17 +1,14 @@
 import { faHome, faPerson, faPhotoFilm, faScroll } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { coreActions } from "../store/slices/core";
-
-export enum TabState {
-    MAIN = 0, PUBLIC = 1, PRIVATE = 2, GALLERY = 3, NEW = 4
-};
+import { coreActions, DarkLightState, LanguageState, selectCore, TabState } from "../store/slices/core";
 
 interface IPropsHeader {
     isMobile: boolean;
 }
 const Header = ({ isMobile }: IPropsHeader ) => {
+    const coreState = useSelector(selectCore);
     const dispatch = useDispatch();
     return isMobile ? <MobileHeaderRoot>
             {/* MOBILE HEADER */}
@@ -54,8 +51,18 @@ const Header = ({ isMobile }: IPropsHeader ) => {
                 </HeaderBtn>
             </HeaderCenter>
             <HeaderRight>
-                LANG.
-                DARK.
+                <div className="LanguageSelector">
+                    <span className={coreState.language === LanguageState.ENGLISH ? "selected" : ""}
+                          onClick={() => dispatch(coreActions.setLang({ language: LanguageState.ENGLISH }))}>EN</span>
+                    <span className={coreState.language === LanguageState.KOREAN ? "selected" : ""}
+                          onClick={() => dispatch(coreActions.setLang({ language: LanguageState.KOREAN }))}>KO</span>
+                </div>
+                <div className="DarkLightSelector">
+                    <span className={coreState.darkLight === DarkLightState.DARK ? "selected" : ""}
+                          onClick={() => dispatch(coreActions.setDarkLight({ darkLight: DarkLightState.DARK }))}>DARK</span>
+                    <span className={coreState.darkLight === DarkLightState.LIGHT ? "selected" : ""}
+                          onClick={() => dispatch(coreActions.setDarkLight({ darkLight: DarkLightState.LIGHT }))}>LIGHT</span>
+                </div>
             </HeaderRight>
         </HeaderRoot>
 };
@@ -67,7 +74,7 @@ const HeaderRoot = styled.div`
 
   display: grid;
   grid-template-columns: 2fr 8fr 2fr;
-  `;
+`;
 const MobileHeaderRoot = styled.div`
   width: 100%;
   max-width: 500px;
@@ -75,8 +82,7 @@ const MobileHeaderRoot = styled.div`
   background-color: var(--hp-white);
   
   display: flex;
-`
-
+`;
 const HeaderLeft = styled.div`
     background-color: var(--hp-header-left);
     display: flex;
@@ -87,6 +93,19 @@ const HeaderLeft = styled.div`
 `;
 const HeaderRight = styled.div`
     background-color: var(--hp-header-right);
+    display: flex;
+    flex-direction: column;
+    > div {
+        width: 100%;
+        height: 50%;
+        > span {
+            margin-right: 10px;
+            font-weight: 700;
+            &.selected {
+                color: gray;
+            }
+        }
+    }
 `;
 const HeaderCenter = styled.div`
   width: 100%;
@@ -97,7 +116,6 @@ const HeaderCenter = styled.div`
   justify-content: center;
   align-items: center;
 `;
-
 const HeaderBtn = styled.div`
   height: 100%;
   display: flex;

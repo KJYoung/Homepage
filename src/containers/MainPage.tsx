@@ -12,7 +12,7 @@ function MainPage() {
           <><img key={1} src={`${GALLERY_ROOT}FRANCE/20230117_Paris2.jpg`} style={{ width: `${1728}px`, maxHeight: `${750}px`}} alt="imgElement"/></>,
           <><img key={1} src={`${GALLERY_ROOT}FRANCE/20230118_Paris3.jpg`} style={{ width: `${1728}px`, maxHeight: `${750}px`}} alt="imgElement"/></>,
           <><img key={1} src={`${GALLERY_ROOT}FRANCE/20230118_Paris4.jpg`} style={{ width: `${1728}px`, maxHeight: `${750}px`}} alt="imgElement"/></>,
-        ]} showBullets={true} showNavs={true} slideShow={{periodicChange: 5000, transTime: 0.5}}/>
+        ]} showBullets={true} showNavs={true} slideShow={{periodicChange: 8000, transTime: 1.0}}/>
       </MainPageCover>
       <MainPageBody>
         <div>
@@ -35,6 +35,7 @@ const MainPageWrapper = styled.div`
   position: relative;
 `
 const MainPageCover = styled.div`
+  margin-top: 20px;
   width: 100%;
   height: 600px;
   background-color: var(--hp-white);

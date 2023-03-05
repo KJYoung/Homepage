@@ -2,13 +2,13 @@ import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 import Footer from "./components/Footer";
-import Header, { TabState } from "./components/Header";
+import Header from "./components/Header";
 import Gallery from "./containers/Gallery";
 import MainPage from "./containers/MainPage";
 import New from "./containers/New";
 import Private from "./containers/Private";
 import Public from "./containers/Public";
-import { selectCore } from "./store/slices/core";
+import { selectCore, TabState } from "./store/slices/core";
 
 export const DesktopApp = () => {
     const coreState = useSelector(selectCore);
