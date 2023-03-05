@@ -13,25 +13,46 @@ export type ImageInfoPairsType = {
     location?: string;
 };
 
-interface IPropsCustomImageSlider {
-    width: number;
-    height: number;
-    images: ImageInfoPairsType[];
-    showBullets?: boolean;
-    showNavs?: boolean;
-    periodicChange: boolean;
+// Public Interface
+export interface IPropsCustomImageSlider {
+    width: number; // width of the CustomImageSlider. IN pixel. ex. 300 => '300px'
+    height: number; // height of the CustomImageSlider. IN pixel. ex. 300 => '300px'
+    images: ImageInfoPairsType[]; // images.
+    showBullets?: boolean; // show bottom Bullets?
+    showNavs?: boolean; // show left&right navigators?
+    slideShow?: {
+        periodicChange: number; // period of the conversion. IN milliseconds. ex. 5000 => '5000ms'
+        transTime?: number; // transition time(animation duration). IN seconds. ex. 0.5 => '0.5s'
+    }; // if valid, then show the slide show(periodic change).
 };
+// Public Interface for CustomImageDivSlider
+export interface IPropsCustomImageDivSlider {
+    width: number; // width of the CustomImageSlider. IN pixel. ex. 300 => '300px'
+    height: number; // height of the CustomImageSlider. IN pixel. ex. 300 => '300px'
+    images: JSX.Element[]; // imageDivs.
+    showBullets?: boolean; // show bottom Bullets?
+    showNavs?: boolean; // show left&right navigators?
+    slideShow?: {
+        periodicChange: number; // period of the conversion. IN milliseconds. ex. 5000 => '5000ms'
+        transTime?: number; // transition time(animation duration). IN seconds. ex. 0.5 => '0.5s'
+    }; // if valid, then show the slide show(periodic change).
+};
+
+// Private.
 interface IPropsWH {
     width?: number;
     height?: number;
+    transitionTime?: number;
 };
 interface IPropsActive {
     current: boolean;
 }
 
-const CustomImageSlider = ({ width, height, images, periodicChange } : IPropsCustomImageSlider) => {
+const CustomImageSlider = ({ width, height, images, showBullets, showNavs, slideShow } : IPropsCustomImageSlider) => {
     const imgLength = images.length;
 
+    // Params Processing
+    
     // Gallery Periodic Change
     const [index, setIndex] = useState(1);
     const timeoutRef = useRef(setTimeout(() => {}, 10000));
@@ -61,26 +82,26 @@ const CustomImageSlider = ({ width, height, images, periodicChange } : IPropsCus
     useEffect(() => {
         resetTimeout();
         timeoutRef.current = setTimeout(() => {
-            if(periodicChange)
+            if(slideShow)
                 setIndex((prevIndex) => (prevIndex === imgLength ? 1 : prevIndex + 1));
-        }, 5000);
+        }, slideShow ? slideShow.periodicChange : 99999);
         return () => {
             resetTimeout();
         };
-    }, [index, imgLength, periodicChange]);
+    }, [index, imgLength, slideShow]);
     
     return <CustomImageSliderWrapper>
         <Wrapper width={width}>
-            <Slider width={width * imgLength} style={{ transform: `translateX(-${(width * (index - 1))}px)`}}>
+            <Slider width={width * imgLength} style={{ transform: `translateX(-${(width * (index - 1))}px)`}} transitionTime={slideShow?.transTime}>
                 {images.map((img, i) => {
                     return <div>
                         <div style={{ position: 'relative'}}>
                             <ImgWrapper style={{ width: `${width}px`, height: `${height}px`, backgroundColor: `var(--hp-gray)` }}>
                                 <img key={i} src={img.url} style={{ width: `${width}px`, maxHeight: `${height}px`}} alt="imgElement"/>
                             </ImgWrapper>
-                            <nav className="BottomIndicator">
+                            {showBullets && <nav className="BottomIndicator">
                                 {Array.from(Array(imgLength).keys()).map((_, i) => <NavBtn key={i} onClick={() => setIndex(i + 1)} current={index === i+1}/>)}
-                            </nav>
+                            </nav>}
                             <nav className="FullScreenBtn">
                                 <FontAwesomeIcon icon={faMaximize} onClick={() => {
                                     setImgSrc(img.url);
@@ -105,12 +126,12 @@ const CustomImageSlider = ({ width, height, images, periodicChange } : IPropsCus
                     </div>
                 })}
             </Slider>
-            <nav className="LeftIndicator">
+            {showNavs && <nav className="LeftIndicator">
                 <LRIndicator onClick={leftIndicatorOnClick}>{'<'}</LRIndicator>
-            </nav>
-            <nav className="RightIndicator">
+            </nav>}
+            {showNavs && <nav className="RightIndicator">
                 <LRIndicator onClick={rightIndicatorOnClick}>{'>'}</LRIndicator>
-            </nav>
+            </nav>}
         </Wrapper>
         {CustomImageModal({
             isActive: tagModalOpen,
@@ -123,7 +144,6 @@ const CustomImageSlider = ({ width, height, images, periodicChange } : IPropsCus
         })}
     </CustomImageSliderWrapper>
 }
-
 
 const CustomImageSliderWrapper = styled.div`
     display: flex;
@@ -236,7 +256,13 @@ const LRIndicator = styled.button`
 const Slider = styled.div<IPropsWH>`
     display: flex;
     align-items: center;
-    /* transition: transform 0.5s ease-in-out; */
+    ${
+        ({ transitionTime }) =>
+        transitionTime &&
+        `
+            transition: transform ${transitionTime}s ease-in-out;
+        `
+    };
     img {
         object-fit: cover;
     }
@@ -246,4 +272,58 @@ const Slider = styled.div<IPropsWH>`
     }
 `;
 
+export const CustomImageDivSlider = ({ width, height, images, showBullets, showNavs, slideShow } : IPropsCustomImageDivSlider) => {
+    // Without 'Fullscreen', 'Information(Title, Description, ...)' Function.
+
+    const imgLength = images.length;
+    
+    // Gallery Periodic Change
+    const [index, setIndex] = useState(1);
+    const timeoutRef = useRef(setTimeout(() => {}, 10000));
+
+    // Image Modal End --------------------------------------
+    const resetTimeout = () => {
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+        }
+    };
+    
+    const leftIndicatorOnClick = () => { setIndex( index > 1 ? index - 1 : 1 ) };
+    const rightIndicatorOnClick = () => { setIndex( index < imgLength ? index + 1 : imgLength ) };
+    useEffect(() => {
+        resetTimeout();
+        timeoutRef.current = setTimeout(() => {
+            if(slideShow)
+                setIndex((prevIndex) => (prevIndex === imgLength ? 1 : prevIndex + 1));
+        }, slideShow ? slideShow.periodicChange : 99999);
+        return () => {
+            resetTimeout();
+        };
+    }, [index, imgLength, slideShow]);
+    
+    return <CustomImageSliderWrapper>
+        <Wrapper width={width}>
+            <Slider width={width * imgLength} style={{ transform: `translateX(-${(width * (index - 1))}px)`}} transitionTime={slideShow?.transTime}>
+                {images.map((img, i) => {
+                    return <div>
+                        <div style={{ position: 'relative'}}>
+                            <ImgWrapper style={{ width: `${width}px`, height: `${height}px`, backgroundColor: `var(--hp-gray)` }}>
+                                {img}
+                            </ImgWrapper>
+                            {showBullets && <nav className="BottomIndicator">
+                                {Array.from(Array(imgLength).keys()).map((_, i) => <NavBtn key={i} onClick={() => setIndex(i + 1)} current={index === i+1}/>)}
+                            </nav>}
+                        </div>
+                    </div>
+                })}
+            </Slider>
+            {showNavs && <nav className="LeftIndicator">
+                <LRIndicator onClick={leftIndicatorOnClick}>{'<'}</LRIndicator>
+            </nav>}
+            {showNavs && <nav className="RightIndicator">
+                <LRIndicator onClick={rightIndicatorOnClick}>{'>'}</LRIndicator>
+            </nav>}
+        </Wrapper>
+    </CustomImageSliderWrapper>
+}
 export default CustomImageSlider;
