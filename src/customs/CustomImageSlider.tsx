@@ -272,7 +272,7 @@ const Slider = styled.div<IPropsWH>`
     }
 `;
 
-export const CustomImageDivSlider = ({ width, height, images, showBullets, showNavs, slideShow } : IPropsCustomImageDivSlider) => {
+export const CustomImageDivSlider = ({ width, images, showBullets, showNavs, slideShow } : IPropsCustomImageDivSlider) => {
     // Without 'Fullscreen', 'Information(Title, Description, ...)' Function.
 
     const imgLength = images.length;
@@ -280,6 +280,7 @@ export const CustomImageDivSlider = ({ width, height, images, showBullets, showN
     // Gallery Periodic Change
     const [index, setIndex] = useState(1);
     const timeoutRef = useRef(setTimeout(() => {}, 10000));
+    const showDirectionRef = useRef(false);
 
     // Image Modal End --------------------------------------
     const resetTimeout = () => {
@@ -293,8 +294,19 @@ export const CustomImageDivSlider = ({ width, height, images, showBullets, showN
     useEffect(() => {
         resetTimeout();
         timeoutRef.current = setTimeout(() => {
-            if(slideShow)
-                setIndex((prevIndex) => (prevIndex === imgLength ? 1 : prevIndex + 1));
+            if(slideShow){
+                if(index === imgLength && showDirectionRef.current === false){
+                    showDirectionRef.current = true;
+                }
+                if(index === 1 && showDirectionRef.current === true){
+                    showDirectionRef.current = false;
+                }
+                if(showDirectionRef.current){
+                    setIndex((prev) => (prev-1));
+                }else{
+                    setIndex((prev) => (prev+1));
+                }
+            }
         }, slideShow ? slideShow.periodicChange : 99999);
         return () => {
             resetTimeout();
@@ -302,14 +314,12 @@ export const CustomImageDivSlider = ({ width, height, images, showBullets, showN
     }, [index, imgLength, slideShow]);
     
     return <CustomImageSliderWrapper>
-        <Wrapper width={width}>
+        <DivWrapper width={width}>
             <Slider width={width * imgLength} style={{ transform: `translateX(-${(width * (index - 1))}px)`}} transitionTime={slideShow?.transTime}>
-                {images.map((img, i) => {
+                {images.map((img) => {
                     return <div>
                         <div style={{ position: 'relative'}}>
-                            <ImgWrapper style={{ width: `${width}px`, height: `${height}px`, backgroundColor: `var(--hp-gray)` }}>
-                                {img}
-                            </ImgWrapper>
+                            {img}
                             {showBullets && <nav className="BottomIndicator">
                                 {Array.from(Array(imgLength).keys()).map((_, i) => <NavBtn key={i} onClick={() => setIndex(i + 1)} current={index === i+1}/>)}
                             </nav>}
@@ -323,7 +333,42 @@ export const CustomImageDivSlider = ({ width, height, images, showBullets, showN
             {showNavs && <nav className="RightIndicator">
                 <LRIndicator onClick={rightIndicatorOnClick}>{'>'}</LRIndicator>
             </nav>}
-        </Wrapper>
+        </DivWrapper>
     </CustomImageSliderWrapper>
-}
+};
+const DivWrapper = styled.div<IPropsWH>`
+    width: ${({ width }) => `${width}px`};;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+
+    nav {
+        position: absolute;
+    }
+
+    nav.BottomIndicator {
+        left: 50%;
+        transform: translateX(-50%);
+        top: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+    };
+    nav.LeftIndicator {
+        left: 1rem;
+        top: 40%;
+    };
+    nav.RightIndicator {
+        right: 1rem;
+        top: 40%;
+    };
+    nav.FullScreenBtn {
+        right: 1rem;
+        top: 1rem;
+
+        font-size: 22px;
+        color: var(--hp-blue);
+        cursor: pointer;
+    }
+`;
 export default CustomImageSlider;

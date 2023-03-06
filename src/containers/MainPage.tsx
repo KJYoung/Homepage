@@ -7,17 +7,24 @@ function MainPage() {
   return (
     <MainPageWrapper>
       <MainPageCover>
-        <CustomImageDivSlider width={1728} height={600} images={[
-          <><img key={1} src={`${GALLERY_ROOT}FRANCE/20230117_Paris1.jpg`} style={{ width: `${1728}px`, maxHeight: `${750}px`}} alt="imgElement"/></>,
-          <><img key={1} src={`${GALLERY_ROOT}FRANCE/20230117_Paris2.jpg`} style={{ width: `${1728}px`, maxHeight: `${750}px`}} alt="imgElement"/></>,
-          <><img key={1} src={`${GALLERY_ROOT}FRANCE/20230118_Paris3.jpg`} style={{ width: `${1728}px`, maxHeight: `${750}px`}} alt="imgElement"/></>,
-          <><img key={1} src={`${GALLERY_ROOT}FRANCE/20230118_Paris4.jpg`} style={{ width: `${1728}px`, maxHeight: `${750}px`}} alt="imgElement"/></>,
-        ]} showBullets={true} showNavs={true} slideShow={{periodicChange: 8000, transTime: 1.0}}/>
+        <CustomImageDivSlider width={1728} height={750} images={[
+          <MainPageDiv>
+            <img key={1} src={`${GALLERY_ROOT}FRANCE/20230117_Paris1.jpg`} style={{ width: `${1728}px`, maxHeight: `${750}px`}} alt="imgElement"/>
+          </MainPageDiv>,
+          <MainPageDiv>
+            <img key={1} src={`${GALLERY_ROOT}FRANCE/20230117_Paris2.jpg`} style={{ width: `${1728}px`, maxHeight: `${750}px`}} alt="imgElement"/>
+          </MainPageDiv>,
+          <MainPageDiv>
+            <img key={1} src={`${GALLERY_ROOT}FRANCE/20230118_Paris3.jpg`} style={{ width: `${1728}px`, maxHeight: `${750}px`}} alt="imgElement"/>
+          </MainPageDiv>,
+          <MainPageDiv>
+            <img key={1} src={`${GALLERY_ROOT}FRANCE/20230118_Paris4.jpg`} style={{ width: `${1728}px`, maxHeight: `${750}px`}} alt="imgElement"/>
+          </MainPageDiv>,
+        ]} slideShow={{periodicChange: 8000, transTime: 1.0}}/>
       </MainPageCover>
       <MainPageBody>
         <div>
-          Welcome to the MainPage.
-          메인 페이지.
+          Welcome to the MainPage of the /Junyoung Kim's/ Homepage.
         </div>
         <div>
           <span>2017.03 ~ 2019.02 한성과학고등학교 조기졸업</span>
@@ -33,9 +40,15 @@ const MainPageWrapper = styled.div`
   width: 100%;
   height: 1150px;
   position: relative;
-`
+`;
+const MainPageDiv = styled.div`
+  > img {
+    filter: blur(4px);
+    -webkit-filter: blur(4px);
+  }
+`;
 const MainPageCover = styled.div`
-  margin-top: 20px;
+  margin-top: 0px;
   width: 100%;
   height: 600px;
   background-color: var(--hp-white);
@@ -43,28 +56,6 @@ const MainPageCover = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  > div {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    > div {
-      width: 100%;
-      height: 100%;
-      border: 0.5px solid black;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-size: contain;
-
-      filter: blur(4px);
-      -webkit-filter: blur(4px);
-    }
-    > span {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-    }
-  }
 `;
 const MainPageBody = styled.div`
   position: absolute;

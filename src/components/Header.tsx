@@ -31,7 +31,7 @@ const Header = ({ isMobile }: IPropsHeader ) => {
         <HeaderRoot>
         {/* DESKTOP HEADER */}
             <HeaderLeft onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.MAIN}))}>
-            VKJY, Junyoung Kim(김준영).
+            VKJYOUNG(김준영).
             </HeaderLeft>
             <HeaderCenter>
                 <HeaderBtn onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.MAIN}))}>
@@ -101,8 +101,10 @@ const HeaderRight = styled.div`
         > span {
             margin-right: 10px;
             font-weight: 700;
+            cursor: pointer;
             &.selected {
                 color: gray;
+                cursor: default;
             }
         }
     }

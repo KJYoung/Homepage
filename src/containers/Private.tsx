@@ -1,8 +1,9 @@
+import { GALLERY_ROOT } from "./Gallery_URL";
 
 const Private = () => {
     return <div>
         <div>
-            <span>개인</span>
+            <img src={GALLERY_ROOT + "ART/VincentVanGogh_AlmondBlossomOnly.jpg"} alt="Best Art Ever" />
         </div>
     </div>
 };
