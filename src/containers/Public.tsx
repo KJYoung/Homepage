@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { LinkSpan } from "../components/LinkSpan";
 
 const Public = () => {
     return <div>
@@ -11,9 +12,12 @@ const Public = () => {
         <InternshipDiv>
             <h2>Internship</h2>
             <span>2020.Winter. Laboratory of Development & Disease Modeling @SNU Biology department, Prof. 공영윤</span>
-            <span>2021.Summer. [COGNITIVE CIRCUITRY LAB](https://cocila.net/) @SNU Biology department, Prof. 김형</span>
-            <span>2021.Winter, 2022.Spring, 2022.Summer. [Steinegger Lab](https://steineggerlab.com/) @SNU Biology department, Prof. Martin Steinegger</span>
-            <span>2022.Fall. [Programming Research Laboratory (ROPAS)](http://ropas.snu.ac.kr/) @SNU CSE department, Prof. 이광근</span>
+            <span>2021.Summer. @SNU Biology department, Prof. 김형</span>
+            <LinkSpan content="[Cognitive Circuitry Lab]" targetUrl="https://cocila.net/"/>
+            <span>2021.Winter, 2022.Spring, 2022.Summer. @SNU Biology department, Prof. Martin Steinegger</span>
+            <LinkSpan content="[Steinegger Lab]" targetUrl="https://steineggerlab.com/"/>
+            <span>2022.Fall. @SNU CSE department, Prof. 이광근</span>
+            <LinkSpan content="[Programming Research Laboratory (ROPAS)]" targetUrl="http://ropas.snu.ac.kr/"/>
         </InternshipDiv>
         <PublicationDiv>
             <h2>Publication</h2>

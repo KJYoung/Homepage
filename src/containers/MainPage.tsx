@@ -12,13 +12,13 @@ function MainPage() {
             <img key={1} src={`${GALLERY_ROOT}FRANCE/20230117_Paris1.jpg`} style={{ width: `${1728}px`, maxHeight: `${750}px`}} alt="imgElement"/>
           </MainPageDiv>,
           <MainPageDiv>
-            <img key={1} src={`${GALLERY_ROOT}FRANCE/20230117_Paris2.jpg`} style={{ width: `${1728}px`, maxHeight: `${750}px`}} alt="imgElement"/>
+            <img key={2} src={`${GALLERY_ROOT}FRANCE/20230117_Paris2.jpg`} style={{ width: `${1728}px`, maxHeight: `${750}px`}} alt="imgElement"/>
           </MainPageDiv>,
           <MainPageDiv>
-            <img key={1} src={`${GALLERY_ROOT}FRANCE/20230118_Paris3.jpg`} style={{ width: `${1728}px`, maxHeight: `${750}px`}} alt="imgElement"/>
+            <img key={3} src={`${GALLERY_ROOT}FRANCE/20230118_Paris3.jpg`} style={{ width: `${1728}px`, maxHeight: `${750}px`}} alt="imgElement"/>
           </MainPageDiv>,
           <MainPageDiv>
-            <img key={1} src={`${GALLERY_ROOT}FRANCE/20230118_Paris4.jpg`} style={{ width: `${1728}px`, maxHeight: `${750}px`}} alt="imgElement"/>
+            <img key={4} src={`${GALLERY_ROOT}FRANCE/20230118_Paris4.jpg`} style={{ width: `${1728}px`, maxHeight: `${750}px`}} alt="imgElement"/>
           </MainPageDiv>,
         ]} slideShow={{periodicChange: 8000, transTime: 1.0}}/>
       </MainPageCover>
@@ -43,8 +43,8 @@ const MainPageWrapper = styled.div`
 `;
 const MainPageDiv = styled.div`
   > img {
-    filter: blur(4px);
-    -webkit-filter: blur(4px);
+    filter: blur(6px);
+    -webkit-filter: blur(6px);
   }
 `;
 const MainPageCover = styled.div`
