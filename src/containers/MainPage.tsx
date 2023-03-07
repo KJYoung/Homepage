@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import { CustomImageDivSlider } from '../customs/CustomImageSlider';
-import { GALLERY_ROOT } from './Gallery_URL';
+import { GALLERY_ROOT } from '../DATA/Gallery_URL';
 
 function MainPage() {
   return (

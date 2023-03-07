@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from "styled-components";
 import CustomImageSlider from '../customs/CustomImageSlider';
-import { BELGIUM_images, FRANCE_images, GREECE_images, ITALY_images, NETHERLANDS_images, SWISS_images, TURKIYE_images } from './Gallery_URL';
+import { BELGIUM_images, FRANCE_images, GREECE_images, ITALY_images, NETHERLANDS_images, SWISS_images, TURKIYE_images } from '../DATA/Gallery_URL';
 
 export enum CATEGORY {
    NONE = 0,

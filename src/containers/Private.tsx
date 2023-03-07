@@ -1,4 +1,4 @@
-import { GALLERY_ROOT } from "./Gallery_URL";
+import { GALLERY_ROOT } from "../DATA/Gallery_URL";
 
 const Private = () => {
     return <div>
