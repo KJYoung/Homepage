@@ -13,14 +13,44 @@ export const FRANCE_images: ImageInfoPairsType[] = [
     { 
         url: GALLERY_ROOT + "FRANCE/20230117_Paris2.jpg",
         title: "Ober Mamma",
-        description: "PM 18:30. 트러플 파스타가 맛있었다."
+        description: "PM 18:30. 트러플 파스타가 맛있었다.",
+        location: "https://www.google.co.kr/maps/place/Ober+Mamma/",
     },
-    { url: GALLERY_ROOT + "FRANCE/20230118_Paris3.jpg" },
-    { url: GALLERY_ROOT + "FRANCE/20230118_Paris4.jpg" },
-    { url: GALLERY_ROOT + "FRANCE/20230118_Paris5.jpg" },
-    { url: GALLERY_ROOT + "FRANCE/20230119_Paris6.jpg" },
-    { url: GALLERY_ROOT + "FRANCE/20230119_Paris7.jpg" },
-    { url: GALLERY_ROOT + "FRANCE/20230120_Paris8.jpg" },
+    {
+        url: GALLERY_ROOT + "FRANCE/20230118_Paris3.jpg",
+        title: "Musée d'Orsay",
+        description: "PM 13:15. 오르세 미술관의 외관. 상징인 시계도 담겨있다."
+    },
+    { 
+        url: GALLERY_ROOT + "FRANCE/20230118_Paris4.jpg",
+        title: "루브르 옆을 걸으며",
+        subtitle: "Musée du Louvre",
+        description: "PM 13:20. 루브르 박물관의 외관.",
+    },
+    { 
+        url: GALLERY_ROOT + "FRANCE/20230118_Paris5.jpg",
+        title: "루브르 안쪽 광장에서",
+        subtitle: "Musée du Louvre",
+        description: "PM 15:10. 상징적인 유리 피라미드와 루브르 박물관.",
+    },
+    {
+        url: GALLERY_ROOT + "FRANCE/20230119_Paris6.jpg",
+        title: "생트 샤펠 예배당",
+        subtitle: "Sainte-Chapelle",
+        description: "AM 10:40. 조화로운 스테인드글라스가 만드는 환상적인 풍경.",
+    },
+    { 
+        url: GALLERY_ROOT + "FRANCE/20230119_Paris7.jpg",
+        title: "생트 샤펠 예배당(2)",
+        subtitle: "Sainte-Chapelle",
+        description: "AM 11:00. 조화로운 스테인드글라스가 만드는 환상적인 풍경.",
+    },
+    {
+        url: GALLERY_ROOT + "FRANCE/20230120_Paris8.jpg",
+        title: "에투알 개선문",
+        subtitle: "Arc de Triomphe",
+        description: "AM 10:00. 날씨 좋은 날, 로터리 밖에서 본 개선문.",
+    },
     { url: GALLERY_ROOT + "FRANCE/20230120_Paris9.jpg" },
     { url: GALLERY_ROOT + "FRANCE/20230120_Paris10.jpg" },
     { url: GALLERY_ROOT + "FRANCE/20230120_Paris11.jpg" },

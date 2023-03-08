@@ -12,11 +12,14 @@ export enum CATEGORY {
    ITALY = 7
 };
 
-function Gallery() {
+interface IPropsGallery {
+  isMobile : boolean;
+}
+function Gallery({ isMobile }: IPropsGallery) {
   const [category, setCategory] = useState(0);
   const [periodicChange, setPeriodicChange] = useState(false);
 
-  const [galleryWidth, galleryHeight] = [1200, 560];
+  const [galleryWidth, galleryHeight] = isMobile ? [600, 280] : [1200, 560];
   return (
     <>
         <GalleryHeader>

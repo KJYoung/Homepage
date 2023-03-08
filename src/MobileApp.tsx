@@ -25,7 +25,7 @@ export const MobileApp = () => {
                   {coreState.selectedTab === TabState.MAIN && <MainPage />}
                   {coreState.selectedTab === TabState.PUBLIC && <Public />}
                   {coreState.selectedTab === TabState.PRIVATE && <Private />}
-                  {coreState.selectedTab === TabState.GALLERY && <Gallery />}
+                  {coreState.selectedTab === TabState.GALLERY && <Gallery isMobile={true}/>}
                   {coreState.selectedTab === TabState.NEW && <New />}
                 </Body>
                 <Footer />
