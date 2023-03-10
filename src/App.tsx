@@ -1,17 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import './styles/color.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { GlobalStyles } from './styles/GlobalStyles';
 import { DesktopApp } from './DesktopApp';
 import { MobileApp } from './MobileApp';
+import { useDispatch, useSelector } from 'react-redux';
+import { coreActions, selectCore } from './store/slices/core';
 
 function App() {
   // Window Size. If windowSize[0] < 1200, Show mobile style.
-  const [windowSize, setWindowSize] = useState([window.innerWidth, window.innerHeight]);
+  const dispatch = useDispatch();
+  const { windowSize } = useSelector(selectCore);
   useEffect(() => {
     const handleWindowResize = () => {
-      setWindowSize([window.innerWidth, window.innerHeight]);
+      dispatch(coreActions.setWindowSize({ width: window.innerWidth, height: window.innerHeight }))
     };
     window.addEventListener('resize', handleWindowResize);
     return () => {

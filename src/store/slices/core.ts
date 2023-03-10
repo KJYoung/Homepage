@@ -17,11 +17,13 @@ export interface CoreState {
   selectedTab: TabState; // Selected Tab Number.
   language: LanguageState; // Selected Language.
   darkLight: DarkLightState; // Selected Mode(Dark, Light).
+  windowSize: [number, number];
 }
 const initialState: CoreState = {
  selectedTab: TabState.MAIN,
  language: LanguageState.KOREAN,
  darkLight: DarkLightState.LIGHT,
+ windowSize: [0, 0],
 };
 
 export const coreSlice = createSlice(
@@ -38,6 +40,9 @@ export const coreSlice = createSlice(
       setDarkLight: (state: any, action: PayloadAction<{ darkLight: DarkLightState; }>) => {
         state.darkLight = action.payload.darkLight;
       },
+      setWindowSize: (state: any, action: PayloadAction<{ width: number, height: number }>) => {
+        state.windowSize = [action.payload.width, action.payload.height];
+      }
     },
   }
 );

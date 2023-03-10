@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import styled from "styled-components";
 import CustomImageSlider from '../customs/CustomImageSlider';
 import { BELGIUM_images, FRANCE_images, GREECE_images, ITALY_images, NETHERLANDS_images, SWISS_images, TURKIYE_images } from '../DATA/Gallery_URL';
+import { selectCore } from '../store/slices/core';
 
 export enum CATEGORY {
    NONE = 0,
@@ -18,8 +20,9 @@ interface IPropsGallery {
 function Gallery({ isMobile }: IPropsGallery) {
   const [category, setCategory] = useState(0);
   const [periodicChange, setPeriodicChange] = useState(false);
+  const { windowSize } = useSelector(selectCore);
 
-  const [galleryWidth, galleryHeight] = isMobile ? [600, 280] : [1200, 560];
+  const [galleryWidth, galleryHeight] = [windowSize[0], windowSize[1] * 560 / 1200 ];
   return (
     <>
         <GalleryHeader>
