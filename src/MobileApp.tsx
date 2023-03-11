@@ -58,7 +58,7 @@ export const MobileApp = () => {
   
   const Body = styled.div`
     width: 100%;
-    max-width: 500px;
+    min-width: 500px;
     background-color: var(--hp-back);
     min-height: 95vh;
     height: 100%;

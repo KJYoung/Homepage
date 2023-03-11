@@ -77,7 +77,7 @@ const HeaderRoot = styled.div`
 `;
 const MobileHeaderRoot = styled.div`
   width: 100%;
-  max-width: 500px;
+  min-width: 500px;
   height: 40px;
   background-color: var(--hp-white);
   

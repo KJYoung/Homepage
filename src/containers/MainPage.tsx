@@ -1,24 +1,27 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from "styled-components";
 import { CustomImageDivSlider } from '../customs/CustomImageSlider';
 import { GALLERY_ROOT } from '../DATA/Gallery_URL';
+import { selectCore } from '../store/slices/core';
 
 function MainPage() {
+  const { windowSize } = useSelector(selectCore);
   return (
     <MainPageWrapper>
       <MainPageCover>
-        <CustomImageDivSlider width={1728} height={750} images={[
+        <CustomImageDivSlider width={windowSize[0]} height={750} images={[
           <MainPageDiv>
-            <img key={1} src={`${GALLERY_ROOT}FRANCE/20230117_Paris1.jpg`} style={{ width: `${1728}px`, maxHeight: `${750}px`}} alt="imgElement"/>
+            <img key={1} src={`${GALLERY_ROOT}FRANCE/20230117_Paris1.jpg`} style={{ width: `${windowSize[0]}px`, maxHeight: `${750}px`}} alt="imgElement"/>
           </MainPageDiv>,
           <MainPageDiv>
-            <img key={2} src={`${GALLERY_ROOT}FRANCE/20230117_Paris2.jpg`} style={{ width: `${1728}px`, maxHeight: `${750}px`}} alt="imgElement"/>
+            <img key={2} src={`${GALLERY_ROOT}FRANCE/20230117_Paris2.jpg`} style={{ width: `${windowSize[0]}px`, maxHeight: `${750}px`}} alt="imgElement"/>
           </MainPageDiv>,
           <MainPageDiv>
-            <img key={3} src={`${GALLERY_ROOT}FRANCE/20230118_Paris3.jpg`} style={{ width: `${1728}px`, maxHeight: `${750}px`}} alt="imgElement"/>
+            <img key={3} src={`${GALLERY_ROOT}FRANCE/20230118_Paris3.jpg`} style={{ width: `${windowSize[0]}px`, maxHeight: `${750}px`}} alt="imgElement"/>
           </MainPageDiv>,
           <MainPageDiv>
-            <img key={4} src={`${GALLERY_ROOT}FRANCE/20230118_Paris4.jpg`} style={{ width: `${1728}px`, maxHeight: `${750}px`}} alt="imgElement"/>
+            <img key={4} src={`${GALLERY_ROOT}FRANCE/20230118_Paris4.jpg`} style={{ width: `${windowSize[0]}px`, maxHeight: `${750}px`}} alt="imgElement"/>
           </MainPageDiv>,
         ]} slideShow={{periodicChange: 8000, transTime: 1.0}}/>
       </MainPageCover>
