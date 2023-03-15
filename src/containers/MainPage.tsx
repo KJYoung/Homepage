@@ -10,7 +10,7 @@ function MainPage() {
   return (
     <MainPageWrapper>
       <MainPageCover>
-        <CustomImageDivSlider width={windowSize[0]} height={750} images={[
+        {/* <CustomImageDivSlider width={windowSize[0]} height={750} images={[
           <MainPageDiv>
             <img key={1} src={`${GALLERY_ROOT}FRANCE/20230117_Paris1.jpg`} style={{ width: `${windowSize[0]}px`, maxHeight: `${750}px`}} alt="imgElement"/>
           </MainPageDiv>,
@@ -23,7 +23,7 @@ function MainPage() {
           <MainPageDiv>
             <img key={4} src={`${GALLERY_ROOT}FRANCE/20230118_Paris4.jpg`} style={{ width: `${windowSize[0]}px`, maxHeight: `${750}px`}} alt="imgElement"/>
           </MainPageDiv>,
-        ]} slideShow={{periodicChange: 8000, transTime: 1.0}}/>
+        ]} slideShow={{periodicChange: 8000, transTime: 1.0}}/> */}
       </MainPageCover>
       <MainPageBody>
         <div>

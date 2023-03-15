@@ -77,6 +77,9 @@ const GalleryHeader = styled.div`
   > div {
     width: 100%;
   }
+  > div:last-child {
+    margin-top: 10px;
+  }
 `;
 
 const CheckboxInput = styled.input`
@@ -93,7 +96,6 @@ const GalleryBody = styled.div`
   width: 100%;
   height: 100%;
   min-height: 600px;
-  margin-top: 40px;
 
   display: flex;
   flex-direction: column;

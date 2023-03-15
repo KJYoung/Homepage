@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Footer = () => {
     return <FooterDiv>
-            Footer ㅎㅎ
+      2023. VKJY. Junyoung Kim.
     </FooterDiv>
 };
 
@@ -14,6 +14,8 @@ const FooterDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  color: gray;
 `;
 
 export default Footer;

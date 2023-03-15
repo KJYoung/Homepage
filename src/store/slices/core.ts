@@ -13,17 +13,23 @@ export enum DarkLightState {
   LIGHT = 0, DARK = 1
 };
 
+export enum PrevilegedState {
+  PUBLIC = 0, PRIVATE = 1, ADMIN = 2
+};
+
 export interface CoreState {
   selectedTab: TabState; // Selected Tab Number.
   language: LanguageState; // Selected Language.
   darkLight: DarkLightState; // Selected Mode(Dark, Light).
   windowSize: [number, number];
+  privMode: PrevilegedState;
 }
 const initialState: CoreState = {
  selectedTab: TabState.MAIN,
  language: LanguageState.KOREAN,
  darkLight: DarkLightState.LIGHT,
  windowSize: [0, 0],
+ privMode: PrevilegedState.PUBLIC
 };
 
 export const coreSlice = createSlice(
@@ -42,7 +48,10 @@ export const coreSlice = createSlice(
       },
       setWindowSize: (state: any, action: PayloadAction<{ width: number, height: number }>) => {
         state.windowSize = [action.payload.width, action.payload.height];
-      }
+      },
+      setPrivMode: (state: any, action: PayloadAction<{ privMode: PrevilegedState }>) => {
+        state.privMode = action.payload.privMode;
+      },
     },
   }
 );
