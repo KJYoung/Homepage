@@ -1,30 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from "styled-components";
-import { CustomImageDivSlider } from '../customs/CustomImageSlider';
-import { GALLERY_ROOT } from '../DATA/Gallery_URL';
 import { selectCore } from '../store/slices/core';
 
 function MainPage() {
   const { windowSize } = useSelector(selectCore);
   return (
     <MainPageWrapper>
-      <MainPageCover>
-        {/* <CustomImageDivSlider width={windowSize[0]} height={750} images={[
-          <MainPageDiv>
-            <img key={1} src={`${GALLERY_ROOT}FRANCE/20230117_Paris1.jpg`} style={{ width: `${windowSize[0]}px`, maxHeight: `${750}px`}} alt="imgElement"/>
-          </MainPageDiv>,
-          <MainPageDiv>
-            <img key={2} src={`${GALLERY_ROOT}FRANCE/20230117_Paris2.jpg`} style={{ width: `${windowSize[0]}px`, maxHeight: `${750}px`}} alt="imgElement"/>
-          </MainPageDiv>,
-          <MainPageDiv>
-            <img key={3} src={`${GALLERY_ROOT}FRANCE/20230118_Paris3.jpg`} style={{ width: `${windowSize[0]}px`, maxHeight: `${750}px`}} alt="imgElement"/>
-          </MainPageDiv>,
-          <MainPageDiv>
-            <img key={4} src={`${GALLERY_ROOT}FRANCE/20230118_Paris4.jpg`} style={{ width: `${windowSize[0]}px`, maxHeight: `${750}px`}} alt="imgElement"/>
-          </MainPageDiv>,
-        ]} slideShow={{periodicChange: 8000, transTime: 1.0}}/> */}
-      </MainPageCover>
       <MainPageBody>
         <div>
           Welcome to the MainPage of the /Junyoung Kim's/ Homepage.
@@ -41,30 +23,12 @@ function MainPage() {
 
 const MainPageWrapper = styled.div`
   width: 100%;
-  height: 1150px;
+  height: 1000px;
   position: relative;
-`;
-const MainPageDiv = styled.div`
-  > img {
-    filter: blur(6px);
-    -webkit-filter: blur(6px);
-  }
-`;
-const MainPageCover = styled.div`
-  margin-top: 0px;
-  width: 100%;
-  height: 600px;
-  background-color: var(--hp-white);
-
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  display: flex;
+  justify-content: center;
 `;
 const MainPageBody = styled.div`
-  position: absolute;
-  top: 500px;
-  left: 50%;
-  margin-left: -600px;
   width: 1200px;
   max-width: 1200px;
   height: 600px;
@@ -82,9 +46,9 @@ const MainPageBody = styled.div`
     flex-direction: column;
   }
   /* Modal Shadow */
-  -webkit-box-shadow: 0 10px 12px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0 10px 12px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 5px 6px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 5px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
   -webkit-background-clip: padding-box;
   -moz-background-clip: padding-box;
   background-clip: padding-box;
