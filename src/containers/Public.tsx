@@ -35,6 +35,13 @@ const Public = () => {
         </PublicationDiv>
         <DevelopmentDiv>
             <h2>Development</h2>
+            <NormalSpan>Fluent Programming Language(or Framework, Library)</NormalSpan>
+            <NormalSpan>Java(+Android App Dev), Python(+Django), C, C++, TypeScript(+ReactJS)</NormalSpan>
+            <NormalSpan>Programming Language I've ever tried</NormalSpan>
+            <NormalSpan>Verilog, OCaml, RISC-V Assembly, C#, Dart, ReScript</NormalSpan>
+            <NormalSpan>Projects</NormalSpan>
+            <LinkSpan content="2022 Fall Semester FitTogether Team Project" targetUrl="https://github.com/swsnu/swppfall2022-team4/"/>
+
         </DevelopmentDiv>
         <ArtDiv>
             <h2>Art</h2>

@@ -52,7 +52,7 @@ const CustomImageSlider = ({ width, height, images, showBullets, showNavs, slide
     const imgLength = images.length;
 
     // Params Processing
-    
+    const widthEff = width > 1200 ? 1200 : width;
     // Gallery Periodic Change
     const [index, setIndex] = useState(1);
     const timeoutRef = useRef(setTimeout(() => {}, 10000));
@@ -91,13 +91,13 @@ const CustomImageSlider = ({ width, height, images, showBullets, showNavs, slide
     }, [index, imgLength, slideShow]);
     
     return <CustomImageSliderWrapper>
-        <Wrapper width={width}>
-            <Slider width={width * imgLength} style={{ transform: `translateX(-${(width * (index - 1))}px)`}} transitionTime={slideShow?.transTime}>
+        <Wrapper width={widthEff}>
+            <Slider width={widthEff * imgLength} style={{ transform: `translateX(-${(widthEff * (index - 1))}px)`}} transitionTime={slideShow?.transTime}>
                 {images.map((img, i) => {
                     return <div>
                         <div style={{ position: 'relative'}}>
-                            <ImgWrapper style={{ width: `${width}px`, height: `${height}px`, backgroundColor: `var(--hp-gray)` }}>
-                                <img key={i} src={img.url} style={{ width: `${width}px`, maxHeight: `${height}px`}} alt="imgElement"/>
+                            <ImgWrapper style={{ width: `${widthEff}px`, height: `${height}px`, backgroundColor: `var(--hp-gray)` }}>
+                                <img key={i} src={img.url} style={{ width: `${widthEff}px`, maxHeight: `${height}px`}} alt="imgElement"/>
                             </ImgWrapper>
                             {showBullets && <nav className="BottomIndicator">
                                 {Array.from(Array(imgLength).keys()).map((_, i) => <NavBtn key={i} onClick={() => setIndex(i + 1)} current={index === i+1}/>)}
@@ -152,6 +152,8 @@ const CustomImageSliderWrapper = styled.div`
 `;
 const Wrapper = styled.div<IPropsWH>`
     width: ${({ width }) => `${width}px`};;
+    max-width: 1200px;
+
     height: 100%;
     padding-bottom: 40px;
     position: relative;
@@ -190,6 +192,12 @@ const ImgWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    max-width: 1200px;
+
+    img {
+        background-position: center;
+    }
 `;
 const TitleWrapper = styled.div`
     display: flex;
@@ -272,103 +280,103 @@ const Slider = styled.div<IPropsWH>`
     }
 `;
 
-export const CustomImageDivSlider = ({ width, images, showBullets, showNavs, slideShow } : IPropsCustomImageDivSlider) => {
-    // Without 'Fullscreen', 'Information(Title, Description, ...)' Function.
+// export const CustomImageDivSlider = ({ width, images, showBullets, showNavs, slideShow } : IPropsCustomImageDivSlider) => {
+//     // Without 'Fullscreen', 'Information(Title, Description, ...)' Function.
 
-    const imgLength = images.length;
+//     const imgLength = images.length;
     
-    // Gallery Periodic Change
-    const [index, setIndex] = useState(1);
-    const timeoutRef = useRef(setTimeout(() => {}, 10000));
-    const showDirectionRef = useRef(false);
+//     // Gallery Periodic Change
+//     const [index, setIndex] = useState(1);
+//     const timeoutRef = useRef(setTimeout(() => {}, 10000));
+//     const showDirectionRef = useRef(false);
 
-    // Image Modal End --------------------------------------
-    const resetTimeout = () => {
-        if (timeoutRef.current) {
-            clearTimeout(timeoutRef.current);
-        }
-    };
+//     // Image Modal End --------------------------------------
+//     const resetTimeout = () => {
+//         if (timeoutRef.current) {
+//             clearTimeout(timeoutRef.current);
+//         }
+//     };
     
-    const leftIndicatorOnClick = () => { setIndex( index > 1 ? index - 1 : 1 ) };
-    const rightIndicatorOnClick = () => { setIndex( index < imgLength ? index + 1 : imgLength ) };
-    useEffect(() => {
-        resetTimeout();
-        timeoutRef.current = setTimeout(() => {
-            if(slideShow){
-                if(index === imgLength && showDirectionRef.current === false){
-                    showDirectionRef.current = true;
-                }
-                if(index === 1 && showDirectionRef.current === true){
-                    showDirectionRef.current = false;
-                }
-                if(showDirectionRef.current){
-                    setIndex((prev) => (prev-1));
-                }else{
-                    setIndex((prev) => (prev+1));
-                }
-            }
-        }, slideShow ? slideShow.periodicChange : 99999);
-        return () => {
-            resetTimeout();
-        };
-    }, [index, imgLength, slideShow]);
+//     const leftIndicatorOnClick = () => { setIndex( index > 1 ? index - 1 : 1 ) };
+//     const rightIndicatorOnClick = () => { setIndex( index < imgLength ? index + 1 : imgLength ) };
+//     useEffect(() => {
+//         resetTimeout();
+//         timeoutRef.current = setTimeout(() => {
+//             if(slideShow){
+//                 if(index === imgLength && showDirectionRef.current === false){
+//                     showDirectionRef.current = true;
+//                 }
+//                 if(index === 1 && showDirectionRef.current === true){
+//                     showDirectionRef.current = false;
+//                 }
+//                 if(showDirectionRef.current){
+//                     setIndex((prev) => (prev-1));
+//                 }else{
+//                     setIndex((prev) => (prev+1));
+//                 }
+//             }
+//         }, slideShow ? slideShow.periodicChange : 99999);
+//         return () => {
+//             resetTimeout();
+//         };
+//     }, [index, imgLength, slideShow]);
     
-    return <CustomImageSliderWrapper>
-        <DivWrapper width={width}>
-            <Slider width={width * imgLength} style={{ transform: `translateX(-${(width * (index - 1))}px)`}} transitionTime={slideShow?.transTime}>
-                {images.map((img) => {
-                    return <div>
-                        <div style={{ position: 'relative'}}>
-                            {img}
-                            {showBullets && <nav className="BottomIndicator">
-                                {Array.from(Array(imgLength).keys()).map((_, i) => <NavBtn key={i} onClick={() => setIndex(i + 1)} current={index === i+1}/>)}
-                            </nav>}
-                        </div>
-                    </div>
-                })}
-            </Slider>
-            {showNavs && <nav className="LeftIndicator">
-                <LRIndicator onClick={leftIndicatorOnClick}>{'<'}</LRIndicator>
-            </nav>}
-            {showNavs && <nav className="RightIndicator">
-                <LRIndicator onClick={rightIndicatorOnClick}>{'>'}</LRIndicator>
-            </nav>}
-        </DivWrapper>
-    </CustomImageSliderWrapper>
-};
-const DivWrapper = styled.div<IPropsWH>`
-    width: ${({ width }) => `${width}px`};;
-    height: 100%;
-    position: relative;
-    overflow: hidden;
+//     return <CustomImageSliderWrapper>
+//         <DivWrapper width={width}>
+//             <Slider width={width * imgLength} style={{ transform: `translateX(-${(width * (index - 1))}px)`}} transitionTime={slideShow?.transTime}>
+//                 {images.map((img) => {
+//                     return <div>
+//                         <div style={{ position: 'relative'}}>
+//                             {img}
+//                             {showBullets && <nav className="BottomIndicator">
+//                                 {Array.from(Array(imgLength).keys()).map((_, i) => <NavBtn key={i} onClick={() => setIndex(i + 1)} current={index === i+1}/>)}
+//                             </nav>}
+//                         </div>
+//                     </div>
+//                 })}
+//             </Slider>
+//             {showNavs && <nav className="LeftIndicator">
+//                 <LRIndicator onClick={leftIndicatorOnClick}>{'<'}</LRIndicator>
+//             </nav>}
+//             {showNavs && <nav className="RightIndicator">
+//                 <LRIndicator onClick={rightIndicatorOnClick}>{'>'}</LRIndicator>
+//             </nav>}
+//         </DivWrapper>
+//     </CustomImageSliderWrapper>
+// };
+// const DivWrapper = styled.div<IPropsWH>`
+//     width: ${({ width }) => `${width}px`};;
+//     height: 100%;
+//     position: relative;
+//     overflow: hidden;
 
-    nav {
-        position: absolute;
-    }
+//     nav {
+//         position: absolute;
+//     }
 
-    nav.BottomIndicator {
-        left: 50%;
-        transform: translateX(-50%);
-        top: 1rem;
-        display: flex;
-        align-items: center;
-        gap: 7px;
-    };
-    nav.LeftIndicator {
-        left: 1rem;
-        top: 40%;
-    };
-    nav.RightIndicator {
-        right: 1rem;
-        top: 40%;
-    };
-    nav.FullScreenBtn {
-        right: 1rem;
-        top: 1rem;
+//     nav.BottomIndicator {
+//         left: 50%;
+//         transform: translateX(-50%);
+//         top: 1rem;
+//         display: flex;
+//         align-items: center;
+//         gap: 7px;
+//     };
+//     nav.LeftIndicator {
+//         left: 1rem;
+//         top: 40%;
+//     };
+//     nav.RightIndicator {
+//         right: 1rem;
+//         top: 40%;
+//     };
+//     nav.FullScreenBtn {
+//         right: 1rem;
+//         top: 1rem;
 
-        font-size: 22px;
-        color: var(--hp-blue);
-        cursor: pointer;
-    }
-`;
+//         font-size: 22px;
+//         color: var(--hp-blue);
+//         cursor: pointer;
+//     }
+// `;
 export default CustomImageSlider;

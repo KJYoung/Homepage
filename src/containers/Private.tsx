@@ -44,10 +44,10 @@ const Private = () => {
                     <img src={GALLERY_ROOT + "ART/VincentVanGogh_AlmondBlossomOnly.jpg"} alt="Best Art Ever" />
                 </PrivPriv>
             }
-            { privMode === PrevilegedState.ADMIN && <PrivAnnonymous>
+            { privMode === PrevilegedState.ADMIN && <PrivAdmin>
                 <button onClick={() => dispatch(coreActions.setPrivMode({ privMode: PrevilegedState.PRIVATE }))}>Private Mode</button>
                 <span>You are the admin!</span>
-            </PrivAnnonymous>}
+            </PrivAdmin>}
         </div>
     </div>
 };
