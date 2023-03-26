@@ -151,7 +151,7 @@ const CustomImageSliderWrapper = styled.div`
     align-items: center;
 `;
 const Wrapper = styled.div<IPropsWH>`
-    width: ${({ width }) => `${width}px`};;
+    width: ${({ width }) => `${width}px`};
     max-width: 1200px;
 
     height: 100%;

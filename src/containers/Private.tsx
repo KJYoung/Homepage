@@ -41,6 +41,7 @@ const Private = () => {
                             }
                         }}>Check</button>
                     </div>
+                    <span>가장 좋아하는 예술작품: Almond Blossom by Vincent Van Gogh.</span>
                     <img src={GALLERY_ROOT + "ART/VincentVanGogh_AlmondBlossomOnly.jpg"} alt="Best Art Ever" />
                 </PrivPriv>
             }
