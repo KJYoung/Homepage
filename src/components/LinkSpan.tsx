@@ -1,15 +1,24 @@
 import styled from "styled-components";
+import { IPropsSPAN } from "../containers/Public";
 
 interface IPropsLinkSpan {
     content: string;
     targetUrl: string;
+
+    marginLeft?: string;
+    marginRight?: string;
+    marginTop?: string;
+    marginBottom?: string;
 };
 
-export const LinkSpan = ({ content, targetUrl } : IPropsLinkSpan) => {
-    return <LinkSpanStyle target="_blank" href={targetUrl} rel="noreferrer">{content}</LinkSpanStyle>
+export const LinkSpan = ({ content, targetUrl, marginLeft, marginRight, marginTop, marginBottom } : IPropsLinkSpan) => {
+    return <LinkSpanStyle 
+              target="_blank" href={targetUrl} rel="noreferrer"
+              marginLeft={marginLeft} marginRight={marginRight} marginTop={marginTop} marginBottom={marginBottom}
+            >{content}</LinkSpanStyle>
 };
 
-const LinkSpanStyle = styled.a`
+const LinkSpanStyle = styled.a<IPropsSPAN>`
   color: var(--hp-blue);
   font-weight: 500;
 
@@ -20,4 +29,9 @@ const LinkSpanStyle = styled.a`
   &:active {
     color: var(--hp-blue-active);
   }
+
+  margin-left: ${({ marginLeft }) => marginLeft};
+  margin-right: ${({ marginRight }) => marginRight};
+  margin-top: ${({ marginTop }) => marginTop};
+  margin-bottom: ${({ marginBottom }) => marginBottom};
 `;
