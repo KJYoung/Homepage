@@ -2,11 +2,23 @@ import styled from "styled-components";
 import { LinkSpan } from "../components/LinkSpan";
 
 const Public = () => {
+    const D_Day_Calculator = (year: number, month: number, day: number) => {
+        const MS_TO_DAY = 1000 * 60 * 60 * 24;
+        const today = new Date();
+        const target = new Date(year, month, day);
+        const result = Math.ceil( ( target.getTime() - today.getTime() ) / MS_TO_DAY );
+        if(result > 0){
+            return `[D-Day : ${result}]`;
+        }else{
+            return `[${-result} Days Before]`;
+        }
+    };
     return <div>
         <EducationDiv>
-            <H2>Education</H2><BR />
-            <SPAN marginLeft='20px'>2017.03 ~ 2019.02 한성과학고등학교 조기졸업</SPAN>
-            <SPAN marginLeft='20px'>2019.03 ~ 2023.02 서울대학교 졸업(생명과학부, 컴퓨터공학부 복수전공)</SPAN>
+            <H2>Education & Research</H2><BR />
+            <SPAN marginLeft='20px'>2017.03 ~ 2019.02 한성과학고등학교 조기졸업 {D_Day_Calculator(2019, 2, 1)}</SPAN>
+            <SPAN marginLeft='20px'>2019.03 ~ 2023.02 서울대학교 졸업(생명과학부, 컴퓨터공학부 복수전공) {D_Day_Calculator(2023, 2, 24)}</SPAN>
+            <SPAN marginLeft='20px'>2023.04 ~ 2026.05 과학기술전문사관 복무 {D_Day_Calculator(2026, 5, 31)}</SPAN>
         </EducationDiv>
         <InternshipDiv>
             <H2>Internship</H2><BR />
