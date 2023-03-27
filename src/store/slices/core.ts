@@ -28,7 +28,7 @@ const initialState: CoreState = {
  selectedTab: TabState.MAIN,
  language: LanguageState.KOREAN,
  darkLight: DarkLightState.LIGHT,
- windowSize: [0, 0],
+ windowSize: [1500, 1500],
  privMode: PrevilegedState.PUBLIC
 };
 
