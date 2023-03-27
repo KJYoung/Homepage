@@ -1,12 +1,18 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from "styled-components";
-import { selectCore } from '../store/slices/core';
+import { coreActions, selectCore } from '../store/slices/core';
 
 function MainPage() {
   const { windowSize } = useSelector(selectCore);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(coreActions.setWindowSize({ width: window.innerWidth, height: window.innerHeight }));
+  }, []);
+
   return (
     <MainPageWrapper>
       <MainPageBody>
@@ -14,9 +20,11 @@ function MainPage() {
           Welcome to the MainPage of the /Junyoung Kim's/ Homepage.
         </div>
         <div>
-          <span>2017.03 ~ 2019.02 한성과학고등학교 조기졸업</span>
-          <span>2019.03 ~ 2023.02 서울대학교 졸업(생명과학부, 컴퓨터공학부 복수전공)</span>
-          <span>2023.06 ~ 2026.05 ROND 복무</span>
+          <span>현재 훈련소</span>
+          <span>Career .. Public </span>
+          <span>Hobby .. Private </span>
+          <span>Photo .. Gallery </span>
+          <span>Nothing .. New </span>
         </div>
       </MainPageBody>
     </MainPageWrapper>

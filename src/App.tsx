@@ -14,7 +14,7 @@ function App() {
   const { windowSize } = useSelector(selectCore);
   useEffect(() => {
     const handleWindowResize = () => {
-      dispatch(coreActions.setWindowSize({ width: window.innerWidth, height: window.innerHeight }))
+      dispatch(coreActions.setWindowSize({ width: window.innerWidth, height: window.innerHeight }));
     };
     window.addEventListener('resize', handleWindowResize);
     return () => {

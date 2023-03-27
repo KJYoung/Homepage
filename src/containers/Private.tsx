@@ -14,7 +14,7 @@ const Private = () => {
     return <div>
         <div>
             { privMode === PrevilegedState.PUBLIC && <PrivAnnonymous>
-                <span>You don't have a permission.</span>
+                <LargeWarning>You don't have a permission.</LargeWarning>
                 <div>    
                     <input type="password" name="keyInput" value={privKey} onChange={e => setPrivKey(e.target.value)}/>
                     <button onClick={() => {
@@ -53,6 +53,10 @@ const Private = () => {
     </div>
 };
 
+const LargeWarning = styled.span`
+    font-size: 32px;
+    font-weight: 600;
+`;
 const PrivAnnonymous = styled.div`
     display: flex;
     flex-direction: column;
