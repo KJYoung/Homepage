@@ -2,15 +2,19 @@ import styled from "styled-components";
 import { LinkSpan } from "../components/LinkSpan";
 
 const Public = () => {
-    const D_Day_Calculator = (year: number, month: number, day: number) => {
+    const D_Day_Calculator = (year: number, _month: number, day: number) => {
         const MS_TO_DAY = 1000 * 60 * 60 * 24;
-        const today = new Date();
+        const _today = new Date();
+        const today = new Date(_today.getFullYear(), _today.getMonth(), _today.getDate());
+        const month = _month - 1;
+        
         const target = new Date(year, month, day);
-        const result = Math.ceil( ( target.getTime() - today.getTime() ) / MS_TO_DAY );
-        if(result > 0){
+        if( today < target ){
+            const result = Math.ceil( ( target.getTime() - today.getTime() ) / MS_TO_DAY );
             return `[D-Day : ${result}]`;
-        }else{
-            return `[${-result} Days Before]`;
+        } else {
+            const result = Math.ceil( ( today.getTime() - target.getTime() ) / MS_TO_DAY );
+            return `[${result} Days Before]`;
         }
     };
     return <div>
