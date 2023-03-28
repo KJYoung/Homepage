@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import styled from "styled-components";
+import CustomCheckbox from '../customs/CustomCheckbox';
 import CustomImageSlider from '../customs/CustomImageSlider';
 import { BELGIUM_images, FRANCE_images, GREECE_images, ITALY_images, NETHERLANDS_images, SWISS_images, TURKIYE_images } from '../DATA/Gallery_URL';
 import { selectCore } from '../store/slices/core';
@@ -42,21 +43,21 @@ function Gallery({ isMobile }: IPropsGallery) {
                 <option value={CATEGORY.ITALY}>🇮🇹 Rome, Vatican, Venice ({ITALY_images.length})</option>
             </select>
           </div>
-          <div>
+          <CheckBoxWrapper>
             <span>See a Slideshow : </span>
-            <CheckboxInput type="checkbox" checked={periodicChange} onChange={e => setPeriodicChange(e.target.checked)}/>
-          </div>
+            <CustomCheckbox checked={periodicChange} onClickListener={() => {setPeriodicChange(!periodicChange)}}/>
+          </CheckBoxWrapper>
         </GalleryHeader>
         <GalleryBody>
             <div>
                 {category === CATEGORY.NONE && <span> Choose the Category! </span>}
-                {category === CATEGORY.FRANCE && <CustomImageSlider width={galleryWidth} height={galleryHeight} images={FRANCE_images} showBullets={true} showNavs={true} slideShow={{ periodicChange: periodicChange ? 5000 : 99999 }}/>}
-                {category === CATEGORY.BELGIUM && <CustomImageSlider width={galleryWidth} height={galleryHeight} images={BELGIUM_images} showBullets={true} showNavs={true} slideShow={{ periodicChange: periodicChange ? 5000 : 99999 }}/>}
-                {category === CATEGORY.NETHERLANDS && <CustomImageSlider width={galleryWidth} height={galleryHeight} images={NETHERLANDS_images} showBullets={true} showNavs={true} slideShow={{ periodicChange: periodicChange ? 5000 : 99999 }}/>}
-                {category === CATEGORY.SWISS && <CustomImageSlider width={galleryWidth} height={galleryHeight} images={SWISS_images} showBullets={true} showNavs={true} slideShow={{ periodicChange: periodicChange ? 5000 : 99999 }}/>}
-                {category === CATEGORY.TURKIYE && <CustomImageSlider width={galleryWidth} height={galleryHeight} images={TURKIYE_images} showBullets={true} showNavs={true} slideShow={{ periodicChange: periodicChange ? 5000 : 99999 }}/>}
-                {category === CATEGORY.GREECE && <CustomImageSlider width={galleryWidth} height={galleryHeight} images={GREECE_images} showBullets={true} showNavs={true} slideShow={{ periodicChange: periodicChange ? 5000 : 99999 }}/>}
-                {category === CATEGORY.ITALY && <CustomImageSlider width={galleryWidth} height={galleryHeight} images={ITALY_images} showBullets={true} showNavs={true} slideShow={{ periodicChange: periodicChange ? 5000 : 99999 }}/>}
+                {category === CATEGORY.FRANCE && <CustomImageSlider _width={galleryWidth} _height={galleryHeight} images={FRANCE_images} showBullets={true} showNavs={true} slideShow={{ periodicChange: periodicChange ? 5000 : 99999 }}/>}
+                {category === CATEGORY.BELGIUM && <CustomImageSlider _width={galleryWidth} _height={galleryHeight} images={BELGIUM_images} showBullets={true} showNavs={true} slideShow={{ periodicChange: periodicChange ? 5000 : 99999 }}/>}
+                {category === CATEGORY.NETHERLANDS && <CustomImageSlider _width={galleryWidth} _height={galleryHeight} images={NETHERLANDS_images} showBullets={true} showNavs={true} slideShow={{ periodicChange: periodicChange ? 5000 : 99999 }}/>}
+                {category === CATEGORY.SWISS && <CustomImageSlider _width={galleryWidth} _height={galleryHeight} images={SWISS_images} showBullets={true} showNavs={true} slideShow={{ periodicChange: periodicChange ? 5000 : 99999 }}/>}
+                {category === CATEGORY.TURKIYE && <CustomImageSlider _width={galleryWidth} _height={galleryHeight} images={TURKIYE_images} showBullets={true} showNavs={true} slideShow={{ periodicChange: periodicChange ? 5000 : 99999 }}/>}
+                {category === CATEGORY.GREECE && <CustomImageSlider _width={galleryWidth} _height={galleryHeight} images={GREECE_images} showBullets={true} showNavs={true} slideShow={{ periodicChange: periodicChange ? 5000 : 99999 }}/>}
+                {category === CATEGORY.ITALY && <CustomImageSlider _width={galleryWidth} _height={galleryHeight} images={ITALY_images} showBullets={true} showNavs={true} slideShow={{ periodicChange: periodicChange ? 5000 : 99999 }}/>}
             </div>
         </GalleryBody>
     </>
@@ -82,13 +83,12 @@ const GalleryHeader = styled.div`
   }
 `;
 
-const CheckboxInput = styled.input`
-  width: 50px;
-  padding: 15px;
-  border: none;
-  background-color: red;
-  &:checked {
-    background-color: azure;
+const CheckBoxWrapper = styled.div`
+  display: flex;
+  align-items: center;
+
+  > span {
+    margin-right: 10px;
   }
 `;
 

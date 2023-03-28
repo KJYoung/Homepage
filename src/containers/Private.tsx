@@ -11,10 +11,16 @@ const Private = () => {
     const KEY_PRIVATE = process.env.REACT_APP_PRIVATE_KEY;
     const KEY_ADMIN = process.env.REACT_APP_ADMIN_KEY;
     
+    const [byPass, setByPass] = useState(0);
+
     return <div>
         <div>
             { privMode === PrevilegedState.PUBLIC && <PrivAnnonymous>
-                <LargeWarning>You don't have a permission.</LargeWarning>
+                <LargeWarning onClick={() => {
+                    setByPass(byPass + 1);
+                    if(byPass > 5)
+                        dispatch(coreActions.setPrivMode({ privMode: PrevilegedState.PRIVATE }));
+                }}>You don't have a permission.</LargeWarning>
                 <div>    
                     <input type="password" name="keyInput" value={privKey} onChange={e => setPrivKey(e.target.value)}/>
                     <button onClick={() => {

@@ -15,8 +15,8 @@ export type ImageInfoPairsType = {
 
 // Public Interface
 export interface IPropsCustomImageSlider {
-    width: number; // width of the CustomImageSlider. IN pixel. ex. 300 => '300px'
-    height: number; // height of the CustomImageSlider. IN pixel. ex. 300 => '300px'
+    _width: number; // width of the CustomImageSlider. IN pixel. ex. 300 => '300px'
+    _height: number; // height of the CustomImageSlider. IN pixel. ex. 300 => '300px'
     images: ImageInfoPairsType[]; // images.
     showBullets?: boolean; // show bottom Bullets?
     showNavs?: boolean; // show left&right navigators?
@@ -48,11 +48,11 @@ interface IPropsActive {
     current: boolean;
 }
 
-const CustomImageSlider = ({ width, height, images, showBullets, showNavs, slideShow } : IPropsCustomImageSlider) => {
+const CustomImageSlider = ({ _width, _height, images, showBullets, showNavs, slideShow } : IPropsCustomImageSlider) => {
     const imgLength = images.length;
 
     // Params Processing
-    const widthEff = width > 1200 ? 1200 : width;
+    const [widthEff, heightEff] = _width > 1200 ? [1200, 560] : [_width, _height];
     // Gallery Periodic Change
     const [index, setIndex] = useState(1);
     const timeoutRef = useRef(setTimeout(() => {}, 10000));
@@ -96,8 +96,8 @@ const CustomImageSlider = ({ width, height, images, showBullets, showNavs, slide
                 {images.map((img, i) => {
                     return <div>
                         <div style={{ position: 'relative'}}>
-                            <ImgWrapper style={{ width: `${widthEff}px`, height: `${height}px`, backgroundColor: `var(--hp-gray)` }}>
-                                <img key={i} src={img.url} style={{ width: `${widthEff}px`, maxHeight: `${height}px`}} alt="imgElement"/>
+                            <ImgWrapper style={{ width: `${widthEff}px`, height: `${heightEff}px`, backgroundColor: `var(--hp-gray)` }}>
+                                <img key={i} src={img.url} style={{ width: `${widthEff}px`, maxHeight: `${heightEff}px`}} alt="imgElement"/>
                             </ImgWrapper>
                             {showBullets && <nav className="BottomIndicator">
                                 {Array.from(Array(imgLength).keys()).map((_, i) => <NavBtn key={i} onClick={() => setIndex(i + 1)} current={index === i+1}/>)}
