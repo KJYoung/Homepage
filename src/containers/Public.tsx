@@ -55,16 +55,18 @@ const ExtensibleSPAN = ({ content, extContent } : IPropsExtensibleSPAN) => {
     const ExtensibleSPANBody = styled.div`
         width: 100%;
         display: flex;
+        margin-top: 5px;
         margin-left: 5px;
+        margin-bottom: 10px;
     `;
     return <ExtensibleSPANWrapper>
         <ExtensibleSPANTitle>
             {content}
             <ExtensibleBtn onClick={() => setExtended(!extended)}>{extended ? '▲' : '▼'}</ExtensibleBtn>
         </ExtensibleSPANTitle>
-        <ExtensibleSPANBody>
-            {extended && extContent}
-        </ExtensibleSPANBody>
+        {extended && <ExtensibleSPANBody>
+                {extContent}
+        </ExtensibleSPANBody>}
     </ExtensibleSPANWrapper>
 }
 const Public = () => {
@@ -86,9 +88,12 @@ const Public = () => {
     return <div>
         <EducationDiv>
             <H2>Education & Research</H2><BR />
+            <H3 marginLeft='10px'>History</H3>
             <SPAN marginLeft='20px'>2017.03 ~ 2019.02 한성과학고등학교 조기졸업 {D_Day_Calculator(2019, 2, 1)}</SPAN>
             <SPAN marginLeft='20px'>2019.03 ~ 2023.02 서울대학교 졸업(생명과학부, 컴퓨터공학부 복수전공) {D_Day_Calculator(2023, 2, 24)}</SPAN>
             <SPAN marginLeft='20px'>2023.04 ~ 2026.05 과학기술전문사관 복무 {D_Day_Calculator(2026, 5, 31)}</SPAN>
+            <H3 marginLeft='10px'>Subjects</H3>
+            <SPAN marginLeft='20px'>BioScience, Computer Science & Engineering.</SPAN>
         </EducationDiv>
         <InternshipDiv>
             <H2>Internship</H2><BR />
@@ -117,10 +122,13 @@ const Public = () => {
         </InternshipDiv>
         <PublicationDiv>
             <H2>Publication</H2><BR />
-            <SPAN marginLeft='20px'>2020. Analysis of Factors Causing Differences in the Human Hazards of Permetrin</SPAN>
-            <RightAlignDiv>
-                <LinkSpan content="자세히보기" targetUrl="https://www.jeaht.org/upload/pdf/jeaht-23-4-171.pdf"/>
-            </RightAlignDiv>
+            <ExtensibleSPAN content={<>
+                <SPAN marginLeft='20px'>2020. Analysis of Factors Causing Differences in the Human Hazards of Permetrin</SPAN>
+            </>} extContent={<>
+                <RightAlignDiv>
+                    <LinkSpan content="[Paper Link]" targetUrl="https://www.jeaht.org/upload/pdf/jeaht-23-4-171.pdf"/>
+                </RightAlignDiv>
+            </>}/>
         </PublicationDiv>
         <DevelopmentDiv>
             <H2>Development</H2><BR />
@@ -129,10 +137,13 @@ const Public = () => {
             <H3 marginLeft='10px'>Programming Language I've ever tried</H3>
             <SPAN marginLeft='20px'>Verilog, OCaml, RISC-V Assembly, C#, Dart, ReScript</SPAN>
             <H3 marginLeft='10px'>Projects</H3>
-            <SPAN marginLeft='20px'>2022 Fall Semester FitTogether Team Project</SPAN>
-            <RightAlignDiv>
-                <LinkSpan marginLeft='20px' content="Github Repo" targetUrl="https://github.com/swsnu/swppfall2022-team4/"/>
-            </RightAlignDiv>
+            <ExtensibleSPAN content={<>
+                <SPAN marginLeft='20px'>2022 Fall Semester FitTogether Team Project</SPAN>
+            </>} extContent={<>
+                <RightAlignDiv>
+                    <LinkSpan marginLeft='20px' content="[Github Repo]" targetUrl="https://github.com/swsnu/swppfall2022-team4/"/>
+                </RightAlignDiv>
+            </>}/>
         </DevelopmentDiv>
         <ArtDiv>
             <H2>Art</H2><BR />
@@ -150,7 +161,7 @@ const ContentDiv = styled.div`
     margin-bottom: 20px;
 `
 const EducationDiv = styled(ContentDiv)`
-
+    margin-top: 10px;
 `;
 
 const InternshipDiv = styled(ContentDiv)`

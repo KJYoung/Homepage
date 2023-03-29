@@ -22,6 +22,7 @@ const CustomCheckWrapper = styled.div<IPropsCheckWrapper>`
     height: fit-content;
 
     position: relative;
+    cursor: pointer;
     svg {
         display: none;
         position: absolute;
@@ -49,6 +50,7 @@ const CustomCheckBox = styled.input`
         background-color: transparent;
         background-color: limegreen;
     }
+    cursor: pointer;
 `;
 
 export default CustomCheckbox;
