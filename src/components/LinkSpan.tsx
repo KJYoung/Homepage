@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { IPropsSPAN } from "../containers/Public";
+import { IPropsBasicCSS } from "../containers/Public";
 
 interface IPropsLinkSpan {
     content: string;
@@ -18,7 +18,7 @@ export const LinkSpan = ({ content, targetUrl, marginLeft, marginRight, marginTo
             >{content}</LinkSpanStyle>
 };
 
-const LinkSpanStyle = styled.a<IPropsSPAN>`
+const LinkSpanStyle = styled.a<IPropsBasicCSS>`
   color: var(--hp-blue);
   font-weight: 500;
 

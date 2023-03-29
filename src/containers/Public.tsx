@@ -1,6 +1,61 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { LinkSpan } from "../components/LinkSpan";
 
+export interface IPropsBasicCSS {
+    marginLeft?: string;
+    marginRight?: string;
+    marginTop?: string;
+    marginBottom?: string;
+};
+
+const BasicSPAN = styled.span<IPropsBasicCSS>`
+    margin-left: ${({ marginLeft }) => marginLeft};
+    margin-right: ${({ marginRight }) => marginRight};
+    margin-top: ${({ marginTop }) => marginTop};
+    margin-bottom: ${({ marginBottom }) => marginBottom};
+`;
+const SPAN = styled(BasicSPAN)``;
+const BasicDIV = styled.span<IPropsBasicCSS>`
+    margin-left: ${({ marginLeft }) => marginLeft};
+    margin-right: ${({ marginRight }) => marginRight};
+    margin-top: ${({ marginTop }) => marginTop};
+    margin-bottom: ${({ marginBottom }) => marginBottom};
+`;
+
+interface IPropsExtensibleSPAN {
+    content: string;
+    extContent: string;
+};
+const ExtensibleSPAN = ({ content, extContent } : IPropsExtensibleSPAN) => {
+    const [extended, setExtended] = useState(false);
+
+    const ExtensibleSPANWrapper = styled(BasicDIV)`
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    `;
+    const ExtensibleSPANTitle = styled.div`
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+    `;
+    const ExtensibleSPANBody = styled.div`
+        width: 100%;
+        display: flex;
+        margin-left: 5px;
+    `;
+    return <ExtensibleSPANWrapper>
+        <ExtensibleSPANTitle>
+            <span>{content}</span>
+            <span onClick={() => setExtended(!extended)}>{extended ? '▲' : '▼'}</span>
+        </ExtensibleSPANTitle>
+        <ExtensibleSPANBody>
+            {extended && <span>{extContent}</span>}
+        </ExtensibleSPANBody>
+    </ExtensibleSPANWrapper>
+}
 const Public = () => {
     const D_Day_Calculator = (year: number, _month: number, day: number) => {
         const MS_TO_DAY = 1000 * 60 * 60 * 24;
@@ -31,6 +86,7 @@ const Public = () => {
             <RightAlignDiv>
                 <LinkSpan content="[Cognitive Circuitry Lab]" targetUrl="https://cocila.net/"/>
             </RightAlignDiv>
+            <ExtensibleSPAN content="테스트본문" extContent="확장테스트"/>
             <SPAN marginLeft='20px'>2021.Winter, 2022.Spring, 2022.Summer. @SNU Biology department, Prof. Martin Steinegger</SPAN>
             <RightAlignDiv>
                 <LinkSpan content="[Steinegger Lab]" targetUrl="https://steineggerlab.com/"/>
@@ -94,19 +150,6 @@ const RightAlignDiv = styled.div`
     width: 100%;
     display: flex;
     justify-content: flex-end;
-`;
-
-export interface IPropsSPAN {
-    marginLeft?: string;
-    marginRight?: string;
-    marginTop?: string;
-    marginBottom?: string;
-};
-const SPAN = styled.span<IPropsSPAN>`
-    margin-left: ${({ marginLeft }) => marginLeft};
-    margin-right: ${({ marginRight }) => marginRight};
-    margin-top: ${({ marginTop }) => marginTop};
-    margin-bottom: ${({ marginBottom }) => marginBottom};
 `;
 
 const H2 = styled(SPAN)`
