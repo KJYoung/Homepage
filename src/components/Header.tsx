@@ -74,6 +74,10 @@ const HeaderRoot = styled.div`
 
   display: grid;
   grid-template-columns: 2fr 8fr 2fr;
+
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 `;
 const MobileHeaderRoot = styled.div`
   width: 100%;

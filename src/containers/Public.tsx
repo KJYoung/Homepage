@@ -24,8 +24,8 @@ const BasicDIV = styled.span<IPropsBasicCSS>`
 `;
 
 interface IPropsExtensibleSPAN {
-    content: string;
-    extContent: string;
+    content: JSX.Element;
+    extContent: JSX.Element;
 };
 const ExtensibleSPAN = ({ content, extContent } : IPropsExtensibleSPAN) => {
     const [extended, setExtended] = useState(false);
@@ -41,6 +41,17 @@ const ExtensibleSPAN = ({ content, extContent } : IPropsExtensibleSPAN) => {
         justify-content: space-between;
         margin-bottom: 5px;
     `;
+    const ExtensibleBtn = styled.span`
+        color: var(--hp-blue);
+        cursor: pointer;
+        &:active {
+            color: var(--hp-blue-active);
+        };
+
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none; /* Standard syntax */
+    `;
     const ExtensibleSPANBody = styled.div`
         width: 100%;
         display: flex;
@@ -48,11 +59,11 @@ const ExtensibleSPAN = ({ content, extContent } : IPropsExtensibleSPAN) => {
     `;
     return <ExtensibleSPANWrapper>
         <ExtensibleSPANTitle>
-            <span>{content}</span>
-            <span onClick={() => setExtended(!extended)}>{extended ? '▲' : '▼'}</span>
+            {content}
+            <ExtensibleBtn onClick={() => setExtended(!extended)}>{extended ? '▲' : '▼'}</ExtensibleBtn>
         </ExtensibleSPANTitle>
         <ExtensibleSPANBody>
-            {extended && <span>{extContent}</span>}
+            {extended && extContent}
         </ExtensibleSPANBody>
     </ExtensibleSPANWrapper>
 }
@@ -81,20 +92,28 @@ const Public = () => {
         </EducationDiv>
         <InternshipDiv>
             <H2>Internship</H2><BR />
-            <SPAN marginLeft='20px'>2020.Winter. Laboratory of Development & Disease Modeling @SNU Biology department, Prof. 공영윤</SPAN>
-            <SPAN marginLeft='20px'>2021.Summer. @SNU Biology department, Prof. 김형</SPAN>
-            <RightAlignDiv>
-                <LinkSpan content="[Cognitive Circuitry Lab]" targetUrl="https://cocila.net/"/>
-            </RightAlignDiv>
-            <ExtensibleSPAN content="테스트본문" extContent="확장테스트"/>
-            <SPAN marginLeft='20px'>2021.Winter, 2022.Spring, 2022.Summer. @SNU Biology department, Prof. Martin Steinegger</SPAN>
-            <RightAlignDiv>
-                <LinkSpan content="[Steinegger Lab]" targetUrl="https://steineggerlab.com/"/>
-            </RightAlignDiv>
-            <SPAN marginLeft='20px'>2022.Fall. @SNU CSE department, Prof. 이광근</SPAN>
-            <RightAlignDiv>
-                <LinkSpan content="[Programming Research Laboratory (ROPAS)]" targetUrl="http://ropas.snu.ac.kr/"/>
-            </RightAlignDiv>
+            <SPAN marginLeft='20px'>2020.Winter. Laboratory of Development & Disease Modeling @SNU Biology department, Prof. 공영윤</SPAN>      
+            <ExtensibleSPAN content={<>
+                <SPAN marginLeft='20px'>2021.Summer. @SNU Biology department, Prof. 김형</SPAN>
+            </>} extContent={<>
+                <RightAlignDiv>
+                    <LinkSpan content="[Cognitive Circuitry Lab]" targetUrl="https://cocila.net/"/>
+                </RightAlignDiv>
+            </>}/>
+            <ExtensibleSPAN content={<>
+                <SPAN marginLeft='20px'>2021.Winter, 2022.Spring, 2022.Summer. @SNU Biology department, Prof. Martin Steinegger</SPAN>
+            </>} extContent={<>
+                <RightAlignDiv>
+                    <LinkSpan content="[Steinegger Lab]" targetUrl="https://steineggerlab.com/"/>
+                </RightAlignDiv>
+            </>}/>
+            <ExtensibleSPAN content={<>
+                <SPAN marginLeft='20px'>2022.Fall. @SNU CSE department, Prof. 이광근</SPAN>
+            </>} extContent={<>
+                <RightAlignDiv>
+                    <LinkSpan content="[Programming Research Laboratory (ROPAS)]" targetUrl="http://ropas.snu.ac.kr/"/>
+                </RightAlignDiv>
+            </>}/>
         </InternshipDiv>
         <PublicationDiv>
             <H2>Publication</H2><BR />
