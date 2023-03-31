@@ -6,7 +6,8 @@
 2023.03.05. Mobile Design.   
 2023.03.06. Custom ImageDiv Slider Draft Completed. Header Mode Selector.   
 2023.03.07. LinkSpan.   
-TODO: Custom Image Slider Left/Right Indicator. Custom Checkbox.   
+2023.03.31. Custom Checkbox.   
+TODO: Custom Image Slider Left/Right Indicator.   
    
 ## Available Scripts
 

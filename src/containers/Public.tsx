@@ -85,50 +85,67 @@ const Public = () => {
             return `[${result} Days Before]`;
         }
     };
+    const Reverse_D_Day_Calculator = (year: number, _month: number, day: number) => {
+        // Assume : Today < [yy,_m_m, dd]
+        const MS_TO_DAY = 1000 * 60 * 60 * 24;
+        const _today = new Date();
+        const today = new Date(_today.getFullYear(), _today.getMonth(), _today.getDate());
+        const month = _month - 1;
+        
+        const target = new Date(year, month, day);
+        const result = Math.ceil( ( target.getTime() - today.getTime() ) / MS_TO_DAY );
+        today.setDate(today.getDate()-result);
+        return today.toDateString();
+    }
     return <div>
         <EducationDiv>
-            <H2>Education & Research</H2><BR />
+            <H2>Education & Research & Career</H2><BR />
             <H3 marginLeft='10px'>History</H3>
             <SPAN marginLeft='20px'>2017.03 ~ 2019.02 한성과학고등학교 조기졸업 {D_Day_Calculator(2019, 2, 1)}</SPAN>
             <SPAN marginLeft='20px'>2019.03 ~ 2023.02 서울대학교 졸업(생명과학부, 컴퓨터공학부 복수전공) {D_Day_Calculator(2023, 2, 24)}</SPAN>
-            <SPAN marginLeft='20px'>2023.04 ~ 2026.05 과학기술전문사관 복무 {D_Day_Calculator(2026, 5, 31)}</SPAN>
+            <SPAN marginLeft='20px'>2023.04 ~ 2026.05 과학기술전문사관 복무 {D_Day_Calculator(2026, 5, 31)}, {Reverse_D_Day_Calculator(2026, 5, 31)}</SPAN>
             <H3 marginLeft='10px'>Subjects</H3>
             <SPAN marginLeft='20px'>BioScience, Computer Science & Engineering.</SPAN>
         </EducationDiv>
         <InternshipDiv>
             <H2>Internship</H2><BR />
-            <SPAN marginLeft='20px'>2020.Winter. Laboratory of Development & Disease Modeling @SNU Biology department, Prof. 공영윤</SPAN>      
+            <SPAN marginLeft='20px'>2020.Winter. Laboratory of Development & Disease Modeling @SNU Biology, Prof. 공영윤</SPAN>      
             <ExtensibleSPAN content={<>
-                <SPAN marginLeft='20px'>2021.Summer. @SNU Biology department, Prof. 김형</SPAN>
-            </>} extContent={<>
+                <SPAN marginLeft='20px'>2021.Summer. @SNU Biology, Prof. 김형</SPAN>
+            </>} extContent={<FlexBox>
+                <SPAN marginLeft='30px'>Modify the program(blip) to make the electric current output (C++)</SPAN>
                 <RightAlignDiv>
                     <LinkSpan content="[Cognitive Circuitry Lab]" targetUrl="https://cocila.net/"/>
                 </RightAlignDiv>
-            </>}/>
+            </FlexBox>}/>
             <ExtensibleSPAN content={<>
-                <SPAN marginLeft='20px'>2021.Winter, 2022.Spring, 2022.Summer. @SNU Biology department, Prof. Martin Steinegger</SPAN>
-            </>} extContent={<>
+                <SPAN marginLeft='20px'>2021.Winter, 2022.Spring, 2022.Summer. @SNU Biology, Prof. Martin Steinegger</SPAN>
+            </>} extContent={<FlexBox>
+                <SPAN marginLeft='30px'>Construct the docker images for the integrated CryoET analyses.</SPAN>
+                <SPAN marginLeft='30px'>Transplant warp partially into linux. Warp : Based on C# .NET framework.</SPAN>
+                <SPAN marginLeft='30px'>Improve the existing denoiser for cryoEM/ET images.</SPAN>
                 <RightAlignDiv>
                     <LinkSpan content="[Steinegger Lab]" targetUrl="https://steineggerlab.com/"/>
                 </RightAlignDiv>
-            </>}/>
+            </FlexBox>}/>
             <ExtensibleSPAN content={<>
-                <SPAN marginLeft='20px'>2022.Fall. @SNU CSE department, Prof. 이광근</SPAN>
-            </>} extContent={<>
+                <SPAN marginLeft='20px'>2022.Fall. @SNU CSE, Prof. 이광근</SPAN>
+            </>} extContent={<FlexBox>
+                <SPAN marginLeft='30px'>About Rescript Type System, GenType</SPAN>
                 <RightAlignDiv>
                     <LinkSpan content="[Programming Research Laboratory (ROPAS)]" targetUrl="http://ropas.snu.ac.kr/"/>
                 </RightAlignDiv>
-            </>}/>
+            </FlexBox>}/>
         </InternshipDiv>
         <PublicationDiv>
             <H2>Publication</H2><BR />
             <ExtensibleSPAN content={<>
                 <SPAN marginLeft='20px'>2020. Analysis of Factors Causing Differences in the Human Hazards of Permetrin</SPAN>
-            </>} extContent={<>
+            </>} extContent={<FlexBox>
                 <RightAlignDiv>
                     <LinkSpan content="[Paper Link]" targetUrl="https://www.jeaht.org/upload/pdf/jeaht-23-4-171.pdf"/>
                 </RightAlignDiv>
-            </>}/>
+            </FlexBox>}/>
         </PublicationDiv>
         <DevelopmentDiv>
             <H2>Development</H2><BR />
@@ -139,11 +156,11 @@ const Public = () => {
             <H3 marginLeft='10px'>Projects</H3>
             <ExtensibleSPAN content={<>
                 <SPAN marginLeft='20px'>2022 Fall Semester FitTogether Team Project</SPAN>
-            </>} extContent={<>
+            </>} extContent={<FlexBox>
                 <RightAlignDiv>
                     <LinkSpan marginLeft='20px' content="[Github Repo]" targetUrl="https://github.com/swsnu/swppfall2022-team4/"/>
                 </RightAlignDiv>
-            </>}/>
+            </FlexBox>}/>
         </DevelopmentDiv>
         <ArtDiv>
             <H2>Art</H2><BR />
@@ -152,6 +169,15 @@ const Public = () => {
     </div>
 };
 
+const FlexBox = styled.div`
+    background-color: var(--hp-back-darker);
+    
+    margin-left: 15px;
+    padding: 8px 8px 8px 0px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+`
 const ContentDiv = styled.div`
     display: flex;
     flex-direction: column;
