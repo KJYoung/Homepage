@@ -108,18 +108,32 @@ const Public = () => {
             <SPAN marginLeft='20px'>BioScience, Computer Science & Engineering.</SPAN>
         </EducationDiv>
         <InternshipDiv>
-            <H2>Internship</H2><BR />
-            <SPAN marginLeft='20px'>2020.Winter. Laboratory of Development & Disease Modeling @SNU Biology, Prof. 공영윤</SPAN>      
+            <H2>Internship</H2><BR /> 
+            
+            <ExtensibleSPAN content={<>
+                <SPAN marginLeft='20px'>2020.Winter. @SNU Biology, Prof. 공영윤</SPAN>
+            </>} extContent={<FlexBox>
+                <SPAN marginLeft='30px'>Learn basic techniques.</SPAN>
+                <SPAN marginLeft='30px'>Genotyping; Cre-loxP construct</SPAN>
+                <SPAN marginLeft='30px'>Grip Strength, EMG, western blot, FACS, H&E staining & IHC, qRT-PCR</SPAN>
+                <SPAN marginLeft='30px'>IV injection, ICV injection, Mouse anatomy</SPAN>
+                <RightAlignDiv>
+                    <LinkSpan content="[Laboratory of Development & Disease Modeling]" targetUrl="https://biosci.snu.ac.kr/labdnd"/>
+                </RightAlignDiv>
+            </FlexBox>}/>
+            
             <ExtensibleSPAN content={<>
                 <SPAN marginLeft='20px'>2021.Summer. @SNU Biology, Prof. 김형</SPAN>
             </>} extContent={<FlexBox>
                 <SPAN marginLeft='30px'>Modify the program(blip) to make the electric current output (C++)</SPAN>
+                <SPAN marginLeft='30px'>Basal Ganglia, Superior colliculus related Neural Circuits</SPAN>
                 <RightAlignDiv>
                     <LinkSpan content="[Cognitive Circuitry Lab]" targetUrl="https://cocila.net/"/>
                 </RightAlignDiv>
             </FlexBox>}/>
+
             <ExtensibleSPAN content={<>
-                <SPAN marginLeft='20px'>2021.Winter, 2022.Spring, 2022.Summer. @SNU Biology, Prof. Martin Steinegger</SPAN>
+                <SPAN marginLeft='20px'>2021.Winter,<br/>2022.Spring,<br/>2022.Summer. @SNU Biology, Prof. Martin Steinegger</SPAN>
             </>} extContent={<FlexBox>
                 <SPAN marginLeft='30px'>Construct the docker images for the integrated CryoET analyses.</SPAN>
                 <SPAN marginLeft='30px'>Transplant warp partially into linux. Warp : Based on C# .NET framework.</SPAN>
@@ -128,6 +142,7 @@ const Public = () => {
                     <LinkSpan content="[Steinegger Lab]" targetUrl="https://steineggerlab.com/"/>
                 </RightAlignDiv>
             </FlexBox>}/>
+
             <ExtensibleSPAN content={<>
                 <SPAN marginLeft='20px'>2022.Fall. @SNU CSE, Prof. 이광근</SPAN>
             </>} extContent={<FlexBox>
@@ -136,6 +151,7 @@ const Public = () => {
                     <LinkSpan content="[Programming Research Laboratory (ROPAS)]" targetUrl="http://ropas.snu.ac.kr/"/>
                 </RightAlignDiv>
             </FlexBox>}/>
+
         </InternshipDiv>
         <PublicationDiv>
             <H2>Publication</H2><BR />

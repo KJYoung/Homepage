@@ -4,7 +4,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from "styled-components";
-import { coreActions, selectCore } from '../store/slices/core';
+import { TabState, coreActions, selectCore } from '../store/slices/core';
 
 function MainPage() {
   const { windowSize } = useSelector(selectCore);
@@ -19,17 +19,40 @@ function MainPage() {
         <div>
           Welcome to the MainPage of the /Junyoung Kim's/ Homepage.
         </div>
-        <div>
-          <span>현재 훈련소</span>
-          <span>Career .. Public </span>
-          <span>Hobby .. Private </span>
-          <span>Photo .. Gallery </span>
-          <span>Nothing .. New </span>
-        </div>
+        <MainBtnWrapper>
+          <MainBtnPublic onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.PUBLIC}))}>Career .. Public </MainBtnPublic>
+          <MainBtn onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.PRIVATE}))}>Hobby .. Private </MainBtn>
+          <MainBtn onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.GALLERY}))}>Photo .. Gallery </MainBtn>
+          <MainBtn onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.NEW}))}>Nothing .. New </MainBtn>
+        </MainBtnWrapper>
       </MainPageBody>
     </MainPageWrapper>
   );
 }
+
+const MainBtnWrapper = styled.div`
+  margin-top: 10px;
+
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+`;
+
+const MainBtn = styled.div`
+  padding: 10px;
+  background-color: antiquewhite;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.5px solid black;
+
+  cursor: pointer;
+`;
+const MainBtnPublic = styled(MainBtn)`
+   background-color: azure;
+`;
 
 const MainPageWrapper = styled.div`
   width: 100%;
@@ -43,7 +66,6 @@ const MainPageBody = styled.div`
   max-width: 1200px;
   height: 600px;
   min-height: 600px;
-  border: 1px solid black;
   background-color: var(--hp-white);
 
   display: flex;
@@ -51,10 +73,6 @@ const MainPageBody = styled.div`
   justify-content: center;
   align-items: center;
 
-  div {
-    display: flex;
-    flex-direction: column;
-  }
   /* Modal Shadow */
   -webkit-box-shadow: 0 5px 6px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0 5px 6px rgba(0, 0, 0, 0.3);
@@ -62,6 +80,8 @@ const MainPageBody = styled.div`
   -webkit-background-clip: padding-box;
   -moz-background-clip: padding-box;
   background-clip: padding-box;
+
+  padding-top: 10px;
 `;
 
 export default MainPage;
