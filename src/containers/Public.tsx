@@ -158,6 +158,7 @@ const Public = () => {
             <ExtensibleSPAN content={<>
                 <SPAN marginLeft='20px'>2020. Analysis of Factors Causing Differences in the Human Hazards of Permetrin</SPAN>
             </>} extContent={<FlexBox>
+                <SPAN marginLeft='30px'>Author: 김준영, 조수남</SPAN>
                 <RightAlignDiv>
                     <LinkSpan content="[Paper Link]" targetUrl="https://www.jeaht.org/upload/pdf/jeaht-23-4-171.pdf"/>
                 </RightAlignDiv>

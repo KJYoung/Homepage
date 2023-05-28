@@ -31,7 +31,7 @@ const Header = ({ isMobile }: IPropsHeader ) => {
         <HeaderRoot>
         {/* DESKTOP HEADER */}
             <HeaderLeft onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.MAIN}))}>
-            VKJYOUNG(김준영).
+            VKJYoung(김준영).
             </HeaderLeft>
             <HeaderCenter>
                 <HeaderBtn onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.MAIN}))}>
