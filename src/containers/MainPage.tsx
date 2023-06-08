@@ -20,13 +20,15 @@ function MainPage() {
           Welcome to the MainPage of the [Junyoung Kim's] Homepage.
         </MainPageTop>
         <MainBtnWrapper>
-          <MainBtnPublic onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.PUBLIC}))}>Career .. Public </MainBtnPublic>
+          <MainBtnPublic onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.PUBLIC}))}>
+            Career .. Public <br/> CV, 커리어</MainBtnPublic>
           <MainBtn onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.PRIVATE}))}>Hobby .. Private </MainBtn>
           <MainBtn onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.GALLERY}))}>Photo .. Gallery </MainBtn>
           <MainBtn onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.NEW}))}>Nothing .. New </MainBtn>
         </MainBtnWrapper>
         <MainPageBottom>
           <span>Email : jykim157@snu.ac.kr</span>
+          <span>Github : <a href="https://github.com/KJYoung">Link</a></span>
           <span>LinkedIn : <a href="https://www.linkedin.com/in/%EA%B9%80%EC%A4%80%EC%98%81-%ED%95%99%EC%83%9D-%EC%83%9D%EB%AA%85%EA%B3%BC%ED%95%99%EB%B6%80-551369256/">Link</a></span>
         </MainPageBottom>
       </MainPageBody>

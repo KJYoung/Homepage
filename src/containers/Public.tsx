@@ -2,6 +2,8 @@ import { useState } from "react";
 import styled from "styled-components";
 import { LinkSpan } from "../components/LinkSpan";
 
+export const DOCUMENT_ROOT = process.env.PUBLIC_URL + "/document/";
+
 export interface IPropsBasicCSS {
     marginLeft?: string;
     marginRight?: string;
@@ -186,15 +188,23 @@ const Public = () => {
         <DevelopmentDiv>
             <H2>Development</H2><BR />
             <H3 marginLeft='10px'>Fluent Programming Language(or Framework, Library)</H3>
-            <SPAN marginLeft='20px'>Java(+Android App Dev), Python(+Django), C, C++, TypeScript(+ReactJS)</SPAN>
+            <SPAN marginLeft='20px'>Java(+Android App), Python(+Django), C, C++, TypeScript(+ReactJS)</SPAN>
             <H3 marginLeft='10px'>Programming Language I've ever tried</H3>
-            <SPAN marginLeft='20px'>Verilog, OCaml, RISC-V Assembly, C#, Dart, ReScript</SPAN>
+            <SPAN marginLeft='20px'>Verilog, OCaml, RISC-V Assembly, C#, Dart, ReScript, R, Matlab Scripts</SPAN>
             <H3 marginLeft='10px'>Projects</H3>
             <ExtensibleSPAN content={<>
                 <SPAN marginLeft='20px'>2022 Fall Semester FitTogether Team Project</SPAN>
             </>} extContent={<FlexBox>
                 <RightAlignDiv>
                     <LinkSpan marginLeft='20px' content="[Github Repo]" targetUrl="https://github.com/swsnu/swppfall2022-team4/"/>
+                </RightAlignDiv>
+            </FlexBox>}/>
+            <ExtensibleSPAN content={<>
+                <SPAN marginLeft='20px'>2021 miliTECH Challenge Team Project</SPAN>
+            </>} extContent={<FlexBox>
+                <SPAN marginLeft='30px'>감시 정찰을 위한 딥러닝 기반 표적 인식 알고리즘 연구, 과학기술정보통신부 장관상</SPAN>
+                <RightAlignDiv>
+                    <LinkSpan marginLeft='20px' content="[Awards PDF]" targetUrl={DOCUMENT_ROOT + "miliTECH_Award.pdf"}/>
                 </RightAlignDiv>
             </FlexBox>}/>
         </DevelopmentDiv>
