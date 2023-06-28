@@ -47,6 +47,7 @@ const Private = () => {
                             }
                         }}>Check</button>
                     </div>
+                    <span>세상이 이해하지 못할 때에도, 그의 사랑은 진심이었다. 그 별이 빛나는 밤에.</span>
                     <span>가장 좋아하는 예술작품: Almond Blossom by Vincent Van Gogh.</span>
                     <img src={GALLERY_ROOT + "ART/VincentVanGogh_AlmondBlossomOnly.jpg"} alt="Best Art Ever" />
                 </PrivPriv>

@@ -19,6 +19,10 @@ const BasicSPAN = styled.span<IPropsBasicCSS>`
     margin-bottom: ${({ marginBottom }) => marginBottom};
 
     font-weight: ${({ fontWeight }) => fontWeight};
+
+    .bold {
+        font-weight: 600;
+    }
 `;
 const SPAN = styled(BasicSPAN)``;
 const BasicDIV = styled.span<IPropsBasicCSS>`
@@ -101,16 +105,35 @@ const Public = () => {
         const result = Math.ceil( ( target.getTime() - today.getTime() ) / MS_TO_DAY );
         today.setDate(today.getDate()-result);
         return today.toDateString();
-    }
+    };
+    const D_Day_Percent_Calculator = (year: number, _month: number, day: number) => {
+        const MS_TO_DAY = 1000 * 60 * 60 * 24;
+        const _today = new Date();
+        const today = new Date(_today.getFullYear(), _today.getMonth(), _today.getDate());
+        const month = _month - 1;
+        
+        const target = new Date(year, month, day);
+        if( today < target ){
+            const result = Math.ceil( ( target.getTime() - today.getTime() ) / MS_TO_DAY );
+            return `${(1095 - result) / 1095 * 100}%`;
+        } else {
+            return `100%`;
+        }
+    };
     return <div>
         <EducationDiv>
             <H2>Education & Research & Career</H2><BR />
             <H3 marginLeft='10px'>History</H3>
-            <SPAN marginLeft='20px'>2017.03 ~ 2019.02 한성과학고등학교 조기졸업 {D_Day_Calculator(2019, 2, 1)}</SPAN>
+            <SPAN marginLeft='20px'>
+                <span className="bold">2017.03 ~ 2019.02 </span>
+                한성과학고등학교 조기졸업
+            </SPAN>
 
             <ExtensibleSPAN content={<>
-                <SPAN marginLeft='20px'>2019.03 ~ 2023.02 서울대학교 졸업(생명과학부, 컴퓨터공학부 복수전공) <br/> 
-                                        {D_Day_Calculator(2023, 2, 24)}</SPAN>
+                <SPAN marginLeft='20px'>
+                    <span className="bold">2019.03 ~ 2023.02 </span>
+                    서울대학교 졸업(생명과학부, 컴퓨터공학부 복수전공)
+                </SPAN>
             </>} extContent={<FlexBox>
                 <SPAN marginLeft='30px' fontWeight={800}>[BIO] BioScience Subjects</SPAN>
                 <SPAN marginLeft='40px'>- 세포생물학, 생화학(1,2), 유전학, 분자생물학, 조직세포학, 생물다양성과 환경, 현대식물학, 신경생물학, 생물정보학개론, 생물공학</SPAN>
@@ -123,9 +146,12 @@ const Public = () => {
                 <SPAN marginLeft='40px'>- 4.17/4.30, Summa Cum Laude(최우등졸업), 차석 졸업</SPAN>
             </FlexBox>}/>
             
-            
-            <SPAN marginLeft='20px'>2023.04 ~ 2026.05 과학기술전문사관 복무 {D_Day_Calculator(2026, 5, 31)}, {Reverse_D_Day_Calculator(2026, 5, 31)}</SPAN>
-            <H3 marginLeft='10px'>Subjects</H3>
+            <SPAN marginLeft='20px'>
+                <span className="bold">2023.04 ~ 2026.05 </span>
+                과학기술전문사관 복무
+            </SPAN>
+            <SPAN marginLeft='20px'>{D_Day_Calculator(2026, 5, 31)}, {Reverse_D_Day_Calculator(2026, 5, 31)}, {D_Day_Percent_Calculator(2026, 5, 31)}</SPAN>
+            <H3 marginLeft='10px' marginTop="15px">Subjects</H3>
             <SPAN marginLeft='20px'>BioScience, Computer Science & Engineering.</SPAN>
         </EducationDiv>
         <InternshipDiv>
@@ -203,6 +229,7 @@ const Public = () => {
                 <SPAN marginLeft='20px'>2021 miliTECH Challenge Team Project</SPAN>
             </>} extContent={<FlexBox>
                 <SPAN marginLeft='30px'>감시 정찰을 위한 딥러닝 기반 표적 인식 알고리즘 연구, 과학기술정보통신부 장관상</SPAN>
+                <SPAN marginLeft='30px'>Adversarial AI.</SPAN>
                 <RightAlignDiv>
                     <LinkSpan marginLeft='20px' content="[Awards PDF]" targetUrl={DOCUMENT_ROOT + "miliTECH_Award.pdf"}/>
                 </RightAlignDiv>
@@ -234,6 +261,7 @@ const ContentDiv = styled.div`
 `
 const EducationDiv = styled(ContentDiv)`
     margin-top: 10px;
+    margin-bottom: 15px;
 `;
 
 const InternshipDiv = styled(ContentDiv)`
