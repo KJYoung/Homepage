@@ -7,6 +7,7 @@ import { DesktopApp } from './DesktopApp';
 import { MobileApp } from './MobileApp';
 import { useDispatch, useSelector } from 'react-redux';
 import { coreActions, selectCore } from './store/slices/core';
+import { MOBILE_DESKTOP_THRESHOLD } from './styles/GlobalConst';
 
 function App() {
   // Window Size. If windowSize[0] < 1200, Show mobile style.
@@ -32,8 +33,7 @@ function App() {
             element={
               <>
                 {/* <ReactNotifications /> */}
-                {windowSize[0] < 1200 && <MobileApp />}
-                {windowSize[0] >= 1200 && <DesktopApp />}
+                {windowSize[0] < MOBILE_DESKTOP_THRESHOLD ? <MobileApp /> : <DesktopApp />}
               </>
             }
           />

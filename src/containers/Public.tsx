@@ -60,6 +60,8 @@ const ExtensibleSPAN = ({ content, extContent } : IPropsExtensibleSPAN) => {
         -webkit-user-select: none; /* Safari */
         -ms-user-select: none; /* IE 10 and IE 11 */
         user-select: none; /* Standard syntax */
+
+        font-size: 22px;
     `;
     const ExtensibleSPANBody = styled.div`
         width: 100%;
@@ -120,7 +122,7 @@ const Public = () => {
             return `100%`;
         }
     };
-    return <div>
+    return <PublicWrapper>
         <EducationDiv>
             <H2>Education & Research & Career</H2><BR />
             <H3 marginLeft='10px'>History</H3>
@@ -239,17 +241,24 @@ const Public = () => {
             <H2>Art</H2><BR />
             <SPAN marginLeft='20px'>Not Yet</SPAN>
         </ArtDiv>
-    </div>
+    </PublicWrapper>
 };
 
+const PublicWrapper = styled.div`
+    width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+`;
 const FlexBox = styled.div`
     background-color: var(--hp-back-darker);
     
     margin-left: 15px;
-    padding: 8px 8px 8px 0px;
+    padding: 10px 10px 10px 10px;
     width: 100%;
     display: flex;
     flex-direction: column;
+
+    border-radius: 8px;
 `
 const ContentDiv = styled.div`
     display: flex;
