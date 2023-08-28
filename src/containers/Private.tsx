@@ -18,7 +18,7 @@ const Private = () => {
             { privMode === PrevilegedState.PUBLIC && <PrivAnnonymous>
                 <LargeWarning onClick={() => {
                     setByPass(byPass + 1);
-                    if(byPass > 5)
+                    if(byPass > 3)
                         dispatch(coreActions.setPrivMode({ privMode: PrevilegedState.PRIVATE }));
                 }}>You don't have a permission.</LargeWarning>
                 <div>    
@@ -49,7 +49,8 @@ const Private = () => {
                     </div>
                     <span>세상이 이해하지 못할 때에도, 그의 사랑은 진심이었다. 그 별이 빛나는 밤에.</span>
                     <span>가장 좋아하는 예술작품: Almond Blossom by Vincent Van Gogh.</span>
-                    <img src={GALLERY_ROOT + "ART/VincentVanGogh_AlmondBlossomOnly.jpg"} alt="Best Art Ever" />
+                    <span>Notion Link : https://vkjy.notion.site/vkjy/ADD-aada2f80827944449468444adf810429</span>
+                    {/* <img src={GALLERY_ROOT + "ART/VincentVanGogh_AlmondBlossomOnly.jpg"} alt="Best Art Ever" /> */}
                 </PrivPriv>
             }
             { privMode === PrevilegedState.ADMIN && <PrivAdmin>

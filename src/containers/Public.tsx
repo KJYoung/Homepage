@@ -216,9 +216,9 @@ const Public = () => {
         <DevelopmentDiv>
             <H2>Development</H2><BR />
             <H3 marginLeft='10px'>Fluent Programming Language(or Framework, Library)</H3>
-            <SPAN marginLeft='20px'>Java(+Android App), Python(+Django), C, C++, TypeScript(+ReactJS)</SPAN>
+            <SPAN marginLeft='20px'>Java(+Android App), Python(+Django), C, C++, TypeScript(+React, React Native), NodeJS</SPAN>
             <H3 marginLeft='10px'>Programming Language I've ever tried</H3>
-            <SPAN marginLeft='20px'>Verilog, OCaml, RISC-V Assembly, C#, Dart, ReScript, R, Matlab Scripts</SPAN>
+            <SPAN marginLeft='20px'>Verilog, OCaml, RISC-V Assembly, C#(+DotNet Framework), Dart(+Flutter), ReScript, R, Matlab Scripts</SPAN>
             <H3 marginLeft='10px'>Projects</H3>
             <ExtensibleSPAN content={<>
                 <SPAN marginLeft='20px'>2022 Fall Semester FitTogether Team Project</SPAN>
