@@ -9,6 +9,7 @@ import Private from "./containers/Private";
 import Public from "./containers/Public";
 import { selectCore, TabState } from "./store/slices/core";
 import { LANGUAGE } from "./utils/Language";
+import PublicEn from "./containers/PublicEn";
 
 interface DesktopAppProps {
   language: LANGUAGE
@@ -39,7 +40,7 @@ export const DesktopApp = ( { language } : DesktopAppProps) => {
           <Background>
             <Header isMobile={false} language={language}/>
             <Body>
-              <Public />
+              <PublicEn />
             </Body>
             <Footer />
           </Background>
