@@ -29,14 +29,21 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route
+            path="Homepage/*"
+            element={
+              <Routes>
+                <Route path="ko" element={<>{windowSize[0] < MOBILE_DESKTOP_THRESHOLD ? <MobileApp language='KO'/> : <DesktopApp language='KO'/>}</>}/>
+                <Route path="*" element={<DesktopApp language='EN'/>}/>
+              </Routes>
+            }
+          />
+          <Route
             path="*"
             element={
               <>
-                {/* <ReactNotifications /> */}
-                {windowSize[0] < MOBILE_DESKTOP_THRESHOLD ? <MobileApp /> : <DesktopApp />}
+                Something Wrong.
               </>
-            }
-          />
+          } />  
         </Routes>
       </BrowserRouter>
     </>

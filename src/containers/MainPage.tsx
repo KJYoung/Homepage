@@ -28,8 +28,9 @@ function MainPage() {
         </MainBtnWrapper>
         <MainPageBottom>
           <span>Email : jykim157@snu.ac.kr</span>
-          <span>Github : <a href="https://github.com/KJYoung">Link</a></span>
-          <span>LinkedIn : <a href="https://www.linkedin.com/in/%EA%B9%80%EC%A4%80%EC%98%81-%ED%95%99%EC%83%9D-%EC%83%9D%EB%AA%85%EA%B3%BC%ED%95%99%EB%B6%80-551369256/">Link</a></span>
+          <a href="https://github.com/KJYoung">Github</a>
+          <a href="https://www.linkedin.com/in/junyoung-kim-551369256/">LinkedIn</a>
+          <a href="https://scholar.google.co.kr/citations?user=w2JODm8AAAAJ&hl=en&oi=sra">Google Scholar</a>
         </MainPageBottom>
       </MainPageBody>
     </MainPageWrapper>

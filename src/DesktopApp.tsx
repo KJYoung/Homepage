@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import { Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -9,39 +8,48 @@ import New from "./containers/New";
 import Private from "./containers/Private";
 import Public from "./containers/Public";
 import { selectCore, TabState } from "./store/slices/core";
+import { LANGUAGE } from "./utils/Language";
 
-export const DesktopApp = () => {
+interface DesktopAppProps {
+  language: LANGUAGE
+};
+
+export const DesktopApp = ( { language } : DesktopAppProps) => {
     const coreState = useSelector(selectCore);
     
-    return (
-      <Routes>
-        <Route
-          path="Homepage/*"
-          element={
-            <>
-              <Background>
-                <Header isMobile={false} />
-                <Body>
-                  {coreState.selectedTab === TabState.MAIN && <MainPage />}
-                  {coreState.selectedTab === TabState.PUBLIC && <Public />}
-                  {coreState.selectedTab === TabState.PRIVATE && <Private />}
-                  {coreState.selectedTab === TabState.GALLERY && <Gallery isMobile={false}/>}
-                  {coreState.selectedTab === TabState.NEW && <New />}
-                </Body>
-                <Footer />
-              </Background>
-            </>
-          }
-        />
-        <Route
-          path="*"
-          element={
-            <>
-              Something Wrong.
-            </>
-          } />
-      </Routes>
-    );
+    if(language === 'KO'){
+      return (
+        <>
+          <Background>
+            <Header isMobile={false} language={language}/>
+            <Body>
+              {coreState.selectedTab === TabState.MAIN && <MainPage />}
+              {coreState.selectedTab === TabState.PUBLIC && <Public />}
+              {coreState.selectedTab === TabState.PRIVATE && <Private />}
+              {coreState.selectedTab === TabState.GALLERY && <Gallery isMobile={false}/>}
+              {coreState.selectedTab === TabState.NEW && <New />}
+            </Body>
+            <Footer />
+          </Background>
+        </>
+      );
+    }else if(language === 'EN'){
+      return (
+        <>
+          <Background>
+            <Header isMobile={false} language={language}/>
+            <Body>
+              <Public />
+            </Body>
+            <Footer />
+          </Background>
+        </>
+      );
+    }else{
+      return <>
+        <span>Unreachable</span>
+      </>
+    }
   };
   
   const Background = styled.div`

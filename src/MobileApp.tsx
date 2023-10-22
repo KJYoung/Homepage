@@ -9,8 +9,13 @@ import New from "./containers/New";
 import Private from "./containers/Private";
 import Public from "./containers/Public";
 import { selectCore, TabState } from "./store/slices/core";
+import { LANGUAGE } from "./utils/Language";
 
-export const MobileApp = () => {
+interface MobileAppProps {
+  language: LANGUAGE
+};
+
+export const MobileApp = ({ language } : MobileAppProps) => {
     const coreState = useSelector(selectCore);
     
     return (
@@ -20,7 +25,7 @@ export const MobileApp = () => {
           element={
             <>
               <Background>
-                <Header isMobile={true}/>
+                <Header isMobile={true} language={language}/>
                 <Body>
                   {coreState.selectedTab === TabState.MAIN && <MainPage />}
                   {coreState.selectedTab === TabState.PUBLIC && <Public />}

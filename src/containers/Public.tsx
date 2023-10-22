@@ -246,8 +246,8 @@ const Public = () => {
 
 const PublicWrapper = styled.div`
     width: 100%;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 20%;
+    padding-right: 20%;
 `;
 const FlexBox = styled.div`
     background-color: var(--hp-back-darker);
