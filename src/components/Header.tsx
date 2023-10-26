@@ -2,7 +2,7 @@ import { faHome, faPerson, faPhotoFilm, faScroll } from "@fortawesome/free-solid
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { coreActions, DarkLightState, LanguageState, selectCore, TabState } from "../store/slices/core";
+import { coreActions, DarkLightState, selectCore, TabState } from "../store/slices/core";
 import { LANGUAGE } from "../utils/Language";
 import { useNavigate } from "react-router-dom";
 
@@ -63,9 +63,7 @@ const Header = ({ isMobile, language }: IPropsHeader ) => {
     :
     <HeaderRoot>
     {/* DESKTOP HEADER */}
-        <HeaderLeft onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.MAIN}))}>
-        VKJYoung(김준영).
-        </HeaderLeft>
+        <HeaderLeft onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.MAIN}))}></HeaderLeft>
         <HeaderCenter>
             {language === 'KO' &&
                 <>
