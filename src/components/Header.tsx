@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { coreActions, DarkLightState, selectCore, TabState } from "../store/slices/core";
 import { LANGUAGE } from "../utils/Language";
-import { useNavigate } from "react-router-dom";
 
 interface IPropsHeader {
     isMobile: boolean;
@@ -17,7 +16,6 @@ interface IPropsTabState {
 const Header = ({ isMobile, language }: IPropsHeader ) => {
     const coreState = useSelector(selectCore);
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     const isActiveTab = (tab: TabState) => {
         if(tab === coreState.selectedTab){
@@ -88,8 +86,8 @@ const Header = ({ isMobile, language }: IPropsHeader ) => {
         
         <HeaderRight>
             <div className="LanguageSelector">
-                <span className={language === 'EN' ? "selected" : ""} onClick={() => navigate('/Homepage/')}>EN</span>
-                <span className={language === 'KO' ? "selected" : ""} onClick={() => navigate('/Homepage/ko/')}>KO</span>
+                <span className={language === 'EN' ? "selected" : ""} onClick={() => dispatch(coreActions.setLanguage({language: 'EN'}))}>EN</span>
+                <span className={language === 'KO' ? "selected" : ""} onClick={() => dispatch(coreActions.setLanguage({language: 'KO'}))}>KO</span>
             </div>
             <div className="DarkLightSelector">
                 <span className={coreState.darkLight === DarkLightState.DARK ? "selected" : ""}

@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "..";
+import { LANGUAGE } from "../../utils/Language";
 
 export enum TabState {
   MAIN = 0, PUBLIC = 1, PRIVATE = 2, GALLERY = 3, NEW = 4
@@ -18,12 +19,14 @@ export interface CoreState {
   darkLight: DarkLightState; // Selected Mode(Dark, Light).
   windowSize: [number, number];
   privMode: PrevilegedState;
+  language: LANGUAGE;
 }
 const initialState: CoreState = {
  selectedTab: TabState.MAIN,
  darkLight: DarkLightState.LIGHT,
  windowSize: [1500, 1500],
- privMode: PrevilegedState.PUBLIC
+ privMode: PrevilegedState.PUBLIC,
+ language: "EN",
 };
 
 export const coreSlice = createSlice(
@@ -42,6 +45,9 @@ export const coreSlice = createSlice(
       },
       setPrivMode: (state: any, action: PayloadAction<{ privMode: PrevilegedState }>) => {
         state.privMode = action.payload.privMode;
+      },
+      setLanguage: (state: any, action: PayloadAction<{ language: LANGUAGE }>) => {
+        state.language = action.payload.language;
       },
     },
   }
