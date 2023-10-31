@@ -8,6 +8,7 @@ import { MobileApp } from './MobileApp';
 import { useDispatch, useSelector } from 'react-redux';
 import { coreActions, selectCore } from './store/slices/core';
 import { MOBILE_DESKTOP_THRESHOLD } from './styles/GlobalConst';
+import { ReactNotifications } from 'react-notifications-component';
 
 function App() {
   // Window Size. If windowSize[0] < 1200, Show mobile style.
@@ -27,6 +28,7 @@ function App() {
     <>
       <GlobalStyles />
       <BrowserRouter>
+        <ReactNotifications />
         <Routes>
           <Route
             path="*"
