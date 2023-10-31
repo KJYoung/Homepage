@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { LinkSpan } from "../components/LinkSpan";
 import { ExtensibleSPAN } from "./Public";
 import { PORTRAIT_URL } from "../DATA/Public_URL";
+import { notificationSuccess } from "../utils/sendNoti";
 
 export const DOCUMENT_ROOT = process.env.PUBLIC_URL + "/document/";
 
@@ -40,8 +41,14 @@ const PublicEn = () => {
                 <Portrait src={PORTRAIT_URL} style={{ width: `${200}px`, maxHeight: `${500}px`}} alt="imgElement"/>
             </GeneralMainDiv>
             <div>
-            <span>Email : jykim157@snu.ac.kr</span>
-            <a href="https://github.com/KJYoung">&nbsp;Github</a>
+                <a href="mailto:jykim157@snu.ac.kr">Send Email</a>
+                &nbsp;|&nbsp;
+                <span onClick={() => {
+                    navigator.clipboard.writeText("jykim157@snu.ac.kr");
+                    notificationSuccess('EMAIL', "Email Address was copied to your clipboard")
+                }} className="link">Copy Email</span>
+                &nbsp;|&nbsp;
+                <a href="https://github.com/KJYoung">Github</a>
                 &nbsp;|&nbsp;
                 <a href="https://www.linkedin.com/in/kim-junyoung">LinkedIn</a>
                 &nbsp;|&nbsp;
@@ -140,7 +147,7 @@ const PublicWrapper = styled.div`
     padding-left: 20%;
     padding-right: 20%;
 
-    a {
+    a, .link {
         color: var(--hp-blue);
     }
 `;
