@@ -38,22 +38,22 @@ const PublicEn = () => {
                     <br />
                     (Hompage Work In Progress...)
                 </GeneralTextWrapper>
-                <Portrait src={PORTRAIT_URL} style={{ width: `${200}px`, maxHeight: `${500}px`}} alt="imgElement"/>
+                <Portrait src={PORTRAIT_URL} alt="imgElement"/>
             </GeneralMainDiv>
-            <div>
+            <ContactInfoDiv>
                 <a href="mailto:jykim157@snu.ac.kr">Send Email</a>
-                &nbsp;|&nbsp;
+                |
                 <span onClick={() => {
                     navigator.clipboard.writeText("jykim157@snu.ac.kr");
                     notificationSuccess('EMAIL', "Email Address was copied to your clipboard")
                 }} className="link">Copy Email</span>
-                &nbsp;|&nbsp;
+                |
                 <a href="https://github.com/KJYoung">Github</a>
-                &nbsp;|&nbsp;
+                |
                 <a href="https://www.linkedin.com/in/kim-junyoung">LinkedIn</a>
-                &nbsp;|&nbsp;
+                |
                 <a href="https://scholar.google.co.kr/citations?user=w2JODm8AAAAJ&hl=en&oi=sra">Google Scholar</a>
-            </div>
+            </ContactInfoDiv>
         </GeneralDiv>
         <EducationDiv>
             <H2>Education & Research & Career</H2><BR />
@@ -79,12 +79,10 @@ const PublicEn = () => {
         </EducationDiv>
         <PublicationDiv>
             <H2>Publication</H2><BR />
-            <FlexBox>
                 <SPAN marginLeft='30px'>2020. Analysis of Factors Causing Differences in the Human Hazards of Permetrin</SPAN>
                 <RightAlignDiv>
                     <LinkSpan content="[Paper Link]" targetUrl="https://www.jeaht.org/upload/pdf/jeaht-23-4-171.pdf"/>
                 </RightAlignDiv>
-            </FlexBox>
         </PublicationDiv>
         <ProjectsDiv>
             <H2>Projects</H2><BR />
@@ -139,17 +137,27 @@ const PublicEn = () => {
 };
 
 const Portrait = styled.img`
-    border-radius: 30px;
+    border-radius: 20px;
     border: 1px solid black;
+    width: 185px;
+    max-height: 480px;
 `;
+
 const PublicWrapper = styled.div`
-    width: 100%;
-    padding-left: 20%;
-    padding-right: 20%;
+    width: 850px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    > div {
+        width: 100%;
+    };
 
     a, .link {
         color: var(--hp-blue);
-    }
+        cursor: pointer;
+    };
 `;
 const FlexBox = styled.div`
     background-color: var(--hp-back-darker);
@@ -189,11 +197,22 @@ const GeneralTextWrapper = styled.div`
     flex-direction: column;
 `;
 
+const ContactInfoDiv = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    margin-top: 5px;
+
+    span, a {
+        margin: 0px 8px 0px 8px;
+    }
+`;
 const EducationDiv = styled(ContentDiv)`
     margin-top: 10px;
     margin-bottom: 15px;
 `;
-
 const InternshipDiv = styled(ContentDiv)`
     
 `;
