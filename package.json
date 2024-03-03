@@ -39,7 +39,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://KJYoung.github.io/Homepage",
+  "homepage": "https://KJYoung.github.io/Homepage/",
   "eslintConfig": {
     "extends": [
       "react-app",

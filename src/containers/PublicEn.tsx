@@ -34,9 +34,9 @@ const PublicEn = () => {
             <GeneralMainDiv>
                 <GeneralTextWrapper>
                     <H2>Junyoung Kim</H2>
-                    I'm a researcher @ ADD
+                    I'm a Robotics&Computer Vision researcher at ADD.
                     <br />
-                    (Hompage Work In Progress...)
+                    (Work In Progress...)
                 </GeneralTextWrapper>
                 <Portrait src={PORTRAIT_URL} alt="imgElement"/>
             </GeneralMainDiv>
