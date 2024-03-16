@@ -3,11 +3,11 @@ import { Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Gallery from "./containers/Gallery";
-import MainPage from "./containers/MainPage";
-import New from "./containers/New";
-import Private from "./containers/Private";
-import Public from "./containers/Public";
+import Gallery from "./pages/Gallery";
+import MainPage from "./pages/MainPage";
+import New from "./pages/New";
+import Private from "./pages/Private";
+import Public from "./pages/Public";
 import { selectCore, TabState } from "./store/slices/core";
 import { LANGUAGE } from "./utils/Language";
 

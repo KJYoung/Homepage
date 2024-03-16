@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { IPropsBasicCSS } from "../containers/Public";
+import { BasicSPAN, IPropsBasicCSS } from "./Basics";
 
 interface IPropsLinkSpan {
     content: string;
@@ -11,6 +11,24 @@ interface IPropsLinkSpan {
     marginBottom?: string;
 };
 
+export const SPAN = styled(BasicSPAN)`
+
+`;
+
+export const H1 = styled(BasicSPAN)`
+    font-size: 28px;
+    font-weight: 600;
+`;
+export const H2 = styled(SPAN)`
+    font-size: 26px;
+    font-weight: 600;
+`;
+export const H3 = styled(SPAN)`
+    font-size: 24px;
+    font-weight: 600;
+`;
+
+// LinkSpan: Link 기능이 있는 푸른 색의 Span
 export const LinkSpan = ({ content, targetUrl, marginLeft, marginRight, marginTop, marginBottom } : IPropsLinkSpan) => {
     return <LinkSpanStyle 
               target="_blank" href={targetUrl} rel="noreferrer"

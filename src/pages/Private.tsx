@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { GALLERY_ROOT } from "../DATA/Gallery_URL";
 import { coreActions, PrevilegedState, selectCore } from "../store/slices/core";
 
 const Private = () => {

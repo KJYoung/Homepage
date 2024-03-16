@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import './styles/color.css';
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import { GlobalStyles } from './styles/GlobalStyles';
 import { DesktopApp } from './DesktopApp';
 import { MobileApp } from './MobileApp';
@@ -9,6 +9,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { coreActions, selectCore } from './store/slices/core';
 import { MOBILE_DESKTOP_THRESHOLD } from './styles/GlobalConst';
 import { ReactNotifications } from 'react-notifications-component';
+import { ProjectsMain } from './pages/Projects';
+import { ExpElements } from './pages/experimental/Elements';
+
+const RedirectComponent = ({ red_url } : { red_url : string }) => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    navigate(red_url);
+  }, [navigate, red_url]);
+  return <>
+    <span>Redirecting...</span>
+  </>
+};
 
 function App() {
   // Window Size. If windowSize[0] < 1200, Show mobile style.
@@ -51,15 +63,27 @@ function App() {
             path="/Projects/*"
             element={
               <Routes>
-                <Route path="USB"
+                <Route path="/" element={ <ProjectsMain /> } />
+
+                {/* First Paper [IROS 2024 - Evidential Semantic Mapping in Off-road Environments with Uncertainty-aware Bayesian Kernel Inference] */}
+                <Route path="USB" element={<RedirectComponent red_url="/Projects/Evidential-Semantic-Mapping/" />} />  {/* // Alias for Uncertainty-aware Semantic BKI */}
+                <Route path="Evidential-Semantic-Mapping"
                   element={
                     <>
-                      <span>USB... Coming Soon...</span>
+                      <span>Evidential Semantic Mapping in Off-road Environments with Uncertainty-aware Bayesian Kernel Inference</span>
                     </>
                   }
                 />
               </Routes>
             }
+          />
+          <Route
+            path="/Experimental/*"
+            element={
+              <Routes>
+                  <Route path="/elements" element={<ExpElements />} />
+              </Routes>
+            } 
           />
           <Route
             path="*"

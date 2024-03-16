@@ -1,37 +1,10 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { LinkSpan } from "../components/LinkSpan";
+import { H2, H3, LinkSpan, SPAN } from "../customs/Spans";
 import { D_Day_Calculator, D_Day_Percent_Calculator, Reverse_D_Day_Calculator } from "../utils/TimeCal";
+import { BasicDIV } from "../customs/Basics";
 
 export const DOCUMENT_ROOT = process.env.PUBLIC_URL + "/document/";
-
-export interface IPropsBasicCSS {
-    marginLeft?: string;
-    marginRight?: string;
-    marginTop?: string;
-    marginBottom?: string;
-    fontWeight?: number;
-};
-
-const BasicSPAN = styled.span<IPropsBasicCSS>`
-    margin-left: ${({ marginLeft }) => marginLeft};
-    margin-right: ${({ marginRight }) => marginRight};
-    margin-top: ${({ marginTop }) => marginTop};
-    margin-bottom: ${({ marginBottom }) => marginBottom};
-
-    font-weight: ${({ fontWeight }) => fontWeight};
-
-    .bold {
-        font-weight: 600;
-    }
-`;
-const SPAN = styled(BasicSPAN)``;
-const BasicDIV = styled.span<IPropsBasicCSS>`
-    margin-left: ${({ marginLeft }) => marginLeft};
-    margin-right: ${({ marginRight }) => marginRight};
-    margin-top: ${({ marginTop }) => marginTop};
-    margin-bottom: ${({ marginBottom }) => marginBottom};
-`;
 
 interface IPropsExtensibleSPAN {
     content: JSX.Element;
@@ -252,15 +225,6 @@ const RightAlignDiv = styled.div`
     width: 100%;
     display: flex;
     justify-content: flex-end;
-`;
-
-const H2 = styled(SPAN)`
-    font-size: 23px;
-    font-weight: 600;
-`;
-const H3 = styled(SPAN)`
-    font-size: 20px;
-    font-weight: 500;
 `;
 
 const BR = styled.div`

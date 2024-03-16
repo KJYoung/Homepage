@@ -1,34 +1,14 @@
 import styled from "styled-components";
-import { LinkSpan } from "../components/LinkSpan";
+import { H1, H2, H3, LinkSpan, SPAN } from "../customs/Spans";
 import { ExtensibleSPAN } from "./Public";
 import { PORTRAIT_URL } from "../DATA/Public_URL";
 import { notificationSuccess } from "../utils/sendNoti";
+import { useNavigate } from "react-router-dom";
 
 export const DOCUMENT_ROOT = process.env.PUBLIC_URL + "/document/";
 
-export interface IPropsBasicCSS {
-    marginLeft?: string;
-    marginRight?: string;
-    marginTop?: string;
-    marginBottom?: string;
-    fontWeight?: number;
-};
-
-const BasicSPAN = styled.span<IPropsBasicCSS>`
-    margin-left: ${({ marginLeft }) => marginLeft};
-    margin-right: ${({ marginRight }) => marginRight};
-    margin-top: ${({ marginTop }) => marginTop};
-    margin-bottom: ${({ marginBottom }) => marginBottom};
-
-    font-weight: ${({ fontWeight }) => fontWeight};
-
-    .bold {
-        font-weight: 600;
-    }
-`;
-const SPAN = styled(BasicSPAN)``;
-
 const PublicEn = () => {
+    const navigate = useNavigate();
     return <PublicWrapper>
         <GeneralDiv>
             <GeneralMainDiv>
@@ -56,7 +36,7 @@ const PublicEn = () => {
             </ContactInfoDiv>
         </GeneralDiv>
         <EducationDiv>
-            <H2>Education & Research & Career</H2><BR />
+            <H1>Education & Research & Career</H1><BR />
             <H3 marginLeft='10px'>History</H3>
             <SPAN marginLeft='20px'>
                 <span className="bold">2019.03 ~ 2023.02 Seoul National University(SNU)</span>
@@ -78,14 +58,14 @@ const PublicEn = () => {
                 <span className="bold">BIO</span>: BioInformatics, NeuroScience, cryo-EM, cryo-ET</SPAN>
         </EducationDiv>
         <PublicationDiv>
-            <H2>Publication</H2><BR />
+            <H2 onClick={() => { navigate('/Projects/'); }}>Publication</H2><BR />
                 <SPAN marginLeft='30px'>2020. Analysis of Factors Causing Differences in the Human Hazards of Permetrin</SPAN>
                 <RightAlignDiv>
                     <LinkSpan content="[Paper Link]" targetUrl="https://www.jeaht.org/upload/pdf/jeaht-23-4-171.pdf"/>
                 </RightAlignDiv>
         </PublicationDiv>
         <ProjectsDiv>
-            <H2>Projects</H2><BR />
+            <H2 onClick={() => { navigate('/Projects/'); }}>Projects</H2><BR />
             <ExtensibleSPAN content={<>
                 <SPAN marginLeft='20px'>2022 Fall Semester FitTogether Team Project</SPAN>
             </>} extContent={<FlexBox>
@@ -231,14 +211,6 @@ const RightAlignDiv = styled.div`
     justify-content: flex-end;
 `;
 
-const H2 = styled(SPAN)`
-    font-size: 23px;
-    font-weight: 600;
-`;
-const H3 = styled(SPAN)`
-    font-size: 20px;
-    font-weight: 500;
-`;
 const BR = styled.div`
     width: 100%;
     border-bottom: 1px solid gray;
