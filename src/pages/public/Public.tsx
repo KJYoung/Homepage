@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import { H1, H2, H3, LinkSpan, SPAN } from "../customs/Spans";
-import { ExtensibleSPAN } from "./Public";
-import { PORTRAIT_URL } from "../DATA/Public_URL";
-import { notificationSuccess } from "../utils/sendNoti";
+import { H1, H2, H3, LinkSpan, SPAN } from "../../customs/Spans";
+import { ExtensibleSPAN } from "../Public";
+import { PORTRAIT_URL } from "../../DATA/Public_URL";
+import { notificationSuccess } from "../../utils/sendNoti";
 import { useNavigate } from "react-router-dom";
+import { PublicContent } from "./PublicContents";
 
 export const DOCUMENT_ROOT = process.env.PUBLIC_URL + "/document/";
 
@@ -58,11 +59,17 @@ const PublicEn = () => {
                 <span className="bold">BIO</span>: BioInformatics, NeuroScience, cryo-EM, cryo-ET</SPAN>
         </EducationDiv>
         <PublicationDiv>
-            <H2 onClick={() => { navigate('/Projects/'); }}>Publication</H2><BR />
-                <SPAN marginLeft='30px'>2020. Analysis of Factors Causing Differences in the Human Hazards of Permetrin</SPAN>
-                <RightAlignDiv>
-                    <LinkSpan content="[Paper Link]" targetUrl="https://www.jeaht.org/upload/pdf/jeaht-23-4-171.pdf"/>
-                </RightAlignDiv>
+            <H2 onClick={() => { navigate('/Projects/'); }}>Publication</H2>
+            <BR />
+            {PublicContent['publication']['contents'].map((content) => {
+                return <>
+                    <SPAN marginLeft='30px'>{content.title}</SPAN>
+                    <RightAlignDiv>
+                        <LinkSpan content="[Paper Link]" targetUrl={content.url}/>
+                    </RightAlignDiv>
+                </>
+            })}
+            
         </PublicationDiv>
         <ProjectsDiv>
             <H2 onClick={() => { navigate('/Projects/'); }}>Projects</H2><BR />

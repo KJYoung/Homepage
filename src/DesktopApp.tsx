@@ -9,7 +9,7 @@ import Private from "./pages/Private";
 import Public from "./pages/Public";
 import { selectCore, TabState } from "./store/slices/core";
 import { LANGUAGE } from "./utils/Language";
-import PublicEn from "./pages/PublicEn";
+import PublicEn from "./pages/public/Public";
 
 interface DesktopAppProps {
   language: LANGUAGE
