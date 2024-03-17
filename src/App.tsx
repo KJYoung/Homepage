@@ -11,6 +11,7 @@ import { MOBILE_DESKTOP_THRESHOLD } from './styles/GlobalConst';
 import { ReactNotifications } from 'react-notifications-component';
 import { ProjectsMain } from './pages/projects/Projects';
 import { ExpElements } from './pages/experimental/Elements';
+import { EvidentialSemanticMapping } from './pages/projects/EvidentialSemanticMapping';
 
 const RedirectComponent = ({ red_url } : { red_url : string }) => {
   const navigate = useNavigate();
@@ -67,13 +68,7 @@ function App() {
 
                 {/* First Paper [IROS 2024 - Evidential Semantic Mapping in Off-road Environments with Uncertainty-aware Bayesian Kernel Inference] */}
                 <Route path="USB" element={<RedirectComponent red_url="/Projects/Evidential-Semantic-Mapping/" />} />  {/* // Alias for Uncertainty-aware Semantic BKI */}
-                <Route path="Evidential-Semantic-Mapping"
-                  element={
-                    <>
-                      <span>Evidential Semantic Mapping in Off-road Environments with Uncertainty-aware Bayesian Kernel Inference</span>
-                    </>
-                  }
-                />
+                <Route path="Evidential-Semantic-Mapping" element={<EvidentialSemanticMapping />} />
               </Routes>
             }
           />
