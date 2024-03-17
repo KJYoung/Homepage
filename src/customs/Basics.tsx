@@ -5,7 +5,9 @@ export interface IPropsBasicCSS {
     marginRight?: string;
     marginTop?: string;
     marginBottom?: string;
-    fontWeight?: number;
+    fontSize?: string;
+    fontWeight?: string;
+    textDecoration?: string;
     backgroundColor?: string;
 };
 
@@ -17,6 +19,8 @@ export const BasicSPAN = styled.span<IPropsBasicCSS>`
     margin-bottom: ${({ marginBottom }) => marginBottom};
 
     font-weight: ${({ fontWeight }) => fontWeight};
+    font-size: ${({ fontSize }) => fontSize};
+    text-decoration: ${({ textDecoration }) => textDecoration};
 
     .bold {
         font-weight: 600;
@@ -51,14 +55,18 @@ export const BasicBUTTON = styled.span<IPropsBasicCSS>`
     cursor: pointer;
 `;
 
-export const BasicDIV = styled.span<IPropsBasicCSS>`
+export const BasicDIV = styled.div<IPropsBasicCSS>`
     margin-left: ${({ marginLeft }) => marginLeft};
     margin-right: ${({ marginRight }) => marginRight};
     margin-top: ${({ marginTop }) => marginTop};
     margin-bottom: ${({ marginBottom }) => marginBottom};
 `;
 
-
+export const BR = styled.div`
+    width: 100%;
+    border-bottom: 1px solid gray;
+    margin-bottom: 10px;
+`;
 
 
 

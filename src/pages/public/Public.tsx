@@ -4,7 +4,8 @@ import { ExtensibleSPAN } from "../Public";
 import { PORTRAIT_URL } from "../../DATA/Public_URL";
 import { notificationSuccess } from "../../utils/sendNoti";
 import { useNavigate } from "react-router-dom";
-import { PublicContent } from "./PublicContents";
+import { PublicationWrapperDiv } from "./PublicContents";
+import { BR } from "../../customs/Basics";
 
 export const DOCUMENT_ROOT = process.env.PUBLIC_URL + "/document/";
 
@@ -58,19 +59,7 @@ const PublicEn = () => {
             <SPAN marginLeft='20px'>
                 <span className="bold">BIO</span>: BioInformatics, NeuroScience, cryo-EM, cryo-ET</SPAN>
         </EducationDiv>
-        <PublicationDiv>
-            <H2 onClick={() => { navigate('/Projects/'); }}>Publication</H2>
-            <BR />
-            {PublicContent['publication']['contents'].map((content) => {
-                return <>
-                    <SPAN marginLeft='30px'>{content.title}</SPAN>
-                    <RightAlignDiv>
-                        <LinkSpan content="[Paper Link]" targetUrl={content.url}/>
-                    </RightAlignDiv>
-                </>
-            })}
-            
-        </PublicationDiv>
+        <PublicationWrapperDiv navigate={navigate}/>
         <ProjectsDiv>
             <H2 onClick={() => { navigate('/Projects/'); }}>Projects</H2><BR />
             <ExtensibleSPAN content={<>
@@ -203,9 +192,6 @@ const EducationDiv = styled(ContentDiv)`
 const InternshipDiv = styled(ContentDiv)`
     
 `;
-const PublicationDiv = styled(ContentDiv)`
-
-`;
 const DevelopmentDiv = styled(ContentDiv)`
 
 `;
@@ -216,12 +202,6 @@ const RightAlignDiv = styled.div`
     width: 100%;
     display: flex;
     justify-content: flex-end;
-`;
-
-const BR = styled.div`
-    width: 100%;
-    border-bottom: 1px solid gray;
-    margin-bottom: 10px;
 `;
 
 export default PublicEn;

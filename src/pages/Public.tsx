@@ -73,14 +73,14 @@ const Public = () => {
                     서울대학교 졸업(생명과학부, 컴퓨터공학부 복수전공)
                 </SPAN>
             </>} extContent={<FlexBox>
-                <SPAN marginLeft='30px' fontWeight={800}>[BIO] BioScience Subjects</SPAN>
+                <SPAN marginLeft='30px' fontWeight={'800'}>[BIO] BioScience Subjects</SPAN>
                 <SPAN marginLeft='40px'>- 세포생물학, 생화학(1,2), 유전학, 분자생물학, 조직세포학, 생물다양성과 환경, 현대식물학, 신경생물학, 생물정보학개론, 생물공학</SPAN>
                 <SPAN marginLeft='40px'>- 생명과학전공실험(1,2), 생명과학연구실습(1,2,4), 생명과학특수연구(1)</SPAN>
-                <SPAN marginLeft='30px' fontWeight={800}>[CSE] Computer Science & Engineering Subjects</SPAN>
+                <SPAN marginLeft='30px' fontWeight={'800'}>[CSE] Computer Science & Engineering Subjects</SPAN>
                 <SPAN marginLeft='40px'>- 자료구조, 프로그래밍연습, 이산수학, 논리설계, 전기전자회로, 컴퓨터구조, 알고리즘, 컴퓨터모델링, 컴퓨터프로그래밍, 프로그래밍언어, 시스템프로그래밍, 딥러닝의 기초, 운영체제, 소프트웨어 개발의 원리와 실습</SPAN>
                 <SPAN marginLeft='40px'>- 공학연구의 실습(1)</SPAN>
                 <SPAN marginLeft='40px'>- 선형대수학, 인공지능 이론 및 응용 세미나, 심층신경망의 수학적 기초</SPAN>
-                <SPAN marginLeft='30px' fontWeight={800}>[Summary]</SPAN>
+                <SPAN marginLeft='30px' fontWeight={'800'}>[Summary]</SPAN>
                 <SPAN marginLeft='40px'>- 4.17/4.30, Summa Cum Laude(최우등졸업), 차석 졸업</SPAN>
             </FlexBox>}/>
             

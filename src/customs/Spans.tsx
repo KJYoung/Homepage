@@ -27,6 +27,14 @@ export const H3 = styled(SPAN)`
     font-size: 24px;
     font-weight: 600;
 `;
+export const H4 = styled(SPAN)`
+    font-size: 20px;
+    font-weight: 600;
+`;
+export const H5 = styled(SPAN)`
+    font-size: 16px;
+    font-weight: 600;
+`;
 
 // LinkSpan: Link 기능이 있는 푸른 색의 Span
 export const LinkSpan = ({ content, targetUrl, marginLeft, marginRight, marginTop, marginBottom } : IPropsLinkSpan) => {
