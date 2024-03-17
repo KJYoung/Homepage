@@ -12,10 +12,18 @@ interface IPropsLinkSpan {
 };
 
 export const SPAN = styled(BasicSPAN)`
-
+    &.clickable {
+        cursor: pointer;
+        &:hover {
+            color: var(--hp-blue-hover);
+        }
+        &:active {
+            color: var(--hp-blue-active);
+        }
+    }
 `;
 
-export const H1 = styled(BasicSPAN)`
+export const H1 = styled(SPAN)`
     font-size: 28px;
     font-weight: 600;
 `;

@@ -4,7 +4,7 @@ import { ExtensibleSPAN } from "../Public";
 import { PORTRAIT_URL } from "../../DATA/Public_URL";
 import { notificationSuccess } from "../../utils/sendNoti";
 import { useNavigate } from "react-router-dom";
-import { PublicationWrapperDiv } from "./PublicContents";
+import { PublicationWrapperDiv } from "./PublicationContents";
 import { BR } from "../../customs/Basics";
 
 export const DOCUMENT_ROOT = process.env.PUBLIC_URL + "/document/";

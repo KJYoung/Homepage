@@ -18,6 +18,16 @@ export const FlexColumnCenter = styled(Flex)`
     justify-content: center;
     align-items: center;
 `;
+export const FlexRowStart = styled(Flex)`
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+`;
+export const FlexRowEnd = styled(Flex)`
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+`;
 export const FlexRowCenter = styled(Flex)`
     flex-direction: row;
     justify-content: center;

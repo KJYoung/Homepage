@@ -11,8 +11,26 @@ interface IPropsHeader {
     language: LANGUAGE;
 }
 interface IPropsTabState {
-    tabState: TabState;
+    color: string;
 };
+
+const HeaderBtn = styled.div<IPropsTabState>`
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    cursor: pointer;
+
+    &:hover {
+        border-bottom: 1px solid gray;
+    }
+    
+    margin: 0px 10px 0px 10px;
+    padding: 0px 15px 0px 15px;
+
+    color: ${({ color }) => color};
+`;
 
 const Header = ({ isMobile, language }: IPropsHeader ) => {
     const coreState = useSelector(selectCore);
@@ -26,36 +44,20 @@ const Header = ({ isMobile, language }: IPropsHeader ) => {
             return 'var(--hp-gray)';
         }
     }
-    const HeaderBtn = styled.div<IPropsTabState>`
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        
-        cursor: pointer;
-
-        &:hover {
-            border-bottom: 1px solid gray;
-        }
-        
-        margin: 0px 10px 0px 10px;
-        padding: 0px 15px 0px 15px;
-
-        color: ${({ tabState }) => isActiveTab(tabState)};
-    `;
+    
     return isMobile ? <MobileHeaderRoot>
         {/* MOBILE HEADER */}
         <MobileHeaderCenter>
-            <HeaderBtn tabState={TabState.MAIN} onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.MAIN}))}>
+            <HeaderBtn color={isActiveTab(TabState.MAIN)} onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.MAIN}))}>
                 <FontAwesomeIcon icon={faHome}/>
             </HeaderBtn>
-            <HeaderBtn tabState={TabState.PUBLIC} onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.PUBLIC}))}>
+            <HeaderBtn color={isActiveTab(TabState.PUBLIC)} onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.PUBLIC}))}>
                 <FontAwesomeIcon icon={faScroll}/>
             </HeaderBtn>
-            <HeaderBtn tabState={TabState.PRIVATE} onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.PRIVATE}))}>
+            <HeaderBtn color={isActiveTab(TabState.PRIVATE)} onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.PRIVATE}))}>
                 <FontAwesomeIcon icon={faPerson}/>
             </HeaderBtn>
-            <HeaderBtn tabState={TabState.GALLERY} onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.GALLERY}))}>
+            <HeaderBtn color={isActiveTab(TabState.GALLERY)} onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.GALLERY}))}>
                 <FontAwesomeIcon icon={faPhotoFilm}/>
             </HeaderBtn>
         </MobileHeaderCenter>
@@ -67,19 +69,19 @@ const Header = ({ isMobile, language }: IPropsHeader ) => {
         <HeaderCenter>
             {language === 'KO' &&
                 <>
-                    <HeaderBtn tabState={TabState.MAIN} onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.MAIN}))}>
+                    <HeaderBtn color={isActiveTab(TabState.MAIN)} onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.MAIN}))}>
                         <span>HOME</span>
                     </HeaderBtn>
-                    <HeaderBtn tabState={TabState.PUBLIC} onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.PUBLIC}))}>
+                    <HeaderBtn color={isActiveTab(TabState.PUBLIC)} onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.PUBLIC}))}>
                         <span>PUBLIC</span>
                     </HeaderBtn>
-                    <HeaderBtn tabState={TabState.PRIVATE} onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.PRIVATE}))}>
+                    <HeaderBtn color={isActiveTab(TabState.PRIVATE)} onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.PRIVATE}))}>
                         <span>PRIVATE</span>
                     </HeaderBtn>
-                    <HeaderBtn tabState={TabState.GALLERY} onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.GALLERY}))}>
+                    <HeaderBtn color={isActiveTab(TabState.GALLERY)} onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.GALLERY}))}>
                         <span>Gallery</span>
                     </HeaderBtn>
-                    <HeaderBtn tabState={TabState.NEW} onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.NEW}))}>
+                    <HeaderBtn color={isActiveTab(TabState.NEW)} onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.NEW}))}>
                         <span>NEW 🚧</span>
                     </HeaderBtn>
                 </>

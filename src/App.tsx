@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { coreActions, selectCore } from './store/slices/core';
 import { MOBILE_DESKTOP_THRESHOLD } from './styles/GlobalConst';
 import { ReactNotifications } from 'react-notifications-component';
-import { ProjectsMain } from './pages/Projects';
+import { ProjectsMain } from './pages/projects/Projects';
 import { ExpElements } from './pages/experimental/Elements';
 
 const RedirectComponent = ({ red_url } : { red_url : string }) => {

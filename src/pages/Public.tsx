@@ -11,40 +11,42 @@ interface IPropsExtensibleSPAN {
     extContent: JSX.Element;
 };
 
+const ExtensibleSPANWrapper = styled(BasicDIV)`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+`;
+const ExtensibleSPANTitle = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+`;
+const ExtensibleBtn = styled.span`
+    color: var(--hp-blue);
+    cursor: pointer;
+    &:active {
+        color: var(--hp-blue-active);
+    };
+
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+
+    font-size: 22px;
+`;
+const ExtensibleSPANBody = styled.div`
+    width: 100%;
+    display: flex;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+`;
+
 export const ExtensibleSPAN = ({ content, extContent } : IPropsExtensibleSPAN) => {
     const [extended, setExtended] = useState(false);
 
-    const ExtensibleSPANWrapper = styled(BasicDIV)`
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-    `;
-    const ExtensibleSPANTitle = styled.div`
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 5px;
-    `;
-    const ExtensibleBtn = styled.span`
-        color: var(--hp-blue);
-        cursor: pointer;
-        &:active {
-            color: var(--hp-blue-active);
-        };
-
-        -webkit-user-select: none; /* Safari */
-        -ms-user-select: none; /* IE 10 and IE 11 */
-        user-select: none; /* Standard syntax */
-
-        font-size: 22px;
-    `;
-    const ExtensibleSPANBody = styled.div`
-        width: 100%;
-        display: flex;
-        margin-top: 5px;
-        margin-left: 5px;
-        margin-bottom: 10px;
-    `;
+    
     return <ExtensibleSPANWrapper>
         <ExtensibleSPANTitle>
             {content}

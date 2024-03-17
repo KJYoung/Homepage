@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
+import { PublicationWrapperDiv } from "../public/PublicationContents";
 
 export const ProjectsMain = () => {
     const navigate = useNavigate();
     return <div>
-        <button onClick={() => navigate('/Projects/Evidential-Semantic-Mapping') }>Evidential Semantic Mapping</button>
-
+        <PublicationWrapperDiv navigate={navigate}/>
     </div>
 };
