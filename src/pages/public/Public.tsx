@@ -6,6 +6,7 @@ import { notificationSuccess } from "../../utils/sendNoti";
 import { useNavigate } from "react-router-dom";
 import { PublicationWrapperDiv } from "./PublicationContents";
 import { BR } from "../../customs/Basics";
+import { FlexColumnStart } from "../../customs/Divs";
 
 export const DOCUMENT_ROOT = process.env.PUBLIC_URL + "/document/";
 
@@ -14,12 +15,13 @@ const PublicEn = () => {
     return <PublicWrapper>
         <GeneralDiv>
             <GeneralMainDiv>
-                <GeneralTextWrapper>
-                    <H2>Junyoung Kim</H2>
-                    I'm a Robotics&Computer Vision researcher at ADD.
+                <FlexColumnStart>
+                    <H2 marginBottom="12px">Junyoung Kim</H2>
+                    <br />
+                    <SPAN marginRight="10px">I am a Robotics & Computer Vision researcher at Agency for Defense Development (ADD) in the South Korea.</SPAN>
                     <br />
                     (Work In Progress...)
-                </GeneralTextWrapper>
+                </FlexColumnStart>
                 <Portrait src={PORTRAIT_URL} alt="imgElement"/>
             </GeneralMainDiv>
             <ContactInfoDiv>
@@ -145,7 +147,7 @@ const FlexBox = styled.div`
     flex-direction: column;
 
     border-radius: 8px;
-`
+`;
 const ContentDiv = styled.div`
     display: flex;
     flex-direction: column;
@@ -153,7 +155,7 @@ const ContentDiv = styled.div`
         margin-bottom: 2px;
     }
     margin-bottom: 20px;
-`
+`;
 const GeneralDiv = styled.div`
     display: flex;
     flex-direction: column;
@@ -167,10 +169,6 @@ const GeneralMainDiv = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-`;
-const GeneralTextWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
 `;
 
 const ContactInfoDiv = styled.div`

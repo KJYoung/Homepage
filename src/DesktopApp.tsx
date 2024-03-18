@@ -1,7 +1,4 @@
 import { useSelector } from "react-redux";
-import styled from "styled-components";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
 import Gallery from "./pages/Gallery";
 import MainPage from "./pages/MainPage";
 import New from "./pages/New";
@@ -21,31 +18,15 @@ export const DesktopApp = ( { language } : DesktopAppProps) => {
     if(language === 'KO'){
       return (
         <>
-          <Background>
-            <Header isMobile={false} language={language}/>
-            <Body>
-              {coreState.selectedTab === TabState.MAIN && <MainPage />}
-              {coreState.selectedTab === TabState.PUBLIC && <Public />}
-              {coreState.selectedTab === TabState.PRIVATE && <Private />}
-              {coreState.selectedTab === TabState.GALLERY && <Gallery isMobile={false}/>}
-              {coreState.selectedTab === TabState.NEW && <New />}
-            </Body>
-            <Footer />
-          </Background>
+            {coreState.selectedTab === TabState.MAIN && <MainPage />}
+            {coreState.selectedTab === TabState.PUBLIC && <Public />}
+            {coreState.selectedTab === TabState.PRIVATE && <Private />}
+            {coreState.selectedTab === TabState.GALLERY && <Gallery isMobile={false}/>}
+            {coreState.selectedTab === TabState.NEW && <New />}
         </>
       );
     }else if(language === 'EN'){
-      return (
-        <>
-          <Background>
-            <Header isMobile={false} language={language}/>
-            <Body>
-              <PublicEn />
-            </Body>
-            <Footer />
-          </Background>
-        </>
-      );
+      return < PublicEn />;
     }else{
       return <>
         <span>Unreachable</span>
@@ -53,20 +34,3 @@ export const DesktopApp = ( { language } : DesktopAppProps) => {
     }
   };
   
-  const Background = styled.div`
-    width: 100vw;
-    min-height: 100vh;
-    height: 100%;
-    background-color: var(--hp-back);
-  `;
-  
-  const Body = styled.div`
-    width: 100%;
-    min-height: 95vh;
-    height: 100%;
-    padding: 10px;
-  
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  `;

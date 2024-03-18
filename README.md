@@ -7,6 +7,7 @@
 2023.03.06. Custom ImageDiv Slider Draft Completed. Header Mode Selector.   
 2023.03.07. LinkSpan.   
 2023.03.31. Custom Checkbox.   
+2024.03.19. 많은 것들이 진행됨. 일단 Store, Header Logic 정리해야 함. Mobile, Desktop Design도..
 TODO: Custom Image Slider Left/Right Indicator.   
    
 ## Available Scripts

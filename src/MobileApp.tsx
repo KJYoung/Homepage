@@ -1,8 +1,6 @@
 import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import styled from "styled-components";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
 import Gallery from "./pages/Gallery";
 import MainPage from "./pages/MainPage";
 import New from "./pages/New";
@@ -24,8 +22,6 @@ export const MobileApp = ({ language } : MobileAppProps) => {
           path="Homepage/*"
           element={
             <>
-              <Background>
-                <Header isMobile={true} language={language}/>
                 <Body>
                   {coreState.selectedTab === TabState.MAIN && <MainPage />}
                   {coreState.selectedTab === TabState.PUBLIC && <Public />}
@@ -33,8 +29,6 @@ export const MobileApp = ({ language } : MobileAppProps) => {
                   {coreState.selectedTab === TabState.GALLERY && <Gallery isMobile={true}/>}
                   {coreState.selectedTab === TabState.NEW && <New />}
                 </Body>
-                <Footer />
-              </Background>
             </>
           }
         />
@@ -48,18 +42,6 @@ export const MobileApp = ({ language } : MobileAppProps) => {
       </Routes>
     );
   };
-  
-  const Background = styled.div`
-    width: 100vw;
-    min-height: 100vh;
-    height: 100%;
-    background-color: var(--hp-gray);
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  `;
   
   const Body = styled.div`
     width: 100%;

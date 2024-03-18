@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { coreActions, DarkLightState, selectCore, TabState } from "../store/slices/core";
 import { LANGUAGE } from "../utils/Language";
 import { useNavigate } from "react-router-dom";
+import { NAV_GALL_PAGE, NAV_MAIN_PAGE } from "../App";
 
 interface IPropsHeader {
     isMobile: boolean;
@@ -45,10 +46,16 @@ const Header = ({ isMobile, language }: IPropsHeader ) => {
         }
     }
     
+
+    const go_to_fn = (action: TabState, link: string) => {
+        dispatch(coreActions.setTab({selectedTab: action}));
+        navigate(link);
+    };
+
     return isMobile ? <MobileHeaderRoot>
         {/* MOBILE HEADER */}
         <MobileHeaderCenter>
-            <HeaderBtn color={isActiveTab(TabState.MAIN)} onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.MAIN}))}>
+            <HeaderBtn color={isActiveTab(TabState.MAIN)} onClick={() => go_to_fn(TabState.MAIN, NAV_MAIN_PAGE)}>
                 <FontAwesomeIcon icon={faHome}/>
             </HeaderBtn>
             <HeaderBtn color={isActiveTab(TabState.PUBLIC)} onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.PUBLIC}))}>
@@ -57,7 +64,7 @@ const Header = ({ isMobile, language }: IPropsHeader ) => {
             <HeaderBtn color={isActiveTab(TabState.PRIVATE)} onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.PRIVATE}))}>
                 <FontAwesomeIcon icon={faPerson}/>
             </HeaderBtn>
-            <HeaderBtn color={isActiveTab(TabState.GALLERY)} onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.GALLERY}))}>
+            <HeaderBtn color={isActiveTab(TabState.GALLERY)} onClick={() => go_to_fn(TabState.GALLERY, NAV_GALL_PAGE)}>
                 <FontAwesomeIcon icon={faPhotoFilm}/>
             </HeaderBtn>
         </MobileHeaderCenter>
@@ -69,7 +76,7 @@ const Header = ({ isMobile, language }: IPropsHeader ) => {
         <HeaderCenter>
             {language === 'KO' &&
                 <>
-                    <HeaderBtn color={isActiveTab(TabState.MAIN)} onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.MAIN}))}>
+                    <HeaderBtn color={isActiveTab(TabState.MAIN)} onClick={() => go_to_fn(TabState.MAIN, NAV_MAIN_PAGE)}>
                         <span>HOME</span>
                     </HeaderBtn>
                     <HeaderBtn color={isActiveTab(TabState.PUBLIC)} onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.PUBLIC}))}>
@@ -78,7 +85,7 @@ const Header = ({ isMobile, language }: IPropsHeader ) => {
                     <HeaderBtn color={isActiveTab(TabState.PRIVATE)} onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.PRIVATE}))}>
                         <span>PRIVATE</span>
                     </HeaderBtn>
-                    <HeaderBtn color={isActiveTab(TabState.GALLERY)} onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.GALLERY}))}>
+                    <HeaderBtn color={isActiveTab(TabState.GALLERY)} onClick={() => go_to_fn(TabState.GALLERY, NAV_GALL_PAGE)}>
                         <span>Gallery</span>
                     </HeaderBtn>
                     <HeaderBtn color={isActiveTab(TabState.NEW)} onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.NEW}))}>
