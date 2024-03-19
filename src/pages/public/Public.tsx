@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { H1, H2, H3, LinkSpan, SPAN } from "../../customs/Spans";
-import { ExtensibleSPAN } from "../Public";
+import { ExtensibleSPAN } from "../PublicDep";
 import { PORTRAIT_URL } from "../../DATA/Public_URL";
 import { notificationSuccess } from "../../utils/sendNoti";
 import { useNavigate } from "react-router-dom";

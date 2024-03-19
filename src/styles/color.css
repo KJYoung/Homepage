@@ -1,5 +1,4 @@
 :root {
-    --hp-back: #eef5fd;
     --hp-back: #ffffff;
     --hp-back-darker: #dae1e8;
     --hp-white: #ffffff;
@@ -20,4 +19,7 @@
     --hp-footer: #474747;
     --hp-header-left: #ff777783;
     --hp-header-right: #777cffc5;
+
+    --youtube-mode-one: #61b327;
+    --youtube-mode-two: #8972ff;
 }

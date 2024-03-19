@@ -5,8 +5,15 @@ export const Flex = styled(BasicDIV)`
     display: flex;
     width: 100%;
     height: 100%;
-
     /* border: 1px solid green; */
+`;
+export const FlexNotFull = styled(BasicDIV)`
+    display: flex;
+`;
+export const FlexColumnStartCenterNotFull = styled(FlexNotFull)`
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 `;
 export const FlexColumnStart = styled(Flex)`
     flex-direction: column;
@@ -17,7 +24,7 @@ export const FlexColumnStartCenter = styled(Flex)`
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-`
+`;
 export const FlexColumnCenter = styled(Flex)`
     flex-direction: column;
     justify-content: center;

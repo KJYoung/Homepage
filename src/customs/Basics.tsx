@@ -5,10 +5,18 @@ export interface IPropsBasicCSS {
     marginRight?: string;
     marginTop?: string;
     marginBottom?: string;
+    margin?: string;
+    paddingLeft?: string;
+    paddingRight?: string;
+    paddingTop?: string;
+    paddingBottom?: string;
+    padding?: string;
     fontSize?: string;
     fontWeight?: string;
     textDecoration?: string;
     backgroundColor?: string;
+    borderRadius?: string;
+    position?: string;
 };
 
 // Basic Elements: SPAN, Button, Div
@@ -60,6 +68,19 @@ export const BasicDIV = styled.div<IPropsBasicCSS>`
     margin-right: ${({ marginRight }) => marginRight};
     margin-top: ${({ marginTop }) => marginTop};
     margin-bottom: ${({ marginBottom }) => marginBottom};
+    margin: ${({ margin }) => margin};
+
+    padding-left: ${({ paddingLeft }) => paddingLeft};
+    padding-right: ${({ paddingRight }) => paddingRight};
+    padding-top: ${({ paddingTop }) => paddingTop};
+    padding-bottom: ${({ paddingBottom }) => paddingBottom};
+    padding: ${({ padding }) => padding};
+
+    border-radius: ${({ borderRadius }) => borderRadius};
+
+    background-color: ${({ backgroundColor = 'hp-white' }) => getRGBfromVar(backgroundColor)};
+    transition: background-color 0.4s ease-in-out; /* Add transition for background color */
+    position: ${({ position }) => position};
 `;
 
 export const BR = styled.div`
@@ -67,11 +88,6 @@ export const BR = styled.div`
     border-bottom: 1px solid gray;
     margin-bottom: 10px;
 `;
-
-
-
-
-
 
 // Clickable: Default, Hover, Active의 Color Scheme을 정해야 함.
 

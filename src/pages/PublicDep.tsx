@@ -59,7 +59,7 @@ export const ExtensibleSPAN = ({ content, extContent } : IPropsExtensibleSPAN) =
 }
 
 
-const Public = () => {
+export const PublicDep = () => {
     return <PublicWrapper>
         <EducationDiv>
             <H2>Education & Research & Career</H2><BR />
@@ -234,4 +234,3 @@ const BR = styled.div`
     border-bottom: 1px solid gray;
     margin-bottom: 10px;
 `;
-export default Public;
