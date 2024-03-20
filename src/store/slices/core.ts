@@ -3,7 +3,7 @@ import { RootState } from "..";
 import { LANGUAGE } from "../../utils/Language";
 
 export enum TabState {
-  MAIN = 0, PUBLIC = 1, PRIVATE = 2, GALLERY = 3, NEW = 4
+  MAIN = 0, PUBLIC = 1, PRIVATE = 2, GALLERY = 3, NEW = 4, PROJECTS = 5,
 };
 
 export enum DarkLightState {

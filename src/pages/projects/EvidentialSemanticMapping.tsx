@@ -4,8 +4,11 @@ import { ARXIV_ICON_URL, YOUTUBE_ICON_URL } from "../../DATA/Public_URL"
 import { FlexColumnStartCenter, FlexColumnStartCenterNotFull, FlexRowCenter } from "../../customs/Divs"
 import { H3, SPAN } from "../../customs/Spans"
 import { CustomToggle } from "../../customs/CustomToggle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BasicDIV } from "../../customs/Basics";
+import { useDispatch } from "react-redux";
+import { TabState, coreActions } from "../../store/slices/core";
+import { JunwonSeo, JunyoungKim } from "../public/PublicationContents";
 
 const IconImg = styled.img`
     max-width: 36px;
@@ -14,6 +17,10 @@ const IconImg = styled.img`
     cursor: pointer;
 `;
 export const EvidentialSemanticMapping = () => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(coreActions.setTab({selectedTab: TabState.PROJECTS}));
+    }, [dispatch]);
     const [isShortVideo, setIsShortVideo] = useState<boolean>(false);
     const YoutubeOption = {
         height: '315',
@@ -31,9 +38,11 @@ export const EvidentialSemanticMapping = () => {
         </FlexRowCenter>
         {/* AUTHOR */}
         <FlexRowCenter marginTop="20px">
-            <SPAN>
-                Junyoung Kim*, Junwon Seo*, Jihong Min
-            </SPAN>
+            <SPAN className="clickable" onClick={() => window.open(JunyoungKim.url, '_blank')}>Junyoung Kim</SPAN>
+            <SPAN marginRight="5px">*, </SPAN> 
+            <SPAN className="clickable" onClick={() => window.open(JunwonSeo.url, '_blank')}>Junwon Seo</SPAN>
+            <SPAN marginRight="5px">*, </SPAN> 
+            <SPAN>Jihong Min</SPAN>   
         </FlexRowCenter>
         {/* ICONS */}
         <FlexRowCenter marginTop="0px">

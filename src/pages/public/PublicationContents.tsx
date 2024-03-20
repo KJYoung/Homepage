@@ -10,6 +10,7 @@ import { BR, BasicDIV } from "../../customs/Basics";
 type TPublicationAuthor = {
     name: string,
     withStar?: boolean,
+    url?: string,
     isMe?: boolean,
     isLast?: boolean,
 };
@@ -30,26 +31,28 @@ type TPublicContent = {
     publication : TPublicationContents,
 };
 
-const JunyoungKim: TPublicationAuthor = {
+export const JunyoungKim: TPublicationAuthor = {
     name: 'Junyoung Kim',
+    url: 'https://kjyoung.github.io/Homepage/',
     isMe: true,
 };
-const JunyoungKimStar = {
+export const JunyoungKimStar = {
     ...JunyoungKim,
     withStar: true,
 };
-const JunwonSeo: TPublicationAuthor = {
+export const JunwonSeo: TPublicationAuthor = {
     name: 'Junwon Seo',
+    url: 'https://junwon.me/',
     withStar: true,
 };
-const JunwonSeoStar: TPublicationAuthor = {
+export const JunwonSeoStar: TPublicationAuthor = {
     ...JunwonSeo,
     withStar: true,
 };
-const JihongMin: TPublicationAuthor = {
+export const JihongMin: TPublicationAuthor = {
     name: 'Jihong Min',
 };
-const SunamCho: TPublicationAuthor = {
+export const SunamCho: TPublicationAuthor = {
     name: 'Sunam Cho',
 };
 

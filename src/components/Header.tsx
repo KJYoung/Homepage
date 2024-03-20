@@ -1,11 +1,11 @@
-import { faHome, faPerson, faPhotoFilm, faScroll } from "@fortawesome/free-solid-svg-icons";
+import { faPhotoFilm, faScroll } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { coreActions, DarkLightState, selectCore, TabState } from "../store/slices/core";
 import { LANGUAGE } from "../utils/Language";
 import { useNavigate } from "react-router-dom";
-import { NAV_GALL_PAGE, NAV_LOBBY_PAGE, NAV_MAIN_PAGE, NAV_NEWW_PAGE, NAV_PRIV_PAGE } from "../App";
+import { NAV_GALL_PAGE, NAV_MAIN_PAGE, NAV_PROJ_PAGE } from "../App";
 
 interface IPropsHeader {
     isMobile: boolean;
@@ -68,7 +68,7 @@ const Header = ({ isMobile, language }: IPropsHeader ) => {
         </MobileHeaderCenter>
     </MobileHeaderRoot> 
     :
-    <HeaderRoot>
+    <HeaderRoot className="no-select">
     {/* DESKTOP HEADER */}
         <HeaderLeft onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.MAIN}))}></HeaderLeft>
         <HeaderCenter>
@@ -81,6 +81,9 @@ const Header = ({ isMobile, language }: IPropsHeader ) => {
             {/* <HeaderBtn color={isActiveTab(TabState.PRIVATE)} onClick={() => go_to_fn(TabState.PRIVATE, NAV_PRIV_PAGE)}>
                 <span>PRIVATE</span>
             </HeaderBtn> */}
+            <HeaderBtn color={isActiveTab(TabState.PROJECTS)} onClick={() => go_to_fn(TabState.PROJECTS, NAV_PROJ_PAGE)}>
+                <span>PROJECTS</span>
+            </HeaderBtn>
             <HeaderBtn color={isActiveTab(TabState.GALLERY)} onClick={() => go_to_fn(TabState.GALLERY, NAV_GALL_PAGE)}>
                 <span>GALLERY</span>
             </HeaderBtn>
@@ -112,9 +115,7 @@ const HeaderRoot = styled.div`
   display: grid;
   grid-template-columns: 2fr 8fr 2fr;
 
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
+  border-bottom: 1px solid var(--hp-gray);
 `;
 const MobileHeaderRoot = styled.div`
   width: 100%;
@@ -160,6 +161,7 @@ const HeaderCenter = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  border-bottom: 1px solid var(--hp-gray);
 `;
 const MobileHeaderCenter = styled(HeaderCenter)`
     height: 65px;
