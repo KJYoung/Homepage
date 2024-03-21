@@ -53,7 +53,7 @@ const ToggleButtonCircle = styled.div<ToggleButtonCircleProps>`
   background-color: #fff;
   display: inline-block;
   padding: 4px 8px;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease;
   transform: translateX(${props => (props.isOn ? '100%' : '0')});
   white-space: nowrap; /* Prevent text wrapping */
   overflow: hidden; /* Hide overflowed text */

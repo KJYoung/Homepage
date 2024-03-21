@@ -17,6 +17,12 @@ export interface IPropsBasicCSS {
     backgroundColor?: string;
     borderRadius?: string;
     position?: string;
+    overflow?: string;
+    maxWidth?: string;
+    lineHeight?: number; // SPAN 줄간격
+    textAlign?: string; // SPAN 정렬
+    width?: string;
+    height?: string;
 };
 
 // Basic Elements: SPAN, Button, Div
@@ -30,6 +36,9 @@ export const BasicSPAN = styled.span<IPropsBasicCSS>`
     font-size: ${({ fontSize }) => fontSize};
     text-decoration: ${({ textDecoration }) => textDecoration};
 
+    max-width: ${({ maxWidth }) => maxWidth};
+    line-height: ${({ lineHeight }) => lineHeight};
+    text-align: ${({ textAlign }) => textAlign};
     .bold {
         font-weight: 600;
     }
@@ -76,11 +85,15 @@ export const BasicDIV = styled.div<IPropsBasicCSS>`
     padding-bottom: ${({ paddingBottom }) => paddingBottom};
     padding: ${({ padding }) => padding};
 
+    width: ${({ width }) => width};
+    height: ${({ height }) => height};
+
     border-radius: ${({ borderRadius }) => borderRadius};
 
     background-color: ${({ backgroundColor = 'hp-white' }) => getRGBfromVar(backgroundColor)};
     transition: background-color 0.4s ease-in-out; /* Add transition for background color */
     position: ${({ position }) => position};
+    overflow: ${({ overflow }) => overflow};
 `;
 
 export const BR = styled.div`

@@ -22,6 +22,8 @@ type TPublicationContent = {
     imgURL: string,
     hpURL?: string,
     url: string,
+    abstract: string,
+    frameworkDescription?: string,
 };
 type TPublicationContents = {
     contents: TPublicationContent[],
@@ -56,18 +58,22 @@ export const SunamCho: TPublicationAuthor = {
     name: 'Sunam Cho',
 };
 
+export const EvSemMapObj: TPublicationContent = {
+    title: 'Evidential Semantic Mapping in Off-road Environments with Uncertainty-aware Bayesian Kernel Inference',
+    author: [JunyoungKimStar, JunwonSeoStar, {...JihongMin, isLast: true}],
+    status: 'Under Review, 2024',
+    description: 'Uncertainty-aware semantic BKI mapping framework for robust deployments in off-road environments using Evidential Deep Learning.',
+    imgURL: PUB2_FIG_URL,
+    hpURL: '/Projects/Evidential-Semantic-Mapping',
+    url: 'https://www.jeaht.org/upload/pdf/jeaht-23-4-171.pdf',
+    abstract: 'Robotic mapping with Bayesian Kernel Inference (BKI) has shown promise in creating semantic maps by effectively leveraging local spatial information. However, existing semantic mapping methods face challenges in constructing reliable maps in unstructured outdoor scenarios due to unreliable semantic predictions. To address this issue, we propose an evidential semantic mapping, which can enhance reliability in perceptually challenging off-road environments. We integrate Evidential Deep Learning into the semantic segmentation network to obtain the uncertainty estimate of semantic prediction. Subsequently, this semantic uncertainty is incorporated into an uncertainty-aware BKI, tailored to prioritize more confident semantic predictions when accumulating semantic information. By adaptively handling semantic uncertainties, the proposed framework constructs robust representations of the surroundings even in previously unseen environments. Comprehensive experiments across various off-road datasets demonstrate that our framework enhances accuracy and robustness, consistently outperforming existing methods in scenes with high perceptual uncertainties.',
+    frameworkDescription: 'Overview pipeline of our uncertainty-aware semantic BKI framework. With an evidential segmentation network trained by EDL, input data is processed to derive continuous semantic probability and uncertainty. These 3D semantic points are then integrated into the semantic map through Bayesian updates using the uncertainty-aware BKI, resulting in a dependable semantic map and variance map in uncertain off-road environments.'
+};
+
 export const PublicContent: TPublicContent = {
     'publication' : {
         'contents' : [
-            {
-                title: 'Evidential Semantic Mapping in Off-road Environments with Uncertainty-aware Bayesian Kernel Inference',
-                author: [JunyoungKimStar, JunwonSeoStar, {...JihongMin, isLast: true}],
-                status: 'Under Review, 2024',
-                description: 'Uncertainty-aware semantic BKI mapping framework for robust deployments in off-road environments using Evidential Deep Learning.',
-                imgURL: PUB2_FIG_URL,
-                hpURL: '/Projects/Evidential-Semantic-Mapping',
-                url: 'https://www.jeaht.org/upload/pdf/jeaht-23-4-171.pdf',
-            },
+            EvSemMapObj,
             {
                 title: 'Analysis of Factors Causing Differences in the Human Hazards of Permetrin',
                 author: [JunyoungKim, {...SunamCho, isLast: true}],
@@ -75,6 +81,7 @@ export const PublicContent: TPublicContent = {
                 description: 'We analyzed research papers on the toxicity of permethrin insecticide to point out cautions when utilizing the results of existing toxicity analysis studies.',
                 imgURL: PUB1_FIG_URL,
                 url: 'https://www.jeaht.org/upload/pdf/jeaht-23-4-171.pdf',
+                abstract: '',
             },
         ],
     }
