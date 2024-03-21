@@ -1,8 +1,8 @@
 import styled from "styled-components"
 import YouTube from "react-youtube";
 import { ARXIV_ICON_URL, PUB2_FRAMEWORK_URL, YOUTUBE_ICON_URL } from "../../DATA/Public_URL"
-import { FlexColumnStartCenter, FlexColumnStartCenterNotFull, FlexRowCenter } from "../../customs/Divs"
-import { H1, SPAN } from "../../customs/Spans"
+import { FlexColumnStartCenter, FlexColumnStartCenterNotFull, FlexRowCenter, FlexRowStart } from "../../customs/Divs"
+import { H1, H3, SPAN } from "../../customs/Spans"
 import { CustomToggle } from "../../customs/CustomToggle";
 import { useEffect, useState } from "react";
 import { BasicDIV } from "../../customs/Basics";
@@ -64,7 +64,6 @@ export const EvidentialSemanticMapping = () => {
                     <YouTube videoId="5cYY5c25GqE" opts={YoutubeOption} id="video" style={{zIndex: 2}}/> 
                 }
             </BasicDIV>
-            {/* <Overlay margin="10px" /> */}
         </FlexColumnStartCenterNotFull>
         <FlexColumnStartCenter marginTop="30px">
             <FlexRowCenter>
@@ -74,12 +73,20 @@ export const EvidentialSemanticMapping = () => {
                 <SPAN maxWidth="820px" lineHeight={1.6} textAlign="justify">{EvSemMapObj.abstract}</SPAN>
             </FlexRowCenter>
         </FlexColumnStartCenter>
-        <FlexColumnStartCenter marginTop="50px" marginBottom="100px">
+        <FlexColumnStartCenter marginTop="50px">
             <Pub2FrameworkImg src={PUB2_FRAMEWORK_URL} alt={"Framework Overview"} />
             <FlexRowCenter marginTop="16px">
                 <SPAN maxWidth="1200px" lineHeight={1.6} textAlign="justify">▲ {EvSemMapObj.frameworkDescription}</SPAN>
             </FlexRowCenter>
         </FlexColumnStartCenter>
+        <FlexColumnStartCenterNotFull marginTop="30px" marginBottom="100px" width="1200px">
+            <FlexRowStart width="1200px">
+                <H3>BibTeX</H3>
+            </FlexRowStart>
+            <BibTexSection width="1200px" marginTop="12px">
+                <BibTexContent>{bibTexData}</BibTexContent>
+            </BibTexSection>
+        </FlexColumnStartCenterNotFull>
     </FlexColumnStartCenter>
 }
 
@@ -89,13 +96,29 @@ const Pub2FrameworkImg = styled.img`
     padding: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Change the values as per your preference */
 `;
-export const Overlay = styled(BasicDIV)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 560px;
-  height: 315px;
-  background-color: black;
-  opacity: 1.0; /* Adjust opacity as needed */
-  z-index: 1; /* Ensure overlay is above other content */
+
+// Define the styled components
+const BibTexSection = styled(BasicDIV)`
+  padding: 20px;
+  background-color: var(--bibtex-bg);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `;
+
+const BibTexContent = styled.pre`
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  color: var(--bibtex-fg);
+  white-space: pre-wrap;
+`;
+
+// Define the BiBTex data
+const bibTexData = `@article{example-article,
+  author = {Author, A.},
+  title = {Example Article},
+  journal = {Journal of Examples},
+  year = {2022},
+  volume = {1},
+  number = {1},
+  pages = {1-10}
+}`;
