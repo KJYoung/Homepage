@@ -53,9 +53,9 @@ const PublicEn = () => {
             <SPAN marginLeft='40px' lineHeight={1.2}>
                 Double Major (BioScience, Computer Science&Engineering) - [4.17/4.30, Summa Cum Laude(2<SPAN fontSize="10px" verticalAlign="super">nd</SPAN>/40)]
             </SPAN>
-            <H5 marginLeft='20px' lineHeight={1.2}>🔄 2023.04 ~ 2026.05 Agency for Defense Development(ADD) - Research Officer for National Defense (ROND)</H5>
+            <H5 marginLeft='20px' lineHeight={1.2}>🔄 2023.04 ~ 2026.05 Agency for Defense Development (ADD) - Military Service</H5>
             <SPAN marginLeft='40px' lineHeight={1.2}>
-                Research on computer vision and robotics
+                Research Officer for National Defense (ROND)
             </SPAN>
             <H3 marginLeft='10px' marginTop="15px" marginBottom="4px">Research Interests</H3>
             <SPAN marginLeft='20px'>

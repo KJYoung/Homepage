@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import YouTube from "react-youtube";
-import { ARXIV_ICON_URL, PUB2_FRAMEWORK_URL, YOUTUBE_ICON_URL } from "../../DATA/Public_URL"
+import { ARXIV_ICON_URL, PUB2_FRAMEWORK_URL, PUB2_RES1_URL, PUB2_RES2_URL, YOUTUBE_ICON_URL } from "../../DATA/Public_URL"
 import { FlexColumnStartCenter, FlexColumnStartCenterNotFull, FlexRowCenter, FlexRowStart } from "../../customs/Divs"
 import { H1, H3, SPAN } from "../../customs/Spans"
 import { CustomToggle } from "../../customs/CustomToggle";
@@ -79,12 +79,24 @@ export const EvidentialSemanticMapping = () => {
                 <SPAN maxWidth="1200px" lineHeight={1.6} textAlign="justify">▲ {EvSemMapObj.frameworkDescription}</SPAN>
             </FlexRowCenter>
         </FlexColumnStartCenter>
+        <FlexColumnStartCenter marginTop="50px">
+            <Pub2FrameworkImg src={PUB2_RES1_URL} alt={"Main Result"} />
+            <FlexRowCenter marginTop="16px">
+                <SPAN maxWidth="1200px" lineHeight={1.6} textAlign="justify">▲ {EvSemMapObj.mainResultDescription}</SPAN>
+            </FlexRowCenter>
+        </FlexColumnStartCenter>
+        <FlexColumnStartCenter marginTop="50px">
+            <Pub2FrameworkImg src={PUB2_RES2_URL} alt={"ZeroShot Result"} />
+            <FlexRowCenter marginTop="16px">
+                <SPAN maxWidth="1200px" lineHeight={1.6} textAlign="justify">▲ {EvSemMapObj.supResultDescription}</SPAN>
+            </FlexRowCenter>
+        </FlexColumnStartCenter>
         <FlexColumnStartCenterNotFull marginTop="30px" marginBottom="100px" width="1200px">
             <FlexRowStart width="1200px">
                 <H3>BibTeX</H3>
             </FlexRowStart>
             <BibTexSection width="1200px" marginTop="12px">
-                <BibTexContent>{bibTexData}</BibTexContent>
+                <BibTexContent>{EvSemMapObj.BibTeX}</BibTexContent>
             </BibTexSection>
         </FlexColumnStartCenterNotFull>
     </FlexColumnStartCenter>
@@ -112,11 +124,3 @@ const BibTexContent = styled.pre`
   white-space: pre-wrap;
   line-height: 1.3;
 `;
-
-// Define the BiBTex data
-const bibTexData = `@article{kim2024evidential,
-    title={Evidential Semantic Mapping in Off-road Environments with Uncertainty-aware Bayesian Kernel Inference}, 
-    author={Junyoung Kim and Junwon Seo and Jihong Min},
-    journal={arXiv preprint arXiv:2403.14138},
-    year={2024},
-}`;
