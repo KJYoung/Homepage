@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { H1, H2, H3, LinkSpan, SPAN } from "../../customs/Spans";
+import { H1, H2, H3, H4, H5, LinkSpan, SPAN } from "../../customs/Spans";
 import { ExtensibleSPAN } from "../PublicDep";
 import { PORTRAIT_URL } from "../../DATA/Public_URL";
 import { notificationSuccess } from "../../utils/sendNoti";
@@ -9,6 +9,11 @@ import { BR } from "../../customs/Basics";
 import { FlexColumnStart } from "../../customs/Divs";
 
 export const DOCUMENT_ROOT = process.env.PUBLIC_URL + "/document/";
+
+export const PublicBR = styled(BR)`
+    margin-top: 5px;
+    margin-bottom: 5px;
+`;
 
 const PublicEn = () => {
     const navigate = useNavigate();
@@ -39,31 +44,29 @@ const PublicEn = () => {
                 <a href="https://scholar.google.co.kr/citations?user=w2JODm8AAAAJ&hl=en&oi=sra">Google Scholar</a>
             </ContactInfoDiv>
         </GeneralDiv>
-        <EducationDiv>
-            <H1>Education & Research & Career</H1><BR />
-            <H3 marginLeft='10px'>History</H3>
-            <SPAN marginLeft='20px'>
-                <span className="bold">2019.03 ~ 2023.02 Seoul National University(SNU)</span>
-                <br/>
-                &nbsp;&nbsp; Double Major(BioScience,Computer Science&Engineering)
-                <br/>
-                &nbsp;&nbsp; 4.17/4.30, Summa Cum Laude(2nd/40)
+        <FlexColumnStart marginBottom="20px">
+            <H1>Profile</H1>
+            <PublicBR />
+            <H3 marginLeft='10px' marginBottom="4px">History</H3>
+            <H5 marginLeft='20px' lineHeight={1.2}>✅ 2017.03 ~ 2019.02 Hansung Science High School (HSHS) - High School</H5>
+            <H5 marginLeft='20px' lineHeight={1.2}>✅ 2019.03 ~ 2023.02 Seoul National University (SNU) - Bachelor</H5>
+            <SPAN marginLeft='40px' lineHeight={1.2}>
+                Double Major (BioScience, Computer Science&Engineering) - [4.17/4.30, Summa Cum Laude(2<SPAN fontSize="10px" verticalAlign="super">nd</SPAN>/40)]
             </SPAN>
-            
-            <SPAN marginLeft='20px'>
-                <span className="bold">2023.04 ~ 2026.05 Agency for Defense Development(ADD)</span>
-                <br/>
-                &nbsp;&nbsp; Research Officer for National Defense(ROND)
+            <H5 marginLeft='20px' lineHeight={1.2}>🔄 2023.04 ~ 2026.05 Agency for Defense Development(ADD) - Research Officer for National Defense (ROND)</H5>
+            <SPAN marginLeft='40px' lineHeight={1.2}>
+                Research on computer vision and robotics
             </SPAN>
-            <H3 marginLeft='10px' marginTop="15px">Subjects</H3>
+            <H3 marginLeft='10px' marginTop="15px" marginBottom="4px">Research Interests</H3>
             <SPAN marginLeft='20px'>
                 <span className="bold">CSE</span>: Computer Vision, Robotics, Artificial Intelligence, Uncertainty</SPAN>
             <SPAN marginLeft='20px'>
                 <span className="bold">BIO</span>: BioInformatics, NeuroScience, cryo-EM, cryo-ET</SPAN>
-        </EducationDiv>
+        </FlexColumnStart>
         <PublicationWrapperDiv navigate={navigate}/>
         <ProjectsDiv>
-            <H2 onClick={() => { navigate('/Projects/'); }}>Projects</H2><BR />
+            <H2 onClick={() => { navigate('/Projects/'); }}>Projects</H2>
+            <PublicBR />
             <ExtensibleSPAN content={<>
                 <SPAN marginLeft='20px'>2022 Fall Semester FitTogether Team Project</SPAN>
             </>} extContent={<FlexBox>
@@ -82,7 +85,8 @@ const PublicEn = () => {
             </FlexBox>}/>
         </ProjectsDiv>
         <InternshipDiv>
-            <H2>Internship</H2><BR />
+            <H2>Internship</H2>
+            <PublicBR />
             <ExtensibleSPAN content={<>
                 <SPAN marginLeft='20px'>2022.Fall. @SNU CSE, Prof. Kwangkeun Yi</SPAN>
             </>} extContent={<FlexBox>
@@ -104,13 +108,14 @@ const PublicEn = () => {
             <SPAN marginLeft='20px'>2021.Summer. @SNU Biology, Prof. Hyoung F. Kim</SPAN>
             <SPAN marginLeft='20px'>2020.Winter. @SNU Biology, Prof. Young-Yun Kong</SPAN>
         </InternshipDiv>
-        <DevelopmentDiv>
-            <H2>Development</H2><BR />
-            <H3 marginLeft='10px'>Fluent Programming Language(or Framework, Library)</H3>
-            <SPAN marginLeft='20px'>Java(+Android App), Python(+Django), C, C++, TypeScript(+React, React Native), NodeJS</SPAN>
-            <H3 marginLeft='10px'>Programming Languages I've tried</H3>
-            <SPAN marginLeft='20px'>Verilog, OCaml, RISC-V Assembly, C#(+DotNet Framework), Dart(+Flutter), ReScript, R, Matlab Scripts</SPAN>
-        </DevelopmentDiv>
+        <FlexColumnStart>
+            <H2>Development</H2>
+            <PublicBR />
+            <H4 marginLeft='10px' marginBottom='5px'>Fluent Programming Language(or Framework, Library)</H4>
+            <SPAN marginLeft='20px' marginBottom='5px'>Java(+Android App), Python(+Django), C, C++, TypeScript(+React, React Native), NodeJS</SPAN>
+            <H4 marginLeft='10px' marginBottom='5px'>Programming Languages I've tried</H4>
+            <SPAN marginLeft='20px' marginBottom='5px'>Verilog, OCaml, RISC-V Assembly, C#(+DotNet Framework), Dart(+Flutter), ReScript, R, Matlab Scripts</SPAN>
+        </FlexColumnStart>
     </PublicWrapper>
 };
 
@@ -183,15 +188,9 @@ const ContactInfoDiv = styled.div`
         margin: 0px 8px 0px 8px;
     }
 `;
-const EducationDiv = styled(ContentDiv)`
-    margin-top: 10px;
-    margin-bottom: 15px;
-`;
+
 const InternshipDiv = styled(ContentDiv)`
     
-`;
-const DevelopmentDiv = styled(ContentDiv)`
-
 `;
 const ProjectsDiv = styled(ContentDiv)`
     

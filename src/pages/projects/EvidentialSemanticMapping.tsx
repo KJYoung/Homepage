@@ -29,7 +29,7 @@ export const EvidentialSemanticMapping = () => {
         height: YOUTUBE_HEIGHT,
         width: YOUTUBE_WIDTH,
         playerVars: {
-            autoplay: 1,
+            autoplay: 0,
         },
     };
     return <FlexColumnStartCenter>
@@ -49,8 +49,8 @@ export const EvidentialSemanticMapping = () => {
         </FlexRowCenter>
         {/* ICONS */}
         <FlexRowCenter marginTop="0px">
-            <IconImg src={ARXIV_ICON_URL} />
-            <IconImg src={YOUTUBE_ICON_URL} />
+            <IconImg src={ARXIV_ICON_URL} onClick={() => window.open('https://arxiv.org/abs/2403.14138', '_blank')} />
+            <IconImg src={YOUTUBE_ICON_URL} onClick={() => window.open('https://youtu.be/5cYY5c25GqE', '_blank')} />
         </FlexRowCenter>
         <FlexRowCenter>
             <CustomToggle toggleState={isShortVideo} onText="1 min" offText="5 min" onToggle={() => { setIsShortVideo(iSV => !iSV) }} width={'120px'} />
@@ -107,18 +107,16 @@ const BibTexSection = styled(BasicDIV)`
 
 const BibTexContent = styled.pre`
   font-family: 'Courier New', Courier, monospace;
-  font-size: 14px;
+  font-size: 16px;
   color: var(--bibtex-fg);
   white-space: pre-wrap;
+  line-height: 1.3;
 `;
 
 // Define the BiBTex data
-const bibTexData = `@article{example-article,
-  author = {Author, A.},
-  title = {Example Article},
-  journal = {Journal of Examples},
-  year = {2022},
-  volume = {1},
-  number = {1},
-  pages = {1-10}
+const bibTexData = `@article{kim2024evidential,
+    title={Evidential Semantic Mapping in Off-road Environments with Uncertainty-aware Bayesian Kernel Inference}, 
+    author={Junyoung Kim and Junwon Seo and Jihong Min},
+    journal={arXiv preprint arXiv:2403.14138},
+    year={2024},
 }`;

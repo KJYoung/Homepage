@@ -5,7 +5,8 @@ import { PUB1_FIG_URL, PUB2_FIG_URL } from "../../DATA/Public_URL";
 import CustomImageModal from "../../customs/CustomImageModal";
 import { NavigateFunction } from "react-router-dom";
 import { useRef, useState } from "react";
-import { BR, BasicDIV } from "../../customs/Basics";
+import { BasicDIV } from "../../customs/Basics";
+import { PublicBR } from "./Public";
 
 type TPublicationAuthor = {
     name: string,
@@ -160,7 +161,7 @@ export const PublicationWrapperDiv = ({ navigate } : { navigate : NavigateFuncti
     };
     return <FlexColumnStart>
         <H2 className="clickable" onClick={() => { navigate('/Projects/'); }}>Publication</H2>
-        <BR />
+        <PublicBR />
         {PublicContent['publication']['contents'].map((content) => <PublicationDiv key={content.title} publicationContent={content} setImage={setImage} navigate={navigate}/>)}
         {CustomImageModal({
             isActive: tagModalOpen,

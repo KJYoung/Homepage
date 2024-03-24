@@ -21,6 +21,7 @@ export interface IPropsBasicCSS {
     maxWidth?: string;
     lineHeight?: number; // SPAN 줄간격
     textAlign?: string; // SPAN 정렬
+    verticalAlign?: string;
     width?: string;
     height?: string;
 };
@@ -35,13 +36,11 @@ export const BasicSPAN = styled.span<IPropsBasicCSS>`
     font-weight: ${({ fontWeight }) => fontWeight};
     font-size: ${({ fontSize }) => fontSize};
     text-decoration: ${({ textDecoration }) => textDecoration};
+    vertical-align: ${({ verticalAlign }) => verticalAlign};
 
     max-width: ${({ maxWidth }) => maxWidth};
     line-height: ${({ lineHeight }) => lineHeight};
     text-align: ${({ textAlign }) => textAlign};
-    .bold {
-        font-weight: 600;
-    }
 `;
 
 export const BasicBUTTON = styled.span<IPropsBasicCSS>`
