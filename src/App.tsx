@@ -67,6 +67,12 @@ function App() {
             <Route path={NAV_LOBBY_PAGE} element={<MainPage />} />
 
             <Route path="/KR/" element={<PublicDep />}/>
+
+            {/* Redirects */}
+            <Route path="USB" element={<RedirectComponent red_url="/Projects/Evidential-Semantic-Mapping/" />} />  {/* // Alias for Uncertainty-aware Semantic BKI */}
+            <Route path="EBS" element={<RedirectComponent red_url="/Projects/Evidential-Semantic-Mapping/" />} />  {/* // Alias for Uncertainty-aware Semantic BKI */}
+            <Route path="Evidential-Semantic-Mapping" element={<RedirectComponent red_url="/Projects/Evidential-Semantic-Mapping/" />} />  {/* // Alias for Uncertainty-aware Semantic BKI */}
+            
             <Route
               path={`${NAV_PROJ_PAGE}/*`}
               element={
@@ -75,6 +81,7 @@ function App() {
 
                   {/* First Paper [IROS 2024 - Evidential Semantic Mapping in Off-road Environments with Uncertainty-aware Bayesian Kernel Inference] */}
                   <Route path="USB" element={<RedirectComponent red_url="/Projects/Evidential-Semantic-Mapping/" />} />  {/* // Alias for Uncertainty-aware Semantic BKI */}
+                  <Route path="EBS" element={<RedirectComponent red_url="/Projects/Evidential-Semantic-Mapping/" />} />  {/* // Alias for Uncertainty-aware Semantic BKI */}
                   <Route path="Evidential-Semantic-Mapping" element={<EvidentialSemanticMapping />} />
                 </Routes>
               }

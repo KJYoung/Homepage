@@ -1,10 +1,12 @@
 import { ImageInfoPairsType } from "../customs/CustomImageSlider";
 
 export const GALLERY_ROOT = process.env.PUBLIC_URL + "/gallery/";
+const MAX_WIDTH_GOOGLE_DRIVE = 10000;
+export const GOOGLE_DRIVE_ROOT = (id: string) => `https://drive.google.com/thumbnail?id=${id}&sz=w${MAX_WIDTH_GOOGLE_DRIVE}`;
 
 export const FRANCE_images: ImageInfoPairsType[] = [
-    { 
-        url: GALLERY_ROOT + "FRANCE/20230117_Paris1.jpg",
+    {
+        url: GOOGLE_DRIVE_ROOT("1xsSZ0fIUXyyyiKwV2aTuSErofb1fNjVc"),
         title: "몽마르뜨 언덕에서",
         subtitle: "Sacré-Cœur, colline de montmartre",
         description: "AM 09:30. 한적한 몽마르뜨 언덕, 사크레-쾨르 대성당 앞. 파리의 전경이 한 눈에 보인다.",

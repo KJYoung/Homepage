@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import YouTube from "react-youtube";
-import { ARXIV_ICON_URL, PUB2_FRAMEWORK_URL, PUB2_RES1_URL, PUB2_RES2_URL, YOUTUBE_ICON_URL } from "../../DATA/Public_URL"
+import { ARXIV_ICON_URL, PUB2_FRAMEWORK_URL, PUB2_OUR_WINTER_SEM, PUB2_OUR_WINTER_VAR, PUB2_RES1_URL, PUB2_RES2_URL, YOUTUBE_ICON_URL } from "../../DATA/Public_URL"
 import { FlexColumnStartCenter, FlexColumnStartCenterNotFull, FlexRowCenter, FlexRowStart } from "../../customs/Divs"
 import { H1, H3, SPAN } from "../../customs/Spans"
 import { CustomToggle } from "../../customs/CustomToggle";
@@ -9,6 +9,7 @@ import { BasicDIV } from "../../customs/Basics";
 import { useDispatch } from "react-redux";
 import { TabState, coreActions } from "../../store/slices/core";
 import { EvSemMapObj, JunwonSeo, JunyoungKim } from "../public/PublicationContents";
+import ImageSlider from "../../customs/CustomTwoImageViewer";
 
 const IconImg = styled.img`
     max-width: 36px;
@@ -90,6 +91,9 @@ export const EvidentialSemanticMapping = () => {
             <FlexRowCenter marginTop="16px">
                 <SPAN maxWidth="1200px" lineHeight={1.6} textAlign="justify">▲ {EvSemMapObj.supResultDescription}</SPAN>
             </FlexRowCenter>
+        </FlexColumnStartCenter>
+        <FlexColumnStartCenter>
+            <ImageSlider imageA={PUB2_OUR_WINTER_VAR} imageB={PUB2_OUR_WINTER_SEM} />
         </FlexColumnStartCenter>
         <FlexColumnStartCenterNotFull marginTop="30px" marginBottom="100px" width="1200px">
             <FlexRowStart width="1200px">
