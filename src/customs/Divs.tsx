@@ -50,3 +50,8 @@ export const FlexRowSpaceBetween = styled(Flex)`
     justify-content: space-between;
     align-items: center;
 `
+export const FlexRowSpaceBetweenEnd = styled(Flex)`
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+`

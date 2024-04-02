@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Flex, FlexColumnStart, FlexRowCenter, FlexRowEnd, FlexRowSpaceBetween, FlexRowStart } from "../../customs/Divs";
+import { Flex, FlexColumnStart, FlexRowCenter, FlexRowEnd, FlexRowSpaceBetween, FlexRowSpaceBetweenEnd, FlexRowStart } from "../../customs/Divs";
 import { H2, H5, SPAN } from "../../customs/Spans";
 import { PUB1_FIG_URL, PUB2_FIG_URL } from "../../DATA/Public_URL";
 import CustomImageModal from "../../customs/CustomImageModal";
@@ -171,7 +171,10 @@ export const PublicationWrapperDiv = ({ navigate } : { navigate : NavigateFuncti
         setTagModalOpen(true);
     };
     return <FlexColumnStart>
-        <H2 className="clickable" onClick={() => { navigate('/Projects/'); }}>Publication</H2>
+        <FlexRowSpaceBetweenEnd>
+            <H2 className="clickable" onClick={() => { navigate('/Projects/'); }}>Publications</H2>
+            <SPAN fontSize="13px" className="clickable" onClick={() => { navigate('/Projects/'); }}>(Equal contributions are denoted by *)</SPAN>
+        </FlexRowSpaceBetweenEnd>
         <PublicBR />
         {PublicContent['publication']['contents'].map((content) => <PublicationDiv key={content.title} publicationContent={content} setImage={setImage} navigate={navigate}/>)}
         {CustomImageModal({
