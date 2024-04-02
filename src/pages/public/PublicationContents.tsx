@@ -7,6 +7,8 @@ import { NavigateFunction } from "react-router-dom";
 import { useRef, useState } from "react";
 import { BasicDIV } from "../../customs/Basics";
 import { PublicBR } from "./Public";
+import { TagBubble } from "../../customs/TagBubbleStatic";
+import { getSTRRandomHex } from "../../utils/Color";
 
 type TPublicationAuthor = {
     name: string,
@@ -16,6 +18,7 @@ type TPublicationAuthor = {
     isLast?: boolean,
 };
 type TPublicationContent = {
+    id: number,
     title: string,
     author: TPublicationAuthor[],
     status: string,
@@ -28,6 +31,7 @@ type TPublicationContent = {
     mainResultDescription?: string,
     supResultDescription?: string,
     BibTeX?: string,
+    publicationType: string[],
 };
 type TPublicationContents = {
     contents: TPublicationContent[],
@@ -63,6 +67,7 @@ export const SunamCho: TPublicationAuthor = {
 };
 
 export const EvSemMapObj: TPublicationContent = {
+    id: 2,
     title: 'Evidential Semantic Mapping in Off-road Environments with Uncertainty-aware Bayesian Kernel Inference',
     author: [JunyoungKimStar, JunwonSeoStar, {...JihongMin, isLast: true}],
     status: 'Under Review, 2024',
@@ -80,6 +85,7 @@ export const EvSemMapObj: TPublicationContent = {
         journal={arXiv preprint arXiv:2403.14138},
         year={2024}
 }`,
+    publicationType: ['Conference', 'Workshop']
 };
 
 export const PublicContent: TPublicContent = {
@@ -87,6 +93,7 @@ export const PublicContent: TPublicContent = {
         'contents' : [
             EvSemMapObj,
             {
+                id: 1,
                 title: 'Analysis of Factors Causing Differences in the Human Hazards of Permetrin',
                 author: [JunyoungKim, {...SunamCho, isLast: true}],
                 status: 'JEAHT, 2020',
@@ -94,6 +101,7 @@ export const PublicContent: TPublicContent = {
                 imgURL: PUB1_FIG_URL,
                 url: 'https://www.jeaht.org/upload/pdf/jeaht-23-4-171.pdf',
                 abstract: '',
+                publicationType: ['Domestic Journal'],
             },
         ],
     }
@@ -119,9 +127,10 @@ interface IPublicationDiv {
     publicationContent: TPublicationContent, 
     setImage: (src: string, title: string, subtitle: string) => void,
     navigate: NavigateFunction,
+    isDetail: boolean,
 };
 
-export const PublicationDiv = ({ publicationContent, setImage, navigate } : IPublicationDiv) => {
+export const PublicationDiv = ({ publicationContent, setImage, navigate, isDetail } : IPublicationDiv) => {
     return <Flex>
         <PublicationImgBox>
             <img src={publicationContent.imgURL} alt={`${publicationContent.title}`} onClick={() => {
@@ -142,9 +151,10 @@ export const PublicationDiv = ({ publicationContent, setImage, navigate } : IPub
                             {author.withStar ? '*' : ''}{author.isLast ? '' : ', '}
                         </SPAN>
                     </BasicDIV>)}
+                    {isDetail && publicationContent.publicationType.map((type, idx) => <TagBubble key={idx} color={getSTRRandomHex(type)}>{type}</TagBubble>)}
                 </FlexRowStart>
                 {/* Status */}
-                <FlexRowEnd>
+                <FlexRowEnd width="200px">
                     <SPAN fontSize="12px" marginBottom="6px">{publicationContent.status}</SPAN>
                 </FlexRowEnd>
             </FlexRowSpaceBetween>
@@ -154,7 +164,7 @@ export const PublicationDiv = ({ publicationContent, setImage, navigate } : IPub
     </Flex>
 }
 
-export const PublicationWrapperDiv = ({ navigate } : { navigate : NavigateFunction}) => {
+export const PublicationWrapperDiv = ({ navigate, isDetail } : { navigate : NavigateFunction, isDetail: boolean}) => {
     const [tagModalOpen, setTagModalOpen] = useState(false);
     const TagDetailOnClose = () => {
         setTagModalOpen(false);
@@ -176,7 +186,7 @@ export const PublicationWrapperDiv = ({ navigate } : { navigate : NavigateFuncti
             <SPAN fontSize="13px" className="clickable" onClick={() => { navigate('/Projects/'); }}>(Equal contributions are denoted by *)</SPAN>
         </FlexRowSpaceBetweenEnd>
         <PublicBR />
-        {PublicContent['publication']['contents'].map((content) => <PublicationDiv key={content.title} publicationContent={content} setImage={setImage} navigate={navigate}/>)}
+        {PublicContent['publication']['contents'].map((content) => <PublicationDiv key={content.title} publicationContent={content} setImage={setImage} navigate={navigate} isDetail={isDetail} />)}
         {CustomImageModal({
             isActive: tagModalOpen,
             onClose: TagDetailOnClose,

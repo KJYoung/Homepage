@@ -6,7 +6,9 @@ import { notificationSuccess } from "../../utils/sendNoti";
 import { useNavigate } from "react-router-dom";
 import { PublicationWrapperDiv } from "./PublicationContents";
 import { BR } from "../../customs/Basics";
-import { FlexColumnStart } from "../../customs/Divs";
+import { FlexColumnStart, FlexRowSpaceBetweenEnd, FlexRowStart } from "../../customs/Divs";
+import { TagBubble } from "../../customs/TagBubbleStatic";
+import { getSRandomHex } from "../../utils/Color";
 
 export const DOCUMENT_ROOT = process.env.PUBLIC_URL + "/document/";
 
@@ -17,6 +19,11 @@ export const PublicBR = styled(BR)`
 
 const PublicEn = () => {
     const navigate = useNavigate();
+
+    const sendEmailHandler = () => {
+        navigator.clipboard.writeText("jykim157@snu.ac.kr");
+        notificationSuccess('EMAIL', "Email Address was copied to your clipboard");
+    };
     return <PublicWrapper>
         <GeneralDiv>
             <GeneralMainDiv>
@@ -25,17 +32,17 @@ const PublicEn = () => {
                     <br />
                     <SPAN marginRight="10px">I am a Robotics & Computer Vision researcher at Agency for Defense Development (ADD) in the South Korea.</SPAN>
                     <br />
-                    (Work In Progress...)
+                    <SPAN fontWeight="700" marginRight="10px">Research Interests</SPAN>
+                    <SPAN marginRight="10px" marginLeft="8px">✦ Uncertainty-aware Perception</SPAN>
+                    <SPAN marginRight="10px" marginLeft="8px">✦ Robotic Mapping</SPAN>
+                    <SPAN marginRight="10px" marginLeft="8px">✦ Active Perception</SPAN>
                 </FlexColumnStart>
                 <Portrait src={PORTRAIT_URL} alt="imgElement"/>
             </GeneralMainDiv>
             <ContactInfoDiv>
                 <a href="mailto:jykim157@snu.ac.kr">Send Email</a>
                 |
-                <span onClick={() => {
-                    navigator.clipboard.writeText("jykim157@snu.ac.kr");
-                    notificationSuccess('EMAIL', "Email Address was copied to your clipboard")
-                }} className="link">Copy Email</span>
+                <span onClick={sendEmailHandler} className="link">Copy Email</span>
                 |
                 <a href="https://github.com/KJYoung">Github</a>
                 |
@@ -51,19 +58,57 @@ const PublicEn = () => {
             <H5 marginLeft='20px' lineHeight={1.2}>✅ 2017.03 ~ 2019.02 Hansung Science High School (HSHS) - High School</H5>
             <H5 marginLeft='20px' lineHeight={1.2}>✅ 2019.03 ~ 2023.02 Seoul National University (SNU) - Bachelor</H5>
             <SPAN marginLeft='40px' lineHeight={1.2}>
-                Double Major (BioScience, Computer Science&Engineering) - [4.17/4.30, Summa Cum Laude(2<SPAN fontSize="10px" verticalAlign="super">nd</SPAN>/40)]
+                ✦ <SPAN fontWeight="600">Double Major</SPAN> (BioScience, Computer Science&Engineering) 
+                <br />
+                ✦ <SPAN fontWeight="600">Summa Cum Laude</SPAN> (4.17/4.30; 2<SPAN fontSize="10px" verticalAlign="super">nd</SPAN>/40)]
+                <br />
             </SPAN>
             <H5 marginLeft='20px' lineHeight={1.2}>🔄 2023.04 ~ 2026.05 Agency for Defense Development (ADD) - Military Service</H5>
             <SPAN marginLeft='40px' lineHeight={1.2}>
-                Research Officer for National Defense (ROND)
+                ✦ Research Officer for National Defense (ROND)
             </SPAN>
-            <H3 marginLeft='10px' marginTop="15px" marginBottom="4px">Research Interests</H3>
-            <SPAN marginLeft='20px'>
-                <span className="bold">CSE</span>: Computer Vision, Robotics, Artificial Intelligence, Uncertainty</SPAN>
-            <SPAN marginLeft='20px'>
-                <span className="bold">BIO</span>: BioInformatics, NeuroScience, cryo-EM, cryo-ET</SPAN>
+
+            <FlexRowSpaceBetweenEnd>
+                <H3 marginLeft='10px' marginBottom="4px" marginTop="20px">Interests</H3>
+                <SPAN fontSize="13px" marginLeft='10px' marginBottom="4px" marginTop="20px"></SPAN>
+            </FlexRowSpaceBetweenEnd>
+            <ExtensibleSPAN content={<>
+                <SPAN marginLeft='20px'>Current & Future Interests</SPAN>
+            </>} extContent={<FlexRowStart marginLeft="35px" flexWrap="wrap">
+                <TagBubble color={getSRandomHex(0)}>Computer Vision</TagBubble>
+                <TagBubble color={getSRandomHex(1)}>Robotics</TagBubble>
+                <TagBubble color={getSRandomHex(2)}>Uncertainty-aware *</TagBubble>
+                <TagBubble color={getSRandomHex(3)}>Evidential Deep Learning</TagBubble>
+                <TagBubble color={getSRandomHex(4)}>Active Perception</TagBubble>
+                <TagBubble color={getSRandomHex(5)}>Semantic Segmentation</TagBubble>
+                <TagBubble color={getSRandomHex(6)}>SLAM</TagBubble>
+                <TagBubble color={getSRandomHex(7)}>Sensor Fusion</TagBubble>
+                <TagBubble color={getSRandomHex(8)}>Multi-agent Collaboration</TagBubble>
+                <TagBubble color={getSRandomHex(9)}>Off-road deployments</TagBubble>
+            </FlexRowStart>}/>
+            <ExtensibleSPAN content={<>
+                <SPAN marginLeft='20px'>Past Interests</SPAN>
+            </>} extContent={<FlexRowStart marginLeft="35px" flexWrap="wrap">
+                <TagBubble color={getSRandomHex(101)}>BioInformatics</TagBubble>
+                <TagBubble color={getSRandomHex(102)}>NeuroScience</TagBubble>
+                <TagBubble color={getSRandomHex(103)}>cryoEM</TagBubble>
+                <TagBubble color={getSRandomHex(104)}>cryoET</TagBubble>
+            </FlexRowStart>}/>
+            {/* <H5 marginLeft='30px' marginBottom="4px" marginTop="4px">Current & Future Interests</H5>
+            <FlexRowStart marginLeft="35px" flexWrap="wrap">
+                <TagBubble color={getSRandomHex(0)}>Computer Vision</TagBubble>
+                <TagBubble color={getSRandomHex(1)}>Robotics</TagBubble>
+                <TagBubble color={getSRandomHex(2)}>Uncertainty-aware *</TagBubble>
+                <TagBubble color={getSRandomHex(3)}>Evidential Deep Learning</TagBubble>
+                <TagBubble color={getSRandomHex(4)}>Active Perception</TagBubble>
+                <TagBubble color={getSRandomHex(5)}>Semantic Segmentation</TagBubble>
+                <TagBubble color={getSRandomHex(6)}>SLAM</TagBubble>
+                <TagBubble color={getSRandomHex(7)}>Sensor Fusion</TagBubble>
+                <TagBubble color={getSRandomHex(8)}>Multi-agent Collaboration</TagBubble>
+                <TagBubble color={getSRandomHex(9)}>Off-road deployments</TagBubble>
+            </FlexRowStart> */}
         </FlexColumnStart>
-        <PublicationWrapperDiv navigate={navigate}/>
+        <PublicationWrapperDiv navigate={navigate} isDetail={false} />
         <ProjectsDiv>
             <H2 onClick={() => { navigate('/Projects/'); }}>Projects</H2>
             <PublicBR />

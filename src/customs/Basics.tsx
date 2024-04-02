@@ -24,6 +24,7 @@ export interface IPropsBasicCSS {
     verticalAlign?: string;
     width?: string;
     height?: string;
+    flexWrap?: string; // FlexBox에서만 유효.
 };
 
 // Basic Elements: SPAN, Button, Div

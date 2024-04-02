@@ -3,9 +3,11 @@ import { BasicDIV } from "./Basics";
 
 export const Flex = styled(BasicDIV)`
     display: flex;
-    width: 100%;
-    height: 100%;
+    width: ${({ width = '100%' }) => width};
+    height: ${({ height = '100%' }) => height};
     /* border: 1px solid green; */
+
+    flex-wrap: ${({ flexWrap }) => flexWrap};
 `;
 export const FlexNotFull = styled(BasicDIV)`
     display: flex;

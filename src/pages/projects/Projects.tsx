@@ -11,6 +11,6 @@ export const ProjectsMain = () => {
         dispatch(coreActions.setTab({selectedTab: TabState.PROJECTS}));
     }, [dispatch]);
     return <div>
-        <PublicationWrapperDiv navigate={navigate}/>
+        <PublicationWrapperDiv navigate={navigate} isDetail={true} />
     </div>
 };
