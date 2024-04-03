@@ -1,3 +1,5 @@
+import { GOOGLE_DRIVE_ROOT } from "./Gallery_URL";
+
 export const PUBLIC_ROOT = process.env.PUBLIC_URL + "/public/";
 export const PUBLICATION_FIG_ROOT = process.env.PUBLIC_URL + "/gallery/Publications/";
 
@@ -9,5 +11,19 @@ export const PUB2_FIG_URL = PUBLICATION_FIG_ROOT + 'Pub2_IROS_2024.png';
 export const PUB2_FRAMEWORK_URL = PUBLICATION_FIG_ROOT + 'Pub2_IROS_Fig2.png';
 export const PUB2_RES1_URL = PUBLICATION_FIG_ROOT + 'Pub2_IROS_Fig3.png';
 export const PUB2_RES2_URL = PUBLICATION_FIG_ROOT + 'Pub2_IROS_Fig4.png';
-export const PUB2_OUR_WINTER_VAR = PUBLICATION_FIG_ROOT + 'Changwon_FV4_Our_Winter_cropped.png';
-export const PUB2_OUR_WINTER_SEM = PUBLICATION_FIG_ROOT + 'Changwon_FV4_Our_Winter_Sem_cropped.png';
+
+export const PUB2_OUR_WINTER_VAR = GOOGLE_DRIVE_ROOT('1ogjVm_Qtu_xrVAwy7QELS6U8Vm7H4ufc'); 
+export const PUB2_OUR_WINTER_SEM = GOOGLE_DRIVE_ROOT('1hUVxJ9a1KCC2jwt5oBhJWxVott7sh2em');
+export const PUB2_SEE_WINTER_VAR = GOOGLE_DRIVE_ROOT('1-0oiqe4ThqBIa6CKzFGofDPczK3IGL2M');
+export const PUB2_SEE_WINTER_SEM = GOOGLE_DRIVE_ROOT('1MzIMM_Guny1WBDMDaBmkLjB2zB15lQat');
+export const PUB2_CON_WINTER_VAR = GOOGLE_DRIVE_ROOT('1sri83nSz7vuSMvBIqsYXKpuudzzrjleO');
+export const PUB2_CON_WINTER_SEM = GOOGLE_DRIVE_ROOT('1zRbYyZu5WJZsPHE6b8KNL2TURPite_7y');
+export const PUB2_BKI_WINTER_VAR = GOOGLE_DRIVE_ROOT('1iJthN64QpJS51kLr0uwrre5PlnD8keEZ');
+export const PUB2_BKI_WINTER_SEM = GOOGLE_DRIVE_ROOT('1QTB_qeQ6y1oA8LUvUk1YPgnKAcyggm8y');
+
+export const PUB2_SEM_VAR_OBJ = {
+    'BKI' : [PUB2_BKI_WINTER_SEM, PUB2_BKI_WINTER_VAR],
+    'CON': [PUB2_CON_WINTER_SEM, PUB2_CON_WINTER_VAR],
+    'SEE': [PUB2_SEE_WINTER_SEM, PUB2_SEE_WINTER_VAR],
+    'OUR': [PUB2_OUR_WINTER_SEM, PUB2_OUR_WINTER_VAR],
+};

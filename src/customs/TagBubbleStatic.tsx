@@ -3,11 +3,7 @@ import { faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 import { getContrastYIQ } from '../utils/Color';
-
-interface IPropsTagBubble {
-  color?: string;
-  isPrime?: boolean;
-}
+import { BasicDIV } from './Basics';
 
 interface IPropsTagBubbleX {
   testId?: string;
@@ -30,14 +26,22 @@ export const TagBubbleXstyle = styled.div`
   cursor: pointer;
 `;
 
-export const TagBubble = styled.button<IPropsTagBubble>`
-  height: 20px;
+export const TagBubble = styled(BasicDIV)`
+  height: ${({ isPrime }) => isPrime ? '24px' : '20px'}; ;
   width: fit-content;
   border-radius: 25px;
   padding: 1px 12px;
   border: none;
   white-space: nowrap;
-  margin: 1px 3px;
+  text-align: center;
+  vertical-align: center;
+
+  margin: ${({ margin = '1px 3px' }) => margin};
+  margin-left: ${({ marginLeft }) => marginLeft};
+  margin-right: ${({ marginRight }) => marginRight};
+  margin-top: ${({ marginTop }) => marginTop};
+  margin-bottom: ${({ marginBottom }) => marginBottom};
+
   ${({ color }) =>
     color &&
     `

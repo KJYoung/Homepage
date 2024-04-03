@@ -85,7 +85,8 @@ export const EvSemMapObj: TPublicationContent = {
         journal={arXiv preprint arXiv:2403.14138},
         year={2024}
 }`,
-    publicationType: ['Conference', 'Workshop']
+    // publicationType: ['Conference', 'Workshop']
+    publicationType: ['Under Review']
 };
 
 export const PublicContent: TPublicContent = {

@@ -25,6 +25,8 @@ export interface IPropsBasicCSS {
     width?: string;
     height?: string;
     flexWrap?: string; // FlexBox에서만 유효.
+    isPrime?: boolean; // TagBubble에서만 유효.
+    cursor?: string;
 };
 
 // Basic Elements: SPAN, Button, Div
@@ -91,9 +93,11 @@ export const BasicDIV = styled.div<IPropsBasicCSS>`
     border-radius: ${({ borderRadius }) => borderRadius};
 
     background-color: ${({ backgroundColor = 'hp-white' }) => getRGBfromVar(backgroundColor)};
+    color: ${({ color = 'hp-black' }) => getRGBfromVar(color)};
     transition: background-color 0.4s ease-in-out; /* Add transition for background color */
     position: ${({ position }) => position};
     overflow: ${({ overflow }) => overflow};
+    cursor: ${({ cursor }) => cursor};
 `;
 
 export const BR = styled.div`
