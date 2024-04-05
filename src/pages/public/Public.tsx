@@ -172,7 +172,8 @@ const Portrait = styled.img`
 `;
 
 const PublicWrapper = styled.div`
-    width: 850px;
+    width: 100%;
+    max-width: 850px;
     display: flex;
     flex-direction: column;
     justify-content: center;

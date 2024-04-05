@@ -40,8 +40,9 @@ export const NAV_LOBBY_PAGE = '/lobby';
 function App() {
   // Window Size. If windowSize[0] < 1200, Show mobile style.
   const dispatch = useDispatch();
-  const { windowSize, language } = useSelector(selectCore);
   useEffect(() => {
+    dispatch(coreActions.setWindowSize({ width: window.innerWidth, height: window.innerHeight }));
+
     const handleWindowResize = () => {
       dispatch(coreActions.setWindowSize({ width: window.innerWidth, height: window.innerHeight }));
     };
@@ -49,8 +50,8 @@ function App() {
     return () => {
       window.removeEventListener('resize', handleWindowResize);
     };
-  });
-
+  }, [dispatch]);
+  const { windowSize, language } = useSelector(selectCore);
   return (
     <>
       <GlobalStyles />
@@ -127,6 +128,8 @@ const Body = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  overflow: auto;
 `;
 
 export default App;

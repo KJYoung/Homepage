@@ -118,7 +118,7 @@ export const EvidentialSemanticMapping = () => {
                 <TagBubble margin="1px 16px" cursor="pointer" onClick={() => setVarVisMethod('SEE')} color={getMethodColor('SEE')} isPrime={varVisMethod === 'SEE'}>SEE-CSOM</TagBubble>
                 <TagBubble margin="1px 16px" cursor="pointer" onClick={() => setVarVisMethod('OUR')} color={getMethodColor('OUR')} isPrime={varVisMethod === 'OUR'}>Ours (EBS)</TagBubble>
             </FlexRowCenter>
-            <ImageSlider imageA={PUB2_SEM_VAR_OBJ[varVisMethod][0]} imageB={PUB2_SEM_VAR_OBJ[varVisMethod][1]} />
+            <ImageSlider imageA={PUB2_SEM_VAR_OBJ[varVisMethod][1]} imageB={PUB2_SEM_VAR_OBJ[varVisMethod][0]} />
         </FlexColumnStartCenter>
         <FlexColumnStartCenterNotFull marginTop="30px" marginBottom="100px" width="1200px">
             <FlexRowStart width="1200px">

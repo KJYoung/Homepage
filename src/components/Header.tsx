@@ -1,4 +1,4 @@
-import { faPhotoFilm, faScroll } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faPhotoFilm, faScroll } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
@@ -53,15 +53,12 @@ const Header = ({ isMobile, language }: IPropsHeader ) => {
     return isMobile ? <MobileHeaderRoot>
         {/* MOBILE HEADER */}
         <MobileHeaderCenter>
-            {/* <HeaderBtn color={isActiveTab(TabState.MAIN)} onClick={() => go_to_fn(TabState.MAIN, NAV_LOBBY_PAGE)}>
-                <FontAwesomeIcon icon={faHome}/>
-            </HeaderBtn> */}
             <HeaderBtn color={isActiveTab(TabState.PUBLIC)} onClick={() => go_to_fn(TabState.PUBLIC, NAV_MAIN_PAGE)}>
+                <FontAwesomeIcon icon={faHome}/>
+            </HeaderBtn>
+            <HeaderBtn color={isActiveTab(TabState.PRIVATE)} onClick={() => go_to_fn(TabState.PRIVATE, NAV_PROJ_PAGE)}>
                 <FontAwesomeIcon icon={faScroll}/>
             </HeaderBtn>
-            {/* <HeaderBtn color={isActiveTab(TabState.PRIVATE)} onClick={() => go_to_fn(TabState.PRIVATE, NAV_PRIV_PAGE)}>
-                <FontAwesomeIcon icon={faPerson}/>
-            </HeaderBtn> */}
             <HeaderBtn color={isActiveTab(TabState.GALLERY)} onClick={() => go_to_fn(TabState.GALLERY, NAV_GALL_PAGE)}>
                 <FontAwesomeIcon icon={faPhotoFilm}/>
             </HeaderBtn>
@@ -119,7 +116,6 @@ const HeaderRoot = styled.div`
 `;
 const MobileHeaderRoot = styled.div`
   width: 100%;
-  min-width: 500px;
   height: 65px;
   background-color: var(--hp-white);
   
@@ -166,7 +162,7 @@ const HeaderCenter = styled.div`
 const MobileHeaderCenter = styled(HeaderCenter)`
     height: 65px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
 `;
 
 export default Header;
