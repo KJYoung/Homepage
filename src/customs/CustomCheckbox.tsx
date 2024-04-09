@@ -12,7 +12,7 @@ interface IPropsCheckWrapper {
 };
 const CustomCheckbox = ({ checked, onClickListener }: IPropsCheckbox) => {
     return <CustomCheckWrapper checked={checked} onClick={onClickListener}>
-        <CustomCheckBox type="checkbox" checked={checked}/>
+        <CustomCheckBox type="checkbox" checked={checked} onChange={() => {}}/>
         <FontAwesomeIcon icon={faCheck}/>
     </CustomCheckWrapper>
 }

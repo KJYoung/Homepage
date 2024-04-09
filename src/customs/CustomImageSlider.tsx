@@ -94,7 +94,7 @@ const CustomImageSlider = ({ _width, _height, images, showBullets, showNavs, sli
         <Wrapper width={widthEff}>
             <Slider width={widthEff * imgLength} style={{ transform: `translateX(-${(widthEff * (index - 1))}px)`}} transitionTime={slideShow?.transTime}>
                 {images.map((img, i) => {
-                    return <div>
+                    return <div key={i}>
                         <div style={{ position: 'relative'}}>
                             <ImgWrapper style={{ width: `${widthEff}px`, height: `${heightEff}px`, backgroundColor: `var(--hp-gray)` }}>
                                 <img key={i} src={img.url} style={{ width: `${widthEff}px`, maxHeight: `${heightEff}px`}} alt="imgElement"/>
