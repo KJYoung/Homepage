@@ -56,7 +56,7 @@ const Header = ({ isMobile, language }: IPropsHeader ) => {
             <HeaderBtn color={isActiveTab(TabState.PUBLIC)} onClick={() => go_to_fn(TabState.PUBLIC, NAV_MAIN_PAGE)}>
                 <FontAwesomeIcon icon={faHome}/>
             </HeaderBtn>
-            <HeaderBtn color={isActiveTab(TabState.PRIVATE)} onClick={() => go_to_fn(TabState.PRIVATE, NAV_PROJ_PAGE)}>
+            <HeaderBtn color={isActiveTab(TabState.PROJECTS)} onClick={() => go_to_fn(TabState.PROJECTS, NAV_PROJ_PAGE)}>
                 <FontAwesomeIcon icon={faScroll}/>
             </HeaderBtn>
             <HeaderBtn color={isActiveTab(TabState.GALLERY)} onClick={() => go_to_fn(TabState.GALLERY, NAV_GALL_PAGE)}>

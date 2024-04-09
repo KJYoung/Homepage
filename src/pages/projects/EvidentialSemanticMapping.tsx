@@ -87,7 +87,24 @@ export const EvidentialSemanticMapping = () => {
                 <SPAN maxWidth="820px" lineHeight={1.6} textAlign="justify">{EvSemMapObj.abstract}</SPAN>
             </FlexRowCenter>
         </FlexColumnStartCenter>
+
+        <FlexColumnStartCenter marginTop="30px">
+            <FlexRowCenter marginBottom="20px">
+                <H1 fontSize="32px">Interactive Visualization of Semantic Map and its Uncertainty Map</H1>
+            </FlexRowCenter>
+            <FlexRowCenter marginBottom="10px">
+                <TagBubble margin="1px 16px" cursor="pointer" onClick={() => setVarVisMethod('BKI')} color={getMethodColor('BKI')} isPrime={varVisMethod === 'BKI'}>S-BKI</TagBubble>
+                <TagBubble margin="1px 16px" cursor="pointer" onClick={() => setVarVisMethod('CON')} color={getMethodColor('CON')} isPrime={varVisMethod === 'CON'}>ConvBKI</TagBubble>
+                <TagBubble margin="1px 16px" cursor="pointer" onClick={() => setVarVisMethod('SEE')} color={getMethodColor('SEE')} isPrime={varVisMethod === 'SEE'}>SEE-CSOM</TagBubble>
+                <TagBubble margin="1px 16px" cursor="pointer" onClick={() => setVarVisMethod('OUR')} color={getMethodColor('OUR')} isPrime={varVisMethod === 'OUR'}>Ours (EBS)</TagBubble>
+            </FlexRowCenter>
+            <ImageSlider imageA={PUB2_SEM_VAR_OBJ[varVisMethod][1]} imageB={PUB2_SEM_VAR_OBJ[varVisMethod][0]} />
+        </FlexColumnStartCenter>
+
         <FlexColumnStartCenter marginTop="50px">
+            <FlexRowCenter marginBottom="20px">
+                <H1 fontSize="32px">Our Framework</H1>
+            </FlexRowCenter>
             <Pub2FrameworkImg src={PUB2_FRAMEWORK_URL} alt={"Framework Overview"} />
             <FlexRowCenter marginTop="16px">
                 <SPAN maxWidth="1200px" lineHeight={1.6} textAlign="justify">▲ {EvSemMapObj.frameworkDescription}</SPAN>
@@ -108,18 +125,7 @@ export const EvidentialSemanticMapping = () => {
                 <SPAN maxWidth="1200px" lineHeight={1.6} textAlign="justify">▲ {EvSemMapObj.supResultDescription}</SPAN>
             </FlexRowCenter>
         </FlexColumnStartCenter>
-        <FlexColumnStartCenter marginTop="20px">
-            <FlexRowCenter marginBottom="20px">
-                <H1 fontSize="32px">Interactive Visualization of Semantic Map and its Uncertainty Map</H1>
-            </FlexRowCenter>
-            <FlexRowCenter marginBottom="10px">
-                <TagBubble margin="1px 16px" cursor="pointer" onClick={() => setVarVisMethod('BKI')} color={getMethodColor('BKI')} isPrime={varVisMethod === 'BKI'}>S-BKI</TagBubble>
-                <TagBubble margin="1px 16px" cursor="pointer" onClick={() => setVarVisMethod('CON')} color={getMethodColor('CON')} isPrime={varVisMethod === 'CON'}>ConvBKI</TagBubble>
-                <TagBubble margin="1px 16px" cursor="pointer" onClick={() => setVarVisMethod('SEE')} color={getMethodColor('SEE')} isPrime={varVisMethod === 'SEE'}>SEE-CSOM</TagBubble>
-                <TagBubble margin="1px 16px" cursor="pointer" onClick={() => setVarVisMethod('OUR')} color={getMethodColor('OUR')} isPrime={varVisMethod === 'OUR'}>Ours (EBS)</TagBubble>
-            </FlexRowCenter>
-            <ImageSlider imageA={PUB2_SEM_VAR_OBJ[varVisMethod][1]} imageB={PUB2_SEM_VAR_OBJ[varVisMethod][0]} />
-        </FlexColumnStartCenter>
+        
         <FlexColumnStartCenterNotFull marginTop="30px" marginBottom="100px" width="1200px">
             <FlexRowStart width="1200px">
                 <H3>BibTeX</H3>

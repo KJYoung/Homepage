@@ -2,12 +2,17 @@ import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { FlexRowCenter } from './Divs';
 import { SPAN } from './Spans';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+
+// Hyperparameters for sizing!
+const LINEWIDTH = 4;
+const HANDLESIZE = 45;
 
 const ImageContainer = styled.div`
   position: relative;
   width: 100%; /* 컨테이너의 너비를 조정하려면 이 값을 변경하세요 */
   min-height: 500px;
-
   max-width: 1000px;
   overflow: hidden;
 `;
@@ -17,6 +22,7 @@ const ImageSkeleton = styled.img`
   width: 100%;
   height: 100%;
 `;
+
 const ImageA = styled(ImageSkeleton)`
   z-index: 1;
 `;
@@ -30,21 +36,28 @@ const Slider = styled.div`
   z-index: 3;
   background-color: transparent;
   height: 100%;
-  width: 2px;
+  width: ${LINEWIDTH}px;
   background-color: #000; /* 슬라이더 색상 */
 `;
 
 const Handle = styled.div`
   position: absolute;
   z-index: 4;
-  height: 30px;
-  width: 30px;
+  height: ${HANDLESIZE}px;
+  width: ${HANDLESIZE}px;
   border-radius: 50%;
   background-color: #fff; /* 핸들 색상 */
-  border: 2px solid #000; /* 핸들 테두리 */
+  border: ${LINEWIDTH - 1}px solid #000; /* 핸들 테두리 */
   top: 50%;
+  left: ${- 0.5 * (HANDLESIZE - LINEWIDTH)}px;
   transform: translateY(-50%);
   cursor: ew-resize;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: 15px;
 `;
 
 const ImageSlider = ({ imageA, imageB } : { imageA: string, imageB: string}) => {
@@ -78,6 +91,10 @@ const ImageSlider = ({ imageA, imageB } : { imageA: string, imageB: string}) => 
         const newPosition = ((pointerX - container.left) / container.width) * 100;
         if (newPosition >= 0 && newPosition <= 100) {
           setSliderPosition(newPosition);
+        }else if (newPosition < 0){
+          setSliderPosition(0);
+        }else if (newPosition > 100){
+          setSliderPosition(100);
         }
       }
     });
@@ -107,7 +124,10 @@ const ImageSlider = ({ imageA, imageB } : { imageA: string, imageB: string}) => 
       <ImageA src={imageA} alt="Image A" onLoad={handleImageALoad} style={{ display: loadingImageA ? 'none' : 'block' }} />
       <ImageB src={imageB} alt="Image B" onLoad={handleImageBLoad} style={{ display: loadingImageB ? 'none' : 'block', clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0% 100%)` }} />
       <Slider style={{ left: `${sliderPosition}%` }}>
-        <Handle onMouseDown={startDrag} onTouchStart={startDrag} style={{ left: `-15px` }} />
+        <Handle onMouseDown={startDrag} onTouchStart={startDrag}>
+          <FontAwesomeIcon icon={faArrowLeft} style={{ marginRight : '6px' }} />            
+          <FontAwesomeIcon icon={faArrowRight} />
+        </Handle>
       </Slider>
     </ImageContainer>
   );
