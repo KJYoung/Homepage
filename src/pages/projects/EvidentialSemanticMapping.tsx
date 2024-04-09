@@ -71,7 +71,7 @@ export const EvidentialSemanticMapping = () => {
         </FlexRowCenter>
         {/* <FlexColumnStartCenter style={{pointerEvents: 'none'}} className="no-select"> */}
         <FlexColumnStartCenterNotFull marginTop="10px" position="relative" borderRadius="22px" className="no-select" padding="6px" backgroundColor={isShortVideo ? "youtube-mode-one" : "youtube-mode-two"}>
-            <BasicDIV width={`${YOUTUBE_WIDTH}px`} height={`${YOUTUBE_HEIGHT}px`} borderRadius="16px" overflow="hidden" backgroundColor={isShortVideo ? "youtube-mode-one" : "youtube-mode-two"}>
+            <BasicDIV width={`min(100%, ${YOUTUBE_WIDTH}px)`} height={`${YOUTUBE_HEIGHT}px`} borderRadius="16px" overflow="hidden" backgroundColor={isShortVideo ? "youtube-mode-one" : "youtube-mode-two"}>
                 {isShortVideo ? 
                     <YouTube videoId="91ct6I_8iXg" opts={YoutubeOption} id="video" style={{zIndex: 2}}/>
                     :
@@ -84,7 +84,7 @@ export const EvidentialSemanticMapping = () => {
                 <H1 fontSize="32px">Abstract</H1>
             </FlexRowCenter>
             <FlexRowCenter marginTop="16px">
-                <SPAN maxWidth="820px" lineHeight={1.6} textAlign="justify">{EvSemMapObj.abstract}</SPAN>
+                <SPAN maxWidth="min(100%, 820px)" lineHeight={1.6} textAlign="justify">{EvSemMapObj.abstract}</SPAN>
             </FlexRowCenter>
         </FlexColumnStartCenter>
 
@@ -107,7 +107,7 @@ export const EvidentialSemanticMapping = () => {
             </FlexRowCenter>
             <Pub2FrameworkImg src={PUB2_FRAMEWORK_URL} alt={"Framework Overview"} />
             <FlexRowCenter marginTop="16px">
-                <SPAN maxWidth="1200px" lineHeight={1.6} textAlign="justify">▲ {EvSemMapObj.frameworkDescription}</SPAN>
+                <SPAN maxWidth="min(100%, 1200px)" lineHeight={1.6} textAlign="justify">▲ {EvSemMapObj.frameworkDescription}</SPAN>
             </FlexRowCenter>
         </FlexColumnStartCenter>
         <FlexColumnStartCenter marginTop="50px">
@@ -116,21 +116,21 @@ export const EvidentialSemanticMapping = () => {
             </FlexRowCenter>
             <Pub2FrameworkImg src={PUB2_RES1_URL} alt={"Main Result"} />
             <FlexRowCenter marginTop="16px">
-                <SPAN maxWidth="1200px" lineHeight={1.6} textAlign="justify">▲ {EvSemMapObj.mainResultDescription}</SPAN>
+                <SPAN maxWidth="min(100%, 1200px)" lineHeight={1.6} textAlign="justify">▲ {EvSemMapObj.mainResultDescription}</SPAN>
             </FlexRowCenter>
         </FlexColumnStartCenter>
         <FlexColumnStartCenter marginTop="50px">
             <Pub2FrameworkImg src={PUB2_RES2_URL} alt={"ZeroShot Result"} />
             <FlexRowCenter marginTop="16px">
-                <SPAN maxWidth="1200px" lineHeight={1.6} textAlign="justify">▲ {EvSemMapObj.supResultDescription}</SPAN>
+                <SPAN maxWidth="min(100%, 1200px)" lineHeight={1.6} textAlign="justify">▲ {EvSemMapObj.supResultDescription}</SPAN>
             </FlexRowCenter>
         </FlexColumnStartCenter>
         
-        <FlexColumnStartCenterNotFull marginTop="30px" marginBottom="100px" width="1200px">
-            <FlexRowStart width="1200px">
+        <FlexColumnStartCenterNotFull marginTop="30px" marginBottom="100px" width="min(100%, 1200px)">
+            <FlexRowStart width="min(100%, 1200px)">
                 <H3>BibTeX</H3>
             </FlexRowStart>
-            <BibTexSection width="1200px" marginTop="12px">
+            <BibTexSection width="min(100%, 1200px)" marginTop="12px">
                 <BibTexContent>{EvSemMapObj.BibTeX}</BibTexContent>
             </BibTexSection>
         </FlexColumnStartCenterNotFull>
@@ -138,7 +138,7 @@ export const EvidentialSemanticMapping = () => {
 }
 
 const Pub2FrameworkImg = styled.img`
-    max-width: 1200px;
+    max-width: min(100%, 1200px);
     border-radius: 20px;
     padding: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Change the values as per your preference */

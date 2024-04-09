@@ -9,10 +9,10 @@ import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 const LINEWIDTH = 4;
 const HANDLESIZE = 45;
 
-const ImageContainer = styled.div`
+const ImageContainer = styled.div<{ minHeight : number }>`
   position: relative;
   width: 100%; /* 컨테이너의 너비를 조정하려면 이 값을 변경하세요 */
-  min-height: 500px;
+  min-height: ${(props) => props.minHeight}px; /* Set min-height based on aspect ratio */
   max-width: 1000px;
   overflow: hidden;
 `;
@@ -68,10 +68,39 @@ const ImageSlider = ({ imageA, imageB } : { imageA: string, imageB: string}) => 
   const handleImageBLoad = () => setLoadingImageB(false);
   const containerRef = useRef<HTMLDivElement>(null); // ImageContainer 참조
 
+  const [aspectRatio, setAspectRatio] = useState<number | null>(null);
+  const [minHeight, setMinHeight] = useState<number>(0);
+
   useEffect(() => {
     setLoadingImageA(true);
     setLoadingImageB(true);
+
+    // Assume A and B has same aspect ratio;
+    const img = new Image();
+    img.src = imageA;
+    img.onload = () => {
+      const ratio = (img.naturalHeight / img.naturalWidth) * 100;
+      setAspectRatio(ratio);
+      if (containerRef.current) {
+        const width = containerRef.current.offsetWidth;
+        const minHeightValue = (ratio / 100) * width;
+        setMinHeight(minHeightValue);
+      }
+    };
   }, [imageA, imageB]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (aspectRatio && containerRef.current) {
+        const width = containerRef.current.offsetWidth;
+        const minHeightValue = (aspectRatio / 100) * width;
+        setMinHeight(minHeightValue);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [aspectRatio]);
 
   const getPointerPosition = (e: any) => {
     // Check if it's a touch event
@@ -117,18 +146,21 @@ const ImageSlider = ({ imageA, imageB } : { imageA: string, imageB: string}) => 
   };
 
   return (
-    <ImageContainer ref={containerRef}>
-      {loadingImageA || loadingImageB ? <FlexRowCenter backgroundColor='hp-gray' color='hp-white' width='1000px' height='500px'>
+    <ImageContainer ref={containerRef} minHeight={minHeight}>
+      {loadingImageA || loadingImageB ? <FlexRowCenter backgroundColor='hp-gray' color='hp-white' width='min(100%, 1000px)' height={`${minHeight}px`}>
           <SPAN fontSize='44px'>Loading...</SPAN>
         </FlexRowCenter> : null}
       <ImageA src={imageA} alt="Image A" onLoad={handleImageALoad} style={{ display: loadingImageA ? 'none' : 'block' }} />
       <ImageB src={imageB} alt="Image B" onLoad={handleImageBLoad} style={{ display: loadingImageB ? 'none' : 'block', clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0% 100%)` }} />
-      <Slider style={{ left: `${sliderPosition}%` }}>
-        <Handle onMouseDown={startDrag} onTouchStart={startDrag}>
-          <FontAwesomeIcon icon={faArrowLeft} style={{ marginRight : '6px' }} />            
-          <FontAwesomeIcon icon={faArrowRight} />
-        </Handle>
-      </Slider>
+      {!loadingImageA && !loadingImageB && <>
+        <Slider style={{ left: `${sliderPosition}%` }}>
+          <Handle onMouseDown={startDrag} onTouchStart={startDrag}>
+            <FontAwesomeIcon icon={faArrowLeft} style={{ marginRight : '6px' }} />            
+            <FontAwesomeIcon icon={faArrowRight} />
+          </Handle>
+        </Slider>
+      </>
+      }
     </ImageContainer>
   );
 };
