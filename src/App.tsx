@@ -19,6 +19,7 @@ import Private from './pages/Private';
 import New from './pages/New';
 import MainPage from './pages/MainPage';
 import PublicEn from './pages/public/Public';
+import { DSTEvSemMapping } from './pages/projects/DSTEvSemMapping';
 
 const RedirectComponent = ({ red_url } : { red_url : string }) => {
   const navigate = useNavigate();
@@ -84,6 +85,9 @@ function App() {
                   <Route path="USB" element={<RedirectComponent red_url="/Projects/Evidential-Semantic-Mapping" />} />  {/* // Alias for Uncertainty-aware Semantic BKI */}
                   <Route path="EBS" element={<RedirectComponent red_url="/Projects/Evidential-Semantic-Mapping" />} />  {/* // Alias for Uncertainty-aware Semantic BKI */}
                   <Route path="Evidential-Semantic-Mapping" element={<EvidentialSemanticMapping />} />
+                  
+                  <Route path="DST-Evidential-Semantic-Mapping" element={<RedirectComponent red_url="/Projects/Fully-Evidential-Semantic-Mapping" />} />  {/* // Alias for Uncertainty-aware Semantic BKI */}
+                  <Route path="Fully-Evidential-Semantic-Mapping" element={<DSTEvSemMapping />} />
                 </Routes>
               }
             />

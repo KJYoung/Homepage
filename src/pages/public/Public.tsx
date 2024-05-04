@@ -35,6 +35,7 @@ const PublicEn = () => {
                     <SPAN fontWeight="700" marginRight="10px">Research Interests</SPAN>
                     <SPAN marginRight="10px" marginLeft="8px">✦ Uncertainty-aware Perception</SPAN>
                     <SPAN marginRight="10px" marginLeft="8px">✦ Robotic Mapping</SPAN>
+                    <SPAN marginRight="10px" marginLeft="8px">✦ Open-Vocabulary Interaction</SPAN>
                     <SPAN marginRight="10px" marginLeft="8px">✦ Active Perception</SPAN>
                 </FlexColumnStart>
                 <Portrait src={PORTRAIT_URL} alt="imgElement"/>

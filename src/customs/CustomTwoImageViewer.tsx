@@ -60,7 +60,7 @@ const Handle = styled.div`
   font-size: 15px;
 `;
 
-const ImageSlider = ({ imageA, imageB } : { imageA: string, imageB: string}) => {
+const ImageSlider = ({ adjustAspect, imageA, imageB } : { adjustAspect: number, imageA: string, imageB: string}) => {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [loadingImageA, setLoadingImageA] = useState(true);
   const [loadingImageB, setLoadingImageB] = useState(true);
@@ -79,7 +79,7 @@ const ImageSlider = ({ imageA, imageB } : { imageA: string, imageB: string}) => 
     const img = new Image();
     img.src = imageA;
     img.onload = () => {
-      const ratio = (img.naturalHeight / img.naturalWidth) * 100;
+      const ratio = (img.naturalHeight / img.naturalWidth + adjustAspect) * 100 ;
       setAspectRatio(ratio);
       if (containerRef.current) {
         const width = containerRef.current.offsetWidth;
@@ -87,7 +87,7 @@ const ImageSlider = ({ imageA, imageB } : { imageA: string, imageB: string}) => 
         setMinHeight(minHeightValue);
       }
     };
-  }, [imageA, imageB]);
+  }, [adjustAspect, imageA, imageB]);
 
   useEffect(() => {
     const handleResize = () => {

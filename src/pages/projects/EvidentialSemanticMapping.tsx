@@ -29,6 +29,7 @@ const YoutubeOption = {
         autoplay: 0,
     },
 };
+
 type EvSemMap_METHOD = 'BKI' | 'CON' | 'SEE' | 'OUR';
 
 export const EvidentialSemanticMapping = () => {
@@ -98,7 +99,7 @@ export const EvidentialSemanticMapping = () => {
                 <TagBubble margin="1px 16px" cursor="pointer" onClick={() => setVarVisMethod('SEE')} color={getMethodColor('SEE')} isPrime={varVisMethod === 'SEE'}>SEE-CSOM</TagBubble>
                 <TagBubble margin="1px 16px" cursor="pointer" onClick={() => setVarVisMethod('OUR')} color={getMethodColor('OUR')} isPrime={varVisMethod === 'OUR'}>Ours (EBS)</TagBubble>
             </FlexRowCenter>
-            <ImageSlider imageA={PUB2_SEM_VAR_OBJ[varVisMethod][1]} imageB={PUB2_SEM_VAR_OBJ[varVisMethod][0]} />
+            <ImageSlider adjustAspect={-0.12} imageA={PUB2_SEM_VAR_OBJ[varVisMethod][1]} imageB={PUB2_SEM_VAR_OBJ[varVisMethod][0]} />
         </FlexColumnStartCenter>
 
         <FlexColumnStartCenter marginTop="50px">
