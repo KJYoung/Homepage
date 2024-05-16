@@ -96,12 +96,18 @@ export const DSTEvSemMapObj: TPublicationContent = {
     description: 'Fully Evidential Semantic Mapping framework for inherent integration of semantic uncertainty.',
     imgURL: PUB3_TITLE_URL,
     hpURL: '/Projects/Fully-Evidential-Semantic-Mapping',
-    url: '',
+    url: 'https://arxiv.org/abs/2405.06265',
     abstract: `Semantic mapping with Bayesian Kernel Inference (BKI) has shown promise in providing a richer understanding of environments by effectively leveraging local spatial information. However, existing methods face challenges in constructing accurate semantic maps or reliable uncertainty maps in perceptually challenging environments due to unreliable semantic predictions. To address this issue, we propose an evidential semantic mapping framework, which integrates the evidential reasoning of Dempster-Shafer Theory of Evidence (DST) into the entire mapping pipeline by adopting Evidential Deep Learning (EDL) and Dempster's rule of combination. Additionally, the extended belief is devised to incorporate local spatial information based on their uncertainty during the mapping process. Comprehensive experiments across various off-road datasets demonstrate that our framework enhances the reliability of uncertainty maps, consistently outperforming existing methods in scenes with high perceptual uncertainties while showing semantic accuracy comparable to the best-performing semantic mapping techniques.`,
-    // frameworkDescription: 'Overview pipeline of our uncertainty-aware semantic BKI framework. With an evidential segmentation network trained by EDL, input data is processed to derive continuous semantic probability and uncertainty. These 3D semantic points are then integrated into the semantic map through Bayesian updates using the uncertainty-aware BKI, resulting in a dependable semantic map and variance map in uncertain off-road environments.',
-    // mainResultDescription: 'Qualitative results of 3D semantic mapping methods. Compared to others, our method generates reliable and accurate maps that preserve semantic details while excluding noisy predictions. In RELLIS-3D, only our method reconstructs grass consistently (First row), and dirt roads and puddles in detail (Second row). In our OffRoad dataset, our method accurately reconstructs the boundaries of unpaved roads, grass, and vegetation, compared to others.',
-    // supResultDescription: 'Zero-shot semantic mapping results on our OffRoad dataset using a semantic segmentation network pre-trained on RUGD. Our method robustly constructs semantic maps despite prediction uncertainties in unseen environments, whereas other methods struggle to produce clear maps.',
-    publicationType: ['Workshop']
+    frameworkDescription: 'Overview pipeline of our uncertainty-aware semantic BKI framework. With an evidential segmentation network trained by EDL, input data is processed to derive continuous semantic probability and uncertainty. 3D evidential points are then integrated into the semantic map through extended Dempster\'s Combination Rule to enable continuous semantic mapping, resulting in a dependable semantic map and uncertainty map in uncertain off-road environments.',
+    mainResultDescription: 'Qualitative results (Semantic Map) of 3D semantic mapping methods. Compared to others, our methods (EBS and Ours) generate accurate maps that preserve semantic details while excluding noisy predictions.',
+    supResultDescription: 'Qualitative results (Uncertainty Map) of 3D semantic mapping methods. Compared to others, our method generates the most well-estimated uncertainty values.',
+    BibTeX: `@article{kim2024uncertainty, 
+        title={Uncertainty-aware Semantic Mapping in Off-road Environments with Dempster-Shafer Theory of Evidence},
+        author={Kim, Junyoung and Seo, Junwon},
+        journal={arXiv preprint arXiv:2405.06265},
+        year={2024}
+}`,
+    publicationType: ['Workshop'],
 };
 
 export const PublicContent: TPublicContent = {

@@ -29,3 +29,6 @@ export const PUB2_SEM_VAR_OBJ = {
 };
 
 export const PUB3_TITLE_URL = PUBLICATION_FIG_ROOT + 'Pub3_ICRAW_Fig0.png';
+export const PUB3_FRAMEWORK_URL = GOOGLE_DRIVE_ROOT('1tuzBvZXWu9ESZYKDka8pFlg8CZY3KsTp');
+export const PUB3_RES1_URL = GOOGLE_DRIVE_ROOT('1OFNflfdfPVYdxr8huAd9l0OciuddlMwZ');
+export const PUB3_RES2_URL = GOOGLE_DRIVE_ROOT('1a4FiPVcDvLzMRN2YKxAl5cMtOKVLbgEQ');

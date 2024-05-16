@@ -12,13 +12,8 @@ import { EvSemMapObj, JunwonSeo, JunyoungKim } from "../public/PublicationConten
 import ImageSlider from "../../customs/CustomTwoImageViewer";
 import { TagBubble } from "../../customs/TagBubbleStatic";
 import { getSTRRandomHex } from "../../utils/Color";
+import { BibTexContent, BibTexSection, IconImg } from "./CommonStyles";
 
-const IconImg = styled.img`
-    max-width: 36px;
-    max-height: 36px;
-    margin: 16px;
-    cursor: pointer;
-`;
 const SIZE_MULTIPLE = 1.5;
 const YOUTUBE_WIDTH = 560 * SIZE_MULTIPLE;
 const YOUTUBE_HEIGHT = 315 * SIZE_MULTIPLE;
@@ -145,18 +140,3 @@ const Pub2FrameworkImg = styled.img`
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Change the values as per your preference */
 `;
 
-// Define the styled components
-const BibTexSection = styled(BasicDIV)`
-  padding: 20px;
-  background-color: var(--bibtex-bg);
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-`;
-
-const BibTexContent = styled.pre`
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 16px;
-  color: var(--bibtex-fg);
-  white-space: pre-wrap;
-  line-height: 1.3;
-`;

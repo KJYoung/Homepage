@@ -30,7 +30,6 @@ export const TagBubble = styled(BasicDIV)`
   height: ${({ isPrime }) => isPrime ? '24px' : '20px'}; ;
   width: fit-content;
   border-radius: 25px;
-  padding: 1px 12px;
   border: none;
   white-space: nowrap;
   text-align: center;
@@ -41,6 +40,12 @@ export const TagBubble = styled(BasicDIV)`
   margin-right: ${({ marginRight }) => marginRight};
   margin-top: ${({ marginTop }) => marginTop};
   margin-bottom: ${({ marginBottom }) => marginBottom};
+  
+  padding: ${({ padding = '1px 12px' }) => padding};
+  padding-left: ${({ paddingLeft }) => paddingLeft};
+  padding-right: ${({ paddingRight }) => paddingRight};
+  padding-top: ${({ paddingTop }) => paddingTop};
+  padding-bottom: ${({ paddingBottom }) => paddingBottom};
 
   ${({ color }) =>
     color &&

@@ -44,6 +44,16 @@ export const BasicSPAN = styled.span<IPropsBasicCSS>`
     max-width: ${({ maxWidth }) => maxWidth};
     line-height: ${({ lineHeight }) => lineHeight};
     text-align: ${({ textAlign }) => textAlign};
+
+    &.clickable {
+        cursor: pointer;
+        &:hover {
+            color: var(--hp-blue-hover);
+        }
+        &:active {
+            color: var(--hp-blue-active);
+        }
+    }
 `;
 
 export const BasicBUTTON = styled.span<IPropsBasicCSS>`
@@ -98,6 +108,25 @@ export const BasicDIV = styled.div<IPropsBasicCSS>`
     position: ${({ position }) => position};
     overflow: ${({ overflow }) => overflow};
     cursor: ${({ cursor }) => cursor};
+
+    &.clickable {
+        cursor: pointer;
+        &:hover {
+            color: var(--hp-blue-hover);
+        }
+        &:active {
+            color: var(--hp-blue-active);
+        }
+    }
+    &.clickable-white {
+        cursor: pointer;
+        &:hover {
+            color: var(--hp-white);
+        }
+        &:active {
+            color: var(--hp-white);
+        }
+    }
 `;
 
 export const BR = styled.div`
