@@ -25,13 +25,15 @@ type TPublicationContent = {
     description: string,
     imgURL: string,
     hpURL?: string,
+    slideURL?: string,
+    posterURL?: string,
     url: string,
     abstract: string,
     frameworkDescription?: string,
     mainResultDescription?: string,
     supResultDescription?: string,
     BibTeX?: string,
-    publicationType: string[],
+    publicationType: (string | string[])[], // string[]인 경우: [{Type 이름}, {TagBubble 색상의 Hex Seed를 결정하는 String}]
 };
 type TPublicationContents = {
     contents: TPublicationContent[],
@@ -96,6 +98,8 @@ export const DSTEvSemMapObj: TPublicationContent = {
     description: 'Fully Evidential Semantic Mapping framework for inherent integration of semantic uncertainty.',
     imgURL: PUB3_TITLE_URL,
     hpURL: '/Projects/Fully-Evidential-Semantic-Mapping',
+    slideURL: 'https://drive.google.com/file/d/1XXcqQjxMFZbM9lo2cWx2VKSc3yGuk4XI/view?usp=sharing',
+    posterURL: 'https://drive.google.com/file/d/1KdAM25YnTGhKr-m4YkGuCrDUvKtx7fSl/view?usp=sharing',
     url: 'https://arxiv.org/abs/2405.06265',
     abstract: `Semantic mapping with Bayesian Kernel Inference (BKI) has shown promise in providing a richer understanding of environments by effectively leveraging local spatial information. However, existing methods face challenges in constructing accurate semantic maps or reliable uncertainty maps in perceptually challenging environments due to unreliable semantic predictions. To address this issue, we propose an evidential semantic mapping framework, which integrates the evidential reasoning of Dempster-Shafer Theory of Evidence (DST) into the entire mapping pipeline by adopting Evidential Deep Learning (EDL) and Dempster's rule of combination. Additionally, the extended belief is devised to incorporate local spatial information based on their uncertainty during the mapping process. Comprehensive experiments across various off-road datasets demonstrate that our framework enhances the reliability of uncertainty maps, consistently outperforming existing methods in scenes with high perceptual uncertainties while showing semantic accuracy comparable to the best-performing semantic mapping techniques.`,
     frameworkDescription: 'Overview pipeline of our uncertainty-aware semantic BKI framework. With an evidential segmentation network trained by EDL, input data is processed to derive continuous semantic probability and uncertainty. 3D evidential points are then integrated into the semantic map through extended Dempster\'s Combination Rule to enable continuous semantic mapping, resulting in a dependable semantic map and uncertainty map in uncertain off-road environments.',
@@ -107,7 +111,7 @@ export const DSTEvSemMapObj: TPublicationContent = {
         journal={arXiv preprint arXiv:2405.06265},
         year={2024}
 }`,
-    publicationType: ['Workshop'],
+    publicationType: ['Workshop', ['Spotlight Talk 4/22 (18%)', 'Spot']],
 };
 
 export const PublicContent: TPublicContent = {
@@ -174,7 +178,13 @@ export const PublicationDiv = ({ publicationContent, setImage, navigate, isDetai
                             {author.withStar ? '*' : ''}{author.isLast ? '' : ', '}
                         </SPAN>
                     </BasicDIV>)}
-                    {isDetail && publicationContent.publicationType.map((type, idx) => <TagBubble key={idx} color={getSTRRandomHex(type)}>{type}</TagBubble>)}
+                    {isDetail && publicationContent.publicationType.map((type, idx) => {
+                        if(typeof(type) === typeof(['str'])){
+                            return <TagBubble key={idx} color={getSTRRandomHex(type[1])}>{type[0]}</TagBubble>
+                        }else{
+                            return <TagBubble key={idx} color={getSTRRandomHex(type as string)}>{type}</TagBubble>
+                        }
+                    })}
                 </FlexRowStart>
                 {/* Status */}
                 <FlexRowEnd width="200px">

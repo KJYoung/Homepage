@@ -10,6 +10,8 @@ import { BibTexContent, BibTexSection, IconImg } from "./CommonStyles";
 import { TagBubble } from "../../customs/TagBubbleStatic";
 import { getSTRRandomHex } from "../../utils/Color";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPersonChalkboard } from "@fortawesome/free-solid-svg-icons";
 
 export const DSTEvSemMapping = () => {
     const dispatch = useDispatch();
@@ -33,10 +35,22 @@ export const DSTEvSemMapping = () => {
         {/* ICONS */}
         <FlexRowCenter marginTop="0px">
             <IconImg src={ARXIV_ICON_URL} onClick={() => window.open('https://arxiv.org/abs/2405.06265', '_blank')} />
+            <TagBubble className="clickable" padding="16px 15px" onClick={() => window.open(DSTEvSemMapObj.slideURL!, '_blank')} color={getSTRRandomHex('Spot')}>
+                <FontAwesomeIcon icon={faPersonChalkboard} fontSize={18}/>
+                <SPAN marginLeft="8px">Slides</SPAN>
+            </TagBubble>
+            <TagBubble className="clickable" padding="16px 15px" onClick={() => window.open(DSTEvSemMapObj.posterURL!, '_blank')} color={getSTRRandomHex('Poster')}>
+                <FontAwesomeIcon icon={faPersonChalkboard} fontSize={18}/>
+                <SPAN marginLeft="8px">Poster</SPAN>
+            </TagBubble>
         </FlexRowCenter>
-        <FlexColumnStartCenter marginTop="0px">
+        <FlexRowCenter marginTop="0px">
+            <TagBubble className="clickable-white" padding="2px 20px" color={getSTRRandomHex('Spot')} onClick={() => window.open('https://theairlab.org/icra2024_offroad_workshop/', '_blank')}>ICRA 2024 Workshop on Resilient Off-road Autonomy</TagBubble>
+            <TagBubble padding="2px 20px" color={getSTRRandomHex('Spot')}>Spotlight Talk 4/22 (18%)</TagBubble>
+        </FlexRowCenter>
+        <FlexRowCenter marginTop="5px">
             <TagBubble className="clickable-white" padding="2px 20px" onClick={() => navigate(EvSemMapObj.hpURL!)} color={getSTRRandomHex('DSTEv')}>For more information, refer to our previous work</TagBubble>
-        </FlexColumnStartCenter>
+        </FlexRowCenter>
         <FlexColumnStartCenter marginTop="10px">
             <FlexRowCenter>
                 <H1 fontSize="32px">Abstract</H1>

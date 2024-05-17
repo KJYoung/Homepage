@@ -34,6 +34,8 @@ export const TagBubble = styled(BasicDIV)`
   white-space: nowrap;
   text-align: center;
   vertical-align: center;
+  display: flex;
+  align-items: center;
 
   margin: ${({ margin = '1px 3px' }) => margin};
   margin-left: ${({ marginLeft }) => marginLeft};
