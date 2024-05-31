@@ -6,9 +6,10 @@ import { notificationSuccess } from "../../utils/sendNoti";
 import { useNavigate } from "react-router-dom";
 import { PublicationWrapperDiv } from "./PublicationContents";
 import { BR } from "../../customs/Basics";
-import { FlexColumnStart, FlexRowSpaceBetweenEnd, FlexRowStart } from "../../customs/Divs";
+import { FlexColumnStart, FlexRowEnd, FlexRowSpaceBetweenEnd, FlexRowStart } from "../../customs/Divs";
 import { TagBubble } from "../../customs/TagBubbleStatic";
 import { getSRandomHex } from "../../utils/Color";
+import { ProjectsDiv } from "../projects/projectsDiv";
 
 export const DOCUMENT_ROOT = process.env.PUBLIC_URL + "/document/";
 
@@ -110,26 +111,7 @@ const PublicEn = () => {
             </FlexRowStart> */}
         </FlexColumnStart>
         <PublicationWrapperDiv navigate={navigate} isDetail={false} />
-        <ProjectsDiv>
-            <H2 onClick={() => { navigate('/Projects/'); }}>Projects</H2>
-            <PublicBR />
-            <ExtensibleSPAN content={<>
-                <SPAN marginLeft='20px'>2022 Fall Semester FitTogether Team Project</SPAN>
-            </>} extContent={<FlexBox>
-                <RightAlignDiv>
-                    <LinkSpan marginLeft='20px' content="[Github Repo]" targetUrl="https://github.com/swsnu/swppfall2022-team4/"/>
-                </RightAlignDiv>
-            </FlexBox>}/>
-            <ExtensibleSPAN content={<>
-                <SPAN marginLeft='20px'>2021 miliTECH Challenge Team Project</SPAN>
-            </>} extContent={<FlexBox>
-                <SPAN marginLeft='30px'>감시 정찰을 위한 딥러닝 기반 표적 인식 알고리즘 연구, 과학기술정보통신부 장관상</SPAN>
-                <SPAN marginLeft='30px'>Adversarial AI.</SPAN>
-                <RightAlignDiv>
-                    <LinkSpan marginLeft='20px' content="[Awards PDF]" targetUrl={DOCUMENT_ROOT + "miliTECH_Award.pdf"}/>
-                </RightAlignDiv>
-            </FlexBox>}/>
-        </ProjectsDiv>
+        <ProjectsDiv />
         <InternshipDiv>
             <H2>Internship</H2>
             <PublicBR />
@@ -137,9 +119,9 @@ const PublicEn = () => {
                 <SPAN marginLeft='20px'>2022.Fall. @SNU CSE, Prof. Kwangkeun Yi</SPAN>
             </>} extContent={<FlexBox>
                 <SPAN marginLeft='30px'>About Rescript Type System, GenType</SPAN>
-                <RightAlignDiv>
+                <FlexRowEnd marginTop='5px' backgroundColor="transparent">
                     <LinkSpan content="[Programming Research Laboratory (ROPAS)]" targetUrl="https://ropas.snu.ac.kr/~kwang/"/>
-                </RightAlignDiv>
+                </FlexRowEnd>
             </FlexBox>}/>
             <ExtensibleSPAN content={<>
                 <SPAN marginLeft='20px'>2021.Winter~2022.Summer. @SNU Biology, Prof. Martin Steinegger</SPAN>
@@ -147,9 +129,9 @@ const PublicEn = () => {
                 <SPAN marginLeft='30px'>Construct the docker images for the integrated CryoET analyses.</SPAN>
                 <SPAN marginLeft='30px'>Transplant warp partially into linux. Warp : Based on C# .NET framework.</SPAN>
                 <SPAN marginLeft='30px'>Improve the existing denoiser for cryoEM/ET images.</SPAN>
-                <RightAlignDiv>
+                <FlexRowEnd marginTop='5px' backgroundColor="transparent">
                     <LinkSpan content="[Steinegger Lab]" targetUrl="https://steineggerlab.com/"/>
-                </RightAlignDiv>
+                </FlexRowEnd>
             </FlexBox>}/>
             <SPAN marginLeft='20px'>2021.Summer. @SNU Biology, Prof. Hyoung F. Kim</SPAN>
             <SPAN marginLeft='20px'>2020.Winter. @SNU Biology, Prof. Young-Yun Kong</SPAN>
@@ -238,14 +220,6 @@ const ContactInfoDiv = styled.div`
 
 const InternshipDiv = styled(ContentDiv)`
     
-`;
-const ProjectsDiv = styled(ContentDiv)`
-    
-`;
-const RightAlignDiv = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
 `;
 
 export default PublicEn;

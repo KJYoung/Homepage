@@ -7,9 +7,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { coreActions, selectCore } from './store/slices/core';
 import { MOBILE_DESKTOP_THRESHOLD } from './styles/GlobalConst';
 import { ReactNotifications } from 'react-notifications-component';
-import { ProjectsMain } from './pages/projects/Projects';
+import { PublicationsMain } from './pages/publications/PublicationsMain';
 import { ExpElements } from './pages/experimental/Elements';
-import { EvidentialSemanticMapping } from './pages/projects/EvidentialSemanticMapping';
+import { EvidentialSemanticMapping } from './pages/publications/EvidentialSemanticMapping';
 import styled from 'styled-components';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -19,7 +19,7 @@ import Private from './pages/Private';
 import New from './pages/New';
 import MainPage from './pages/MainPage';
 import PublicEn from './pages/public/Public';
-import { DSTEvSemMapping } from './pages/projects/DSTEvSemMapping';
+import { DSTEvSemMapping } from './pages/publications/DSTEvSemMapping';
 
 const RedirectComponent = ({ red_url } : { red_url : string }) => {
   const navigate = useNavigate();
@@ -79,7 +79,7 @@ function App() {
               path={`${NAV_PROJ_PAGE}/*`}
               element={
                 <Routes>
-                  <Route path="/" element={ <ProjectsMain /> } />
+                  <Route path="/" element={ <PublicationsMain /> } />
 
                   {/* First Paper [IROS 2024 - Evidential Semantic Mapping in Off-road Environments with Uncertainty-aware Bayesian Kernel Inference] */}
                   <Route path="USB" element={<RedirectComponent red_url="/Projects/Evidential-Semantic-Mapping" />} />  {/* // Alias for Uncertainty-aware Semantic BKI */}

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { TabState, coreActions } from "../../store/slices/core";
 
-export const ProjectsMain = () => {
+export const PublicationsMain = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     useEffect(() => {
