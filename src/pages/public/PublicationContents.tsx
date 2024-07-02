@@ -71,7 +71,7 @@ export const EvSemMapObj: TPublicationContent = {
     id: 2,
     title: 'Evidential Semantic Mapping in Off-road Environments with Uncertainty-aware Bayesian Kernel Inference',
     author: [JunyoungKimStar, JunwonSeoStar, {...JihongMin, isLast: true}],
-    status: 'Under Review, 2024',
+    status: 'IROS, 2024',
     description: 'Uncertainty-aware semantic BKI mapping framework for robust deployments in off-road environments using Evidential Deep Learning.',
     imgURL: PUB2_FIG_URL,
     hpURL: '/Projects/Evidential-Semantic-Mapping',
@@ -86,8 +86,7 @@ export const EvSemMapObj: TPublicationContent = {
         journal={arXiv preprint arXiv:2403.14138},
         year={2024}
 }`,
-    // publicationType: ['Conference', 'Workshop']
-    publicationType: ['Under Review']
+    publicationType: ['Conference'],
 };
 
 export const DSTEvSemMapObj: TPublicationContent = {
