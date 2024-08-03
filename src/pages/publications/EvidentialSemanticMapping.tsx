@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import YouTube from "react-youtube";
-import { ARXIV_ICON_URL, PUB2_FRAMEWORK_URL, PUB2_SEM_VAR_OBJ, PUB2_RES1_URL, PUB2_RES2_URL, YOUTUBE_ICON_URL } from "../../DATA/Public_URL"
+import { ARXIV_ICON_URL, PUB2_FRAMEWORK_URL, PUB2_SEM_VAR_OBJ, PUB2_RES1_URL, PUB2_RES2_URL, YOUTUBE_ICON_URL, GITHUB_ICON_URL } from "../../DATA/Public_URL"
 import { FlexColumnStartCenter, FlexColumnStartCenterNotFull, FlexRowCenter, FlexRowStart } from "../../customs/Divs"
 import { H1, H3, SPAN } from "../../customs/Spans"
 import { CustomToggle } from "../../customs/CustomToggle";
@@ -61,13 +61,16 @@ export const EvidentialSemanticMapping = () => {
         <FlexRowCenter marginTop="0px">
             <IconImg src={ARXIV_ICON_URL} onClick={() => window.open('https://arxiv.org/abs/2403.14138', '_blank')} />
             <IconImg src={YOUTUBE_ICON_URL} onClick={() => window.open('https://youtu.be/5cYY5c25GqE', '_blank')} />
+            <IconImg src={GITHUB_ICON_URL} onClick={() => window.open('https://github.com/junwon-vision/EvSemMap', '_blank')} />
+        </FlexRowCenter>
+        <FlexRowCenter marginTop="0px" marginBottom="15px">
+            <SPAN fontSize="20px" color="hp-purple" fontWeight="700">Accepted to IROS 2024</SPAN>
         </FlexRowCenter>
         <FlexRowCenter>
             <CustomToggle toggleState={isShortVideo} onText="1 min" offText="5 min" onToggle={() => { setIsShortVideo(iSV => !iSV) }} width={'120px'} />
         </FlexRowCenter>
-        {/* <FlexColumnStartCenter style={{pointerEvents: 'none'}} className="no-select"> */}
-        <FlexColumnStartCenterNotFull marginTop="10px" position="relative" borderRadius="22px" className="no-select" padding="6px" backgroundColor={isShortVideo ? "youtube-mode-one" : "youtube-mode-two"}>
-            <BasicDIV width={`min(100%, ${YOUTUBE_WIDTH}px)`} height={`${YOUTUBE_HEIGHT}px`} borderRadius="16px" overflow="hidden" backgroundColor={isShortVideo ? "youtube-mode-one" : "youtube-mode-two"}>
+        <FlexColumnStartCenterNotFull marginTop="10px" position="relative" borderRadius="22px" className="no-select" padding="6px" backgroundColor={isShortVideo ? "hp-green" : "hp-purple"}>
+            <BasicDIV width={`min(100%, ${YOUTUBE_WIDTH}px)`} height={`${YOUTUBE_HEIGHT}px`} borderRadius="16px" overflow="hidden" backgroundColor={isShortVideo ? "hp-green" : "hp-purple"}>
                 {isShortVideo ? 
                     <YouTube videoId="91ct6I_8iXg" opts={YoutubeOption} id="video" style={{zIndex: 2}}/>
                     :

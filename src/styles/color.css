@@ -4,6 +4,8 @@
     --hp-white: #ffffff;
     --hp-black: #030303;
     --hp-gray: #333333;
+    --hp-purple: #8972ff;
+    --hp-green: #61b327;
 
     /* Custom Image Slider */
     --hp-blue: #4e8cff;
@@ -21,8 +23,6 @@
     --hp-header-left: #ff777783;
     --hp-header-right: #777cffc5;
 
-    --youtube-mode-one: #61b327;
-    --youtube-mode-two: #8972ff;
     --bibtex-bg: #ebebeb;
     --bibtex-fg: #333333;
 }

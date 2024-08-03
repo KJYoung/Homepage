@@ -37,7 +37,7 @@ const ToggleButtonContainer = styled.div<ToggleButtonContainerProps>`
   justify-content: space-between;
   padding: 4px;
   border-radius: 16px;
-  background-color: ${props => (props.isOn ? 'var(--youtube-mode-one)' : 'var(--youtube-mode-two)')};
+  background-color: ${props => (props.isOn ? 'var(--hp-green)' : 'var(--hp-purple)')};
   color: black;
   font-size: 14px;
   font-weight: bold;

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { TabState, coreActions } from "../../store/slices/core";
 import { DSTEvSemMapObj, EvSemMapObj, JunwonSeo, JunyoungKim } from "../public/PublicationContents";
-import { ARXIV_ICON_URL, PUB3_FRAMEWORK_URL, PUB3_RES1_URL, PUB3_RES2_URL } from "../../DATA/Public_URL";
+import { ARXIV_ICON_URL, EXTERNAL_ICON_URL, GITHUB_ICON_URL, PUB3_FRAMEWORK_URL, PUB3_RES1_URL, PUB3_RES2_URL } from "../../DATA/Public_URL";
 import styled from "styled-components";
 import { BibTexContent, BibTexSection, IconImg } from "./CommonStyles";
 import { TagBubble } from "../../customs/TagBubbleStatic";
@@ -27,14 +27,21 @@ export const DSTEvSemMapping = () => {
                 {DSTEvSemMapObj.title}
             </H1>
         </FlexRowCenter>
+        
         {/* AUTHOR */}
         <FlexRowCenter marginTop="20px" padding="5px">
             <SPAN fontSize="20px" className="clickable" marginRight="12px" onClick={() => window.open(JunyoungKim.url, '_blank')}>Junyoung Kim,</SPAN>
             <SPAN fontSize="20px" className="clickable" onClick={() => window.open(JunwonSeo.url, '_blank')}>Junwon Seo</SPAN>
         </FlexRowCenter>
+        
         {/* ICONS */}
         <FlexRowCenter marginTop="0px">
             <IconImg src={ARXIV_ICON_URL} onClick={() => window.open('https://arxiv.org/abs/2405.06265', '_blank')} />
+            <IconImg src={GITHUB_ICON_URL} onClick={() => window.open('https://github.com/junwon-vision/EvSemMap', '_blank')} />
+        </FlexRowCenter>
+
+        {/* Additional Materials */}
+        <FlexRowCenter marginTop="0px">
             <TagBubble className="clickable" padding="16px 15px" onClick={() => window.open(DSTEvSemMapObj.slideURL!, '_blank')} color={getSTRRandomHex('Spot')}>
                 <FontAwesomeIcon icon={faPersonChalkboard} fontSize={18}/>
                 <SPAN marginLeft="8px">Slides</SPAN>
@@ -44,13 +51,21 @@ export const DSTEvSemMapping = () => {
                 <SPAN marginLeft="8px">Poster</SPAN>
             </TagBubble>
         </FlexRowCenter>
-        <FlexRowCenter marginTop="0px">
-            <TagBubble className="clickable-white" padding="2px 20px" color={getSTRRandomHex('Spot')} onClick={() => window.open('https://theairlab.org/icra2024_offroad_workshop/', '_blank')}>ICRA 2024 Workshop on Resilient Off-road Autonomy</TagBubble>
+
+        {/* Additional Information */}
+        <FlexRowCenter marginTop="10px" marginBottom="0px">
+            <SPAN fontSize="20px" color="hp-black" fontWeight="700">For more information, refer to our previous work</SPAN>
+            <IconImg src={EXTERNAL_ICON_URL} onClick={() => navigate(EvSemMapObj.hpURL!)} className="clickable small" />
+        </FlexRowCenter>
+
+        <FlexColumnStartCenter marginTop="5px" marginBottom="15px">
+            <FlexRowCenter marginTop="0px" marginBottom="5px">
+                <SPAN fontSize="20px" color="hp-purple" fontWeight="700">Accepted to ICRA 2024 Workshop on Resilient Off-road Autonomy</SPAN>
+                <IconImg src={EXTERNAL_ICON_URL} onClick={() => window.open('https://theairlab.org/icra2024_offroad_workshop/', '_blank')} className="clickable small" />
+            </FlexRowCenter>
             <TagBubble padding="2px 20px" color={getSTRRandomHex('Spot')}>Spotlight Talk 4/22 (18%)</TagBubble>
-        </FlexRowCenter>
-        <FlexRowCenter marginTop="5px">
-            <TagBubble className="clickable-white" padding="2px 20px" onClick={() => navigate(EvSemMapObj.hpURL!)} color={getSTRRandomHex('DSTEv')}>For more information, refer to our previous work</TagBubble>
-        </FlexRowCenter>
+        </FlexColumnStartCenter>
+        
         <FlexColumnStartCenter marginTop="10px">
             <FlexRowCenter>
                 <H1 fontSize="32px">Abstract</H1>

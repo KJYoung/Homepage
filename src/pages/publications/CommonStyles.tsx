@@ -6,6 +6,20 @@ export const IconImg = styled.img`
     max-height: 36px;
     margin: 16px;
     cursor: pointer;
+    &.small {
+      max-width: 26px;
+      max-height: 26px;
+      margin: 3px;
+    }
+    &.clickable {
+        cursor: pointer;
+        &:hover {
+          filter: invert(56%) sepia(69%) saturate(1396%) hue-rotate(194deg) brightness(98%) contrast(104%); /* var(--hp-blue-hover) converted at https://codepen.io/sosuke/pen/Pjoqqp */
+        }
+        &:active {
+          filter: invert(31%) sepia(89%) saturate(2099%) hue-rotate(211deg) brightness(102%) contrast(104%); /* var(--hp-blue-active) converted at https://codepen.io/sosuke/pen/Pjoqqp */
+        }
+    }
 `;
 
 export const BibTexSection = styled(BasicDIV)`

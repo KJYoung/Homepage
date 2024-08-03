@@ -45,6 +45,7 @@ export const BasicSPAN = styled.span<IPropsBasicCSS>`
     line-height: ${({ lineHeight }) => lineHeight};
     text-align: ${({ textAlign }) => textAlign};
 
+    color: ${({ color = 'hp-black' }) => getRGBfromVar(color)};
     &.clickable {
         cursor: pointer;
         &:hover {
