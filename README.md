@@ -8,6 +8,8 @@
 2023.03.07. LinkSpan.   
 2023.03.31. Custom Checkbox.   
 2024.03.19. 많은 것들이 진행됨. 일단 Store, Header Logic 정리해야 함. Mobile, Desktop Design도..
+2024.08.19. 많은 것들이 진행됨. Google Drive Assets. IROS, ICRA Paper Homepages. LLM Hackathon. Last Update Checker.
+
 TODO: Custom Image Slider Left/Right Indicator.   
    
 ## Available Scripts
