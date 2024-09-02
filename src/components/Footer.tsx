@@ -6,7 +6,7 @@ import { LastUpdatedGit } from "./LastUpdatedGit";
 const Footer = () => {
   
   return <FooterDiv>
-    <BasicDIV backgroundColor="transparent" color="hp-white" marginBottom="10px">2024. VKJY. Junyoung Kim.</BasicDIV>
+    <BasicDIV backgroundColor="transparent" color="hp-white" marginBottom="10px">VKJY. Junyoung Kim.</BasicDIV>
     <BasicDIV backgroundColor="transparent" color="hp-white"><LastUpdatedGit repoName="KJYoung/Homepage" filePath="README.md" /></BasicDIV>
   </FooterDiv>
 };
