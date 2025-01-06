@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import YouTube from "react-youtube";
-import { ARXIV_ICON_URL, PUB2_FRAMEWORK_URL, PUB2_SEM_VAR_OBJ, PUB2_RES1_URL, PUB2_RES2_URL, YOUTUBE_ICON_URL, GITHUB_ICON_URL } from "../../DATA/Public_URL"
+import { ARXIV_ICON_URL, PUB2_FRAMEWORK_URL, PUB2_SEM_VAR_OBJ, PUB2_RES1_URL, PUB2_RES2_URL, YOUTUBE_ICON_URL, GITHUB_ICON_URL, EXTERNAL_ICON_URL } from "../../DATA/Public_URL"
 import { FlexColumnStartCenter, FlexColumnStartCenterNotFull, FlexRowCenter, FlexRowStart } from "../../customs/Divs"
 import { H1, H3, SPAN } from "../../customs/Spans"
 import { CustomToggle } from "../../customs/CustomToggle";
@@ -13,6 +13,8 @@ import ImageSlider from "../../customs/CustomTwoImageViewer";
 import { TagBubble } from "../../customs/TagBubbleStatic";
 import { getSTRRandomHex } from "../../utils/Color";
 import { BibTexContent, BibTexSection, IconImg } from "./CommonStyles";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPersonChalkboard } from "@fortawesome/free-solid-svg-icons";
 
 const SIZE_MULTIPLE = 1.5;
 const YOUTUBE_WIDTH = 560 * SIZE_MULTIPLE;
@@ -63,9 +65,29 @@ export const EvidentialSemanticMapping = () => {
             <IconImg src={YOUTUBE_ICON_URL} onClick={() => window.open('https://youtu.be/5cYY5c25GqE', '_blank')} />
             <IconImg src={GITHUB_ICON_URL} onClick={() => window.open('https://github.com/junwon-vision/EvSemMap', '_blank')} />
         </FlexRowCenter>
-        <FlexRowCenter marginTop="0px" marginBottom="15px">
-            <SPAN fontSize="20px" color="hp-purple" fontWeight="700">Accepted to IROS 2024</SPAN>
+
+        {/* Additional Materials */}
+        <FlexRowCenter marginTop="0px">
+            <TagBubble className="clickable" padding="16px 15px" onClick={() => window.open(EvSemMapObj.slideURL!, '_blank')} color={getSTRRandomHex('Spot')}>
+                <FontAwesomeIcon icon={faPersonChalkboard} fontSize={18}/>
+                <SPAN marginLeft="8px">Slides</SPAN>
+            </TagBubble>
+            <TagBubble className="clickable" padding="16px 15px" onClick={() => window.open(EvSemMapObj.posterURL!, '_blank')} color={getSTRRandomHex('Poster')}>
+                <FontAwesomeIcon icon={faPersonChalkboard} fontSize={18}/>
+                <SPAN marginLeft="8px">Poster</SPAN>
+            </TagBubble>
         </FlexRowCenter>
+
+        <FlexRowCenter marginTop="10px" marginBottom="0px">
+            <SPAN fontSize="20px" color="hp-black" fontWeight="700">Accepted to IROS 2024</SPAN>
+            <IconImg src={EXTERNAL_ICON_URL} onClick={() => window.open('https://iros2024-abudhabi.org/', '_blank')} className="clickable small" />
+        </FlexRowCenter>
+        <FlexColumnStartCenter marginTop="5px" marginBottom="15px">
+            <FlexRowCenter marginTop="0px" marginBottom="5px">
+                <SPAN fontSize="20px" color="hp-purple" fontWeight="700">Nominated on Best Cognitive Robotics Papers Finalists</SPAN>
+                <IconImg src={EXTERNAL_ICON_URL} onClick={() => window.open('https://ras.papercept.net/conferences/conferences/IROS24/program/IROS24_ContentListWeb_2.html#tuat2', '_blank')} className="clickable small" />
+            </FlexRowCenter>
+        </FlexColumnStartCenter>
         <FlexRowCenter>
             <CustomToggle toggleState={isShortVideo} onText="1 min" offText="5 min" onToggle={() => { setIsShortVideo(iSV => !iSV) }} width={'120px'} />
         </FlexRowCenter>

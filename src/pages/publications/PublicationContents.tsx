@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Flex, FlexColumnStart, FlexRowCenter, FlexRowEnd, FlexRowSpaceBetween, FlexRowSpaceBetweenEnd, FlexRowStart } from "../../customs/Divs";
 import { H2, H5, SPAN } from "../../customs/Spans";
-import { PUB1_FIG_URL, PUB2_FIG_URL, PUB3_REPRESENTATIVE_PIC_V2_URL } from "../../DATA/Public_URL";
+import { PUB1_FIG_URL, PUB2_FIG_URL, PUB2_POSTER_URL, PUB2_SLIDES_URL, PUB3_POSTER_URL, PUB3_REPRESENTATIVE_PIC_V2_URL, PUB3_SLIDES_URL, PUB4_REPRESENTATIVE_PIC_URL } from "../../DATA/Public_URL";
 import CustomImageModal from "../../customs/CustomImageModal";
 import { NavigateFunction } from "react-router-dom";
 import { useRef, useState } from "react";
@@ -86,6 +86,8 @@ export const EvSemMapObj: TPublicationContent = {
     status: 'IROS, 2024',
     description: 'Uncertainty-aware semantic BKI mapping framework for robust deployments in off-road environments using Evidential Deep Learning.',
     imgURL: PUB2_FIG_URL,
+    slideURL: PUB2_SLIDES_URL,
+    posterURL: PUB2_POSTER_URL,
     hpURL: '/Projects/Evidential-Semantic-Mapping',
     url: 'https://arxiv.org/abs/2403.14138',
     abstract: 'Robotic mapping with Bayesian Kernel Inference (BKI) has shown promise in creating semantic maps by effectively leveraging local spatial information. However, existing semantic mapping methods face challenges in constructing reliable maps in unstructured outdoor scenarios due to unreliable semantic predictions. To address this issue, we propose an evidential semantic mapping, which can enhance reliability in perceptually challenging off-road environments. We integrate Evidential Deep Learning into the semantic segmentation network to obtain the uncertainty estimate of semantic prediction. Subsequently, this semantic uncertainty is incorporated into an uncertainty-aware BKI, tailored to prioritize more confident semantic predictions when accumulating semantic information. By adaptively handling semantic uncertainties, the proposed framework constructs robust representations of the surroundings even in previously unseen environments. Comprehensive experiments across various off-road datasets demonstrate that our framework enhances accuracy and robustness, consistently outperforming existing methods in scenes with high perceptual uncertainties.',
@@ -109,8 +111,8 @@ export const DSTEvSemMapObj: TPublicationContent = {
     description: 'Fully Evidential Semantic Mapping framework for inherent integration of semantic uncertainty.',
     imgURL: PUB3_REPRESENTATIVE_PIC_V2_URL,
     hpURL: '/Projects/Fully-Evidential-Semantic-Mapping',
-    slideURL: 'https://drive.google.com/file/d/1XXcqQjxMFZbM9lo2cWx2VKSc3yGuk4XI/view?usp=sharing',
-    posterURL: 'https://drive.google.com/file/d/1KdAM25YnTGhKr-m4YkGuCrDUvKtx7fSl/view?usp=sharing',
+    slideURL: PUB3_SLIDES_URL,
+    posterURL: PUB3_POSTER_URL,
     url: 'https://arxiv.org/abs/2405.06265',
     abstract: `Semantic mapping with Bayesian Kernel Inference (BKI) has shown promise in providing a richer understanding of environments by effectively leveraging local spatial information. However, existing methods face challenges in constructing accurate semantic maps or reliable uncertainty maps in perceptually challenging environments due to unreliable semantic predictions. To address this issue, we propose an evidential semantic mapping framework, which integrates the evidential reasoning of Dempster-Shafer Theory of Evidence (DST) into the entire mapping pipeline by adopting Evidential Deep Learning (EDL) and Dempster's rule of combination. Additionally, the extended belief is devised to incorporate local spatial information based on their uncertainty during the mapping process. Comprehensive experiments across various off-road datasets demonstrate that our framework enhances the reliability of uncertainty maps, consistently outperforming existing methods in scenes with high perceptual uncertainties while showing semantic accuracy comparable to the best-performing semantic mapping techniques.`,
     frameworkDescription: 'Overview pipeline of our uncertainty-aware semantic BKI framework. With an evidential segmentation network trained by EDL, input data is processed to derive continuous semantic probability and uncertainty. 3D evidential points are then integrated into the semantic map through extended Dempster\'s Combination Rule to enable continuous semantic mapping, resulting in a dependable semantic map and uncertainty map in uncertain off-road environments.',
@@ -130,14 +132,14 @@ export const GaussianMapObj: TPublicationContent = {
     id: 4,
     title: 'Gaussian Mapping',
     author: [{...JunyoungKim, isLast: true}],
-    status: 'In preparation, 2024',
+    status: 'In preparation, 2025',
     description: 'In preparation',
-    imgURL: '',
+    imgURL: PUB4_REPRESENTATIVE_PIC_URL,
     hpURL: '/Projects/Gaussian-Mapping',
     slideURL: '',
     posterURL: '',
     url: '',
-    abstract: ``,
+    abstract: `In Preparation`,
     frameworkDescription: '',
     mainResultDescription: '',
     supResultDescription: '',

@@ -15,6 +15,9 @@ export const PUB2_FRAMEWORK_URL = PUBLICATION_FIG_ROOT + 'Pub2_IROS_Fig2.png';
 export const PUB2_RES1_URL = PUBLICATION_FIG_ROOT + 'Pub2_IROS_Fig3.png';
 export const PUB2_RES2_URL = PUBLICATION_FIG_ROOT + 'Pub2_IROS_Fig4.png';
 
+export const PUB2_POSTER_URL = 'https://drive.google.com/file/d/1_Mkyuzubq4hn7sdDfXC42fSxToC0XxMY/view?usp=sharing';
+export const PUB2_SLIDES_URL = 'https://drive.google.com/file/d/1sVVFzy4G-XSVSVRVZ5DvLYapo3HAbj3s/view?usp=sharing';
+
 export const PUB2_OUR_WINTER_VAR = GOOGLE_DRIVE_ROOT('1ogjVm_Qtu_xrVAwy7QELS6U8Vm7H4ufc'); 
 export const PUB2_OUR_WINTER_SEM = GOOGLE_DRIVE_ROOT('1hUVxJ9a1KCC2jwt5oBhJWxVott7sh2em');
 export const PUB2_SEE_WINTER_VAR = GOOGLE_DRIVE_ROOT('1-0oiqe4ThqBIa6CKzFGofDPczK3IGL2M');
@@ -35,3 +38,8 @@ export const PUB3_FRAMEWORK_URL = GOOGLE_DRIVE_ROOT('1tuzBvZXWu9ESZYKDka8pFlg8CZ
 export const PUB3_RES1_URL = GOOGLE_DRIVE_ROOT('1OFNflfdfPVYdxr8huAd9l0OciuddlMwZ');
 export const PUB3_RES2_URL = GOOGLE_DRIVE_ROOT('1a4FiPVcDvLzMRN2YKxAl5cMtOKVLbgEQ');
 export const PUB3_REPRESENTATIVE_PIC_V2_URL = GOOGLE_DRIVE_ROOT('1Ch2kHqmnC4pcarJVP44ISY5pPeDANIv9');
+export const PUB3_POSTER_URL = 'https://drive.google.com/file/d/1KdAM25YnTGhKr-m4YkGuCrDUvKtx7fSl/view?usp=sharing';
+export const PUB3_SLIDES_URL = 'https://drive.google.com/file/d/1XXcqQjxMFZbM9lo2cWx2VKSc3yGuk4XI/view?usp=sharing';
+
+
+export const PUB4_REPRESENTATIVE_PIC_URL = GOOGLE_DRIVE_ROOT('1Y9U9JZK7OODJjnPNGTVRJbF3ufxnqSn5');
