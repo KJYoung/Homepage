@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { BasicDIV } from "../../customs/Basics";
 import { useDispatch } from "react-redux";
 import { TabState, coreActions } from "../../store/slices/core";
-import { EvSemMapObj, JunwonSeo, JunyoungKim } from "../public/PublicationContents";
+import { EvSemMapObj, JunwonSeo, JunyoungKim } from "./PublicationContents";
 import ImageSlider from "../../customs/CustomTwoImageViewer";
 import { TagBubble } from "../../customs/TagBubbleStatic";
 import { getSTRRandomHex } from "../../utils/Color";

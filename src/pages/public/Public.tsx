@@ -4,7 +4,7 @@ import { ExtensibleSPAN } from "../PublicDep";
 import { PORTRAIT_URL } from "../../DATA/Public_URL";
 import { notificationSuccess } from "../../utils/sendNoti";
 import { useNavigate } from "react-router-dom";
-import { PublicationWrapperDiv } from "./PublicationContents";
+import { PublicationWrapperDiv } from "../publications/PublicationContents";
 import { BR } from "../../customs/Basics";
 import { FlexColumnStart, FlexRowEnd, FlexRowSpaceBetweenEnd, FlexRowStart } from "../../customs/Divs";
 import { TagBubble } from "../../customs/TagBubbleStatic";

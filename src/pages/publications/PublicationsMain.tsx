@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { PublicationWrapperDiv } from "../public/PublicationContents";
+import { PublicationWrapperDiv } from "./PublicationContents";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { TabState, coreActions } from "../../store/slices/core";

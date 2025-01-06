@@ -6,7 +6,7 @@ import CustomImageModal from "../../customs/CustomImageModal";
 import { NavigateFunction } from "react-router-dom";
 import { useRef, useState } from "react";
 import { BasicDIV } from "../../customs/Basics";
-import { PublicBR } from "./Public";
+import { PublicBR } from "../public/Public";
 import { TagBubble } from "../../customs/TagBubbleStatic";
 import { getSTRRandomHex } from "../../utils/Color";
 
@@ -67,6 +67,18 @@ export const SunamCho: TPublicationAuthor = {
     name: 'Sunam Cho',
 };
 
+export const UndergradReviewPaperObj: TPublicationContent = {
+    id: 1,
+    title: 'Analysis of Factors Causing Differences in the Human Hazards of Permetrin',
+    author: [JunyoungKim, {...SunamCho, isLast: true}],
+    status: 'JEAHT, 2020',
+    description: 'We analyzed research papers on the toxicity of permethrin insecticide to point out cautions when utilizing the results of existing toxicity analysis studies.',
+    imgURL: PUB1_FIG_URL,
+    url: 'https://www.jeaht.org/upload/pdf/jeaht-23-4-171.pdf',
+    abstract: '',
+    publicationType: ['Domestic Journal'],
+}
+
 export const EvSemMapObj: TPublicationContent = {
     id: 2,
     title: 'Evidential Semantic Mapping in Off-road Environments with Uncertainty-aware Bayesian Kernel Inference',
@@ -86,7 +98,7 @@ export const EvSemMapObj: TPublicationContent = {
         journal={arXiv preprint arXiv:2403.14138},
         year={2024}
 }`,
-    publicationType: ['Conference'],
+    publicationType: ['Conference', 'Best Cognitive Robotics Papers Finalist'],
 };
 
 export const DSTEvSemMapObj: TPublicationContent = {
@@ -104,31 +116,42 @@ export const DSTEvSemMapObj: TPublicationContent = {
     frameworkDescription: 'Overview pipeline of our uncertainty-aware semantic BKI framework. With an evidential segmentation network trained by EDL, input data is processed to derive continuous semantic probability and uncertainty. 3D evidential points are then integrated into the semantic map through extended Dempster\'s Combination Rule to enable continuous semantic mapping, resulting in a dependable semantic map and uncertainty map in uncertain off-road environments.',
     mainResultDescription: 'Qualitative results (Semantic Map) of 3D semantic mapping methods. Compared to others, our methods (EBS and Ours) generate accurate maps that preserve semantic details while excluding noisy predictions.',
     supResultDescription: 'Qualitative results (Uncertainty Map) of 3D semantic mapping methods. Compared to others, our method generates the most well-estimated uncertainty values.',
-    BibTeX: `@article{kim2024uncertainty, 
+    BibTeX: `@inproceedings{kim2024uncertaintyaware,
         title={Uncertainty-aware Semantic Mapping in Off-road Environments with Dempster-Shafer Theory of Evidence},
-        author={Kim, Junyoung and Seo, Junwon},
-        journal={arXiv preprint arXiv:2405.06265},
-        year={2024}
+        author={Junyoung Kim and Junwon Seo},
+        booktitle={ICRA 2024 Workshop on Resilient Off-road Autonomy},
+        year={2024},
+        url={https://openreview.net/forum?id=FApp8pBo3J}
 }`,
     publicationType: ['Workshop', ['Spotlight Talk 4/22 (18%)', 'Spot']],
+};
+
+export const GaussianMapObj: TPublicationContent = {
+    id: 4,
+    title: 'Gaussian Mapping',
+    author: [{...JunyoungKim, isLast: true}],
+    status: 'In preparation, 2024',
+    description: 'In preparation',
+    imgURL: '',
+    hpURL: '/Projects/Gaussian-Mapping',
+    slideURL: '',
+    posterURL: '',
+    url: '',
+    abstract: ``,
+    frameworkDescription: '',
+    mainResultDescription: '',
+    supResultDescription: '',
+    BibTeX: ``,
+    publicationType: ['Preparation'],
 };
 
 export const PublicContent: TPublicContent = {
     'publication' : {
         'contents' : [
+            GaussianMapObj,
             DSTEvSemMapObj,
             EvSemMapObj,
-            {
-                id: 1,
-                title: 'Analysis of Factors Causing Differences in the Human Hazards of Permetrin',
-                author: [JunyoungKim, {...SunamCho, isLast: true}],
-                status: 'JEAHT, 2020',
-                description: 'We analyzed research papers on the toxicity of permethrin insecticide to point out cautions when utilizing the results of existing toxicity analysis studies.',
-                imgURL: PUB1_FIG_URL,
-                url: 'https://www.jeaht.org/upload/pdf/jeaht-23-4-171.pdf',
-                abstract: '',
-                publicationType: ['Domestic Journal'],
-            },
+            UndergradReviewPaperObj,
         ],
     }
 };

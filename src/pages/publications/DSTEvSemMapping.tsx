@@ -3,7 +3,7 @@ import { H1, H3, SPAN } from "../../customs/Spans"
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { TabState, coreActions } from "../../store/slices/core";
-import { DSTEvSemMapObj, EvSemMapObj, JunwonSeo, JunyoungKim } from "../public/PublicationContents";
+import { DSTEvSemMapObj, EvSemMapObj, JunwonSeo, JunyoungKim } from "./PublicationContents";
 import { ARXIV_ICON_URL, EXTERNAL_ICON_URL, GITHUB_ICON_URL, PUB3_FRAMEWORK_URL, PUB3_RES1_URL, PUB3_RES2_URL } from "../../DATA/Public_URL";
 import styled from "styled-components";
 import { BibTexContent, BibTexSection, IconImg } from "./CommonStyles";
