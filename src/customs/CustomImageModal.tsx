@@ -20,9 +20,15 @@ const CustomImageModal = ({ isActive, onClose, modalRef, modalAnimRef, imgSrc, i
     onClose?.();
   };
 
+  const handleOverlayClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      closeHandler();
+    }
+  };
+
   const Modal = (
     <CSSTransition in={isActive} nodeRef={modalAnimRef} timeout={110} classNames="modal" unmountOnExit>
-      <ModalOverlay ref={modalAnimRef}>
+      <ModalOverlay ref={modalAnimRef} onClick={handleOverlayClick}>
         <ModalContent className="modal" ref={modalRef}>
           <Divdiv>
             <CategoryWrapper>
@@ -118,10 +124,14 @@ const CategoryWrapper = styled.div`
 const TitleWrapper = styled.div`
     display: flex;
     align-items: flex-end;
+    width: 100%;
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
 `;
+
 const ImgTitle = styled.span`
     margin: 10px 5px 5px 10px;
-    font-size: 26px;
+    font-size: 28px;
     font-weight: 500;
     color: var(--hp-text);
 `;
@@ -133,17 +143,17 @@ const ImgSubtitle = styled.span`
 `;
 
 const ImageModalContent = styled.div`
-  margin-top: 40px;
+  margin-top: 55px;
   height: 85vh;
-  width: 98vw;
+  width: 90vw;
   display: flex;
   justify-content: center;
   align-items: center;
   
-  background-color: var(--hp-gray);
+  background-color: var(--hp-white);
   img {
-    max-width: 98vw;
-    max-height: 85vh;
+    max-width: 88vw;
+    max-height: 80vh;
     width: auto;
     height: auto;
   }

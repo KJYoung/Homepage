@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Flex, FlexColumnStart, FlexRowCenter, FlexRowEnd, FlexRowSpaceBetween, FlexRowSpaceBetweenEnd, FlexRowStart } from "../../customs/Divs";
 import { H2, H5, SPAN } from "../../customs/Spans";
-import { PUB1_FIG_URL, PUB2_FIG_URL, PUB3_TITLE_URL } from "../../DATA/Public_URL";
+import { PUB1_FIG_URL, PUB2_FIG_URL, PUB3_REPRESENTATIVE_PIC_V2_URL } from "../../DATA/Public_URL";
 import CustomImageModal from "../../customs/CustomImageModal";
 import { NavigateFunction } from "react-router-dom";
 import { useRef, useState } from "react";
@@ -107,7 +107,7 @@ export const DSTEvSemMapObj: TPublicationContent = {
     author: [JunyoungKim, {...JunwonSeo, isLast: true}],
     status: 'ICRA Workshop, 2024',
     description: 'Fully Evidential Semantic Mapping framework for inherent integration of semantic uncertainty.',
-    imgURL: PUB3_TITLE_URL,
+    imgURL: PUB3_REPRESENTATIVE_PIC_V2_URL,
     hpURL: '/Projects/Fully-Evidential-Semantic-Mapping',
     slideURL: 'https://drive.google.com/file/d/1XXcqQjxMFZbM9lo2cWx2VKSc3yGuk4XI/view?usp=sharing',
     posterURL: 'https://drive.google.com/file/d/1KdAM25YnTGhKr-m4YkGuCrDUvKtx7fSl/view?usp=sharing',
@@ -228,11 +228,9 @@ export const PublicationWrapperDiv = ({ navigate, isDetail } : { navigate : Navi
     const modalAnimRef = useRef(null);
     const [imgSrc, setImgSrc] = useState<string | undefined>();
     const [imgTitle, setImgTitle] = useState<string | undefined>();
-    const [imgSubtitle, setImgSubtitle] = useState<string | undefined>();
     const setImage = (src : string , title : string, subtitle : string) => {
         setImgSrc(src);
         setImgTitle(title);
-        setImgSubtitle(subtitle);
         setTagModalOpen(true);
     };
     return <FlexColumnStart>
@@ -249,7 +247,7 @@ export const PublicationWrapperDiv = ({ navigate, isDetail } : { navigate : Navi
             modalAnimRef,
             imgSrc,
             imgTitle,
-            imgSubtitle,
+            imgSubtitle: undefined,
         })}
     </FlexColumnStart>
 }

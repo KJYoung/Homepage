@@ -10,7 +10,7 @@
 2024.03.19. **Many Things were Updated** 일단 Store, Header Logic 정리해야 함. Mobile, Desktop Design도..   
 2024.08.19. **Many Things were Updated** Google Drive Assets. IROS, ICRA Paper Homepages. LLM Hackathon. Last Update Checker.   
 2024.09.03. Test environment for mobile deployment is ready.   
-2025.01.06. Clean Code + IROS2024 Update + InPrep Publication Mocking
+2025.01.06. Clean Code, IROS2024 Update, InPrep Publication Mocking, Image Modal Improved, ICRAW Image Improved
 ...   
    
 TODO: Custom Image Slider Left/Right Indicator.   
