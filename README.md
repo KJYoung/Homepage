@@ -11,6 +11,7 @@
 2024.08.19. **Many Things were Updated** Google Drive Assets. IROS, ICRA Paper Homepages. LLM Hackathon. Last Update Checker.   
 2024.09.03. Test environment for mobile deployment is ready.   
 2025.01.06. Clean Code, IROS2024 Update, InPrep Publication Mocking, Image Modal Improved, ICRAW Image Improved
+2025.02.01. IROS2024 Bibtext Update.
 ...   
    
 TODO: Custom Image Slider Left/Right Indicator.   

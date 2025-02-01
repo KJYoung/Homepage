@@ -94,11 +94,13 @@ export const EvSemMapObj: TPublicationContent = {
     frameworkDescription: 'Overview pipeline of our uncertainty-aware semantic BKI framework. With an evidential segmentation network trained by EDL, input data is processed to derive continuous semantic probability and uncertainty. These 3D semantic points are then integrated into the semantic map through Bayesian updates using the uncertainty-aware BKI, resulting in a dependable semantic map and variance map in uncertain off-road environments.',
     mainResultDescription: 'Qualitative results of 3D semantic mapping methods. Compared to others, our method generates reliable and accurate maps that preserve semantic details while excluding noisy predictions. In RELLIS-3D, only our method reconstructs grass consistently (First row), and dirt roads and puddles in detail (Second row). In our OffRoad dataset, our method accurately reconstructs the boundaries of unpaved roads, grass, and vegetation, compared to others.',
     supResultDescription: 'Zero-shot semantic mapping results on our OffRoad dataset using a semantic segmentation network pre-trained on RUGD. Our method robustly constructs semantic maps despite prediction uncertainties in unseen environments, whereas other methods struggle to produce clear maps.',
-    BibTeX: `@article{kim2024evidential, 
-        title={Evidential Semantic Mapping in Off-road Environments with Uncertainty-aware Bayesian Kernel Inference},
+    BibTeX: `@inproceedings{kim2024evidential,
         author={Kim, Junyoung and Seo, Junwon and Min, Jihong},
-        journal={arXiv preprint arXiv:2403.14138},
-        year={2024}
+        booktitle={2024 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}, 
+        title={Evidential Semantic Mapping in Off-road Environments with Uncertainty-aware Bayesian Kernel Inference}, 
+        year={2024},
+        pages={1420-1427},
+        doi={10.1109/IROS58592.2024.10802766}
 }`,
     publicationType: ['Conference', 'Best Cognitive Robotics Papers Finalist'],
 };

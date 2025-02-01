@@ -80,7 +80,8 @@ export const EvidentialSemanticMapping = () => {
 
         <FlexRowCenter marginTop="10px" marginBottom="0px">
             <SPAN fontSize="20px" color="hp-black" fontWeight="700">Accepted to IROS 2024</SPAN>
-            <IconImg src={EXTERNAL_ICON_URL} onClick={() => window.open('https://iros2024-abudhabi.org/', '_blank')} className="clickable small" />
+            {/* <IconImg src={EXTERNAL_ICON_URL} onClick={() => window.open('https://iros2024-abudhabi.org/', '_blank')} className="clickable small" /> */}
+            <IconImg src={EXTERNAL_ICON_URL} onClick={() => window.open('https://ieeexplore.ieee.org/document/10802766/', '_blank')} className="clickable small" />
         </FlexRowCenter>
         <FlexColumnStartCenter marginTop="5px" marginBottom="15px">
             <FlexRowCenter marginTop="0px" marginBottom="5px">
