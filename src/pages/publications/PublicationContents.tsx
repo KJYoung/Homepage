@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Flex, FlexColumnStart, FlexRowCenter, FlexRowEnd, FlexRowSpaceBetween, FlexRowSpaceBetweenEnd, FlexRowStart } from "../../customs/Divs";
+import { Flex, FlexColumnStart, FlexColumnStartEnd, FlexRowCenter, FlexRowEnd, FlexRowSpaceBetween, FlexRowSpaceBetweenEnd, FlexRowStart } from "../../customs/Divs";
 import { H2, H5, SPAN } from "../../customs/Spans";
 import { PUB1_FIG_URL, PUB2_FIG_URL, PUB2_POSTER_URL, PUB2_SLIDES_URL, PUB3_POSTER_URL, PUB3_REPRESENTATIVE_PIC_V2_URL, PUB3_SLIDES_URL, PUB4_REPRESENTATIVE_PIC_URL } from "../../DATA/Public_URL";
 import CustomImageModal from "../../customs/CustomImageModal";
@@ -22,6 +22,7 @@ type TPublicationContent = {
     title: string,
     author: TPublicationAuthor[],
     status: string,
+    status_additional?: string,
     description: string,
     imgURL: string,
     hpURL?: string,
@@ -84,6 +85,7 @@ export const EvSemMapObj: TPublicationContent = {
     title: 'Evidential Semantic Mapping in Off-road Environments with Uncertainty-aware Bayesian Kernel Inference',
     author: [JunyoungKimStar, JunwonSeoStar, {...JihongMin, isLast: true}],
     status: 'IROS, 2024',
+    status_additional: 'Best Cognitive Papers Finalist',
     description: 'Uncertainty-aware semantic BKI mapping framework for robust deployments in off-road environments using Evidential Deep Learning.',
     imgURL: PUB2_FIG_URL,
     slideURL: PUB2_SLIDES_URL,
@@ -110,6 +112,7 @@ export const DSTEvSemMapObj: TPublicationContent = {
     title: 'Uncertainty-aware Semantic Mapping in Off-road Environments with Dempster-Shafer Theory of Evidence',
     author: [JunyoungKim, {...JunwonSeo, isLast: true}],
     status: 'ICRA Workshop, 2024',
+    status_additional: 'Spotlight Talk',
     description: 'Fully Evidential Semantic Mapping framework for inherent integration of semantic uncertainty.',
     imgURL: PUB3_REPRESENTATIVE_PIC_V2_URL,
     hpURL: '/Projects/Fully-Evidential-Semantic-Mapping',
@@ -213,8 +216,11 @@ export const PublicationDiv = ({ publicationContent, setImage, navigate, isDetai
                     })}
                 </FlexRowStart>
                 {/* Status */}
-                <FlexRowEnd width="200px">
-                    <SPAN fontSize="12px" marginBottom="6px">{publicationContent.status}</SPAN>
+                <FlexRowEnd width="400px">
+                    <FlexColumnStartEnd>
+                        <SPAN fontSize="12px" marginBottom="3px">{publicationContent.status}</SPAN>
+                        {publicationContent.status_additional && <SPAN fontSize="13px" color="hp-red-darker" fontWeight="600" textAlign="right">{publicationContent.status_additional}</SPAN>}
+                    </FlexColumnStartEnd>
                 </FlexRowEnd>
             </FlexRowSpaceBetween>
             {/* Short Description */}

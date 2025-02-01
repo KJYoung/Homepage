@@ -22,6 +22,11 @@ export const FlexColumnStart = styled(Flex)`
     justify-content: flex-start;
     align-items: flex-start;
 `;
+export const FlexColumnStartEnd = styled(Flex)`
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+`;
 export const FlexColumnStartCenter = styled(Flex)`
     flex-direction: column;
     justify-content: flex-start;
