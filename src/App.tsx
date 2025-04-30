@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 import './styles/color.css';
 import { HashRouter, Route, Routes, useNavigate } from 'react-router-dom';
-import { GlobalStyles } from './styles/GlobalStyles';
+import GlobalStyles from './styles/GlobalStyles';
 import { useDispatch, useSelector } from 'react-redux';
 import { coreActions, selectCore } from './store/slices/core';
 import { MOBILE_DESKTOP_THRESHOLD } from './styles/GlobalConst';
@@ -53,9 +53,10 @@ function App() {
     };
   }, [dispatch]);
   const { windowSize, language } = useSelector(selectCore);
+  const GlobalStylesProxy = GlobalStyles as unknown as React.ComponentType;
   return (
     <>
-      <GlobalStyles />
+      <GlobalStylesProxy />
       <Background>
       <HashRouter>
         <Header isMobile={windowSize[0] < MOBILE_DESKTOP_THRESHOLD} language={language}/>

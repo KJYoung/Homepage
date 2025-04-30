@@ -9,7 +9,7 @@ import OpenSansLight from '../assets/font/OpenSans-Light.ttf';
 import OpenSansMedium from '../assets/font/OpenSans-Medium.ttf';
 import OpenSansRegular from '../assets/font/OpenSans-Regular.ttf';
 
-export const GlobalStyles = createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
   ${reset}
   * {
     margin: 0;
@@ -91,3 +91,5 @@ export const GlobalStyles = createGlobalStyle`
     font-family: "OpenSans";
   };
 `;
+
+export default GlobalStyles;

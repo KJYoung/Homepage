@@ -12,6 +12,7 @@
 2024.09.03. Test environment for mobile deployment is ready.   
 2025.01.06. Clean Code, IROS2024 Update, InPrep Publication Mocking, Image Modal Improved, ICRAW Image Improved
 2025.02.01. IROS2024 Bibtext Update.
+2025.04.30. Google Analytics Added (`yarn add react-ga4`)
 ...   
    
 TODO: Custom Image Slider Left/Right Indicator.   
