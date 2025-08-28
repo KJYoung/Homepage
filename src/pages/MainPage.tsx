@@ -91,8 +91,8 @@ const MainPageWrapper = styled.div`
   justify-content: center;
 `;
 const MainPageBody = styled.div`
-  width: 1200px;
-  max-width: 1200px;
+  width: 1500px;
+  max-width: 1500px;
   height: 600px;
   min-height: 600px;
   background-color: var(--hp-white);

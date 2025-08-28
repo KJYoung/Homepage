@@ -96,19 +96,6 @@ const PublicEn = () => {
                 <TagBubble color={getSRandomHex(103)}>cryoEM</TagBubble>
                 <TagBubble color={getSRandomHex(104)}>cryoET</TagBubble>
             </FlexRowStart>}/>
-            {/* <H5 marginLeft='30px' marginBottom="4px" marginTop="4px">Current & Future Interests</H5>
-            <FlexRowStart marginLeft="35px" flexWrap="wrap">
-                <TagBubble color={getSRandomHex(0)}>Computer Vision</TagBubble>
-                <TagBubble color={getSRandomHex(1)}>Robotics</TagBubble>
-                <TagBubble color={getSRandomHex(2)}>Uncertainty-aware *</TagBubble>
-                <TagBubble color={getSRandomHex(3)}>Evidential Deep Learning</TagBubble>
-                <TagBubble color={getSRandomHex(4)}>Active Perception</TagBubble>
-                <TagBubble color={getSRandomHex(5)}>Semantic Segmentation</TagBubble>
-                <TagBubble color={getSRandomHex(6)}>SLAM</TagBubble>
-                <TagBubble color={getSRandomHex(7)}>Sensor Fusion</TagBubble>
-                <TagBubble color={getSRandomHex(8)}>Multi-agent Collaboration</TagBubble>
-                <TagBubble color={getSRandomHex(9)}>Off-road deployments</TagBubble>
-            </FlexRowStart> */}
         </FlexColumnStart>
         <PublicationWrapperDiv navigate={navigate} isDetail={false} />
         <ProjectsDiv />
@@ -156,7 +143,8 @@ const Portrait = styled.img`
 
 const PublicWrapper = styled.div`
     width: 100%;
-    max-width: 850px;
+    min-width: 1200px;
+    max-width: 1200px;
     display: flex;
     flex-direction: column;
     justify-content: center;

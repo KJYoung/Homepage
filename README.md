@@ -13,6 +13,7 @@
 2025.01.06. Clean Code, IROS2024 Update, InPrep Publication Mocking, Image Modal Improved, ICRAW Image Improved
 2025.02.01. IROS2024 Bibtext Update.
 2025.04.30. Google Analytics Added (`yarn add react-ga4`)
+2025.08.28. Publications width increase. E2-BKI construction started. Refactoring may be started.
 ...   
    
 TODO: Custom Image Slider Left/Right Indicator.   

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Flex, FlexColumnStart, FlexColumnStartEnd, FlexRowCenter, FlexRowEnd, FlexRowSpaceBetween, FlexRowSpaceBetweenEnd, FlexRowStart } from "../../customs/Divs";
 import { H2, H5, SPAN } from "../../customs/Spans";
-import { PUB1_FIG_URL, PUB2_FIG_URL, PUB2_POSTER_URL, PUB2_SLIDES_URL, PUB3_POSTER_URL, PUB3_REPRESENTATIVE_PIC_V2_URL, PUB3_SLIDES_URL, PUB4_REPRESENTATIVE_PIC_URL } from "../../DATA/Public_URL";
+import { PUB1_FIG_URL, PUB2_FIG_URL, PUB2_POSTER_URL, PUB2_SLIDES_URL, PUB3_POSTER_URL, PUB3_REPRESENTATIVE_PIC_V2_URL, PUB3_SLIDES_URL, PUB4_REPRESENTATIVE_PIC_URL, PUB4_REPRESENTATIVE_PICMODAL_URL } from "../../DATA/Public_URL";
 import CustomImageModal from "../../customs/CustomImageModal";
 import { NavigateFunction } from "react-router-dom";
 import { useRef, useState } from "react";
@@ -25,6 +25,7 @@ type TPublicationContent = {
     status_additional?: string,
     description: string,
     imgURL: string,
+    imgModalURL?: string,
     hpURL?: string,
     slideURL?: string,
     posterURL?: string,
@@ -57,12 +58,19 @@ export const JunwonSeo: TPublicationAuthor = {
     name: 'Junwon Seo',
     url: 'https://junwon.me/',
 };
+export const MinsikJeon: TPublicationAuthor = {
+    name: 'Minsik Jeon',
+    url: 'https://msjeon.me/',
+};
 export const JunwonSeoStar: TPublicationAuthor = {
     ...JunwonSeo,
     withStar: true,
 };
 export const JihongMin: TPublicationAuthor = {
     name: 'Jihong Min',
+};
+export const KihoKwak: TPublicationAuthor = {
+    name: 'Kiho Kwak',
 };
 export const SunamCho: TPublicationAuthor = {
     name: 'Sunam Cho',
@@ -135,16 +143,17 @@ export const DSTEvSemMapObj: TPublicationContent = {
 
 export const GaussianMapObj: TPublicationContent = {
     id: 4,
-    title: 'Gaussian Mapping',
-    author: [{...JunyoungKim, isLast: true}],
-    status: 'In preparation, 2025',
+    title: 'E2-BKI: Evidential Ellipsoidal Bayesian Kernel Inference for Uncertainty-aware Gaussian Semantic Mapping',
+    author: [JunyoungKim, MinsikJeon, JihongMin, KihoKwak, {...JunwonSeo, isLast: true}],
+    status: 'Under Review, 2025',
     description: 'In preparation',
     imgURL: PUB4_REPRESENTATIVE_PIC_URL,
-    hpURL: '/Projects/Gaussian-Mapping',
+    imgModalURL: PUB4_REPRESENTATIVE_PICMODAL_URL,
+    hpURL: '/Projects/E2-BKI',
     slideURL: '',
     posterURL: '',
     url: '',
-    abstract: `In Preparation`,
+    abstract: `Semantic mapping aims to construct a 3D semantic representation of the environment, providing essential knowledge for robots operating in complex outdoor settings. While Bayesian Kernel Inference (BKI) addresses discontinuities of map inference from sparse sensor data, existing semantic mapping methods suffer from various sources of uncertainties in challenging outdoor environments. To address these issues, we propose an uncertainty-aware semantic mapping framework that handles multiple sources of uncertainties, which significantly degrade mapping performance. Our method estimates uncertainties in semantic predictions using Evidential Deep Learning and incorporates them into BKI for robust semantic inference. It further aggregates noisy observations into coherent Gaussian representations to mitigate the impact of unreliable points, while employing geometry-aligned kernels that adapt to complex scene structures. These Gaussian primitives effectively fuse local geometric and semantic information, enabling robust, uncertainty-aware mapping in complex outdoor scenarios. Comprehensive evaluation across diverse off-road and urban outdoor environments demonstrates consistent improvements in mapping quality, uncertainty calibration, representational flexibility, and robustness, while maintaining real-time efficiency.`,
     frameworkDescription: '',
     mainResultDescription: '',
     supResultDescription: '',
@@ -179,31 +188,75 @@ const PublicationImgBox = styled(FlexRowCenter)`
     }
 `;
 
+const PublicationsWidthBox = styled.div`
+    width: 100%;
+`;
+
+const PublicationItemRow = styled(Flex)`
+    width: 100%;
+    max-width: 100%;
+    align-items: flex-start;
+    margin-top: 10px;
+`;
+const RightCol = styled(FlexColumnStart)`
+    flex: 1 1 auto;
+    min-width: 0;
+    margin-left: 12px;
+    margin-top: 10px;
+`;
+const MetaRow = styled(FlexRowSpaceBetween)`
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 8px;
+`;
+const AuthorsRow = styled(FlexRowStart)`
+    flex: 1 1 auto;
+    min-width: 0;
+    flex-wrap: wrap;
+    column-gap: 5px;
+    row-gap: 2px;
+`;
+const StatusCol = styled(FlexRowEnd)`
+    flex: 0 0 auto;
+    min-width: 180px;
+`;
+
 interface IPublicationDiv {
     publicationContent: TPublicationContent, 
-    setImage: (src: string, title: string, subtitle: string) => void,
+    setImage: (modalSrc: string,title: string, subtitle: string) => void,
     navigate: NavigateFunction,
     isDetail: boolean,
 };
 
 export const PublicationDiv = ({ publicationContent, setImage, navigate, isDetail } : IPublicationDiv) => {
-    return <Flex>
+    const imgModalURL = publicationContent.imgModalURL ? publicationContent.imgModalURL : publicationContent.imgURL;
+    return <PublicationItemRow>
         <PublicationImgBox>
             <img src={publicationContent.imgURL} alt={`${publicationContent.title}`} onClick={() => {
-                setImage(publicationContent.imgURL, publicationContent.title, publicationContent.description);
+                setImage(imgModalURL, publicationContent.title, publicationContent.description);
             }}/>
         </PublicationImgBox>
-        <FlexColumnStart marginLeft="12px" marginTop="10px">
+        <RightCol>
             {/* Title */}
-            <H5 marginBottom="6px" className={publicationContent.hpURL && 'clickable'} onClick={() => publicationContent.hpURL && navigate(publicationContent.hpURL)}>{publicationContent.title}</H5>
-            <FlexRowSpaceBetween>
+            <SPAN
+                marginBottom="6px"
+                className={publicationContent.hpURL && 'clickable'}
+                onClick={() => publicationContent.hpURL && navigate(publicationContent.hpURL)}
+                width="100%"
+                fontSize="18px"
+                fontWeight="600"
+                lineHeight={1.2}
+            >
+                {publicationContent.title}
+            </SPAN>
+            <MetaRow>
                 {/* Authors */}
-                <FlexRowStart>
+                <AuthorsRow>
                     {publicationContent.author.map((author) => <BasicDIV key={author.name} marginRight="5px">
-                        <SPAN fontSize="14px" marginBottom="4px" fontWeight={author.isMe ? '600' : '400'} textDecoration={author.isMe ? 'underline' : 'none'}>
+                        <SPAN fontSize="14px" marginBottom="4px" fontWeight={author.isMe ? '600' : '400'} textDecoration={author.isMe ? 'underline' : 'none'}  whiteSpace="nowrap">
                             {author.name}
                         </SPAN>
-                        <SPAN fontSize="14px" marginBottom="4px">
+                        <SPAN fontSize="14px" marginBottom="4px" whiteSpace="nowrap">
                             {author.withStar ? '*' : ''}{author.isLast ? '' : ', '}
                         </SPAN>
                     </BasicDIV>)}
@@ -214,19 +267,19 @@ export const PublicationDiv = ({ publicationContent, setImage, navigate, isDetai
                             return <TagBubble key={idx} color={getSTRRandomHex(type as string)}>{type}</TagBubble>
                         }
                     })}
-                </FlexRowStart>
+                </AuthorsRow>
                 {/* Status */}
-                <FlexRowEnd width="400px">
+                <StatusCol>
                     <FlexColumnStartEnd>
                         <SPAN fontSize="12px" marginBottom="3px">{publicationContent.status}</SPAN>
                         {publicationContent.status_additional && <SPAN fontSize="13px" color="hp-red-darker" fontWeight="600" textAlign="right">{publicationContent.status_additional}</SPAN>}
                     </FlexColumnStartEnd>
-                </FlexRowEnd>
-            </FlexRowSpaceBetween>
+                </StatusCol>
+            </MetaRow>
             {/* Short Description */}
             <SPAN fontSize="13px" marginTop="12px">{publicationContent.description}</SPAN>
-        </FlexColumnStart>
-    </Flex>
+        </RightCol>
+    </PublicationItemRow>
 }
 
 export const PublicationWrapperDiv = ({ navigate, isDetail } : { navigate : NavigateFunction, isDetail: boolean}) => {
@@ -236,28 +289,30 @@ export const PublicationWrapperDiv = ({ navigate, isDetail } : { navigate : Navi
     };
     const modalRef = useRef(null);
     const modalAnimRef = useRef(null);
-    const [imgSrc, setImgSrc] = useState<string | undefined>();
+    const [imgModalSrc, setImgModalSrc] = useState<string | undefined>();
     const [imgTitle, setImgTitle] = useState<string | undefined>();
-    const setImage = (src : string , title : string, subtitle : string) => {
-        setImgSrc(src);
+    const setModalImage = (modalSrc : string, title : string, subtitle : string) => {
+        setImgModalSrc(modalSrc);
         setImgTitle(title);
         setTagModalOpen(true);
     };
     return <FlexColumnStart>
-        <FlexRowSpaceBetweenEnd>
-            <H2 className="clickable" onClick={() => { navigate('/Projects/'); }}>Publications</H2>
-            <SPAN fontSize="13px" className="clickable" onClick={() => { navigate('/Projects/'); }}>(Equal contributions are denoted by *)</SPAN>
-        </FlexRowSpaceBetweenEnd>
-        <PublicBR />
-        {PublicContent['publication']['contents'].map((content) => <PublicationDiv key={content.title} publicationContent={content} setImage={setImage} navigate={navigate} isDetail={isDetail} />)}
-        {CustomImageModal({
-            isActive: tagModalOpen,
-            onClose: TagDetailOnClose,
-            modalRef,
-            modalAnimRef,
-            imgSrc,
-            imgTitle,
-            imgSubtitle: undefined,
-        })}
+        <PublicationsWidthBox>
+            <FlexRowSpaceBetweenEnd>
+                <H2 className="clickable" onClick={() => { navigate('/Projects/'); }}>Publications</H2>
+                <SPAN fontSize="13px" className="clickable" onClick={() => { navigate('/Projects/'); }}>(Equal contributions are denoted by *)</SPAN>
+            </FlexRowSpaceBetweenEnd>
+            <PublicBR />
+            {PublicContent['publication']['contents'].map((content) => <PublicationDiv key={content.title} publicationContent={content} setImage={setModalImage} navigate={navigate} isDetail={isDetail} />)}
+            {CustomImageModal({
+                isActive: tagModalOpen,
+                onClose: TagDetailOnClose,
+                modalRef,
+                modalAnimRef,
+                imgSrc: imgModalSrc,
+                imgTitle,
+                imgSubtitle: undefined,
+            })}
+        </PublicationsWidthBox>
     </FlexColumnStart>
 }

@@ -42,4 +42,5 @@ export const PUB3_POSTER_URL = 'https://drive.google.com/file/d/1KdAM25YnTGhKr-m
 export const PUB3_SLIDES_URL = 'https://drive.google.com/file/d/1XXcqQjxMFZbM9lo2cWx2VKSc3yGuk4XI/view?usp=sharing';
 
 
-export const PUB4_REPRESENTATIVE_PIC_URL = GOOGLE_DRIVE_ROOT('1Y9U9JZK7OODJjnPNGTVRJbF3ufxnqSn5');
+export const PUB4_REPRESENTATIVE_PIC_URL = GOOGLE_DRIVE_ROOT('1R8AcG_zD1vwkkZ6KObja9jsh6IFFAdtA');
+export const PUB4_REPRESENTATIVE_PICMODAL_URL = GOOGLE_DRIVE_ROOT('1jljAuuvgpnjQt83mIn6ij3_yD0PUw0PO');

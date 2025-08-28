@@ -10,6 +10,7 @@ import { ReactNotifications } from 'react-notifications-component';
 import { PublicationsMain } from './pages/publications/PublicationsMain';
 import { ExpElements } from './pages/experimental/Elements';
 import { EvidentialSemanticMapping } from './pages/publications/EvidentialSemanticMapping';
+import { GaussianSemanticMapping } from './pages/publications/GaussianSemanticMapping';
 import styled from 'styled-components';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -86,6 +87,9 @@ function App() {
                   <Route path="USB" element={<RedirectComponent red_url="/Projects/Evidential-Semantic-Mapping" />} />  {/* // Alias for Uncertainty-aware Semantic BKI */}
                   <Route path="EBS" element={<RedirectComponent red_url="/Projects/Evidential-Semantic-Mapping" />} />  {/* // Alias for Uncertainty-aware Semantic BKI */}
                   <Route path="Evidential-Semantic-Mapping" element={<EvidentialSemanticMapping />} />
+
+                  {/* Second Paper [RA-L 2025 - E2-BKI: Evidential Ellipsoidal Bayesian Kernel Inference for Uncertainty-aware Gaussian Semantic Mapping] */}
+                  <Route path="E2-BKI" element={<GaussianSemanticMapping />} />
                   
                   <Route path="DST-Evidential-Semantic-Mapping" element={<RedirectComponent red_url="/Projects/Fully-Evidential-Semantic-Mapping" />} />  {/* // Alias for Uncertainty-aware Semantic BKI */}
                   <Route path="Fully-Evidential-Semantic-Mapping" element={<DSTEvSemMapping />} />

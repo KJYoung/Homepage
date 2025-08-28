@@ -27,6 +27,7 @@ export interface IPropsBasicCSS {
     flexWrap?: string; // FlexBox에서만 유효.
     isPrime?: boolean; // TagBubble에서만 유효.
     cursor?: string;
+    whiteSpace?: string; // ex) nowrap
 };
 
 // Basic Elements: SPAN, Button, Div
@@ -44,7 +45,8 @@ export const BasicSPAN = styled.span<IPropsBasicCSS>`
     max-width: ${({ maxWidth }) => maxWidth};
     line-height: ${({ lineHeight }) => lineHeight};
     text-align: ${({ textAlign }) => textAlign};
-
+    white-space: ${({ whiteSpace }) => whiteSpace};
+    
     color: ${({ color = 'hp-black' }) => getRGBfromVar(color)};
     &.clickable {
         cursor: pointer;
