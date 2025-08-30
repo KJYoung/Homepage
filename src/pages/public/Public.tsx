@@ -143,8 +143,10 @@ const Portrait = styled.img`
 
 const PublicWrapper = styled.div`
     width: 100%;
-    min-width: 1200px;
-    max-width: 1200px;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 16px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -152,12 +154,12 @@ const PublicWrapper = styled.div`
 
     > div {
         width: 100%;
-    };
+    }
 
     a, .link {
         color: var(--hp-blue);
         cursor: pointer;
-    };
+    }
 `;
 const FlexBox = styled.div`
     background-color: var(--hp-back-darker);

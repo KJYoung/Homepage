@@ -144,7 +144,8 @@ const ImgSubtitle = styled.span`
 
 const ImageModalContent = styled.div`
   margin-top: 55px;
-  height: 85vh;
+  padding: 100px 10px;
+  height: 100%;
   width: 90vw;
   display: flex;
   justify-content: center;

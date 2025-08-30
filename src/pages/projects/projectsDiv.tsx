@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { H2, LinkSpan, SPAN } from "../../customs/Spans";
 import { DOCUMENT_ROOT, PublicBR } from "../public/Public";
 import { ExtensibleSPAN } from "../PublicDep";
@@ -10,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 export const ProjectsDiv = () => {
     const navigate = useNavigate();
 
-    return <FlexColumnStart>
+    return <FlexColumnStart marginTop="20px" marginBottom="20px">
         <H2 onClick={() => { navigate('/Projects/'); }}>Projects</H2>
         <PublicBR />
 

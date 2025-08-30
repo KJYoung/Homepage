@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Flex, FlexColumnStart, FlexColumnStartEnd, FlexRowCenter, FlexRowEnd, FlexRowSpaceBetween, FlexRowSpaceBetweenEnd, FlexRowStart } from "../../customs/Divs";
-import { H2, H5, SPAN } from "../../customs/Spans";
+import { H2, SPAN } from "../../customs/Spans";
 import { PUB1_FIG_URL, PUB2_FIG_URL, PUB2_POSTER_URL, PUB2_SLIDES_URL, PUB3_POSTER_URL, PUB3_REPRESENTATIVE_PIC_V2_URL, PUB3_SLIDES_URL, PUB4_REPRESENTATIVE_PIC_URL, PUB4_REPRESENTATIVE_PICMODAL_URL } from "../../DATA/Public_URL";
 import CustomImageModal from "../../customs/CustomImageModal";
 import { NavigateFunction } from "react-router-dom";
@@ -146,7 +146,7 @@ export const GaussianMapObj: TPublicationContent = {
     title: 'E2-BKI: Evidential Ellipsoidal Bayesian Kernel Inference for Uncertainty-aware Gaussian Semantic Mapping',
     author: [JunyoungKim, MinsikJeon, JihongMin, KihoKwak, {...JunwonSeo, isLast: true}],
     status: 'Under Review, 2025',
-    description: 'In preparation',
+    description: 'Evidential fusion of anisotropic Gaussians with an uncertainty-aware (ellipsoidal) BKI, yielding continuous, geometry-aligned and calibrated 3D semantic maps.',
     imgURL: PUB4_REPRESENTATIVE_PIC_URL,
     imgModalURL: PUB4_REPRESENTATIVE_PICMODAL_URL,
     hpURL: '/Projects/E2-BKI',
@@ -173,18 +173,21 @@ export const PublicContent: TPublicContent = {
 };
 
 const PublicationImgBox = styled(FlexRowCenter)`
-    width: 250px;
-    min-width: 250px;
-    max-width: 250px;
-    height: 150px;
-    min-height: 150px;
-    max-height: 150px;
+    width: 275px;
+    min-width: 275px;
+    max-width: 275px;
+    height: 125px;
+    min-height: 125px;
+    max-height: 125px;
     background-color: white;
-
+    justify-content: center;
+    align-items: center;
     img {
-        max-width: 250px;
-        max-height: 150px;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
         cursor: pointer;
+        align-self: center;
     }
 `;
 
@@ -195,8 +198,11 @@ const PublicationsWidthBox = styled.div`
 const PublicationItemRow = styled(Flex)`
     width: 100%;
     max-width: 100%;
-    align-items: flex-start;
-    margin-top: 10px;
+    align-items: center;
+    margin-top: 20px;
+    &:first-child {
+        margin-top: 0;
+    }
 `;
 const RightCol = styled(FlexColumnStart)`
     flex: 1 1 auto;
@@ -303,7 +309,9 @@ export const PublicationWrapperDiv = ({ navigate, isDetail } : { navigate : Navi
                 <SPAN fontSize="13px" className="clickable" onClick={() => { navigate('/Projects/'); }}>(Equal contributions are denoted by *)</SPAN>
             </FlexRowSpaceBetweenEnd>
             <PublicBR />
-            {PublicContent['publication']['contents'].map((content) => <PublicationDiv key={content.title} publicationContent={content} setImage={setModalImage} navigate={navigate} isDetail={isDetail} />)}
+            <FlexColumnStart>
+                {PublicContent['publication']['contents'].map((content) => <PublicationDiv key={content.title} publicationContent={content} setImage={setModalImage} navigate={navigate} isDetail={isDetail} />)}
+            </FlexColumnStart>
             {CustomImageModal({
                 isActive: tagModalOpen,
                 onClose: TagDetailOnClose,
