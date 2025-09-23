@@ -15,6 +15,7 @@ import { getSTRRandomHex } from "../../utils/Color";
 import { BibTexContent, BibTexSection, IconImg } from "./CommonStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPersonChalkboard } from "@fortawesome/free-solid-svg-icons";
+import { useDesktopViewport } from "../../hooks/useDesktopViewport";
 
 const SIZE_MULTIPLE = 1.5;
 const YOUTUBE_WIDTH = 560 * SIZE_MULTIPLE;
@@ -30,6 +31,7 @@ const YoutubeOption = {
 type EvSemMap_METHOD = 'BKI' | 'CON' | 'SEE' | 'OUR';
 
 export const EvidentialSemanticMapping = () => {
+    useDesktopViewport(1280);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(coreActions.setTab({selectedTab: TabState.PROJECTS}));

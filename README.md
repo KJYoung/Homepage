@@ -15,6 +15,7 @@
 2025.04.30. Google Analytics Added (`yarn add react-ga4`)
 2025.08.28. Publications width increase. E2-BKI construction started. Refactoring may be started.
 2025.08.30. Width Error Fixed (occurred on 08.28), Publication Div Align
+2025.09.24. ReactMarkdown.
 ...   
    
 TODO: Custom Image Slider Left/Right Indicator.   

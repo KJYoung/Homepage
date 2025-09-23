@@ -12,8 +12,10 @@ import { getSTRRandomHex } from "../../utils/Color";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPersonChalkboard } from "@fortawesome/free-solid-svg-icons";
+import { useDesktopViewport } from "../../hooks/useDesktopViewport";
 
 export const DSTEvSemMapping = () => {
+    useDesktopViewport(1280);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     useEffect(() => {

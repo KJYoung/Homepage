@@ -10,6 +10,7 @@ import { FlexColumnStart, FlexRowEnd, FlexRowSpaceBetweenEnd, FlexRowStart } fro
 import { TagBubble } from "../../customs/TagBubbleStatic";
 import { getSRandomHex } from "../../utils/Color";
 import { ProjectsDiv } from "../projects/projectsDiv";
+import { useDesktopViewport } from "../../hooks/useDesktopViewport";
 
 export const DOCUMENT_ROOT = process.env.PUBLIC_URL + "/document/";
 
@@ -25,6 +26,7 @@ const PublicEn = () => {
         navigator.clipboard.writeText("jykim157@snu.ac.kr");
         notificationSuccess('EMAIL', "Email Address was copied to your clipboard");
     };
+    useDesktopViewport(1280);
     return <PublicWrapper>
         <GeneralDiv>
             <GeneralMainDiv>

@@ -10,6 +10,7 @@ export const GITHUB_ICON_URL = PUBLICATION_FIG_ROOT + 'github.svg';
 export const EXTERNAL_ICON_URL = PUBLICATION_FIG_ROOT + 'external-link.svg';
 
 export const PUB1_FIG_URL = PUBLICATION_FIG_ROOT + 'Pub1_JEAHT_2020.png';
+
 export const PUB2_FIG_URL = PUBLICATION_FIG_ROOT + 'Pub2_IROS_2024.png';
 export const PUB2_FRAMEWORK_URL = PUBLICATION_FIG_ROOT + 'Pub2_IROS_Fig2.png';
 export const PUB2_RES1_URL = PUBLICATION_FIG_ROOT + 'Pub2_IROS_Fig3.png';
@@ -44,3 +45,4 @@ export const PUB3_SLIDES_URL = 'https://drive.google.com/file/d/1XXcqQjxMFZbM9lo
 
 export const PUB4_REPRESENTATIVE_PIC_URL = GOOGLE_DRIVE_ROOT('1R8AcG_zD1vwkkZ6KObja9jsh6IFFAdtA');
 export const PUB4_REPRESENTATIVE_PICMODAL_URL = GOOGLE_DRIVE_ROOT('1jljAuuvgpnjQt83mIn6ij3_yD0PUw0PO');
+export const PUB4_FRAMEWORK_URL = GOOGLE_DRIVE_ROOT('1jljAuuvgpnjQt83mIn6ij3_yD0PUw0PO');

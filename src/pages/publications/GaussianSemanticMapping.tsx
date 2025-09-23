@@ -1,6 +1,7 @@
-import styled from "styled-components"
+import styled from "styled-components";
+import ReactMarkdown from "react-markdown";
 import YouTube from "react-youtube";
-import { ARXIV_ICON_URL, PUB2_FRAMEWORK_URL, PUB2_SEM_VAR_OBJ, PUB2_RES1_URL, PUB2_RES2_URL, YOUTUBE_ICON_URL, GITHUB_ICON_URL, EXTERNAL_ICON_URL } from "../../DATA/Public_URL"
+import { ARXIV_ICON_URL, PUB4_FRAMEWORK_URL, } from "../../DATA/Public_URL"
 import { FlexColumnStartCenter, FlexColumnStartCenterNotFull, FlexRowCenter, FlexRowStart } from "../../customs/Divs"
 import { H1, H3, SPAN } from "../../customs/Spans"
 import { CustomToggle } from "../../customs/CustomToggle";
@@ -8,13 +9,14 @@ import { useEffect, useState } from "react";
 import { BasicDIV } from "../../customs/Basics";
 import { useDispatch } from "react-redux";
 import { TabState, coreActions } from "../../store/slices/core";
-import { GaussianMapObj, JunwonSeo, JunyoungKim } from "./PublicationContents";
+import { GaussianMapObj, JunwonSeo, JunyoungKim, MinsikJeon } from "./PublicationContents";
 import ImageSlider from "../../customs/CustomTwoImageViewer";
 import { TagBubble } from "../../customs/TagBubbleStatic";
 import { getSTRRandomHex } from "../../utils/Color";
 import { BibTexContent, BibTexSection, IconImg } from "./CommonStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPersonChalkboard } from "@fortawesome/free-solid-svg-icons";
+import { useDesktopViewport } from "../../hooks/useDesktopViewport";
 
 const SIZE_MULTIPLE = 1.5;
 const YOUTUBE_WIDTH = 560 * SIZE_MULTIPLE;
@@ -30,6 +32,7 @@ const YoutubeOption = {
 type EvSemMap_METHOD = 'BKI' | 'CON' | 'SEE' | 'OUR';
 
 export const GaussianSemanticMapping = () => {
+    useDesktopViewport(1280);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(coreActions.setTab({selectedTab: TabState.PROJECTS}));
@@ -52,27 +55,31 @@ export const GaussianSemanticMapping = () => {
             </H1>
         </FlexRowCenter>
         {/* AUTHOR */}
-        {/* <FlexRowCenter marginTop="20px" padding="5px">
+        <FlexRowCenter marginTop="20px" padding="5px">
             <SPAN fontSize="20px" className="clickable" onClick={() => window.open(JunyoungKim.url, '_blank')}>Junyoung Kim</SPAN>
-            <SPAN marginRight="12px">*, </SPAN> 
-            <SPAN fontSize="20px" className="clickable" onClick={() => window.open(JunwonSeo.url, '_blank')}>Junwon Seo</SPAN>
-            <SPAN marginRight="12px">*, </SPAN> 
+            <SPAN marginRight="12px">, </SPAN> 
+            <SPAN fontSize="20px" className="clickable" onClick={() => window.open(MinsikJeon.url, '_blank')}>Minsik Jeon</SPAN>
+            <SPAN marginRight="12px">, </SPAN> 
             <SPAN fontSize="20px" >Jihong Min</SPAN>   
-        </FlexRowCenter> */}
+            <SPAN marginRight="12px">, </SPAN> 
+            <SPAN fontSize="20px" >Kiho Kwak</SPAN>   
+            <SPAN marginRight="12px">, </SPAN> 
+            <SPAN fontSize="20px" className="clickable" onClick={() => window.open(JunwonSeo.url, '_blank')}>Junwon Seo</SPAN>
+        </FlexRowCenter>
         {/* ICONS */}
-        {/* <FlexRowCenter marginTop="0px">
-            <IconImg src={ARXIV_ICON_URL} onClick={() => window.open('https://arxiv.org/abs/2403.14138', '_blank')} />
-            <IconImg src={YOUTUBE_ICON_URL} onClick={() => window.open('https://youtu.be/5cYY5c25GqE', '_blank')} />
-            <IconImg src={GITHUB_ICON_URL} onClick={() => window.open('https://github.com/junwon-vision/EvSemMap', '_blank')} />
-        </FlexRowCenter> */}
+        <FlexRowCenter marginTop="0px">
+            <IconImg src={ARXIV_ICON_URL} onClick={() => window.open('https://arxiv.org/abs/2509.11964', '_blank')} />
+            {/* <IconImg src={YOUTUBE_ICON_URL} onClick={() => window.open('https://youtu.be/5cYY5c25GqE', '_blank')} /> */}
+            {/* <IconImg src={GITHUB_ICON_URL} onClick={() => window.open('https://github.com/junwon-vision/EvSemMap', '_blank')} /> */}
+        </FlexRowCenter>
 
         {/* Additional Materials */}
         {/* <FlexRowCenter marginTop="0px">
-            <TagBubble className="clickable" padding="16px 15px" onClick={() => window.open(EvSemMapObj.slideURL!, '_blank')} color={getSTRRandomHex('Spot')}>
+            <TagBubble className="clickable" padding="16px 15px" onClick={() => window.open(GaussianMapObj.slideURL!, '_blank')} color={getSTRRandomHex('Spot')}>
                 <FontAwesomeIcon icon={faPersonChalkboard} fontSize={18}/>
                 <SPAN marginLeft="8px">Slides</SPAN>
             </TagBubble>
-            <TagBubble className="clickable" padding="16px 15px" onClick={() => window.open(EvSemMapObj.posterURL!, '_blank')} color={getSTRRandomHex('Poster')}>
+            <TagBubble className="clickable" padding="16px 15px" onClick={() => window.open(GaussianMapObj.posterURL!, '_blank')} color={getSTRRandomHex('Poster')}>
                 <FontAwesomeIcon icon={faPersonChalkboard} fontSize={18}/>
                 <SPAN marginLeft="8px">Poster</SPAN>
             </TagBubble>
@@ -109,59 +116,61 @@ export const GaussianSemanticMapping = () => {
             </FlexRowCenter>
         </FlexColumnStartCenter>
         
-        <FlexRowCenter marginTop="120px">
-                <H1 fontSize="32px">Work In Progress (Homepage Building)</H1>
-        </FlexRowCenter>
         {/* <FlexColumnStartCenter marginTop="30px">
             <FlexRowCenter marginBottom="20px">
-                <H1 fontSize="32px">Interactive Visualization of Semantic Map and its Uncertainty Map</H1>
+            <H1 fontSize="32px">Interactive Visualization of Semantic Map and its Uncertainty Map</H1>
             </FlexRowCenter>
             <FlexRowCenter marginBottom="10px">
-                <TagBubble margin="1px 16px" cursor="pointer" onClick={() => setVarVisMethod('BKI')} color={getMethodColor('BKI')} isPrime={varVisMethod === 'BKI'}>S-BKI</TagBubble>
-                <TagBubble margin="1px 16px" cursor="pointer" onClick={() => setVarVisMethod('CON')} color={getMethodColor('CON')} isPrime={varVisMethod === 'CON'}>ConvBKI</TagBubble>
-                <TagBubble margin="1px 16px" cursor="pointer" onClick={() => setVarVisMethod('SEE')} color={getMethodColor('SEE')} isPrime={varVisMethod === 'SEE'}>SEE-CSOM</TagBubble>
-                <TagBubble margin="1px 16px" cursor="pointer" onClick={() => setVarVisMethod('OUR')} color={getMethodColor('OUR')} isPrime={varVisMethod === 'OUR'}>Ours (EBS)</TagBubble>
+            <TagBubble margin="1px 16px" cursor="pointer" onClick={() => setVarVisMethod('BKI')} color={getMethodColor('BKI')} isPrime={varVisMethod === 'BKI'}>S-BKI</TagBubble>
+            <TagBubble margin="1px 16px" cursor="pointer" onClick={() => setVarVisMethod('CON')} color={getMethodColor('CON')} isPrime={varVisMethod === 'CON'}>ConvBKI</TagBubble>
+            <TagBubble margin="1px 16px" cursor="pointer" onClick={() => setVarVisMethod('SEE')} color={getMethodColor('SEE')} isPrime={varVisMethod === 'SEE'}>SEE-CSOM</TagBubble>
+            <TagBubble margin="1px 16px" cursor="pointer" onClick={() => setVarVisMethod('OUR')} color={getMethodColor('OUR')} isPrime={varVisMethod === 'OUR'}>Ours (EBS)</TagBubble>
             </FlexRowCenter>
             <ImageSlider adjustAspect={-0.12} imageA={PUB2_SEM_VAR_OBJ[varVisMethod][1]} imageB={PUB2_SEM_VAR_OBJ[varVisMethod][0]} />
-        </FlexColumnStartCenter> */}
+            </FlexColumnStartCenter> */}
 
-        {/* <FlexColumnStartCenter marginTop="50px">
+        <FlexColumnStartCenter marginTop="50px">
             <FlexRowCenter marginBottom="20px">
                 <H1 fontSize="32px">Our Framework</H1>
             </FlexRowCenter>
-            <Pub2FrameworkImg src={PUB2_FRAMEWORK_URL} alt={"Framework Overview"} />
+            <Pub4FrameworkImg src={PUB4_FRAMEWORK_URL} alt={"Framework Overview"} />
             <FlexRowCenter marginTop="16px">
-                <SPAN maxWidth="min(100%, 1200px)" lineHeight={1.6} textAlign="justify">▲ {EvSemMapObj.frameworkDescription}</SPAN>
+                <SPAN maxWidth="min(100%, 1200px)" lineHeight={1.6} textAlign="justify">
+                    <ReactMarkdown>{`▲ ${GaussianMapObj.frameworkDescription}`}</ReactMarkdown>
+                </SPAN>
             </FlexRowCenter>
         </FlexColumnStartCenter>
-        <FlexColumnStartCenter marginTop="50px">
+        {/* <FlexColumnStartCenter marginTop="50px">
             <FlexRowCenter marginBottom="20px">
-                <H1 fontSize="32px">Results</H1>
+            <H1 fontSize="32px">Results</H1>
             </FlexRowCenter>
             <Pub2FrameworkImg src={PUB2_RES1_URL} alt={"Main Result"} />
             <FlexRowCenter marginTop="16px">
-                <SPAN maxWidth="min(100%, 1200px)" lineHeight={1.6} textAlign="justify">▲ {EvSemMapObj.mainResultDescription}</SPAN>
+            <SPAN maxWidth="min(100%, 1200px)" lineHeight={1.6} textAlign="justify">▲ {GaussianMapObj.mainResultDescription}</SPAN>
             </FlexRowCenter>
-        </FlexColumnStartCenter>
-        <FlexColumnStartCenter marginTop="50px">
+            </FlexColumnStartCenter>
+            <FlexColumnStartCenter marginTop="50px">
             <Pub2FrameworkImg src={PUB2_RES2_URL} alt={"ZeroShot Result"} />
             <FlexRowCenter marginTop="16px">
-                <SPAN maxWidth="min(100%, 1200px)" lineHeight={1.6} textAlign="justify">▲ {EvSemMapObj.supResultDescription}</SPAN>
+            <SPAN maxWidth="min(100%, 1200px)" lineHeight={1.6} textAlign="justify">▲ {GaussianMapObj.supResultDescription}</SPAN>
             </FlexRowCenter>
-        </FlexColumnStartCenter> */}
+            </FlexColumnStartCenter> */}
         
-        {/* <FlexColumnStartCenterNotFull marginTop="30px" marginBottom="100px" width="min(100%, 1200px)">
+        <FlexRowCenter marginTop="120px">
+                <H1 fontSize="32px">Coming Soon... (Homepage Construction)</H1>
+        </FlexRowCenter>
+        <FlexColumnStartCenterNotFull marginTop="30px" marginBottom="100px" width="min(100%, 1200px)">
             <FlexRowStart width="min(100%, 1200px)">
                 <H3>BibTeX</H3>
             </FlexRowStart>
             <BibTexSection width="min(100%, 1200px)" marginTop="12px">
-                <BibTexContent>{EvSemMapObj.BibTeX}</BibTexContent>
+                <BibTexContent>{GaussianMapObj.BibTeX}</BibTexContent>
             </BibTexSection>
-        </FlexColumnStartCenterNotFull> */}
+        </FlexColumnStartCenterNotFull>
     </FlexColumnStartCenter>
 }
 
-const Pub2FrameworkImg = styled.img`
+const Pub4FrameworkImg = styled.img`
     max-width: min(100%, 1200px);
     border-radius: 20px;
     padding: 10px;

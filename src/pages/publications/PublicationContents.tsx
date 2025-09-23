@@ -154,11 +154,19 @@ export const GaussianMapObj: TPublicationContent = {
     posterURL: '',
     url: '',
     abstract: `Semantic mapping aims to construct a 3D semantic representation of the environment, providing essential knowledge for robots operating in complex outdoor settings. While Bayesian Kernel Inference (BKI) addresses discontinuities of map inference from sparse sensor data, existing semantic mapping methods suffer from various sources of uncertainties in challenging outdoor environments. To address these issues, we propose an uncertainty-aware semantic mapping framework that handles multiple sources of uncertainties, which significantly degrade mapping performance. Our method estimates uncertainties in semantic predictions using Evidential Deep Learning and incorporates them into BKI for robust semantic inference. It further aggregates noisy observations into coherent Gaussian representations to mitigate the impact of unreliable points, while employing geometry-aligned kernels that adapt to complex scene structures. These Gaussian primitives effectively fuse local geometric and semantic information, enabling robust, uncertainty-aware mapping in complex outdoor scenarios. Comprehensive evaluation across diverse off-road and urban outdoor environments demonstrates consistent improvements in mapping quality, uncertainty calibration, representational flexibility, and robustness, while maintaining real-time efficiency.`,
-    frameworkDescription: '',
+    frameworkDescription: '**Overview of semantic mapping with E2-BKI.** Given evidential points with semantic probability and uncertainty, our method operates via three key stages: (1) **Gaussian Initialization** aggregates points into anisotropic Gaussian primitives encoding local information; (2) **Gaussian Refinement** merges spatially coherent primitives and prunes unreliable primitives; and (3) **Evidential Ellipsoidal BKI** performs uncertainty-aware semantic mapping using Gaussian primitives.',
     mainResultDescription: '',
     supResultDescription: '',
-    BibTeX: ``,
-    publicationType: ['Preparation'],
+    BibTeX: `@article{kim2025e2bki,
+      title={E2-BKI: Evidential Ellipsoidal Bayesian Kernel Inference for Uncertainty-aware Gaussian Semantic Mapping}, 
+      author={Junyoung Kim and Minsik Jeon and Jihong Min and Kiho Kwak and Junwon Seo},
+      year={2025},
+      eprint={2509.11964},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2509.11964}, 
+}`,
+    publicationType: ['Under Review'],
 };
 
 export const PublicContent: TPublicContent = {
