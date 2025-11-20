@@ -50,6 +50,8 @@ const PublicEn = () => {
                 |
                 <a href="https://github.com/KJYoung">Github</a>
                 |
+                <a href="https://drive.google.com/file/d/1EFtZvUGph6F0b9f6YergCGNe6BYtJLmm/view?usp=sharing">CV</a>
+                |
                 <a href="https://www.linkedin.com/in/kim-junyoung">LinkedIn</a>
                 |
                 <a href="https://scholar.google.co.kr/citations?user=w2JODm8AAAAJ&hl=en&oi=sra">Google Scholar</a>
