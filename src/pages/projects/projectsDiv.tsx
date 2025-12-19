@@ -22,6 +22,7 @@ export const ProjectsDiv = () => {
                 <LinkSpan marginLeft='20px' content="[Github Repo]" targetUrl="https://github.com/KJYoung/KnowledgeGraphAI/"/>
                 <LinkSpan marginLeft='20px' content="[LinkedIn Post1]" targetUrl="https://www.linkedin.com/posts/friendliai_friendliai-friendliaihackathon-friendli-activity-7201442148292943875-tvQh?utm_source=share&utm_medium=member_desktop"/>
                 <LinkSpan marginLeft='20px' content="[LinkedIn Post2]" targetUrl="https://www.linkedin.com/posts/kim-junyoung_friendliai-llm-hackathon-activity-7200682031083577346-mrOy?utm_source=share&utm_medium=member_desktop"/>
+                <LinkSpan marginLeft='20px' content="[Official X Post]" targetUrl="https://x.com/friendliai/status/1795676942617952276"/>
             </FlexRowEnd>
         </FlexColumnStart>}/>
         <ExtensibleSPAN content={<>

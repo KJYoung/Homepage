@@ -27,6 +27,8 @@ const PublicEn = () => {
         notificationSuccess('EMAIL', "Email Address was copied to your clipboard");
     };
     useDesktopViewport(1280);
+
+    const CVGoogleLinkID = "1He4LMy3hCk1oDAhF1IpDxeVqaDmigsoN";
     return <PublicWrapper>
         <GeneralDiv>
             <GeneralMainDiv>
@@ -50,7 +52,7 @@ const PublicEn = () => {
                 |
                 <a href="https://github.com/KJYoung">Github</a>
                 |
-                <a href="https://drive.google.com/file/d/1EFtZvUGph6F0b9f6YergCGNe6BYtJLmm/view?usp=sharing">CV</a>
+                <a href={`https://drive.google.com/file/d/${CVGoogleLinkID}/view?usp=sharing`}>CV</a>
                 |
                 <a href="https://www.linkedin.com/in/kim-junyoung">LinkedIn</a>
                 |
