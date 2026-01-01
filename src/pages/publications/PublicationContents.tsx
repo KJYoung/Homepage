@@ -145,7 +145,7 @@ export const GaussianMapObj: TPublicationContent = {
     id: 4,
     title: 'E2-BKI: Evidential Ellipsoidal Bayesian Kernel Inference for Uncertainty-aware Gaussian Semantic Mapping',
     author: [JunyoungKim, MinsikJeon, JihongMin, KihoKwak, {...JunwonSeo, isLast: true}],
-    status: 'Under Review, 2025',
+    status: 'IEEE Robotics and Automation Letters (RA-L), 2025',
     description: 'Evidential fusion of anisotropic Gaussians with an uncertainty-aware (ellipsoidal) BKI, yielding continuous, geometry-aligned and calibrated 3D semantic maps.',
     imgURL: PUB4_REPRESENTATIVE_PIC_URL,
     imgModalURL: PUB4_REPRESENTATIVE_PICMODAL_URL,
