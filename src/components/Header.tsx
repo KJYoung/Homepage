@@ -2,7 +2,7 @@ import { faHome, faPhotoFilm, faScroll } from "@fortawesome/free-solid-svg-icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { coreActions, DarkLightState, selectCore, TabState } from "../store/slices/core";
+import { coreActions, selectCore, TabState } from "../store/slices/core";
 import { LANGUAGE } from "../utils/Language";
 import { useNavigate } from "react-router-dom";
 import { NAV_GALL_PAGE, NAV_MAIN_PAGE, NAV_PROJ_PAGE } from "../App";
@@ -90,16 +90,6 @@ const Header = ({ isMobile, language }: IPropsHeader ) => {
         </HeaderCenter>
         
         <HeaderRight>
-            <div className="LanguageSelector">
-                <span className={language === 'EN' ? "selected" : ""} onClick={() => dispatch(coreActions.setLanguage({language: 'EN'}))}>EN</span>
-                <span className={language === 'KO' ? "selected" : ""} onClick={() => dispatch(coreActions.setLanguage({language: 'KO'}))}>KO</span>
-            </div>
-            <div className="DarkLightSelector">
-                <span className={coreState.darkLight === DarkLightState.DARK ? "selected" : ""}
-                        onClick={() => dispatch(coreActions.setDarkLight({ darkLight: DarkLightState.DARK }))}>DARK</span>
-                <span className={coreState.darkLight === DarkLightState.LIGHT ? "selected" : ""}
-                        onClick={() => dispatch(coreActions.setDarkLight({ darkLight: DarkLightState.LIGHT }))}>LIGHT</span>
-            </div>
         </HeaderRight>
     </HeaderRoot>
 };
