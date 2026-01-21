@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import ReactMarkdown from "react-markdown";
-import { ARXIV_ICON_URL, EXTERNAL_ICON_URL, PUB4_FRAMEWORK_URL, PUB4_CHALLENGES_URL, PUB4_QUALRES_URL } from "../../DATA/Public_URL"
+import { ARXIV_ICON_URL, EXTERNAL_ICON_URL, PUB4_FRAMEWORK_URL, PUB4_CHALLENGES_URL, PUB4_QUALRES_URL, YOUTUBE_ICON_URL } from "../../DATA/Public_URL"
 import { FlexColumnStartCenter, FlexColumnStartCenterNotFull, FlexRowCenter, FlexRowStart } from "../../customs/Divs"
 import { H1, H3, SPAN } from "../../customs/Spans"
 import { useEffect } from "react";
@@ -9,10 +9,24 @@ import { TabState, coreActions } from "../../store/slices/core";
 import { GaussianMapObj, JunwonSeo, JunyoungKim, MinsikJeon } from "./PublicationContents";
 import { BibTexContent, BibTexSection, IconImg } from "./CommonStyles";
 import { useDesktopViewport } from "../../hooks/useDesktopViewport";
+import { BasicDIV } from "../../customs/Basics";
+import YouTube from "react-youtube";
+
+const SIZE_MULTIPLE = 1.75;
+const YOUTUBE_WIDTH = 560 * SIZE_MULTIPLE;
+const YOUTUBE_HEIGHT = 315 * SIZE_MULTIPLE;
+const YoutubeOption = {
+    height: YOUTUBE_HEIGHT,
+    width: YOUTUBE_WIDTH,
+    playerVars: {
+        autoplay: 0,
+    },
+};
 
 export const GaussianSemanticMapping = () => {
     useDesktopViewport(1280);
     const dispatch = useDispatch();
+    const isShortVideo = true;
     useEffect(() => {
         dispatch(coreActions.setTab({selectedTab: TabState.PROJECTS}));
     }, [dispatch]);
@@ -39,7 +53,7 @@ export const GaussianSemanticMapping = () => {
         {/* ICONS */}
         <FlexRowCenter marginTop="0px">
             <IconImg src={ARXIV_ICON_URL} onClick={() => window.open('https://arxiv.org/abs/2509.11964', '_blank')} />
-            {/* <IconImg src={YOUTUBE_ICON_URL} onClick={() => window.open('https://youtu.be/5cYY5c25GqE', '_blank')} /> */}
+            <IconImg src={YOUTUBE_ICON_URL} onClick={() => window.open('https://youtu.be/bsqARNKvnjQ', '_blank')} />
             {/* <IconImg src={GITHUB_ICON_URL} onClick={() => window.open('https://github.com/junwon-vision/EvSemMap', '_blank')} /> */}
         </FlexRowCenter>
 
@@ -57,8 +71,19 @@ export const GaussianSemanticMapping = () => {
 
         <FlexRowCenter marginTop="10px" marginBottom="0px">
             <SPAN fontSize="20px" color="hp-black" fontWeight="700">Accepted to RA-L 2026</SPAN>
-            <IconImg src={EXTERNAL_ICON_URL} onClick={() => window.open('https://arxiv.org/abs/2509.11964', '_blank')} className="clickable small" />
+            <IconImg src={EXTERNAL_ICON_URL} onClick={() => window.open('https://ieeexplore.ieee.org/document/11352513', '_blank')} className="clickable small" />
         </FlexRowCenter>
+
+        <FlexColumnStartCenterNotFull marginTop="10px" position="relative" borderRadius="22px" className="no-select" padding="6px" backgroundColor={isShortVideo ? "hp-green" : "hp-purple"}>
+            <BasicDIV width={`min(100%, ${YOUTUBE_WIDTH}px)`} height={`${YOUTUBE_HEIGHT}px`} borderRadius="16px" overflow="hidden" backgroundColor={isShortVideo ? "hp-green" : "hp-purple"}>
+                {isShortVideo ? 
+                    <YouTube videoId="bsqARNKvnjQ" opts={YoutubeOption} id="video" style={{zIndex: 2}}/>
+                    :
+                    `None` 
+                }
+            </BasicDIV>
+        </FlexColumnStartCenterNotFull>
+
         <FlexColumnStartCenter marginTop="30px">
             <FlexRowCenter>
                 <H1 fontSize="32px">Abstract</H1>
