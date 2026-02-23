@@ -1,10 +1,63 @@
 import { H2, LinkSpan, SPAN } from "../../customs/Spans";
-import { DOCUMENT_ROOT, PublicBR } from "../public/Public";
-import { ExtensibleSPAN } from "../PublicDep";
+import { DOCUMENT_ROOT, PublicBR } from "../MainPage";
 import { TagBubble } from "../../customs/TagBubbleStatic";
 import { getSRandomHex } from "../../utils/Color";
 import { FlexColumnStart, FlexRowEnd } from "../../customs/Divs";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import { BasicDIV } from "../../customs/Basics";
+import { useState } from "react";
+
+interface IPropsExtensibleSPAN {
+    content: JSX.Element;
+    extContent: JSX.Element;
+};
+
+const ExtensibleSPANWrapper = styled(BasicDIV)`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+`;
+const ExtensibleSPANTitle = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+`;
+const ExtensibleBtn = styled.span`
+    color: var(--hp-blue);
+    cursor: pointer;
+    &:active {
+        color: var(--hp-blue-active);
+    };
+
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+
+    font-size: 22px;
+`;
+const ExtensibleSPANBody = styled.div`
+    width: 100%;
+    display: flex;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+`;
+
+export const ExtensibleSPAN = ({ content, extContent } : IPropsExtensibleSPAN) => {
+    const [extended, setExtended] = useState(false);
+
+    return <ExtensibleSPANWrapper>
+        <ExtensibleSPANTitle>
+            {content}
+            <ExtensibleBtn onClick={() => setExtended(!extended)}>{extended ? '▲' : '▼'}</ExtensibleBtn>
+        </ExtensibleSPANTitle>
+        {extended && <ExtensibleSPANBody>
+                {extContent}
+        </ExtensibleSPANBody>}
+    </ExtensibleSPANWrapper>
+}
 
 export const ProjectsDiv = () => {
     const navigate = useNavigate();

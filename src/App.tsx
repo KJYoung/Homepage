@@ -15,11 +15,8 @@ import styled from 'styled-components';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Gallery from './pages/Gallery';
-import { PublicDep } from './pages/PublicDep';
 import Private from './pages/Private';
-import New from './pages/New';
 import MainPage from './pages/MainPage';
-import PublicEn from './pages/public/Public';
 import { DSTEvSemMapping } from './pages/publications/DSTEvSemMapping';
 
 const RedirectComponent = ({ red_url } : { red_url : string }) => {
@@ -36,8 +33,6 @@ export const NAV_MAIN_PAGE = '/'; // :Public/Public
 export const NAV_PRIV_PAGE = '/private';
 export const NAV_PROJ_PAGE = '/Projects';
 export const NAV_GALL_PAGE = '/gallery';
-export const NAV_NEWW_PAGE = '/new';
-export const NAV_LOBBY_PAGE = '/lobby';
 
 function App() {
   // Window Size. If windowSize[0] < 1200, Show mobile style.
@@ -64,14 +59,9 @@ function App() {
         <ReactNotifications />
         <Body>
           <Routes>
-            <Route path={NAV_MAIN_PAGE} element={<PublicEn />} />
+            <Route path={NAV_MAIN_PAGE} element={<MainPage />} />
             <Route path={NAV_GALL_PAGE} element={<Gallery isMobile={false}/>} />
             <Route path={NAV_PRIV_PAGE} element={<Private />} />
-            <Route path={NAV_NEWW_PAGE} element={<New />} />
-            <Route path={NAV_LOBBY_PAGE} element={<MainPage />} />
-
-            <Route path="/KR/*" element={<PublicDep />}/>
-
             {/* Redirects */}
             <Route path="USB" element={<RedirectComponent red_url="/Projects/Evidential-Semantic-Mapping" />} />  {/* // Alias for Uncertainty-aware Semantic BKI */}
             <Route path="EBS" element={<RedirectComponent red_url="/Projects/Evidential-Semantic-Mapping" />} />  {/* // Alias for Uncertainty-aware Semantic BKI */}

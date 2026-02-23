@@ -6,7 +6,7 @@ import CustomImageModal from "../../customs/CustomImageModal";
 import { NavigateFunction } from "react-router-dom";
 import { useRef, useState } from "react";
 import { BasicDIV } from "../../customs/Basics";
-import { PublicBR } from "../public/Public";
+import { PublicBR } from "../MainPage";
 import { TagBubble } from "../../customs/TagBubbleStatic";
 import { getSTRRandomHex } from "../../utils/Color";
 

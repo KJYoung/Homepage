@@ -6,24 +6,18 @@ export enum TabState {
   MAIN = 0, PUBLIC = 1, PRIVATE = 2, GALLERY = 3, NEW = 4, PROJECTS = 5,
 };
 
-export enum DarkLightState {
-  LIGHT = 0, DARK = 1
-};
-
 export enum PrevilegedState {
   PUBLIC = 0, PRIVATE = 1, ADMIN = 2
 };
 
 export interface CoreState {
   selectedTab: TabState; // Selected Tab Number.
-  darkLight: DarkLightState; // Selected Mode(Dark, Light).
   windowSize: [number, number];
   privMode: PrevilegedState;
   language: LANGUAGE;
 }
 const initialState: CoreState = {
  selectedTab: TabState.PUBLIC,
- darkLight: DarkLightState.LIGHT,
  windowSize: [1500, 1500],
  privMode: PrevilegedState.PUBLIC,
  language: "EN",
@@ -36,9 +30,6 @@ export const coreSlice = createSlice(
     reducers: {
       setTab: (state: any, action: PayloadAction<{ selectedTab: TabState; }>) => {
         state.selectedTab = action.payload.selectedTab;
-      },
-      setDarkLight: (state: any, action: PayloadAction<{ darkLight: DarkLightState; }>) => {
-        state.darkLight = action.payload.darkLight;
       },
       setWindowSize: (state: any, action: PayloadAction<{ width: number, height: number }>) => {
         state.windowSize = [action.payload.width, action.payload.height];
