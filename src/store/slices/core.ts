@@ -22,7 +22,7 @@ export interface CoreState {
   language: LANGUAGE;
 }
 const initialState: CoreState = {
- selectedTab: TabState.MAIN,
+ selectedTab: TabState.PUBLIC,
  darkLight: DarkLightState.LIGHT,
  windowSize: [1500, 1500],
  privMode: PrevilegedState.PUBLIC,

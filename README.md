@@ -16,7 +16,8 @@
 2025.08.28. Publications width increase. E2-BKI construction started. Refactoring may be started.
 2025.08.30. Width Error Fixed (occurred on 08.28), Publication Div Align
 2025.09.24. ReactMarkdown.
-2026.01.09. CV Update, E2-BKI Accepted, Short video Updated 
+2026.01.09. CV Update, E2-BKI Accepted, Short video Updated   
+2026.02.23. Header Update    
 ...   
    
 TODO: Custom Image Slider Left/Right Indicator.   

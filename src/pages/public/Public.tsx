@@ -79,7 +79,10 @@ const PublicEn = () => {
             <H1>Profile</H1>
             <PublicBR />
             <H4 marginLeft='10px' marginBottom="6px">History</H4>
-            <H5 marginLeft='20px' lineHeight={1.2} marginBottom="4px">✅ 2017.03 ~ 2019.02 Hansung Science High School (HSHS) - High School</H5>
+            <H5 marginLeft='20px' lineHeight={1.2}>🔄 2023.04 ~ 2026.05 Agency for Defense Development (ADD) - Military Service</H5>
+            <SPAN marginLeft='40px' lineHeight={1.2}>
+                ✦ Research Officer for National Defense (ROND)
+            </SPAN>
             <H5 marginLeft='20px' lineHeight={1.2}>✅ 2019.03 ~ 2023.02 Seoul National University (SNU) - Bachelor</H5>
             <SPAN marginLeft='40px' lineHeight={1.2} marginBottom="4px">
                 ✦ <SPAN fontWeight="600">Biological Sciences, Computer Science and Engineering</SPAN> (Double Major) 
@@ -87,10 +90,7 @@ const PublicEn = () => {
                 ✦ <SPAN fontWeight="600">Summa Cum Laude</SPAN> (4.17/4.30; 2<SPAN fontSize="10px" verticalAlign="super">nd</SPAN>/40)
                 <br />
             </SPAN>
-            <H5 marginLeft='20px' lineHeight={1.2}>🔄 2023.04 ~ 2026.05 Agency for Defense Development (ADD) - Military Service</H5>
-            <SPAN marginLeft='40px' lineHeight={1.2}>
-                ✦ Research Officer for National Defense (ROND)
-            </SPAN>
+            <H5 marginLeft='20px' lineHeight={1.2} marginBottom="4px">✅ 2017.03 ~ 2019.02 Hansung Science High School (HSHS) - High School</H5>
 
             <FlexRowSpaceBetweenEnd>
                 <H4 marginLeft='10px' marginBottom="4px" marginTop="20px">Research Interests</H4>
