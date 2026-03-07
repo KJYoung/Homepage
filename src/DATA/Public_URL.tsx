@@ -5,6 +5,7 @@ export const PUBLICATION_FIG_ROOT = process.env.PUBLIC_URL + "/gallery/Publicati
 
 export const PORTRAIT1_URL = PUBLIC_ROOT + "Portrait_220102.jpg";
 export const PORTRAIT2_URL = PUBLIC_ROOT + "Portrait_260307.jpg";
+export const PORTRAIT2_SMALL_URL = PUBLIC_ROOT + "Portrait_260307_Gemini_64x64.png";
 
 export const ARXIV_ICON_URL = PUBLICATION_FIG_ROOT + 'arxiv.svg';
 export const YOUTUBE_ICON_URL = PUBLICATION_FIG_ROOT + 'youtube.svg';
@@ -46,7 +47,6 @@ export const PUB3_SLIDES_URL = 'https://drive.google.com/file/d/1XXcqQjxMFZbM9lo
 
 
 export const PUB4_REPRESENTATIVE_PIC_URL = GOOGLE_DRIVE_ROOT('1R8AcG_zD1vwkkZ6KObja9jsh6IFFAdtA');
-export const PUB4_REPRESENTATIVE_PICMODAL_URL = GOOGLE_DRIVE_ROOT('1jljAuuvgpnjQt83mIn6ij3_yD0PUw0PO');
 export const PUB4_FRAMEWORK_URL = GOOGLE_DRIVE_ROOT('1UGepY6UwcmACcG4QfPav0R22wcIJGicG');
 export const PUB4_CHALLENGES_URL = GOOGLE_DRIVE_ROOT('1y_BrUb2KPoLTmPbzoPuvnNj2Gpyb0zpO');
 export const PUB4_QUALRES_URL = GOOGLE_DRIVE_ROOT('1psg5HyhH-XozeYPe5kSwK_TuP5x7fzbj');

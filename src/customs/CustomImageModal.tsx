@@ -1,163 +1,215 @@
-import React from 'react';
-import styled from 'styled-components';
-import { CSSTransition } from 'react-transition-group';
-import { faX } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useEffect } from "react";
+import styled, { keyframes } from "styled-components";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export interface CustomImageModalIprops {
   isActive: boolean;
   onClose: () => void;
-  modalRef: React.MutableRefObject<null>;
-  modalAnimRef: React.MutableRefObject<null>;
   imgSrc: string | undefined;
   imgTitle: string | undefined;
   imgSubtitle: string | undefined;
-};
+}
 
-const CustomImageModal = ({ isActive, onClose, modalRef, modalAnimRef, imgSrc, imgTitle, imgSubtitle }: CustomImageModalIprops) => {
+const CustomImageModal = ({ isActive, onClose, imgSrc, imgTitle, imgSubtitle }: CustomImageModalIprops) => {
+  useEffect(() => {
+    if (!isActive) return;
 
-  const closeHandler = () => {
-    onClose?.();
-  };
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const keyDownHandler = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+
+    window.addEventListener("keydown", keyDownHandler);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", keyDownHandler);
+    };
+  }, [isActive, onClose]);
+
+  if (!isActive) return null;
 
   const handleOverlayClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
-      closeHandler();
+      onClose();
     }
   };
 
-  const Modal = (
-    <CSSTransition in={isActive} nodeRef={modalAnimRef} timeout={110} classNames="modal" unmountOnExit>
-      <ModalOverlay ref={modalAnimRef} onClick={handleOverlayClick}>
-        <ModalContent className="modal" ref={modalRef}>
-          <Divdiv>
-            <CategoryWrapper>
-              <TitleWrapper>
-                  <ImgTitle>{imgTitle ? imgTitle : "제목 없음."}</ImgTitle>
-                  <ImgSubtitle>{imgSubtitle && imgSubtitle}</ImgSubtitle>
-              </TitleWrapper>
-              <ModalExitWrapper>
-                <ModalCloseBtn onClick={closeHandler}>
-                  <FontAwesomeIcon icon={faX} />
-                </ModalCloseBtn>
-              </ModalExitWrapper>
-            </CategoryWrapper>
-            <ImageModalContent>
-                <img src={imgSrc} alt="full screen form"/>
-            </ImageModalContent>
-          </Divdiv>
-        </ModalContent>
-      </ModalOverlay>
-    </CSSTransition>
+  return (
+    <ModalOverlay onClick={handleOverlayClick}>
+      <ModalCard role="dialog" aria-modal="true" aria-label={imgTitle ?? "Publication image"}>
+        <ModalTop>
+          <TitleGroup>
+            <ImgTitle>{imgTitle ?? "Untitled Image"}</ImgTitle>
+            {imgSubtitle && <ImgSubtitle>{imgSubtitle}</ImgSubtitle>}
+          </TitleGroup>
+          <ModalCloseBtn type="button" onClick={onClose} aria-label="Close modal">
+            <FontAwesomeIcon icon={faXmark} />
+          </ModalCloseBtn>
+        </ModalTop>
+        <ImageViewport>
+          {imgSrc ? <img src={imgSrc} alt={imgTitle ?? "publication"} /> : <EmptyText>No image available.</EmptyText>}
+        </ImageViewport>
+        <MetaHint>Click outside or press ESC to close.</MetaHint>
+      </ModalCard>
+    </ModalOverlay>
   );
-  return Modal;
 };
 
-export const ModalOverlay = styled.div`
-  width: 100%;
-  height: 100%;
-
-  position: fixed;
-  top: 0px;
-  left: 0;
-  bottom: 0;
-  right: 0;
-
-  background-color: var(--hp-modal-background);
+const overlayEnter = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 `;
 
-const ModalContent = styled.div`
-  width: fit-content;
-  height: fit-content;
+const cardEnter = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+`;
 
+export const ModalOverlay = styled.div`
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
+  inset: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1200;
+  padding: clamp(64px, 11vh, 96px) 18px 24px;
+  background: rgba(10, 15, 22, 0.58);
+  backdrop-filter: blur(7px) saturate(108%);
   display: flex;
   justify-content: center;
-  align-items: center;
-
-  border-radius: 15px;
-  /* Modal Shadow */
-  -webkit-box-shadow: 0 10px 12px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0 10px 12px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding-box;
-  background-clip: padding-box;
+  align-items: flex-start;
+  animation: ${overlayEnter} 0.2s ease;
 `;
 
-const ModalExitWrapper = styled.div`
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  font-size: 20px;
-  color: var(--hp-red);
-`;
-
-const Divdiv = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: var(--hp-white);
-  overflow: auto;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  border-radius: inherit;
-`;
-
-const ModalCloseBtn = styled.div`
-  width: fit-content;
-  cursor: pointer;
-`;
-
-const CategoryWrapper = styled.div`
-  position: fixed;
+const ModalCard = styled.div`
+  width: min(1260px, 100%);
+  max-height: calc(100vh - clamp(84px, 13vh, 118px));
+  border-radius: 20px;
+  border: 1px solid rgba(188, 204, 223, 0.9);
+  background: linear-gradient(180deg, #ffffff 0%, #f6f9fd 100%);
+  box-shadow: 0 24px 62px rgba(8, 19, 38, 0.44);
   display: flex;
-  width: 100%;
-  align-items: center;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  flex-direction: column;
+  overflow: hidden;
+  animation: ${cardEnter} 0.24s cubic-bezier(0.22, 0.61, 0.36, 1);
 `;
-const TitleWrapper = styled.div`
-    display: flex;
-    align-items: flex-end;
-    width: 100%;
-    border-bottom: 1px solid black;
-    padding-bottom: 5px;
+
+const ModalTop = styled.div`
+  width: 100%;
+  min-height: 68px;
+  padding: 15px 16px 13px;
+  border-bottom: 1px solid rgba(212, 222, 236, 0.9);
+  background: linear-gradient(180deg, #fafdff 0%, #f4f8ff 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+`;
+
+const TitleGroup = styled.div`
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`;
+
+const ModalCloseBtn = styled.button`
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  border: 1px solid rgba(214, 224, 238, 0.95);
+  background: #ffffff;
+  color: #355679;
+  font-size: 17px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    background: #edf4ff;
+    color: #1f5fc4;
+    transform: translateY(-1px);
+  }
 `;
 
 const ImgTitle = styled.span`
-    margin: 10px 5px 5px 10px;
-    font-size: 28px;
-    font-weight: 500;
-    color: var(--hp-text);
-`;
-const ImgSubtitle = styled.span`
-    margin: 10px 0px 5px 10px;
-    font-size: 17px;
-    font-weight: 400;
-    color: var(--hp-subtext);
+  font-size: clamp(17px, 2.1vw, 25px);
+  font-weight: 800;
+  color: #122a44;
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
-const ImageModalContent = styled.div`
-  margin-top: 55px;
-  padding: 100px 10px;
-  height: 100%;
-  width: 90vw;
+const ImgSubtitle = styled.span`
+  color: #4d698a;
+  font-size: 13px;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+const ImageViewport = styled.div`
+  width: 100%;
+  flex: 1;
+  min-height: 280px;
+  padding: clamp(8px, 1.8vw, 16px);
   display: flex;
   justify-content: center;
   align-items: center;
-  
-  background-color: var(--hp-white);
-  img {
-    max-width: 88vw;
-    max-height: 80vh;
-    width: auto;
-    height: auto;
+  background: radial-gradient(circle at 50% 0%, #f3f7fe 0%, #e7edf8 100%);
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
   }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: rgba(110, 136, 167, 0.5);
+  }
+
+  img {
+    max-width: 100%;
+    max-height: calc(100vh - 230px);
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 14px 34px rgba(13, 29, 55, 0.18);
+    border: 1px solid rgba(202, 214, 231, 0.9);
+  }
+`;
+
+const MetaHint = styled.span`
+  width: 100%;
+  padding: 10px 16px 13px;
+  border-top: 1px solid rgba(215, 225, 238, 0.85);
+  color: #557092;
+  font-size: 12px;
+  letter-spacing: 0.1px;
+  background: #f6f9fd;
+`;
+
+const EmptyText = styled.span`
+  color: #4b627f;
+  font-weight: 600;
 `;
 
 export default CustomImageModal;

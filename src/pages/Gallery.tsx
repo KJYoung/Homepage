@@ -33,17 +33,67 @@ type CategoryItem = {
   value: CATEGORY;
   label: string;
   emoji: string;
+  defaultMapQuery: string;
   images: ImageInfoPairsType[];
 };
 
 const GALLERY_CATEGORIES: CategoryItem[] = [
-  { key: "france", value: CATEGORY.FRANCE, label: "Paris, Colmar, Strasbourg", emoji: "🇫🇷", images: FRANCE_images },
-  { key: "belgium", value: CATEGORY.BELGIUM, label: "Brussels, Antwerpen", emoji: "🇧🇪", images: BELGIUM_images },
-  { key: "netherlands", value: CATEGORY.NETHERLANDS, label: "Amsterdam", emoji: "🇳🇱", images: NETHERLANDS_images },
-  { key: "swiss", value: CATEGORY.SWISS, label: "Bern, Interlaken, Jungfrau", emoji: "🇨🇭", images: SWISS_images },
-  { key: "turkiye", value: CATEGORY.TURKIYE, label: "Istanbul, Cappadocia", emoji: "🇹🇷", images: TURKIYE_images },
-  { key: "greece", value: CATEGORY.GREECE, label: "Santorini, Athens", emoji: "🇬🇷", images: GREECE_images },
-  { key: "italy", value: CATEGORY.ITALY, label: "Rome, Vatican, Venice", emoji: "🇮🇹", images: ITALY_images },
+  {
+    key: "france",
+    value: CATEGORY.FRANCE,
+    label: "Paris, Colmar, Strasbourg",
+    emoji: "🇫🇷",
+    defaultMapQuery: "Paris France",
+    images: FRANCE_images,
+  },
+  {
+    key: "belgium",
+    value: CATEGORY.BELGIUM,
+    label: "Brussels, Antwerpen",
+    emoji: "🇧🇪",
+    defaultMapQuery: "Brussels Belgium",
+    images: BELGIUM_images,
+  },
+  {
+    key: "netherlands",
+    value: CATEGORY.NETHERLANDS,
+    label: "Amsterdam",
+    emoji: "🇳🇱",
+    defaultMapQuery: "Amsterdam Netherlands",
+    images: NETHERLANDS_images,
+  },
+  {
+    key: "swiss",
+    value: CATEGORY.SWISS,
+    label: "Bern, Interlaken, Jungfrau",
+    emoji: "🇨🇭",
+    defaultMapQuery: "Interlaken Switzerland",
+    images: SWISS_images,
+  },
+  {
+    key: "turkiye",
+    value: CATEGORY.TURKIYE,
+    label: "Istanbul, Cappadocia",
+    emoji: "🇹🇷",
+    defaultMapQuery: "Istanbul Turkiye",
+    images: TURKIYE_images,
+  },
+  {
+    key: "greece",
+    value: CATEGORY.GREECE,
+    label: "Santorini, Athens",
+    emoji: "🇬🇷",
+    defaultMapQuery: "Athens Greece",
+    images: GREECE_images,
+  },
+  {
+    key: "italy",
+    value: CATEGORY.ITALY,
+    label: "Rome, Vatican, Venice",
+    emoji: "🇮🇹",
+    defaultMapQuery: "Rome Italy",
+    images: ITALY_images,
+  },
 ];
 
 const SPEED_OPTIONS = [
@@ -51,6 +101,9 @@ const SPEED_OPTIONS = [
   { label: "5 sec", value: 5000 },
   { label: "8 sec", value: 8000 },
 ];
+
+const createMapsSearchUrl = (query: string) =>
+  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 
 const parseCategoryFromParams = (searchParams: URLSearchParams): CATEGORY => {
   const queryCategory = searchParams.get("category");
@@ -95,7 +148,11 @@ function Gallery({ isMobile }: IPropsGallery) {
     () => GALLERY_CATEGORIES.find((item) => item.value === category),
     [category]
   );
-  const selectedImages = selectedCategory?.images;
+  const selectedImages = useMemo(() => {
+    if (!selectedCategory) return undefined;
+    const fallbackLocation = createMapsSearchUrl(selectedCategory.defaultMapQuery);
+    return selectedCategory.images.map((image) => (image.location ? image : { ...image, location: fallbackLocation }));
+  }, [selectedCategory]);
   const [galleryWidth, galleryHeight] = [windowSize[0], (windowSize[1] * 560) / 1200];
   const compactLayout = isMobile || windowSize[0] < 860;
   const autoPlayEnabled = periodicChange && Boolean(selectedImages);

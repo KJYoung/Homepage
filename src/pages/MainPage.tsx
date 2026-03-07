@@ -106,7 +106,7 @@ const MainPage = () => {
                 <TagBubble color={getSRandomHex(3)}>Human Robot Interaction</TagBubble>
             </FlexRowStart>
         </FlexColumnStart>
-        <PublicationWrapperDiv navigate={navigate} isDetail={false} />
+        <PublicationWrapperDiv navigate={navigate} isDetail={false} viewMode="compact" />
         <ProjectsDiv />
     </PublicWrapper>
 };

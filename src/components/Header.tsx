@@ -2,6 +2,7 @@ import { faHome, faPhotoFilm, faScroll } from "@fortawesome/free-solid-svg-icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from "react-redux";
 import styled, { keyframes } from "styled-components";
+import { PORTRAIT2_SMALL_URL } from "../DATA/Public_URL";
 import { coreActions, selectCore, TabState } from "../store/slices/core";
 import { LANGUAGE } from "../utils/Language";
 import { useNavigate } from "react-router-dom";
@@ -73,7 +74,7 @@ const Header = ({ isMobile }: IPropsHeader) => {
     <HeaderRoot className="no-select">
       <HeaderInner>
         <BrandButton type="button" onClick={() => goTo(TabState.PUBLIC, NAV_MAIN_PAGE)}>
-          <BrandBadge>JK</BrandBadge>
+          <BrandPortrait src={PORTRAIT2_SMALL_URL} alt="Junyoung Kim portrait" />
           <BrandText>
             <strong>Junyoung Kim</strong>
             <span>Personal Archive</span>
@@ -103,7 +104,16 @@ const HeaderRoot = styled.header`
   position: sticky;
   top: 0;
   z-index: 30;
-  background: linear-gradient(180deg, rgba(253, 254, 255, 0.94) 0%, rgba(246, 249, 253, 0.92) 100%);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(106, 162, 245, 0.2) 0%,
+      rgba(246, 250, 255, 0.88) 22%,
+      rgba(250, 252, 255, 0.93) 50%,
+      rgba(255, 250, 246, 0.88) 78%,
+      rgba(255, 170, 122, 0.19) 100%
+    ),
+    linear-gradient(180deg, rgba(253, 254, 255, 0.94) 0%, rgba(246, 249, 253, 0.92) 100%);
   border-bottom: 1px solid rgba(210, 222, 238, 0.8);
   backdrop-filter: blur(8px);
   box-shadow: 0 6px 18px rgba(12, 25, 45, 0.07);
@@ -148,18 +158,14 @@ const BrandButton = styled.button`
   }
 `;
 
-const BrandBadge = styled.div`
+const BrandPortrait = styled.img`
   width: 38px;
   height: 38px;
-  border-radius: 12px;
-  background: linear-gradient(145deg, #1f4b92 0%, #2f7dde 100%);
-  color: #eef6ff;
-  font-size: 12.5px;
-  font-weight: 800;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 8px 16px rgba(32, 79, 151, 0.34), inset 0 0 0 1px rgba(255, 255, 255, 0.28);
+  border-radius: 11px;
+  object-fit: cover;
+  object-position: center;
+  border: 1px solid rgba(201, 216, 236, 0.95);
+  box-shadow: 0 8px 16px rgba(23, 53, 100, 0.22);
 `;
 
 const BrandText = styled.div`
@@ -253,7 +259,16 @@ const MobileHeaderRoot = styled.header`
   top: 0;
   z-index: 30;
   padding: 9px 10px;
-  background: linear-gradient(180deg, rgba(252, 253, 255, 0.95) 0%, rgba(246, 248, 252, 0.93) 100%);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(108, 166, 248, 0.18) 0%,
+      rgba(249, 252, 255, 0.9) 24%,
+      rgba(250, 252, 255, 0.93) 50%,
+      rgba(255, 251, 247, 0.9) 76%,
+      rgba(255, 176, 134, 0.16) 100%
+    ),
+    linear-gradient(180deg, rgba(252, 253, 255, 0.95) 0%, rgba(246, 248, 252, 0.93) 100%);
   border-bottom: 1px solid rgba(212, 223, 238, 0.9);
   backdrop-filter: blur(8px);
 `;
