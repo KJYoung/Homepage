@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import './styles/color.css';
-import { HashRouter, Route, Routes, useNavigate } from 'react-router-dom';
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import GlobalStyles from './styles/GlobalStyles';
 import { useDispatch, useSelector } from 'react-redux';
 import { coreActions, selectCore } from './store/slices/core';
@@ -18,16 +18,6 @@ import Gallery from './pages/Gallery';
 import Private from './pages/Private';
 import MainPage from './pages/MainPage';
 import { DSTEvSemMapping } from './pages/publications/DSTEvSemMapping';
-
-const RedirectComponent = ({ red_url } : { red_url : string }) => {
-  const navigate = useNavigate();
-  useEffect(() => {
-    navigate(red_url);
-  }, [navigate, red_url]);
-  return <>
-    <span>Redirecting...</span>
-  </>
-};
 
 export const NAV_MAIN_PAGE = '/'; // :Public/Public
 export const NAV_PRIV_PAGE = '/private';
@@ -62,38 +52,22 @@ function App() {
             <Route path={NAV_MAIN_PAGE} element={<MainPage />} />
             <Route path={NAV_GALL_PAGE} element={<Gallery isMobile={false}/>} />
             <Route path={NAV_PRIV_PAGE} element={<Private />} />
+
+            <Route path={`${NAV_PROJ_PAGE}`} element={<PublicationsMain />} />
+            <Route path={`${NAV_PROJ_PAGE}/Evidential-Semantic-Mapping`} element={<EvidentialSemanticMapping />} />
+            <Route path={`${NAV_PROJ_PAGE}/E2-BKI`} element={<GaussianSemanticMapping />} />
+            <Route path={`${NAV_PROJ_PAGE}/Fully-Evidential-Semantic-Mapping`} element={<DSTEvSemMapping />} />
+
             {/* Redirects */}
-            <Route path="USB" element={<RedirectComponent red_url="/Projects/Evidential-Semantic-Mapping" />} />  {/* // Alias for Uncertainty-aware Semantic BKI */}
-            <Route path="EBS" element={<RedirectComponent red_url="/Projects/Evidential-Semantic-Mapping" />} />  {/* // Alias for Uncertainty-aware Semantic BKI */}
-            <Route path="Evidential-Semantic-Mapping" element={<RedirectComponent red_url="/Projects/Evidential-Semantic-Mapping" />} />  {/* // Alias for Uncertainty-aware Semantic BKI */}
+            <Route path="USB" element={<Navigate to={`${NAV_PROJ_PAGE}/Evidential-Semantic-Mapping`} replace />} />
+            <Route path="EBS" element={<Navigate to={`${NAV_PROJ_PAGE}/Evidential-Semantic-Mapping`} replace />} />
+            <Route path="Evidential-Semantic-Mapping" element={<Navigate to={`${NAV_PROJ_PAGE}/Evidential-Semantic-Mapping`} replace />} />
 
-            <Route
-              path={`${NAV_PROJ_PAGE}/*`}
-              element={
-                <Routes>
-                  <Route path="/" element={ <PublicationsMain /> } />
+            <Route path={`${NAV_PROJ_PAGE}/USB`} element={<Navigate to={`${NAV_PROJ_PAGE}/Evidential-Semantic-Mapping`} replace />} />
+            <Route path={`${NAV_PROJ_PAGE}/EBS`} element={<Navigate to={`${NAV_PROJ_PAGE}/Evidential-Semantic-Mapping`} replace />} />
+            <Route path={`${NAV_PROJ_PAGE}/DST-Evidential-Semantic-Mapping`} element={<Navigate to={`${NAV_PROJ_PAGE}/Fully-Evidential-Semantic-Mapping`} replace />} />
 
-                  {/* First Paper [IROS 2024 - Evidential Semantic Mapping in Off-road Environments with Uncertainty-aware Bayesian Kernel Inference] */}
-                  <Route path="USB" element={<RedirectComponent red_url="/Projects/Evidential-Semantic-Mapping" />} />  {/* // Alias for Uncertainty-aware Semantic BKI */}
-                  <Route path="EBS" element={<RedirectComponent red_url="/Projects/Evidential-Semantic-Mapping" />} />  {/* // Alias for Uncertainty-aware Semantic BKI */}
-                  <Route path="Evidential-Semantic-Mapping" element={<EvidentialSemanticMapping />} />
-
-                  {/* Second Paper [RA-L 2025 - E2-BKI: Evidential Ellipsoidal Bayesian Kernel Inference for Uncertainty-aware Gaussian Semantic Mapping] */}
-                  <Route path="E2-BKI" element={<GaussianSemanticMapping />} />
-                  
-                  <Route path="DST-Evidential-Semantic-Mapping" element={<RedirectComponent red_url="/Projects/Fully-Evidential-Semantic-Mapping" />} />  {/* // Alias for Uncertainty-aware Semantic BKI */}
-                  <Route path="Fully-Evidential-Semantic-Mapping" element={<DSTEvSemMapping />} />
-                </Routes>
-              }
-            />
-            <Route
-              path="/Experimental/*"
-              element={
-                <Routes>
-                    <Route path="/elements" element={<ExpElements />} />
-                </Routes>
-              } 
-            />
+            <Route path="/Experimental/elements" element={<ExpElements />} />
             <Route
               path="*"
               element={

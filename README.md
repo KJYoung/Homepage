@@ -28,6 +28,7 @@ Gallery Font : Helvetica. Bold. 24pt. (After the France 19th; Fracne 1-18's font
 2025.09.24. ReactMarkdown.
 2026.01.09. CV Update, E2-BKI Accepted, Short video Updated   
 2026.02.23. Header Update, Clean Code Start    
+2026.03.07. Footer Update, Portrait Update, Router Cleaning   
 ...   
    
 TODO: Custom Image Slider Left/Right Indicator.   

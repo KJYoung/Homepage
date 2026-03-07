@@ -3,7 +3,9 @@ import { GOOGLE_DRIVE_ROOT } from "./Gallery_URL";
 export const PUBLIC_ROOT = process.env.PUBLIC_URL + "/public/";
 export const PUBLICATION_FIG_ROOT = process.env.PUBLIC_URL + "/gallery/Publications/";
 
-export const PORTRAIT_URL = PUBLIC_ROOT + "Portrait_L_KimJunyoung.jpeg";
+export const PORTRAIT1_URL = PUBLIC_ROOT + "Portrait_220102.jpg";
+export const PORTRAIT2_URL = PUBLIC_ROOT + "Portrait_260307.jpg";
+
 export const ARXIV_ICON_URL = PUBLICATION_FIG_ROOT + 'arxiv.svg';
 export const YOUTUBE_ICON_URL = PUBLICATION_FIG_ROOT + 'youtube.svg';
 export const GITHUB_ICON_URL = PUBLICATION_FIG_ROOT + 'github.svg';

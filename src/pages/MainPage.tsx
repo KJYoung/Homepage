@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { H1, H4, H5, LinkSpan, SPAN } from "../customs/Spans";
-import { PORTRAIT_URL } from "../DATA/Public_URL";
 import { notificationSuccess } from "../utils/sendNoti";
 import { useNavigate } from "react-router-dom";
 import { PublicationWrapperDiv } from "./publications/PublicationContents";
@@ -10,6 +9,7 @@ import { TagBubble } from "../customs/TagBubbleStatic";
 import { getSRandomHex } from "../utils/Color";
 import { ProjectsDiv } from "./projects/projectsDiv";
 import { useDesktopViewport } from "../hooks/useDesktopViewport";
+import Portrait from "../components/Portrait";
 
 export const DOCUMENT_ROOT = process.env.PUBLIC_URL + "/document/";
 
@@ -61,7 +61,7 @@ const MainPage = () => {
                         </CVButtonWrapper>
                     </FlexRowCenter>
                 </FlexColumnStart>
-                <Portrait src={PORTRAIT_URL} alt="imgElement"/>
+                <Portrait />
             </GeneralMainDiv>
             <ContactInfoDiv>
                 <a href="mailto:jykim157@snu.ac.kr">Send Email</a>
@@ -110,13 +110,6 @@ const MainPage = () => {
         <ProjectsDiv />
     </PublicWrapper>
 };
-
-const Portrait = styled.img`
-    border-radius: 20px;
-    border: 1px solid black;
-    width: 185px;
-    max-height: 480px;
-`;
 
 const PublicWrapper = styled.div`
     width: 100%;
