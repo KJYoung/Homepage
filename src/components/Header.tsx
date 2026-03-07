@@ -1,188 +1,322 @@
 import { faHome, faPhotoFilm, faScroll } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { coreActions, selectCore, TabState } from "../store/slices/core";
 import { LANGUAGE } from "../utils/Language";
 import { useNavigate } from "react-router-dom";
-import { NAV_GALL_PAGE, NAV_MAIN_PAGE, NAV_PROJ_PAGE } from "../App";
+
+const NAV_MAIN_PAGE = "/";
+const NAV_PROJ_PAGE = "/Projects";
+const NAV_GALL_PAGE = "/gallery";
 
 interface IPropsHeader {
-    isMobile: boolean;
-    language: LANGUAGE;
+  isMobile: boolean;
+  language: LANGUAGE;
 }
 
-// 1. color 대신 isActive (활성화 여부)를 받도록 변경
-interface IPropsTabState {
-    isActive: boolean; 
+interface IPropsNavButton {
+  $active: boolean;
 }
 
-// 2. 머티리얼 + 물방울 효과가 적용된 HeaderBtn
-const HeaderBtn = styled.div<IPropsTabState>`
-    position: relative;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    margin: 0px 10px;
-    padding: 0px 15px;
-    
-    /* 텍스트 색상 전환 애니메이션 */
-    color: ${({ isActive }) => (isActive ? 'var(--hp-blue-active)' : 'var(--hp-gray)')};
-    font-weight: ${({ isActive }) => (isActive ? '700' : '500')};
-    transition: color 0.3s ease;
-    overflow: hidden; /* 물방울 번짐이 버튼 밖으로 나가지 않게 제어 */
-
-    /* [Hover 효과] 가운데서 퍼져나가는 물방울(Ripple) 배경 효과 */
-    &::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        background-color: rgba(0, 0, 0, 0.04); /* 은은한 회색 물방울 */
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-        transition: width 0.4s ease-out, height 0.4s ease-out;
-        z-index: -1;
-    }
-
-    &:hover::before {
-        width: 150px; /* 버튼 크기에 맞춰 물방울이 퍼짐 */
-        height: 150px;
-    }
-
-    /* [Active & Hover 효과] 하단에 부드럽게 차오르는 둥근 밑줄 */
-    &::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: ${({ isActive }) => (isActive ? '100%' : '0')};
-        height: 3px;
-        background-color: var(--hp-blue-active);
-        border-radius: 3px 3px 0 0; /* 물방울처럼 상단이 둥근 형태 */
-        transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* 쫀득한 타이밍 함수 */
-    }
-
-    &:hover::after {
-        width: ${({ isActive }) => (isActive ? '100%' : '50%')}; /* Hover 시 살짝 밑줄이 생김 */
-        background-color: ${({ isActive }) => (isActive ? 'var(--hp-blue-active)' : 'lightgray')};
-    }
-`;
-
-const Header = ({ isMobile, language }: IPropsHeader ) => {
-    const coreState = useSelector(selectCore);
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-
-    // 3. 색상 문자열 반환 대신 boolean 반환으로 단순화
-    const isActiveTab = (tab: TabState) => tab === coreState.selectedTab;
-
-    const go_to_fn = (action: TabState, link: string) => {
-        dispatch(coreActions.setTab({selectedTab: action}));
-        navigate(link);
-    };
-
-    return isMobile ? (
-        <MobileHeaderRoot>
-            {/* MOBILE HEADER */}
-            <MobileHeaderCenter>
-                <HeaderBtn isActive={isActiveTab(TabState.PUBLIC)} onClick={() => go_to_fn(TabState.PUBLIC, NAV_MAIN_PAGE)}>
-                    <FontAwesomeIcon icon={faHome}/>
-                </HeaderBtn>
-                <HeaderBtn isActive={isActiveTab(TabState.PROJECTS)} onClick={() => go_to_fn(TabState.PROJECTS, NAV_PROJ_PAGE)}>
-                    <FontAwesomeIcon icon={faScroll}/>
-                </HeaderBtn>
-                <HeaderBtn isActive={isActiveTab(TabState.GALLERY)} onClick={() => go_to_fn(TabState.GALLERY, NAV_GALL_PAGE)}>
-                    <FontAwesomeIcon icon={faPhotoFilm}/>
-                </HeaderBtn>
-            </MobileHeaderCenter>
-        </MobileHeaderRoot> 
-    ) : (
-        <HeaderRoot className="no-select">
-        {/* DESKTOP HEADER */}
-            <HeaderLeft onClick={() => dispatch(coreActions.setTab({selectedTab: TabState.MAIN}))}></HeaderLeft>
-            <HeaderCenter>
-                <HeaderBtn isActive={isActiveTab(TabState.PUBLIC)} onClick={() => go_to_fn(TabState.PUBLIC, NAV_MAIN_PAGE)}>
-                    <span>HOME</span>
-                </HeaderBtn>
-                <HeaderBtn isActive={isActiveTab(TabState.PROJECTS)} onClick={() => go_to_fn(TabState.PROJECTS, NAV_PROJ_PAGE)}>
-                    <span>PUBLICATIONS</span>
-                </HeaderBtn>
-                <HeaderBtn isActive={isActiveTab(TabState.GALLERY)} onClick={() => go_to_fn(TabState.GALLERY, NAV_GALL_PAGE)}>
-                    <span>GALLERY</span>
-                </HeaderBtn>
-            </HeaderCenter>
-            
-            <HeaderRight>
-            </HeaderRight>
-        </HeaderRoot>
-    );
-};
-
-const HeaderRoot = styled.div`
-  width: 100%;
-  height: 40px;
-  background-color: var(--hp-white);
-
-  display: grid;
-  grid-template-columns: 2fr 8fr 2fr;
-
-  border-bottom: 1px solid var(--hp-gray);
-`;
-const MobileHeaderRoot = styled.div`
-  width: 100%;
-  height: 65px;
-  background-color: var(--hp-white);
-  
-  svg {
-   height: 30px;
+const activeFillSlide = keyframes`
+  from {
+    transform: translateX(-28%);
+    opacity: 0.25;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
 `;
-const HeaderLeft = styled.div`
-    background-color: var(--hp-header-left);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    cursor: pointer;
-`;
-const HeaderRight = styled.div`
-    background-color: var(--hp-header-right);
-    display: flex;
-    flex-direction: column;
-    > div {
-        width: 100%;
-        height: 50%;
-        cursor: pointer;
-        > span {
-            margin-right: 10px;
-            font-weight: 700;
-            &.selected {
-                color: gray;
-                cursor: default;
-            }
-        }
-    }
-`;
-const HeaderCenter = styled.div`
-  width: 100%;
-  height: 40px;
-  background-color: var(--hp-white);
 
+const NAV_ITEMS = [
+  { tab: TabState.PUBLIC, label: "Home", icon: faHome, link: NAV_MAIN_PAGE },
+  { tab: TabState.PROJECTS, label: "Publications", icon: faScroll, link: NAV_PROJ_PAGE },
+  { tab: TabState.GALLERY, label: "Gallery", icon: faPhotoFilm, link: NAV_GALL_PAGE },
+];
+
+const Header = ({ isMobile }: IPropsHeader) => {
+  const coreState = useSelector(selectCore);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const goTo = (tab: TabState, link: string) => {
+    dispatch(coreActions.setTab({ selectedTab: tab }));
+    navigate(link);
+  };
+
+  const isActiveTab = (tab: TabState) => tab === coreState.selectedTab;
+
+  if (isMobile) {
+    return (
+      <MobileHeaderRoot>
+        <MobileGlassPanel>
+          {NAV_ITEMS.map((item) => (
+            <MobileNavButton
+              key={item.tab}
+              type="button"
+              $active={isActiveTab(item.tab)}
+              onClick={() => goTo(item.tab, item.link)}
+              aria-label={item.label}
+            >
+              <FontAwesomeIcon icon={item.icon} />
+              <span>{item.label}</span>
+            </MobileNavButton>
+          ))}
+        </MobileGlassPanel>
+      </MobileHeaderRoot>
+    );
+  }
+
+  return (
+    <HeaderRoot className="no-select">
+      <HeaderInner>
+        <BrandButton type="button" onClick={() => goTo(TabState.PUBLIC, NAV_MAIN_PAGE)}>
+          <BrandBadge>JK</BrandBadge>
+          <BrandText>
+            <strong>Junyoung Kim</strong>
+            <span>Personal Archive</span>
+          </BrandText>
+        </BrandButton>
+
+        <DesktopNavPill>
+          {NAV_ITEMS.map((item) => (
+            <DesktopNavButton
+              key={item.tab}
+              type="button"
+              $active={isActiveTab(item.tab)}
+              onClick={() => goTo(item.tab, item.link)}
+            >
+              <FontAwesomeIcon icon={item.icon} />
+              <span>{item.label}</span>
+            </DesktopNavButton>
+          ))}
+        </DesktopNavPill>
+      </HeaderInner>
+    </HeaderRoot>
+  );
+};
+
+const HeaderRoot = styled.header`
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: linear-gradient(180deg, rgba(253, 254, 255, 0.94) 0%, rgba(246, 249, 253, 0.92) 100%);
+  border-bottom: 1px solid rgba(210, 222, 238, 0.8);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 18px rgba(12, 25, 45, 0.07);
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 14%;
+    right: 14%;
+    bottom: 0;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(116, 175, 255, 0) 0%, rgba(72, 132, 239, 0.7) 50%, rgba(116, 175, 255, 0) 100%);
+  }
+`;
+
+const HeaderInner = styled.div`
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 11px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const BrandButton = styled.button`
+  border: 0;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  cursor: pointer;
+  padding: 4px 5px;
+  border-radius: 14px;
+  transition: transform 0.2s ease, background 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    background: rgba(236, 243, 252, 0.7);
+  }
+`;
+
+const BrandBadge = styled.div`
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #1f4b92 0%, #2f7dde 100%);
+  color: #eef6ff;
+  font-size: 12.5px;
+  font-weight: 800;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid var(--hp-gray);
+  box-shadow: 0 8px 16px rgba(32, 79, 151, 0.34), inset 0 0 0 1px rgba(255, 255, 255, 0.28);
 `;
-const MobileHeaderCenter = styled(HeaderCenter)`
-    height: 65px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+
+const BrandText = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  strong {
+    font-size: 15px;
+    font-weight: 800;
+    color: #15283f;
+    letter-spacing: 0.25px;
+  }
+
+  span {
+    margin-top: 2px;
+    color: #6c83a0;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.28px;
+    text-transform: uppercase;
+  }
+`;
+
+const DesktopNavPill = styled.nav`
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px;
+  border-radius: 999px;
+  border: 1px solid rgba(208, 220, 236, 0.9);
+  background: linear-gradient(180deg, rgba(253, 254, 255, 0.9) 0%, rgba(248, 251, 255, 0.9) 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.88), 0 3px 9px rgba(13, 29, 55, 0.08);
+`;
+
+const DesktopNavButton = styled.button<IPropsNavButton>`
+  position: relative;
+  overflow: hidden;
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 17px;
+  cursor: pointer;
+  background: transparent;
+  color: ${({ $active }) => ($active ? "#1f5fc4" : "#435d7a")};
+  font-weight: ${({ $active }) => ($active ? 700 : 600)};
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid ${({ $active }) => ($active ? "rgba(103, 151, 230, 0.6)" : "transparent")};
+  box-shadow: ${({ $active }) =>
+    $active ? "inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 1px 2px rgba(39, 87, 160, 0.12)" : "none"};
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  isolation: isolate;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    z-index: -1;
+    background: linear-gradient(180deg, #edf4ff 0%, #e7f0ff 100%);
+    opacity: ${({ $active }) => ($active ? 1 : 0)};
+    transform: translateX(${({ $active }) => ($active ? "0" : "-22%")});
+    transition: opacity 0.24s ease, transform 0.26s ease;
+    animation: ${({ $active }) => ($active ? activeFillSlide : "none")} 0.24s ease;
+  }
+
+  &:hover {
+    background: ${({ $active }) => ($active ? "transparent" : "#edf4fc")};
+    transform: translateY(-1px);
+    box-shadow: ${({ $active }) =>
+      $active ? "inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 2px 4px rgba(39, 87, 160, 0.16)" : "none"};
+  }
+
+  svg,
+  span {
+    position: relative;
+    z-index: 1;
+    transition: transform 0.2s ease;
+  }
+
+  &:hover svg {
+    transform: translateY(-0.5px);
+  }
+`;
+
+const MobileHeaderRoot = styled.header`
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  padding: 9px 10px;
+  background: linear-gradient(180deg, rgba(252, 253, 255, 0.95) 0%, rgba(246, 248, 252, 0.93) 100%);
+  border-bottom: 1px solid rgba(212, 223, 238, 0.9);
+  backdrop-filter: blur(8px);
+`;
+
+const MobileGlassPanel = styled.nav`
+  width: 100%;
+  border: 1px solid rgba(211, 221, 235, 0.94);
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.84) 0%, rgba(248, 251, 255, 0.84) 100%);
+  box-shadow: 0 7px 18px rgba(12, 25, 45, 0.1);
+  padding: 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 5px;
+`;
+
+const MobileNavButton = styled.button<IPropsNavButton>`
+  position: relative;
+  overflow: hidden;
+  border: 0;
+  border-radius: 12px;
+  padding: 8px 4px;
+  background: transparent;
+  color: ${({ $active }) => ($active ? "#1f5fc4" : "#445f7d")};
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 4px;
+  border: 1px solid ${({ $active }) => ($active ? "rgba(103, 151, 230, 0.62)" : "transparent")};
+  box-shadow: ${({ $active }) =>
+    $active ? "inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 1px 2px rgba(35, 81, 150, 0.14)" : "none"};
+  transition: transform 0.2s ease, background 0.2s ease;
+  isolation: isolate;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    z-index: -1;
+    background: linear-gradient(180deg, #edf4ff 0%, #e7f0ff 100%);
+    opacity: ${({ $active }) => ($active ? 1 : 0)};
+    transform: translateX(${({ $active }) => ($active ? "0" : "-18%")});
+    transition: opacity 0.24s ease, transform 0.26s ease;
+    animation: ${({ $active }) => ($active ? activeFillSlide : "none")} 0.24s ease;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+
+  svg {
+    font-size: 15px;
+  }
+
+  span {
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.2px;
+  }
 `;
 
 export default Header;

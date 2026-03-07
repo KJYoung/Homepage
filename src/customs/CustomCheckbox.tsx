@@ -18,16 +18,23 @@ const CustomCheckbox = ({ checked, onClickListener }: IPropsCheckbox) => {
 }
 
 const CustomCheckWrapper = styled.div<IPropsCheckWrapper>`
-    width: fit-content;
-    height: fit-content;
+    width: 1.5rem;
+    height: 1.5rem;
 
     position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     svg {
         display: none;
         position: absolute;
-        top: 16%;
-        left: 18%;
+        inset: 0;
+        margin: auto;
+        width: 0.9rem;
+        height: 0.9rem;
+        color: white;
+        pointer-events: none;
     }
     ${({ checked }) =>
     checked &&
@@ -39,8 +46,8 @@ const CustomCheckWrapper = styled.div<IPropsCheckWrapper>`
 `;
 const CustomCheckBox = styled.input`
     appearance: none;
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 100%;
+    height: 100%;
     border: 1.5px solid gainsboro;
     border-radius: 0.35rem;
 

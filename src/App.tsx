@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import './styles/color.css';
-import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { HashRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import GlobalStyles from './styles/GlobalStyles';
 import { useDispatch, useSelector } from 'react-redux';
-import { coreActions, selectCore } from './store/slices/core';
+import { coreActions, selectCore, TabState } from './store/slices/core';
 import { MOBILE_DESKTOP_THRESHOLD } from './styles/GlobalConst';
 import { ReactNotifications } from 'react-notifications-component';
 import { PublicationsMain } from './pages/publications/PublicationsMain';
@@ -23,6 +23,25 @@ export const NAV_MAIN_PAGE = '/'; // :Public/Public
 export const NAV_PRIV_PAGE = '/private';
 export const NAV_PROJ_PAGE = '/Projects';
 export const NAV_GALL_PAGE = '/gallery';
+
+const RouteTabSync = () => {
+  const dispatch = useDispatch();
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    let selectedTab = TabState.PUBLIC;
+    if (pathname.startsWith(NAV_GALL_PAGE)) {
+      selectedTab = TabState.GALLERY;
+    } else if (pathname.startsWith(NAV_PROJ_PAGE)) {
+      selectedTab = TabState.PROJECTS;
+    } else if (pathname.startsWith(NAV_PRIV_PAGE)) {
+      selectedTab = TabState.PRIVATE;
+    }
+    dispatch(coreActions.setTab({ selectedTab }));
+  }, [dispatch, pathname]);
+
+  return null;
+};
 
 function App() {
   // Window Size. If windowSize[0] < 1200, Show mobile style.
@@ -45,6 +64,7 @@ function App() {
       <GlobalStylesProxy />
       <Background>
       <HashRouter>
+        <RouteTabSync />
         <Header isMobile={windowSize[0] < MOBILE_DESKTOP_THRESHOLD} language={language}/>
         <ReactNotifications />
         <Body>
