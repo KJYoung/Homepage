@@ -1,7 +1,7 @@
 import { faHome, faPhotoFilm, faScroll } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from "react-redux";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { PORTRAIT2_SMALL_URL } from "../DATA/Public_URL";
 import { coreActions, selectCore, TabState } from "../store/slices/core";
 import { LANGUAGE } from "../utils/Language";
@@ -20,17 +20,6 @@ interface IPropsNavButton {
   $active: boolean;
 }
 
-const activeFillSlide = keyframes`
-  from {
-    transform: translateX(-28%);
-    opacity: 0.25;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-`;
-
 const NAV_ITEMS = [
   { tab: TabState.PUBLIC, label: "Home", icon: faHome, link: NAV_MAIN_PAGE },
   { tab: TabState.PROJECTS, label: "Publications", icon: faScroll, link: NAV_PROJ_PAGE },
@@ -48,11 +37,13 @@ const Header = ({ isMobile }: IPropsHeader) => {
   };
 
   const isActiveTab = (tab: TabState) => tab === coreState.selectedTab;
+  const activeIndex = Math.max(0, NAV_ITEMS.findIndex((item) => item.tab === coreState.selectedTab));
 
   if (isMobile) {
     return (
       <MobileHeaderRoot>
         <MobileGlassPanel>
+          <MobileActiveIndicator $index={activeIndex} />
           {NAV_ITEMS.map((item) => (
             <MobileNavButton
               key={item.tab}
@@ -82,6 +73,7 @@ const Header = ({ isMobile }: IPropsHeader) => {
         </BrandButton>
 
         <DesktopNavPill>
+          <DesktopActiveIndicator $index={activeIndex} />
           {NAV_ITEMS.map((item) => (
             <DesktopNavButton
               key={item.tab}
@@ -191,60 +183,63 @@ const BrandText = styled.div`
 `;
 
 const DesktopNavPill = styled.nav`
-  display: inline-flex;
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: center;
   gap: 6px;
   padding: 6px;
+  min-width: 414px;
   border-radius: 999px;
   border: 1px solid rgba(208, 220, 236, 0.9);
   background: linear-gradient(180deg, rgba(253, 254, 255, 0.9) 0%, rgba(248, 251, 255, 0.9) 100%);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.88), 0 3px 9px rgba(13, 29, 55, 0.08);
 `;
 
+const DesktopActiveIndicator = styled.div<{ $index: number }>`
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 6px;
+  width: calc((100% - 24px) / 3);
+  border-radius: 999px;
+  background: linear-gradient(180deg, #edf4ff 0%, #e6efff 100%);
+  border: 1px solid rgba(103, 151, 230, 0.55);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 6px 14px rgba(39, 87, 160, 0.2);
+  transform: translateX(calc(${({ $index }) => $index} * (100% + 6px)));
+  transition: transform 460ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  z-index: 0;
+`;
+
 const DesktopNavButton = styled.button<IPropsNavButton>`
   position: relative;
-  overflow: hidden;
+  z-index: 1;
   border: 0;
   border-radius: 999px;
-  padding: 10px 17px;
+  padding: 10px 14px;
+  width: 100%;
+  min-width: 0;
   cursor: pointer;
   background: transparent;
   color: ${({ $active }) => ($active ? "#1f5fc4" : "#435d7a")};
   font-weight: ${({ $active }) => ($active ? 700 : 600)};
   font-size: 13px;
+  justify-content: center;
+  text-align: center;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border: 1px solid ${({ $active }) => ($active ? "rgba(103, 151, 230, 0.6)" : "transparent")};
-  box-shadow: ${({ $active }) =>
-    $active ? "inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 1px 2px rgba(39, 87, 160, 0.12)" : "none"};
-  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-  isolation: isolate;
-
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    z-index: -1;
-    background: linear-gradient(180deg, #edf4ff 0%, #e7f0ff 100%);
-    opacity: ${({ $active }) => ($active ? 1 : 0)};
-    transform: translateX(${({ $active }) => ($active ? "0" : "-22%")});
-    transition: opacity 0.24s ease, transform 0.26s ease;
-    animation: ${({ $active }) => ($active ? activeFillSlide : "none")} 0.24s ease;
-  }
+  transition: color 0.22s ease, transform 0.22s ease;
 
   &:hover {
-    background: ${({ $active }) => ($active ? "transparent" : "#edf4fc")};
-    transform: translateY(-1px);
-    box-shadow: ${({ $active }) =>
-      $active ? "inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 2px 4px rgba(39, 87, 160, 0.16)" : "none"};
+    color: ${({ $active }) => ($active ? "#1f5fc4" : "#2f4c6f")};
+    transform: translateY(-0.5px);
   }
 
   svg,
   span {
-    position: relative;
-    z-index: 1;
     transition: transform 0.2s ease;
   }
 
@@ -274,6 +269,8 @@ const MobileHeaderRoot = styled.header`
 `;
 
 const MobileGlassPanel = styled.nav`
+  position: relative;
+  isolation: isolate;
   width: 100%;
   border: 1px solid rgba(211, 221, 235, 0.94);
   border-radius: 16px;
@@ -285,9 +282,25 @@ const MobileGlassPanel = styled.nav`
   gap: 5px;
 `;
 
+const MobileActiveIndicator = styled.div<{ $index: number }>`
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 5px;
+  width: calc((100% - 20px) / 3);
+  border-radius: 12px;
+  background: linear-gradient(180deg, #edf4ff 0%, #e6efff 100%);
+  border: 1px solid rgba(103, 151, 230, 0.55);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 4px 10px rgba(35, 81, 150, 0.2);
+  transform: translateX(calc(${({ $index }) => $index} * (100% + 5px)));
+  transition: transform 440ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  z-index: 0;
+`;
+
 const MobileNavButton = styled.button<IPropsNavButton>`
   position: relative;
-  overflow: hidden;
+  z-index: 1;
   border: 0;
   border-radius: 12px;
   padding: 8px 4px;
@@ -299,24 +312,7 @@ const MobileNavButton = styled.button<IPropsNavButton>`
   justify-content: center;
   align-items: center;
   row-gap: 4px;
-  border: 1px solid ${({ $active }) => ($active ? "rgba(103, 151, 230, 0.62)" : "transparent")};
-  box-shadow: ${({ $active }) =>
-    $active ? "inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 1px 2px rgba(35, 81, 150, 0.14)" : "none"};
-  transition: transform 0.2s ease, background 0.2s ease;
-  isolation: isolate;
-
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    z-index: -1;
-    background: linear-gradient(180deg, #edf4ff 0%, #e7f0ff 100%);
-    opacity: ${({ $active }) => ($active ? 1 : 0)};
-    transform: translateX(${({ $active }) => ($active ? "0" : "-18%")});
-    transition: opacity 0.24s ease, transform 0.26s ease;
-    animation: ${({ $active }) => ($active ? activeFillSlide : "none")} 0.24s ease;
-  }
+  transition: transform 0.2s ease, color 0.2s ease;
 
   &:active {
     transform: scale(0.97);

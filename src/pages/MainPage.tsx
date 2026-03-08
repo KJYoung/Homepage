@@ -4,11 +4,8 @@ import { notificationSuccess } from "../utils/sendNoti";
 import { useNavigate } from "react-router-dom";
 import { PublicationWrapperDiv } from "./publications/PublicationContents";
 import { BR } from "../customs/Basics";
-import { FlexColumnStart, FlexRowCenter, FlexRowSpaceBetweenEnd, FlexRowStart } from "../customs/Divs";
-import { TagBubble } from "../customs/TagBubbleStatic";
-import { getSRandomHex } from "../utils/Color";
+import { FlexColumnStart, FlexRowCenter, FlexRowSpaceBetweenEnd } from "../customs/Divs";
 import { ProjectsDiv } from "./projects/projectsDiv";
-import { useDesktopViewport } from "../hooks/useDesktopViewport";
 import Portrait from "../components/Portrait";
 
 export const DOCUMENT_ROOT = process.env.PUBLIC_URL + "/document/";
@@ -18,6 +15,17 @@ export const PublicBR = styled(BR)`
     margin-bottom: 5px;
 `;
 
+const RESEARCH_INTERESTS = [
+    "Uncertainty-aware Perception",
+    "Information Theory",
+    "3D Scene Understanding",
+    "Sensor Fusion",
+    "Better Scene Representation",
+    "Active Perception & Exploration",
+    "Multi-agent Perception",
+    "Human Robot Interaction",
+];
+
 const MainPage = () => {
     const navigate = useNavigate();
 
@@ -25,13 +33,12 @@ const MainPage = () => {
         navigator.clipboard.writeText("jykim157@snu.ac.kr");
         notificationSuccess('EMAIL', "Email Address was copied to your clipboard");
     };
-    useDesktopViewport(1280);
 
     const CVGoogleLinkID = "1MWuxEqLO_bV-DrOa_GCJ4PBJG4INh9px";
     return <PublicWrapper>
         <GeneralDiv>
             <GeneralMainDiv>
-                <FlexColumnStart width="800px">
+                <IntroColumn>
                     <H1 marginBottom="12px">Junyoung Kim</H1>
                     <br />
                     <SPAN marginRight="10px" fontSize="18px" lineHeight={1.3}>
@@ -60,7 +67,7 @@ const MainPage = () => {
                             </CVButton>
                         </CVButtonWrapper>
                     </FlexRowCenter>
-                </FlexColumnStart>
+                </IntroColumn>
                 <Portrait />
             </GeneralMainDiv>
             <ContactInfoDiv>
@@ -75,8 +82,8 @@ const MainPage = () => {
                 <a href="https://scholar.google.co.kr/citations?user=w2JODm8AAAAJ&hl=en&oi=sra">Google Scholar</a>
             </ContactInfoDiv>
         </GeneralDiv>
-        <FlexColumnStart marginBottom="20px">
-            <H1>Profile</H1>
+        <ProfileSection>
+            <SectionTitle>Profile</SectionTitle>
             <PublicBR />
             <H4 marginLeft='10px' marginBottom="6px">History</H4>
             <H5 marginLeft='20px' lineHeight={1.2}>🔄 2023.04 ~ 2026.05 Agency for Defense Development (ADD) - Military Service</H5>
@@ -95,17 +102,10 @@ const MainPage = () => {
             <FlexRowSpaceBetweenEnd>
                 <H4 marginLeft='10px' marginBottom="4px" marginTop="20px">Research Interests</H4>
             </FlexRowSpaceBetweenEnd>
-            <FlexRowStart marginLeft="35px" flexWrap="wrap">
-                <TagBubble color={getSRandomHex(5)}>Uncertainty-aware Perception</TagBubble>
-                <TagBubble color={getSRandomHex(6)}>Information Theory</TagBubble>
-                <TagBubble color={getSRandomHex(5)}>3D Scene Understanding</TagBubble>
-                <TagBubble color={getSRandomHex(5)}>Sensor Fusion</TagBubble>
-                <TagBubble color={getSRandomHex(6)}>Better Scene Representation</TagBubble>
-                <TagBubble color={getSRandomHex(5)}>Active Perception & Exploration</TagBubble>
-                <TagBubble color={getSRandomHex(5)}>Multi-agent Perception</TagBubble>
-                <TagBubble color={getSRandomHex(3)}>Human Robot Interaction</TagBubble>
-            </FlexRowStart>
-        </FlexColumnStart>
+            <InterestsWrap>
+                {RESEARCH_INTERESTS.map((interest) => <InterestChip key={interest}>{interest}</InterestChip>)}
+            </InterestsWrap>
+        </ProfileSection>
         <PublicationWrapperDiv navigate={navigate} isDetail={false} viewMode="compact" />
         <ProjectsDiv />
     </PublicWrapper>
@@ -145,19 +145,69 @@ const GeneralMainDiv = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    gap: 20px;
+
+    @media (max-width: 980px) {
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 14px;
+    }
+`;
+
+const IntroColumn = styled(FlexColumnStart)`
+    width: min(100%, 800px);
 `;
 
 const ContactInfoDiv = styled.div`
     width: 100%;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
+    row-gap: 6px;
 
     margin-top: 5px;
 
     span, a {
         margin: 0px 8px 0px 8px;
     }
+`;
+
+const ProfileSection = styled(FlexColumnStart)`
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 0;
+`;
+
+const SectionTitle = styled.h3`
+    color: #14304f;
+    font-size: 21px;
+    font-weight: 700;
+`;
+
+const InterestsWrap = styled.div`
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-left: 35px;
+    margin-top: 2px;
+    gap: 8px;
+
+    @media (max-width: 900px) {
+        margin-left: 10px;
+    }
+`;
+
+const InterestChip = styled.span`
+    border-radius: 999px;
+    border: 1px solid rgba(187, 206, 228, 0.95);
+    background: linear-gradient(180deg, #f8fbff 0%, #f0f6ff 100%);
+    color: #39597d;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 11px;
+    line-height: 1.2;
 `;
 
 const CVButtonWrapper = styled.div`

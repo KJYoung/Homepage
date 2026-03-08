@@ -476,7 +476,10 @@ const SectionRoot = styled.section<{ $compact: boolean }>`
   margin: ${({ $compact }) => ($compact ? "8px auto 14px" : "18px auto 12px")};
   padding: ${({ $compact }) => ($compact ? "0" : "18px")};
   border-radius: ${({ $compact }) => ($compact ? "0" : "28px")};
-  background: ${({ $compact }) => ($compact ? "transparent" : "linear-gradient(180deg, #fcfdff 0%, #f3f7fd 100%)")};
+  background: ${({ $compact }) =>
+    $compact
+      ? "transparent"
+      : "linear-gradient(180deg, #fcfdff 0%, #f3f7fd 100%)"};
   border: ${({ $compact }) => ($compact ? "0" : "1px solid #dbe4f1")};
   box-shadow: ${({ $compact }) => ($compact ? "none" : "0 14px 36px rgba(13, 29, 55, 0.09)")};
 
@@ -497,22 +500,43 @@ const CompactHeader = styled.div`
 
 const CompactTitle = styled.h3`
   color: #14304f;
-  font-size: 24px;
-  font-weight: 800;
+  font-size: 21px;
+  font-weight: 700;
 `;
 
 const CompactLink = styled.button`
-  border: 1px solid #c9d9ee;
-  background: #f6fbff;
-  color: #2c6095;
-  border-radius: 999px;
-  padding: 6px 12px;
-  font-size: 12px;
+  border: none;
+  background: transparent;
+  color: #2e5d8b;
+  border-radius: 0;
+  min-height: auto;
+  padding: 0;
+  font-size: 14px;
   font-weight: 700;
+  letter-spacing: 0.16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   cursor: pointer;
+  transition: transform 0.18s ease, color 0.18s ease, text-shadow 0.18s ease;
+
+  &::after {
+    content: "›";
+    font-size: 15px;
+    opacity: 0.88;
+    line-height: 1;
+    transition: transform 0.2s ease;
+  }
 
   &:hover {
-    background: #edf5ff;
+    color: #1e4f81;
+    transform: translateY(-1px);
+    text-shadow: 0 0 0.01px #1e4f81, 0 0 10px rgba(111, 164, 233, 0.24);
+
+    &::after {
+      transform: translateX(2px);
+    }
   }
 `;
 
@@ -689,9 +713,9 @@ const PublicationCard = styled.article<{ $compact: boolean; $interactive: boolea
   gap: ${({ $compact }) => ($compact ? "10px" : "13px")};
   padding: ${({ $compact }) => ($compact ? "10px" : "12px")};
   border-radius: ${({ $compact }) => ($compact ? "14px" : "18px")};
-  border: 1px solid #d7e1ee;
-  background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
-  box-shadow: ${({ $compact }) => ($compact ? "0 5px 12px rgba(13, 29, 55, 0.05)" : "0 8px 19px rgba(13, 29, 55, 0.07)")};
+  border: 1px solid ${({ $compact }) => ($compact ? "#dce6f2" : "#d7e1ee")};
+  background: ${({ $compact }) => ($compact ? "#ffffff" : "linear-gradient(180deg, #ffffff 0%, #f9fbff 100%)")};
+  box-shadow: ${({ $compact }) => ($compact ? "0 2px 7px rgba(13, 29, 55, 0.04)" : "0 8px 19px rgba(13, 29, 55, 0.07)")};
   transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease, background 0.24s ease;
 
   &::before {
@@ -711,10 +735,10 @@ const PublicationCard = styled.article<{ $compact: boolean; $interactive: boolea
       css`
         &:hover,
         &:focus-within {
-          transform: translateY(-2px);
+          transform: translateY(${$compact ? "-1px" : "-2px"});
           border-color: #bdd1ea;
-          background: linear-gradient(180deg, #ffffff 0%, #f2f8ff 100%);
-          box-shadow: ${$compact ? "0 10px 21px rgba(13, 29, 55, 0.1)" : "0 14px 30px rgba(13, 29, 55, 0.14)"};
+          background: ${$compact ? "#ffffff" : "linear-gradient(180deg, #ffffff 0%, #f2f8ff 100%)"};
+          box-shadow: ${$compact ? "0 6px 14px rgba(13, 29, 55, 0.08)" : "0 14px 30px rgba(13, 29, 55, 0.14)"};
         }
 
         &:hover::before,
