@@ -30,4 +30,5 @@ Gallery Font : Helvetica. Bold. 24pt. (After the France 19th; Fracne 1-18's font
 2026.02.23. Header Update, Clean Code Start    
 2026.03.07. **Design Updates**: Footer, Header, Portrait, Gallery, Publications, Image Modal & Sliders + Router Cleaning   
 2026.03.08. **Design Updates**: Projects, Research Interests, Portrait Modal + Main Tab Width for mobile   
+2026.03.30. Update UMich Status + Reveal Email
 ...   
