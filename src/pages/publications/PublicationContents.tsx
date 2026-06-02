@@ -15,6 +15,7 @@ import {
   PUB3_SLIDES_URL,
   PUB4_REPRESENTATIVE_PIC_URL,
   PUB4_FRAMEWORK_URL,
+  PUB4_POSTER_URL,
 } from "../../DATA/Public_URL";
 
 type TPublicationAuthor = {
@@ -180,7 +181,7 @@ export const GaussianMapObj: TPublicationContent = {
   imgModalURL: PUB4_FRAMEWORK_URL,
   hpURL: "/Projects/E2-BKI",
   slideURL: "",
-  posterURL: "",
+  posterURL: PUB4_POSTER_URL,
   url: "",
   abstract:
     "Semantic mapping aims to construct a 3D semantic representation of the environment, providing essential knowledge for robots operating in complex outdoor settings. While Bayesian Kernel Inference (BKI) addresses discontinuities of map inference from sparse sensor data, existing semantic mapping methods suffer from various sources of uncertainties in challenging outdoor environments. To address these issues, we propose an uncertainty-aware semantic mapping framework that handles multiple sources of uncertainties, which significantly degrade mapping performance. Our method estimates uncertainties in semantic predictions using Evidential Deep Learning and incorporates them into BKI for robust semantic inference. It further aggregates noisy observations into coherent Gaussian representations to mitigate the impact of unreliable points, while employing geometry-aligned kernels that adapt to complex scene structures. These Gaussian primitives effectively fuse local geometric and semantic information, enabling robust, uncertainty-aware mapping in complex outdoor scenarios. Comprehensive evaluation across diverse off-road and urban outdoor environments demonstrates consistent improvements in mapping quality, uncertainty calibration, representational flexibility, and robustness, while maintaining real-time efficiency.",

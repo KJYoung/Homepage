@@ -11,6 +11,10 @@ import { BibTexContent, BibTexSection, IconImg } from "./CommonStyles";
 import { useDesktopViewport } from "../../hooks/useDesktopViewport";
 import { BasicDIV } from "../../customs/Basics";
 import YouTube from "react-youtube";
+import { faPersonChalkboard } from "@fortawesome/free-solid-svg-icons";
+import { TagBubble } from "../../customs/TagBubbleStatic";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { getSTRRandomHex } from "../../utils/Color";
 
 const SIZE_MULTIPLE = 1.75;
 const YOUTUBE_WIDTH = 560 * SIZE_MULTIPLE;
@@ -58,16 +62,12 @@ export const GaussianSemanticMapping = () => {
         </FlexRowCenter>
 
         {/* Additional Materials */}
-        {/* <FlexRowCenter marginTop="0px">
-            <TagBubble className="clickable" padding="16px 15px" onClick={() => window.open(GaussianMapObj.slideURL!, '_blank')} color={getSTRRandomHex('Spot')}>
-                <FontAwesomeIcon icon={faPersonChalkboard} fontSize={18}/>
-                <SPAN marginLeft="8px">Slides</SPAN>
-            </TagBubble>
+        <FlexRowCenter marginTop="0px">
             <TagBubble className="clickable" padding="16px 15px" onClick={() => window.open(GaussianMapObj.posterURL!, '_blank')} color={getSTRRandomHex('Poster')}>
                 <FontAwesomeIcon icon={faPersonChalkboard} fontSize={18}/>
                 <SPAN marginLeft="8px">Poster</SPAN>
             </TagBubble>
-        </FlexRowCenter> */}
+        </FlexRowCenter>
 
         <FlexRowCenter marginTop="10px" marginBottom="0px">
             <SPAN fontSize="20px" color="hp-black" fontWeight="700">Accepted to RA-L 2026</SPAN>
@@ -130,7 +130,7 @@ export const GaussianSemanticMapping = () => {
 
         <FlexColumnStartCenter marginTop="50px">
             <FlexRowCenter marginBottom="20px">
-                <H1 fontSize="32px">More Results and Video will be updated soon!</H1>
+                <H1 fontSize="32px">More Results can be found in the appendix of the ArXiV version!</H1>
             </FlexRowCenter>
         </FlexColumnStartCenter>
 

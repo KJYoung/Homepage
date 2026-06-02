@@ -50,3 +50,4 @@ export const PUB4_REPRESENTATIVE_PIC_URL = GOOGLE_DRIVE_ROOT('1R8AcG_zD1vwkkZ6KO
 export const PUB4_FRAMEWORK_URL = GOOGLE_DRIVE_ROOT('1UGepY6UwcmACcG4QfPav0R22wcIJGicG');
 export const PUB4_CHALLENGES_URL = GOOGLE_DRIVE_ROOT('1y_BrUb2KPoLTmPbzoPuvnNj2Gpyb0zpO');
 export const PUB4_QUALRES_URL = GOOGLE_DRIVE_ROOT('1psg5HyhH-XozeYPe5kSwK_TuP5x7fzbj');
+export const PUB4_POSTER_URL = 'https://drive.google.com/file/d/1x5wvqRIHb4PnMraK9wRCEqY-HJTnFvrZ/view?usp=drive_link';
