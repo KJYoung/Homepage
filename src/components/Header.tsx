@@ -96,30 +96,18 @@ const HeaderRoot = styled.header`
   position: sticky;
   top: 0;
   z-index: 30;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(106, 162, 245, 0.2) 0%,
-      rgba(246, 250, 255, 0.88) 22%,
-      rgba(250, 252, 255, 0.93) 50%,
-      rgba(255, 250, 246, 0.88) 78%,
-      rgba(255, 170, 122, 0.19) 100%
-    ),
-    linear-gradient(180deg, rgba(253, 254, 255, 0.94) 0%, rgba(246, 249, 253, 0.92) 100%);
-  border-bottom: 1px solid rgba(210, 222, 238, 0.8);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 6px 18px rgba(12, 25, 45, 0.07);
+  background: var(--color-surface-header);
+  border-bottom: 1px solid var(--color-border);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-subtle);
   overflow: hidden;
 
   &::before {
     content: "";
     position: absolute;
-    left: 14%;
-    right: 14%;
-    bottom: 0;
-    height: 2px;
-    border-radius: 999px;
-    background: linear-gradient(90deg, rgba(116, 175, 255, 0) 0%, rgba(72, 132, 239, 0.7) 50%, rgba(116, 175, 255, 0) 100%);
+    inset: 0 0 auto;
+    height: 3px;
+    background: var(--umich-maize);
   }
 `;
 
@@ -127,7 +115,7 @@ const HeaderInner = styled.div`
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 11px 16px;
+  padding: 10px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -141,12 +129,11 @@ const BrandButton = styled.button`
   gap: 11px;
   cursor: pointer;
   padding: 4px 5px;
-  border-radius: 14px;
-  transition: transform 0.2s ease, background 0.2s ease;
+  border-radius: 8px;
+  transition: background-color 0.18s ease;
 
   &:hover {
-    transform: translateY(-1px);
-    background: rgba(236, 243, 252, 0.7);
+    background: var(--umich-maize-wash);
   }
 `;
 
@@ -156,8 +143,8 @@ const BrandPortrait = styled.img`
   border-radius: 11px;
   object-fit: cover;
   object-position: center;
-  border: 1px solid rgba(201, 216, 236, 0.95);
-  box-shadow: 0 8px 16px rgba(23, 53, 100, 0.22);
+  border: 1px solid var(--umich-maize-deep);
+  box-shadow: var(--shadow-subtle);
 `;
 
 const BrandText = styled.div`
@@ -168,13 +155,13 @@ const BrandText = styled.div`
   strong {
     font-size: 15px;
     font-weight: 800;
-    color: #15283f;
+    color: var(--umich-navy);
     letter-spacing: 0.25px;
   }
 
   span {
     margin-top: 2px;
-    color: #6c83a0;
+    color: var(--color-text-muted);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.28px;
@@ -188,27 +175,20 @@ const DesktopNavPill = styled.nav`
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: center;
-  gap: 6px;
-  padding: 6px;
-  min-width: 414px;
-  border-radius: 999px;
-  border: 1px solid rgba(208, 220, 236, 0.9);
-  background: linear-gradient(180deg, rgba(253, 254, 255, 0.9) 0%, rgba(248, 251, 255, 0.9) 100%);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.88), 0 3px 9px rgba(13, 29, 55, 0.08);
+  gap: 0;
+  min-width: 390px;
+  border-bottom: 1px solid var(--color-border);
 `;
 
 const DesktopActiveIndicator = styled.div<{ $index: number }>`
   position: absolute;
-  top: 6px;
-  bottom: 6px;
-  left: 6px;
-  width: calc((100% - 24px) / 3);
-  border-radius: 999px;
-  background: linear-gradient(180deg, #edf4ff 0%, #e6efff 100%);
-  border: 1px solid rgba(103, 151, 230, 0.55);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 6px 14px rgba(39, 87, 160, 0.2);
-  transform: translateX(calc(${({ $index }) => $index} * (100% + 6px)));
-  transition: transform 460ms cubic-bezier(0.22, 1, 0.36, 1);
+  left: 0;
+  bottom: -1px;
+  width: calc(100% / 3);
+  height: 3px;
+  background: var(--umich-maize);
+  transform: translateX(calc(${({ $index }) => $index} * 100%));
+  transition: transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
   z-index: 0;
 `;
@@ -217,13 +197,13 @@ const DesktopNavButton = styled.button<IPropsNavButton>`
   position: relative;
   z-index: 1;
   border: 0;
-  border-radius: 999px;
-  padding: 10px 14px;
+  border-radius: 0;
+  padding: 11px 14px;
   width: 100%;
   min-width: 0;
   cursor: pointer;
   background: transparent;
-  color: ${({ $active }) => ($active ? "#1f5fc4" : "#435d7a")};
+  color: ${({ $active }) => ($active ? "var(--umich-navy)" : "var(--color-text-muted)")};
   font-weight: ${({ $active }) => ($active ? 700 : 600)};
   font-size: 13px;
   justify-content: center;
@@ -231,20 +211,20 @@ const DesktopNavButton = styled.button<IPropsNavButton>`
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  transition: color 0.22s ease, transform 0.22s ease;
+  transition: color 0.18s ease, background-color 0.18s ease;
 
   &:hover {
-    color: ${({ $active }) => ($active ? "#1f5fc4" : "#2f4c6f")};
-    transform: translateY(-0.5px);
+    color: var(--umich-navy);
+    background: var(--umich-navy-wash);
   }
 
-  svg,
-  span {
-    transition: transform 0.2s ease;
+  svg {
+    color: ${({ $active }) => ($active ? "var(--umich-navy)" : "var(--color-text-faint)")};
+    transition: transform 0.18s ease, color 0.18s ease;
   }
 
   &:hover svg {
-    transform: translateY(-0.5px);
+    transform: translateY(-1px) scale(1.05);
   }
 `;
 
@@ -253,47 +233,33 @@ const MobileHeaderRoot = styled.header`
   position: sticky;
   top: 0;
   z-index: 30;
-  padding: 9px 10px;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(108, 166, 248, 0.18) 0%,
-      rgba(249, 252, 255, 0.9) 24%,
-      rgba(250, 252, 255, 0.93) 50%,
-      rgba(255, 251, 247, 0.9) 76%,
-      rgba(255, 176, 134, 0.16) 100%
-    ),
-    linear-gradient(180deg, rgba(252, 253, 255, 0.95) 0%, rgba(246, 248, 252, 0.93) 100%);
-  border-bottom: 1px solid rgba(212, 223, 238, 0.9);
-  backdrop-filter: blur(8px);
+  padding: 7px 10px 8px;
+  background: var(--color-surface-header-mobile);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-subtle);
 `;
 
 const MobileGlassPanel = styled.nav`
   position: relative;
   isolation: isolate;
   width: 100%;
-  border: 1px solid rgba(211, 221, 235, 0.94);
-  border-radius: 16px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.84) 0%, rgba(248, 251, 255, 0.84) 100%);
-  box-shadow: 0 7px 18px rgba(12, 25, 45, 0.1);
-  padding: 5px;
+  border-bottom: 1px solid var(--color-border);
+  background: transparent;
+  padding: 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 5px;
+  gap: 0;
 `;
 
 const MobileActiveIndicator = styled.div<{ $index: number }>`
   position: absolute;
-  top: 5px;
-  bottom: 5px;
-  left: 5px;
-  width: calc((100% - 20px) / 3);
-  border-radius: 12px;
-  background: linear-gradient(180deg, #edf4ff 0%, #e6efff 100%);
-  border: 1px solid rgba(103, 151, 230, 0.55);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 4px 10px rgba(35, 81, 150, 0.2);
-  transform: translateX(calc(${({ $index }) => $index} * (100% + 5px)));
-  transition: transform 440ms cubic-bezier(0.22, 1, 0.36, 1);
+  left: 0;
+  bottom: -1px;
+  width: calc(100% / 3);
+  height: 3px;
+  background: var(--umich-maize);
+  transform: translateX(calc(${({ $index }) => $index} * 100%));
+  transition: transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
   z-index: 0;
 `;
@@ -302,17 +268,26 @@ const MobileNavButton = styled.button<IPropsNavButton>`
   position: relative;
   z-index: 1;
   border: 0;
-  border-radius: 12px;
-  padding: 8px 4px;
+  border-radius: 0;
+  padding: 8px 4px 9px;
   background: transparent;
-  color: ${({ $active }) => ($active ? "#1f5fc4" : "#445f7d")};
+  color: ${({ $active }) => ($active ? "var(--umich-navy)" : "var(--color-text-muted)")};
   cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   row-gap: 4px;
-  transition: transform 0.2s ease, color 0.2s ease;
+  transition: color 0.18s ease, background-color 0.18s ease;
+
+  &:hover {
+    color: var(--umich-navy);
+    background: var(--umich-navy-wash);
+  }
+
+  &:hover svg {
+    transform: translateY(-1px) scale(1.05);
+  }
 
   &:active {
     transform: scale(0.97);
@@ -320,6 +295,7 @@ const MobileNavButton = styled.button<IPropsNavButton>`
 
   svg {
     font-size: 15px;
+    transition: transform 0.18s ease;
   }
 
   span {

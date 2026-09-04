@@ -28,12 +28,15 @@ const RESEARCH_INTERESTS = [
 ];
 
 const SOCIAL_LINKS = [
-    { label: "GitHub", href: "https://github.com/KJYoung", icon: "github" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/kim-junyoung", icon: "linkedin" },
     { label: "Google Scholar", href: "https://scholar.google.co.kr/citations?user=w2JODm8AAAAJ&hl=en&oi=sra", icon: "scholar" },
 ];
 
-const EMAIL_ADDRESS = "jykim157@snu.ac.kr";
+const PORTRAIT_SOCIAL_LINKS = [
+    { label: "GitHub", href: "https://github.com/KJYoung", icon: "github" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/kim-junyoung", icon: "linkedin" },
+];
+
+const EMAIL_ADDRESS = "jyoungk@umich.edu";
 const SCRAMBLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$#@!*";
 
 const ActionIcon = ({ icon }: { icon: string }) => {
@@ -145,22 +148,22 @@ const MainPage = () => {
                     </NameRow>
                     <br />
                     <IntroParagraph marginRight="10px" fontSize="18px" lineHeight={1.3}>
-                        I am an incoming Ph.D. student in{' '}
+                        I am a first-year Ph.D. student in{' '}
                         <LinkSpan content="Naval Architecture & Marine Engineering" targetUrl="https://name.engin.umich.edu/"/>
                         {' '}at the{' '}
                         <LinkSpan content="University of Michigan" targetUrl="https://umich.edu/"/>
                         , advised by Prof.{' '}
                         <LinkSpan content="Alan Papalia" targetUrl="https://alanpapalia.github.io/"/>
-                        , starting Fall 2026.
+                        .
                     </IntroParagraph>
                     <IntroParagraph marginRight="10px" fontSize="18px" lineHeight={1.3} $spaced>
-                        Currently, I am a Research Officer at{' '}
+                        Previously, I worked as a Research Officer at{' '}
                         <LinkSpan content="Agency for Defense Development (ADD)" targetUrl="https://www.add.re.kr/eps"/>
-                        {' '}in South Korea. I completed my bachelor's degree (Summa Cum Laude) in{' '}
+                        {' '}in South Korea, completing my military service. I received my bachelor's degree (Summa Cum Laude) with a double major in{' '}
                         <LinkSpan content="Biological Sciences" targetUrl="https://biosci.snu.ac.kr/en"/>
                         {' '}&{' '}
                         <LinkSpan content="Computer Science and Engineering" targetUrl="https://cse.snu.ac.kr/en"/>
-                        {' '}at the{' '}
+                        {' '}from{' '}
                         <LinkSpan content="Seoul National University (SNU)" targetUrl="https://en.snu.ac.kr/index.html"/>
                         .
                     </IntroParagraph>
@@ -173,30 +176,57 @@ const MainPage = () => {
                         ))}
                     </ActionRow>
                 </IntroColumn>
-                <Portrait />
+                <PortraitColumn>
+                    <Portrait />
+                    <PortraitSocialRow>
+                        {PORTRAIT_SOCIAL_LINKS.map(({ label, href, icon }) => (
+                            <PortraitSocialLink
+                                key={label}
+                                href={href}
+                                target="_blank"
+                                rel="noreferrer"
+                                aria-label={label}
+                                title={label}
+                            >
+                                <ActionIcon icon={icon} />
+                            </PortraitSocialLink>
+                        ))}
+                    </PortraitSocialRow>
+                </PortraitColumn>
             </GeneralMainDiv>
         </GeneralDiv>
         <ProfileSection>
             <SectionTitle>Profile</SectionTitle>
             <PublicBR />
-            <H4 marginLeft='10px' marginBottom="6px">History</H4>
-            <H5 marginLeft='20px' lineHeight={1.2}>⏳ 2026.09 ~ University of Michigan - Ph.D</H5>
-            <H5 marginLeft='20px' lineHeight={1.2}>🔄 2023.04 ~ 2026.05 Agency for Defense Development (ADD) - Military Service</H5>
-            <SPAN marginLeft='40px' lineHeight={1.2}>
+            <ProfileHistoryLine>
+                <HistoryPeriod>🔄 2026.08 ~ Present</HistoryPeriod>
+                <HistoryTitle>University of Michigan - Ph.D. Student</HistoryTitle>
+            </ProfileHistoryLine>
+            <ProfileHistoryLine>
+                <HistoryPeriod>✅ 2023.04 ~ 2026.05</HistoryPeriod>
+                <HistoryTitle>Agency for Defense Development (ADD) - Military Service</HistoryTitle>
+            </ProfileHistoryLine>
+            <ProfileDetail>
                 ✦ Research Officer for National Defense (ROND)
-            </SPAN>
-            <H5 marginLeft='20px' lineHeight={1.2}>✅ 2019.03 ~ 2023.02 Seoul National University (SNU) - Bachelor</H5>
-            <SPAN marginLeft='40px' lineHeight={1.2} marginBottom="4px">
+            </ProfileDetail>
+            <ProfileHistoryLine>
+                <HistoryPeriod>✅ 2019.03 ~ 2023.02</HistoryPeriod>
+                <HistoryTitle>Seoul National University (SNU) - Bachelor</HistoryTitle>
+            </ProfileHistoryLine>
+            <ProfileDetail $last>
                 ✦ Biological Sciences, Computer Science and Engineering (Double Major) 
                 <br />
                 ✦ Summa Cum Laude (4.17/4.30; 2<SPAN fontSize="10px" verticalAlign="super">nd</SPAN>/40)
                 <br />
-            </SPAN>
-            <H5 marginLeft='20px' lineHeight={1.2} marginBottom="4px">✅ 2017.03 ~ 2019.02 Hansung Science High School (HSHS) - High School</H5>
+            </ProfileDetail>
+            <ProfileHistoryLine $last>
+                <HistoryPeriod>✅ 2017.03 ~ 2019.02</HistoryPeriod>
+                <HistoryTitle>Hansung Science High School (HSHS) - High School</HistoryTitle>
+            </ProfileHistoryLine>
 
-            <FlexRowSpaceBetweenEnd>
+            <ResearchHeader>
                 <H4 marginLeft='10px' marginBottom="4px" marginTop="20px">Research Interests</H4>
-            </FlexRowSpaceBetweenEnd>
+            </ResearchHeader>
             <InterestsWrap>
                 {RESEARCH_INTERESTS.map((interest) => <InterestChip key={interest}>{interest}</InterestChip>)}
             </InterestsWrap>
@@ -222,7 +252,7 @@ const PublicWrapper = styled.div`
     }
 
     a, .link {
-        color: var(--hp-blue);
+        color: var(--color-link);
         cursor: pointer;
     }
 `;
@@ -251,6 +281,47 @@ const GeneralMainDiv = styled.div`
 
 const IntroColumn = styled(FlexColumnStart)`
     width: min(100%, 800px);
+    background: transparent;
+`;
+
+const PortraitColumn = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+`;
+
+const PortraitSocialRow = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+`;
+
+const PortraitSocialLink = styled.a`
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-subtle);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.18s ease, background-color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+
+    svg {
+        width: 19px;
+        height: 19px;
+        fill: var(--umich-navy);
+    }
+
+    &:hover {
+        transform: translateY(-2px);
+        border-color: var(--umich-maize-deep);
+        background: var(--umich-maize-wash);
+        box-shadow: var(--shadow-card);
+    }
 `;
 
 const NameRow = styled.div`
@@ -265,8 +336,8 @@ const RevealEmailButton = styled.button<{ $revealed: boolean }>`
     background: transparent;
     padding: 0 0 0 2px;
     margin: 0 0 12px;
-    color: ${({ $revealed }) => ($revealed ? "#4d6278" : "#96a3b2")};
-    font-size: ${({ $revealed }) => ($revealed ? "15px" : "15px")};
+    color: ${({ $revealed }) => ($revealed ? "var(--color-text-muted)" : "var(--color-text-faint)")};
+    font-size: 16px;
     font-weight: 500;
     letter-spacing: 0.02em;
     cursor: pointer;
@@ -274,7 +345,7 @@ const RevealEmailButton = styled.button<{ $revealed: boolean }>`
     opacity: ${({ $revealed }) => ($revealed ? 1 : 0.82)};
 
     &:hover {
-        color: ${({ $revealed }) => ($revealed ? "#516d8b" : "#7f8d9d")};
+        color: ${({ $revealed }) => ($revealed ? "var(--umich-navy)" : "var(--color-text-muted)")};
         opacity: 1;
         transform: translateY(-1px);
     }
@@ -303,24 +374,24 @@ const ContactChip = styled.a`
     gap: 9px;
     padding: 0 19px;
     border-radius: 999px;
-    border: 1px solid #c7d3e2;
-    background: #f8fbff;
-    box-shadow: 0 2px 8px rgba(23, 43, 77, 0.08);
+    border: 1px solid var(--color-border-strong);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-subtle);
     text-decoration: none;
     overflow: hidden;
     transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
 
     &:hover {
         transform: translateY(-2px);
-        border-color: #8fb0d6;
-        background: #f1f6fc;
-        box-shadow: 0 8px 18px rgba(23, 43, 77, 0.12);
+        border-color: var(--umich-maize-deep);
+        background: var(--umich-maize-wash);
+        box-shadow: var(--shadow-card);
     }
 
     &:active {
         transform: translateY(0);
-        background: #eaf1f9;
-        box-shadow: 0 2px 6px rgba(23, 43, 77, 0.1);
+        background: var(--color-surface-muted);
+        box-shadow: var(--shadow-subtle);
     }
 `;
 
@@ -328,13 +399,13 @@ const ActionIconSvg = styled.svg<{ $iconType?: string }>`
     display: block;
     width: ${({ $iconType }) => ($iconType === "github" ? "17px" : "15px")};
     height: ${({ $iconType }) => ($iconType === "github" ? "17px" : "15px")};
-    fill: #4b7098;
+    fill: var(--color-link);
     flex-shrink: 0;
 `;
 
 const ContactChipLabel = styled.span`
-    color: #33587e;
-    font-size: 14px;
+    color: var(--color-link);
+    font-size: 15px;
     font-weight: 700;
     letter-spacing: 0.02em;
     line-height: 1;
@@ -344,10 +415,62 @@ const ProfileSection = styled(FlexColumnStart)`
     width: 100%;
     margin-bottom: 16px;
     padding: 0;
+    background: transparent;
+    --history-period-width: 190px;
+`;
+
+const ProfileHistoryLine = styled(H5)<{ $last?: boolean }>`
+    display: grid;
+    grid-template-columns: var(--history-period-width) minmax(0, 1fr);
+    align-items: baseline;
+    gap: 10px;
+    margin: 0 0 ${({ $last }) => ($last ? "4px" : "7px")} 20px;
+    line-height: 1.35;
+
+    @media (max-width: 560px) {
+        align-items: flex-start;
+        grid-template-columns: 1fr;
+        gap: 2px;
+    }
+`;
+
+const HistoryPeriod = styled.span`
+    width: 100%;
+    color: var(--color-text-faint);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+
+    @media (max-width: 560px) {
+        padding-right: 0;
+    }
+`;
+
+const HistoryTitle = styled.span`
+    color: var(--color-text-strong);
+    font-size: 16px;
+    font-weight: 600;
+`;
+
+const ProfileDetail = styled(SPAN)<{ $last?: boolean }>`
+    display: block;
+    margin: 0 0 ${({ $last }) => ($last ? "8px" : "7px")} calc(30px + var(--history-period-width));
+    color: var(--color-text-muted);
+    font-size: 14px;
+    line-height: 1.35;
+
+    @media (max-width: 560px) {
+        margin-left: 20px;
+    }
+`;
+
+const ResearchHeader = styled(FlexRowSpaceBetweenEnd)`
+    background: transparent;
 `;
 
 const SectionTitle = styled.h3`
-    color: #14304f;
+    color: var(--color-text-strong);
     font-size: 21px;
     font-weight: 700;
 `;
@@ -368,9 +491,9 @@ const InterestsWrap = styled.div`
 
 const InterestChip = styled.span`
     border-radius: 999px;
-    border: 1px solid rgba(187, 206, 228, 0.95);
-    background: linear-gradient(180deg, #f8fbff 0%, #f0f6ff 100%);
-    color: #39597d;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface-subtle);
+    color: var(--color-text-muted);
     font-size: 12px;
     font-weight: 600;
     padding: 5px 11px;

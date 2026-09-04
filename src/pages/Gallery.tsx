@@ -7,11 +7,16 @@ import styled from "styled-components";
 import CustomCheckbox from "../customs/CustomCheckbox";
 import CustomImageSlider, { ImageInfoPairsType } from "../customs/CustomImageSlider";
 import {
+  AUSTRIA_images,
   BELGIUM_images,
+  CZECH_images,
   FRANCE_images,
   GREECE_images,
+  HUNGARY_images,
   ITALY_images,
+  JAPAN_images,
   NETHERLANDS_images,
+  SPAIN_images,
   SWISS_images,
   TURKIYE_images,
 } from "../DATA/Gallery_URL";
@@ -26,6 +31,11 @@ export enum CATEGORY {
   TURKIYE = 5,
   GREECE = 6,
   ITALY = 7,
+  JAPAN = 8,
+  AUSTRIA = 9,
+  HUNGARY = 10,
+  CZECH = 11,
+  SPAIN = 12,
 }
 
 type CategoryItem = {
@@ -94,6 +104,53 @@ const GALLERY_CATEGORIES: CategoryItem[] = [
     defaultMapQuery: "Rome Italy",
     images: ITALY_images,
   },
+  {
+    key: "japan",
+    value: CATEGORY.JAPAN,
+    label: "Fukuoka, Tokyo, Kyoto",
+    emoji: "🇯🇵",
+    defaultMapQuery: "Tokyo Japan",
+    images: JAPAN_images,
+  },
+  {
+    key: "austria",
+    value: CATEGORY.AUSTRIA,
+    label: "Vienna",
+    emoji: "🇦🇹",
+    defaultMapQuery: "Vienna Austria",
+    images: AUSTRIA_images,
+  },
+  {
+    key: "hungary",
+    value: CATEGORY.HUNGARY,
+    label: "Budapest",
+    emoji: "🇭🇺",
+    defaultMapQuery: "Budapest Hungary",
+    images: HUNGARY_images,
+  },
+  {
+    key: "czech",
+    value: CATEGORY.CZECH,
+    label: "Prague",
+    emoji: "🇨🇿",
+    defaultMapQuery: "Prague Czech Republic",
+    images: CZECH_images,
+  },
+  {
+    key: "spain",
+    value: CATEGORY.SPAIN,
+    label: "Barcelona",
+    emoji: "🇪🇸",
+    defaultMapQuery: "Barcelona Spain",
+    images: SPAIN_images,
+  },
+];
+
+const CONFERENCE_TRAVELS = [
+  "ICRA 2024 - 🇯🇵 Yokohama",
+  "IROS 2024 - 🇦🇪 Abu Dhabi",
+  "CoRL 2025 - 🇰🇷 Seoul",
+  "ICRA 2026 - 🇦🇹 Vienna",
 ];
 
 const SPEED_OPTIONS = [
@@ -149,7 +206,7 @@ function Gallery({ isMobile }: IPropsGallery) {
     [category]
   );
   const selectedImages = useMemo(() => {
-    if (!selectedCategory) return undefined;
+    if (!selectedCategory || selectedCategory.images.length === 0) return undefined;
     const fallbackLocation = createMapsSearchUrl(selectedCategory.defaultMapQuery);
     return selectedCategory.images.map((image) => (image.location ? image : { ...image, location: fallbackLocation }));
   }, [selectedCategory]);
@@ -159,6 +216,16 @@ function Gallery({ isMobile }: IPropsGallery) {
 
   return (
     <GalleryPage>
+      <TravelSummaryCard>
+        <TravelSummaryEyebrow>Conferences</TravelSummaryEyebrow>
+        <TravelSummaryTitle>International Conferences Attended</TravelSummaryTitle>
+        <TravelSummaryList>
+          {CONFERENCE_TRAVELS.map((item) => (
+            <TravelSummaryItem key={item}>{item}</TravelSummaryItem>
+          ))}
+        </TravelSummaryList>
+      </TravelSummaryCard>
+
       <HeroCard>
         <HeroTitle>Travel Gallery</HeroTitle>
         <HeroDescription>
@@ -189,7 +256,7 @@ function Gallery({ isMobile }: IPropsGallery) {
             {autoPlayEnabled ? ` • Auto ${playbackMs / 1000}s` : ""}
           </StatusText>
         ) : (
-          <StatusText>Select any category to begin.</StatusText>
+          <StatusText>Select any category to begin. Newly added categories will appear here once photos are added.</StatusText>
         )}
       </StatusBar>
 
@@ -251,25 +318,69 @@ const GalleryPage = styled.div`
   padding-bottom: 8px;
 `;
 
+const TravelSummaryCard = styled.div`
+  border-radius: 18px;
+  background: var(--color-surface-subtle);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-subtle);
+  padding: 18px 22px;
+`;
+
+const TravelSummaryEyebrow = styled.div`
+  color: var(--color-text-faint);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+`;
+
+const TravelSummaryTitle = styled.h2`
+  color: var(--color-text-strong);
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 10px;
+`;
+
+const TravelSummaryList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+`;
+
+const TravelSummaryItem = styled.div`
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: var(--shadow-subtle);
+`;
+
 const HeroCard = styled.div`
   border-radius: 20px;
-  background: linear-gradient(145deg, #fdfefe 0%, #f3f6fb 100%);
-  border: 1px solid #dfe6ef;
-  box-shadow: 0 6px 16px rgba(15, 30, 57, 0.08);
+  background: linear-gradient(145deg, var(--color-surface) 0%, var(--color-surface-subtle) 100%);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-subtle);
   padding: 22px 24px;
 `;
 
 const HeroTitle = styled.h2`
   font-size: 30px;
   font-weight: 800;
-  color: #12355f;
+  color: var(--color-text-strong);
   letter-spacing: 0.2px;
 `;
 
 const HeroDescription = styled.p`
   margin-top: 8px;
   font-size: 15px;
-  color: #445f82;
+  color: var(--color-text-muted);
   line-height: 1.45;
 `;
 
@@ -277,7 +388,7 @@ const ToggleLabel = styled.div`
   display: inline-flex;
   gap: 8px;
   align-items: center;
-  color: #1f2e41;
+  color: var(--color-text);
   font-weight: 600;
   font-size: 13px;
 `;
@@ -290,19 +401,19 @@ const CategoryGrid = styled.div`
 
 const CategoryCard = styled.button<{ $active: boolean }>`
   border-radius: 16px;
-  border: ${({ $active }) => ($active ? "2px solid #1f74ff" : "1px solid #d8e0ec")};
-  background: ${({ $active }) => ($active ? "linear-gradient(160deg, #edf4ff 0%, #ffffff 100%)" : "#ffffff")};
+  border: ${({ $active }) => ($active ? "2px solid var(--umich-navy)" : "1px solid var(--color-border)")};
+  background: ${({ $active }) => ($active ? "linear-gradient(160deg, var(--umich-maize-wash) 0%, var(--color-surface) 100%)" : "var(--color-surface)")};
   padding: 12px 13px;
   text-align: left;
   cursor: pointer;
   box-shadow: ${({ $active }) =>
-    $active ? "0 8px 18px rgba(25, 92, 198, 0.14)" : "0 3px 10px rgba(15, 30, 57, 0.06)"};
+    $active ? "var(--shadow-card)" : "var(--shadow-subtle)"};
   transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 
   &:hover {
-    border-color: #7ba9f9;
+    border-color: var(--umich-maize-deep);
     transform: translateY(-2px);
-    box-shadow: 0 10px 22px rgba(16, 42, 83, 0.1);
+    box-shadow: var(--shadow-card);
   }
 `;
 
@@ -312,7 +423,7 @@ const CategoryEmoji = styled.div`
 
 const CategoryTitle = styled.div`
   margin-top: 6px;
-  color: #1a2e48;
+  color: var(--color-text-strong);
   font-size: 13px;
   font-weight: 700;
   line-height: 1.32;
@@ -320,20 +431,20 @@ const CategoryTitle = styled.div`
 
 const CategoryCount = styled.div`
   margin-top: 5px;
-  color: #5a6f87;
+  color: var(--color-text-muted);
   font-size: 12px;
 `;
 
 const StatusBar = styled.div`
-  background: #f7faff;
-  border: 1px solid #d9e4f2;
+  background: var(--color-surface-subtle);
+  border: 1px solid var(--color-border);
   border-radius: 12px;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+  box-shadow: var(--highlight-inset-soft);
   padding: 10px 13px;
 `;
 
 const StatusText = styled.span`
-  color: #305174;
+  color: var(--color-text-muted);
   font-size: 13px;
   font-weight: 600;
 `;
@@ -355,10 +466,10 @@ const ViewerSection = styled.div`
 
 const ViewerToolbar = styled.div<{ $compact: boolean }>`
   width: min(100%, 1200px);
-  border: 1px solid #d8e2ef;
-  background: #ffffff;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
   border-radius: 12px;
-  box-shadow: 0 3px 9px rgba(15, 29, 52, 0.06);
+  box-shadow: var(--shadow-subtle);
   padding: 8px 12px;
   display: flex;
   justify-content: space-between;
@@ -372,7 +483,7 @@ const ToolbarTitle = styled.div`
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: #355577;
+  color: var(--color-text-muted);
   font-size: 12px;
   font-weight: 700;
 `;
@@ -390,10 +501,10 @@ const SpeedChipGroup = styled.div`
 `;
 
 const SpeedChip = styled.button<{ $active: boolean }>`
-  border: 1px solid ${({ $active }) => ($active ? "#2f7fff" : "#c8d4e6")};
+  border: 1px solid ${({ $active }) => ($active ? "var(--umich-navy)" : "var(--color-border-strong)")};
   border-radius: 999px;
-  background: ${({ $active }) => ($active ? "#e9f2ff" : "#f8fbff")};
-  color: ${({ $active }) => ($active ? "#1f5fcc" : "#385676")};
+  background: ${({ $active }) => ($active ? "var(--umich-maize-wash)" : "var(--color-surface-subtle)")};
+  color: ${({ $active }) => ($active ? "var(--umich-navy)" : "var(--color-text-muted)")};
   font-size: 12px;
   font-weight: 700;
   padding: 5px 10px;
@@ -407,11 +518,11 @@ const SpeedChip = styled.button<{ $active: boolean }>`
 
 const EmptyPanel = styled.div`
   width: min(100%, 900px);
-  border: 1px dashed #c7d4e4;
+  border: 1px dashed var(--color-border-strong);
   border-radius: 16px;
   padding: 30px;
-  background: #fafcff;
-  color: #50647d;
+  background: var(--color-surface-subtle);
+  color: var(--color-text-muted);
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -164,6 +164,5 @@ const Pub2FrameworkImg = styled.img`
     max-width: min(100%, 1200px);
     border-radius: 20px;
     padding: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Change the values as per your preference */
+    box-shadow: var(--shadow-card);
 `;
-

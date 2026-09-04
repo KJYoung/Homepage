@@ -37,7 +37,7 @@ const Slider = styled.div`
   background-color: transparent;
   height: 100%;
   width: ${LINEWIDTH}px;
-  background-color: #000; /* 슬라이더 색상 */
+  background-color: var(--color-contrast); /* Slider track */
 `;
 
 const Handle = styled.div`
@@ -46,8 +46,8 @@ const Handle = styled.div`
   height: ${HANDLESIZE}px;
   width: ${HANDLESIZE}px;
   border-radius: 50%;
-  background-color: #fff; /* 핸들 색상 */
-  border: ${LINEWIDTH - 1}px solid #000; /* 핸들 테두리 */
+  background-color: var(--color-surface); /* Handle */
+  border: ${LINEWIDTH - 1}px solid var(--color-contrast); /* Handle border */
   top: 50%;
   left: ${- 0.5 * (HANDLESIZE - LINEWIDTH)}px;
   transform: translateY(-50%);

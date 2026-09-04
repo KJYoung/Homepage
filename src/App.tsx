@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import './App.css';
-import './styles/color.css';
 import { HashRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import GlobalStyles from './styles/GlobalStyles';
+import Theme from './styles/Theme';
 import { useDispatch, useSelector } from 'react-redux';
 import { coreActions, selectCore, TabState } from './store/slices/core';
 import { MOBILE_DESKTOP_THRESHOLD } from './styles/GlobalConst';
@@ -58,9 +58,11 @@ function App() {
     };
   }, [dispatch]);
   const { windowSize, language } = useSelector(selectCore);
+  const ThemeProxy = Theme as unknown as React.ComponentType;
   const GlobalStylesProxy = GlobalStyles as unknown as React.ComponentType;
   return (
     <>
+      <ThemeProxy />
       <GlobalStylesProxy />
       <Background>
       <HashRouter>

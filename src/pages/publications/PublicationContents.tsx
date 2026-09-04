@@ -480,9 +480,9 @@ const SectionRoot = styled.section<{ $compact: boolean }>`
   background: ${({ $compact }) =>
     $compact
       ? "transparent"
-      : "linear-gradient(180deg, #fcfdff 0%, #f3f7fd 100%)"};
-  border: ${({ $compact }) => ($compact ? "0" : "1px solid #dbe4f1")};
-  box-shadow: ${({ $compact }) => ($compact ? "none" : "0 14px 36px rgba(13, 29, 55, 0.09)")};
+      : "linear-gradient(180deg, var(--color-surface) 0%, var(--color-surface-subtle) 100%)"};
+  border: ${({ $compact }) => ($compact ? "0" : "1px solid var(--color-border)")};
+  box-shadow: ${({ $compact }) => ($compact ? "none" : "var(--shadow-card)")};
 
   @media (max-width: 840px) {
     margin-top: ${({ $compact }) => ($compact ? "8px" : "10px")};
@@ -500,7 +500,7 @@ const CompactHeader = styled.div`
 `;
 
 const CompactTitle = styled.h3`
-  color: #14304f;
+  color: var(--color-text-strong);
   font-size: 21px;
   font-weight: 700;
 `;
@@ -508,7 +508,7 @@ const CompactTitle = styled.h3`
 const CompactLink = styled.button`
   border: none;
   background: transparent;
-  color: #2e5d8b;
+  color: var(--color-link);
   border-radius: 0;
   min-height: auto;
   padding: 0;
@@ -531,9 +531,9 @@ const CompactLink = styled.button`
   }
 
   &:hover {
-    color: #1e4f81;
+    color: var(--color-link-hover);
     transform: translateY(-1px);
-    text-shadow: 0 0 0.01px #1e4f81, 0 0 10px rgba(111, 164, 233, 0.24);
+    text-shadow: 0 0 0.01px var(--color-link-hover), 0 0 10px var(--umich-maize-glow);
 
     &::after {
       transform: translateX(2px);
@@ -545,10 +545,10 @@ const SectionHero = styled.div`
   width: 100%;
   border-radius: 22px;
   padding: 18px;
-  border: 1px solid rgba(208, 220, 237, 0.92);
+  border: 1px solid var(--color-border);
   background:
-    radial-gradient(circle at 82% 16%, rgba(133, 185, 255, 0.2) 0%, rgba(133, 185, 255, 0) 50%),
-    linear-gradient(170deg, #f8fbff 0%, #eef4ff 100%);
+    radial-gradient(circle at 82% 16%, var(--umich-maize-glow) 0%, transparent 50%),
+    linear-gradient(170deg, var(--color-surface) 0%, var(--color-surface-subtle) 100%);
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -567,7 +567,7 @@ const HeroTextGroup = styled.div`
 `;
 
 const HeroEyebrow = styled.span`
-  color: #406893;
+  color: var(--color-text-muted);
   font-size: 11px;
   font-weight: 800;
   text-transform: uppercase;
@@ -575,7 +575,7 @@ const HeroEyebrow = styled.span`
 `;
 
 const HeroTitle = styled.h2`
-  color: #10263f;
+  color: var(--color-text-strong);
   font-size: clamp(26px, 3.1vw, 36px);
   font-weight: 800;
   line-height: 1.08;
@@ -585,19 +585,19 @@ const HeroTitle = styled.h2`
   }
 
   &.clickable:hover {
-    color: #1d59a2;
+    color: var(--color-link);
   }
 `;
 
 const HeroDescription = styled.p`
-  color: #456382;
+  color: var(--color-text-muted);
   font-size: 14px;
   line-height: 1.45;
   max-width: 760px;
 `;
 
 const HeroNote = styled.span`
-  color: #567595;
+  color: var(--color-text-faint);
   font-size: 12px;
   font-weight: 600;
 `;
@@ -627,9 +627,9 @@ const FilterRail = styled.div`
 
 const FilterChip = styled.button<{ $active: boolean }>`
   border-radius: 999px;
-  border: 1px solid ${({ $active }) => ($active ? "#4b84d8" : "#c8d8ea")};
-  background: ${({ $active }) => ($active ? "linear-gradient(160deg, #4b84d8 0%, #2f71cc 100%)" : "#ffffff")};
-  color: ${({ $active }) => ($active ? "#ffffff" : "#355b84")};
+  border: 1px solid ${({ $active }) => ($active ? "var(--umich-navy)" : "var(--color-border-strong)")};
+  background: ${({ $active }) => ($active ? "var(--umich-navy)" : "var(--color-surface)")};
+  color: ${({ $active }) => ($active ? "var(--color-on-navy)" : "var(--color-text-muted)")};
   padding: 6px 12px;
   font-size: 12px;
   font-weight: 700;
@@ -648,9 +648,9 @@ const FilterMeta = styled.div`
   height: 34px;
   padding: 0 12px;
   border-radius: 999px;
-  border: 1px solid #cfe0f2;
-  background: #f7fbff;
-  color: #456d98;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-subtle);
+  color: var(--color-text-muted);
   font-size: 14px;
   font-weight: 700;
   display: inline-flex;
@@ -659,7 +659,7 @@ const FilterMeta = styled.div`
   gap: 5px;
 
   strong {
-    color: #204f84;
+    color: var(--umich-navy);
     font-size: 16px;
     font-weight: 800;
     line-height: 1;
@@ -675,22 +675,22 @@ const FilterMeta = styled.div`
 const StatTile = styled.div`
   border-radius: 14px;
   padding: 10px 11px;
-  border: 1px solid rgba(199, 214, 235, 0.92);
-  background: rgba(255, 255, 255, 0.75);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-glass-light);
+  box-shadow: var(--highlight-inset);
   display: flex;
   flex-direction: column;
   gap: 3px;
 
   strong {
-    color: #123a66;
+    color: var(--color-text-strong);
     font-size: 18px;
     font-weight: 800;
     line-height: 1;
   }
 
   span {
-    color: #5a7698;
+    color: var(--color-text-faint);
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
@@ -714,9 +714,9 @@ const PublicationCard = styled.article<{ $compact: boolean; $interactive: boolea
   gap: ${({ $compact }) => ($compact ? "10px" : "13px")};
   padding: ${({ $compact }) => ($compact ? "10px" : "12px")};
   border-radius: ${({ $compact }) => ($compact ? "14px" : "18px")};
-  border: 1px solid ${({ $compact }) => ($compact ? "#dce6f2" : "#d7e1ee")};
-  background: ${({ $compact }) => ($compact ? "#ffffff" : "linear-gradient(180deg, #ffffff 0%, #f9fbff 100%)")};
-  box-shadow: ${({ $compact }) => ($compact ? "0 2px 7px rgba(13, 29, 55, 0.04)" : "0 8px 19px rgba(13, 29, 55, 0.07)")};
+  border: 1px solid var(--color-border);
+  background: ${({ $compact }) => ($compact ? "var(--color-surface)" : "linear-gradient(180deg, var(--color-surface) 0%, var(--color-surface-subtle) 100%)")};
+  box-shadow: ${({ $compact }) => ($compact ? "var(--shadow-subtle)" : "var(--shadow-card)")};
   transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease, background 0.24s ease;
 
   &::before {
@@ -724,7 +724,7 @@ const PublicationCard = styled.article<{ $compact: boolean; $interactive: boolea
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    background: radial-gradient(circle at 86% 14%, rgba(116, 172, 255, 0.18) 0%, rgba(116, 172, 255, 0) 58%);
+    background: radial-gradient(circle at 86% 14%, var(--umich-maize-glow) 0%, transparent 58%);
     opacity: 0;
     transition: opacity 0.24s ease;
     pointer-events: none;
@@ -737,9 +737,9 @@ const PublicationCard = styled.article<{ $compact: boolean; $interactive: boolea
         &:hover,
         &:focus-within {
           transform: translateY(${$compact ? "-1px" : "-2px"});
-          border-color: #bdd1ea;
-          background: ${$compact ? "#ffffff" : "linear-gradient(180deg, #ffffff 0%, #f2f8ff 100%)"};
-          box-shadow: ${$compact ? "0 6px 14px rgba(13, 29, 55, 0.08)" : "0 14px 30px rgba(13, 29, 55, 0.14)"};
+          border-color: var(--umich-maize-deep);
+          background: ${$compact ? "var(--color-surface)" : "linear-gradient(180deg, var(--color-surface) 0%, var(--umich-maize-wash) 100%)"};
+          box-shadow: var(--shadow-card);
         }
 
         &:hover::before,
@@ -749,7 +749,7 @@ const PublicationCard = styled.article<{ $compact: boolean; $interactive: boolea
 
         &:hover h3,
         &:focus-within h3 {
-          color: #1d59a2;
+          color: var(--color-link);
         }
       `}
   }
@@ -765,10 +765,10 @@ const PreviewFrame = styled.button<{ $compact: boolean }>`
   min-height: ${({ $compact }) => ($compact ? "132px" : "160px")};
   border-radius: ${({ $compact }) => ($compact ? "12px" : "14px")};
   overflow: hidden;
-  border: 1px solid rgba(205, 216, 231, 0.95);
+  border: 1px solid var(--color-border);
   cursor: pointer;
-  background: #ffffff;
-  box-shadow: 0 8px 18px rgba(26, 58, 104, 0.09);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-subtle);
 
   &:hover img {
     transform: scale(1.015);
@@ -791,14 +791,14 @@ const PreviewHint = styled.span`
   width: 31px;
   height: 31px;
   border-radius: 11px;
-  border: 1px solid rgba(194, 213, 236, 0.95);
-  background: rgba(251, 254, 255, 0.92);
-  color: #2f567f;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-glass);
+  color: var(--color-text-muted);
   font-size: 13px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 5px 12px rgba(25, 52, 90, 0.14);
+  box-shadow: var(--shadow-subtle);
   backdrop-filter: blur(2px);
 `;
 
@@ -830,7 +830,7 @@ const TitleBlock = styled.div`
 `;
 
 const CardTitle = styled.h3`
-  color: #132e4d;
+  color: var(--color-text-strong);
   font-size: clamp(15px, 1.65vw, 20px);
   font-weight: 700;
   line-height: 1.25;
@@ -840,7 +840,7 @@ const CardTitle = styled.h3`
   }
 
   &.clickable:hover {
-    color: #1d59a2;
+    color: var(--color-link);
   }
 `;
 
@@ -857,7 +857,7 @@ const AuthorToken = styled(BasicDIV)<{ $isme: boolean }>`
   align-items: baseline;
   gap: 1px;
   background: transparent;
-  color: ${({ $isme }) => ($isme ? "#153e6d" : "#405f82")};
+  color: ${({ $isme }) => ($isme ? "var(--umich-navy)" : "var(--color-text-muted)")};
   font-size: 14px;
   font-weight: ${({ $isme }) => ($isme ? 700 : 500)};
 
@@ -886,16 +886,16 @@ const StatusBlock = styled.div`
 
 const StatusPill = styled.span`
   border-radius: 999px;
-  border: 1px solid rgba(180, 205, 236, 0.92);
-  background: linear-gradient(180deg, #edf5ff 0%, #e5efff 100%);
-  color: #205591;
+  border: 1px solid var(--color-border-strong);
+  background: var(--umich-maize-wash);
+  color: var(--umich-navy);
   font-size: 12px;
   font-weight: 700;
   padding: 5px 11px;
 `;
 
 const StatusHighlight = styled.span`
-  color: #b61e1e;
+  color: var(--color-danger);
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.2px;
@@ -909,16 +909,16 @@ const TypeChipRail = styled.div`
 
 const TypeChip = styled.span<{ $primary: boolean }>`
   border-radius: 999px;
-  border: 1px solid ${({ $primary }) => ($primary ? "rgba(80, 130, 203, 0.5)" : "rgba(186, 204, 225, 0.9)")};
-  background: ${({ $primary }) => ($primary ? "linear-gradient(180deg, #eaf2ff 0%, #dfeaff 100%)" : "#f8fbff")};
-  color: ${({ $primary }) => ($primary ? "#27548c" : "#4f6987")};
+  border: 1px solid ${({ $primary }) => ($primary ? "var(--umich-maize-deep)" : "var(--color-border)")};
+  background: ${({ $primary }) => ($primary ? "var(--umich-maize-wash)" : "var(--color-surface-subtle)")};
+  color: ${({ $primary }) => ($primary ? "var(--umich-navy)" : "var(--color-text-muted)")};
   font-size: 11px;
   font-weight: ${({ $primary }) => ($primary ? 700 : 600)};
   padding: 4px 10px;
 `;
 
 const CardDescription = styled.p<{ $compact: boolean }>`
-  color: #304a69;
+  color: var(--color-text-muted);
   font-size: ${({ $compact }) => ($compact ? "13px" : "14px")};
   line-height: 1.44;
   display: -webkit-box;
@@ -935,9 +935,9 @@ const ActionRail = styled.div`
 
 const ActionButton = styled.button<{ $accent: boolean; $compact: boolean }>`
   border-radius: 999px;
-  border: 1px solid ${({ $accent }) => ($accent ? "#4f8de7" : "#c7d7ea")};
-  background: ${({ $accent }) => ($accent ? "linear-gradient(160deg, #4f8de7 0%, #2e73d6 100%)" : "#f7fbff")};
-  color: ${({ $accent }) => ($accent ? "#ffffff" : "#244f7d")};
+  border: 1px solid ${({ $accent }) => ($accent ? "var(--umich-navy)" : "var(--color-border)")};
+  background: ${({ $accent }) => ($accent ? "var(--umich-navy)" : "var(--color-surface-subtle)")};
+  color: ${({ $accent }) => ($accent ? "var(--color-on-navy)" : "var(--color-link)")};
   padding: ${({ $compact }) => ($compact ? "5px 10px" : "6px 12px")};
   font-size: ${({ $compact }) => ($compact ? "11px" : "12px")};
   font-weight: 700;
@@ -953,9 +953,9 @@ const ActionButton = styled.button<{ $accent: boolean; $compact: boolean }>`
 const FilterEmpty = styled.div`
   width: 100%;
   border-radius: 14px;
-  border: 1px dashed #c6d8ec;
-  background: #f7fbff;
-  color: #4f6987;
+  border: 1px dashed var(--color-border-strong);
+  background: var(--color-surface-subtle);
+  color: var(--color-text-muted);
   font-size: 14px;
   font-weight: 600;
   padding: 18px 14px;

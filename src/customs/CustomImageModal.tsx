@@ -86,7 +86,7 @@ export const ModalOverlay = styled.div`
   height: 100%;
   z-index: 1200;
   padding: clamp(64px, 11vh, 96px) 18px 24px;
-  background: rgba(10, 15, 22, 0.58);
+  background: var(--color-overlay);
   backdrop-filter: blur(7px) saturate(108%);
   display: flex;
   justify-content: center;
@@ -98,9 +98,9 @@ const ModalCard = styled.div`
   width: min(1260px, 100%);
   max-height: calc(100vh - clamp(84px, 13vh, 118px));
   border-radius: 20px;
-  border: 1px solid rgba(188, 204, 223, 0.9);
-  background: linear-gradient(180deg, #ffffff 0%, #f6f9fd 100%);
-  box-shadow: 0 24px 62px rgba(8, 19, 38, 0.44);
+  border: 1px solid var(--color-border);
+  background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-surface-subtle) 100%);
+  box-shadow: var(--shadow-modal);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -111,8 +111,8 @@ const ModalTop = styled.div`
   width: 100%;
   min-height: 68px;
   padding: 15px 16px 13px;
-  border-bottom: 1px solid rgba(212, 222, 236, 0.9);
-  background: linear-gradient(180deg, #fafdff 0%, #f4f8ff 100%);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface-subtle);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -130,9 +130,9 @@ const ModalCloseBtn = styled.button`
   width: 36px;
   height: 36px;
   border-radius: 11px;
-  border: 1px solid rgba(214, 224, 238, 0.95);
-  background: #ffffff;
-  color: #355679;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
   font-size: 17px;
   display: inline-flex;
   justify-content: center;
@@ -141,8 +141,8 @@ const ModalCloseBtn = styled.button`
   transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
 
   &:hover {
-    background: #edf4ff;
-    color: #1f5fc4;
+    background: var(--umich-maize-wash);
+    color: var(--umich-navy);
     transform: translateY(-1px);
   }
 `;
@@ -150,7 +150,7 @@ const ModalCloseBtn = styled.button`
 const ImgTitle = styled.span`
   font-size: clamp(17px, 2.1vw, 25px);
   font-weight: 800;
-  color: #122a44;
+  color: var(--color-text-strong);
   line-height: 1.15;
   white-space: nowrap;
   overflow: hidden;
@@ -158,7 +158,7 @@ const ImgTitle = styled.span`
 `;
 
 const ImgSubtitle = styled.span`
-  color: #4d698a;
+  color: var(--color-text-muted);
   font-size: 13px;
   line-height: 1.3;
   white-space: nowrap;
@@ -174,7 +174,7 @@ const ImageViewport = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: radial-gradient(circle at 50% 0%, #f3f7fe 0%, #e7edf8 100%);
+  background: radial-gradient(circle at 50% 0%, var(--umich-maize-wash) 0%, var(--color-surface-muted) 100%);
   overflow: auto;
 
   &::-webkit-scrollbar {
@@ -184,7 +184,7 @@ const ImageViewport = styled.div`
 
   &::-webkit-scrollbar-thumb {
     border-radius: 999px;
-    background: rgba(110, 136, 167, 0.5);
+    background: var(--color-image-scrollbar);
   }
 
   img {
@@ -192,23 +192,23 @@ const ImageViewport = styled.div`
     max-height: calc(100vh - 230px);
     object-fit: contain;
     border-radius: 12px;
-    box-shadow: 0 14px 34px rgba(13, 29, 55, 0.18);
-    border: 1px solid rgba(202, 214, 231, 0.9);
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--color-border);
   }
 `;
 
 const MetaHint = styled.span`
   width: 100%;
   padding: 10px 16px 13px;
-  border-top: 1px solid rgba(215, 225, 238, 0.85);
-  color: #557092;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
   font-size: 12px;
   letter-spacing: 0.1px;
-  background: #f6f9fd;
+  background: var(--color-surface-subtle);
 `;
 
 const EmptyText = styled.span`
-  color: #4b627f;
+  color: var(--color-text-muted);
   font-weight: 600;
 `;
 

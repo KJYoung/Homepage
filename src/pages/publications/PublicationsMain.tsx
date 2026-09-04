@@ -38,7 +38,7 @@ const BackdropShape = styled.div`
   width: 500px;
   height: 340px;
   border-radius: 46%;
-  background: radial-gradient(circle at 35% 42%, rgba(132, 186, 255, 0.25) 0%, rgba(132, 186, 255, 0) 70%);
+  background: radial-gradient(circle at 35% 42%, var(--umich-maize-glow) 0%, transparent 70%);
   pointer-events: none;
 `;
 

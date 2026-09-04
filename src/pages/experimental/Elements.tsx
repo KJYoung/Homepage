@@ -8,7 +8,7 @@ import { getRandomHex } from "../../utils/Color"
 
 export const ExpElements = () => {
     const [isOn, setIsOn] = useState<boolean>(false);
-    const [color, setColor] = useState<string>('#000000');
+    const [color, setColor] = useState<string>('var(--color-contrast)');
     return <FlexColumnCenter>
         <SPAN>SPAN Text Lorem Ipsum Text Lorem Ipsum Text Lorem Ipsum</SPAN>
         <br />

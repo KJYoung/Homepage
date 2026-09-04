@@ -50,7 +50,7 @@ interface ToggleButtonCircleProps {
 
 const ToggleButtonCircle = styled.div<ToggleButtonCircleProps>`
   border-radius: 16px;
-  background-color: #fff;
+  background-color: var(--color-surface);
   display: inline-block;
   padding: 4px 8px;
   transition: transform 0.4s ease;

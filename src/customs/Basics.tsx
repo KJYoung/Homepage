@@ -78,10 +78,10 @@ export const BasicBUTTON = styled.span<IPropsBasicCSS>`
 
     background-color: ${({ backgroundColor = 'hp-blue' }) => getRGBfromVar(backgroundColor)};
     &:hover {
-        background-color: ${({ backgroundColor = 'hp-blue' }) => generateHoverColor(getRGBfromVar(backgroundColor))};
+        filter: brightness(1.06);
     }
     &:active {
-        background-color: ${({ backgroundColor = 'hp-blue' }) => generateActiveColor(getRGBfromVar(backgroundColor))};
+        filter: brightness(0.92);
     }
     
     cursor: pointer;
@@ -134,26 +134,15 @@ export const BasicDIV = styled.div<IPropsBasicCSS>`
 
 export const BR = styled.div`
     width: 100%;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid var(--color-border-strong);
     margin-bottom: 10px;
 `;
 
 // Clickable: Default, Hover, Active의 Color Scheme을 정해야 함.
 
-// 용례] getRGBfromVar('hp-blue'); // Returns "#4e8cff"
+// Usage: getRGBfromVar('hp-blue') returns a CSS variable reference.
 export const getRGBfromVar = (vartext: string): string => {
-    // Get computed style of :root element
-    const rootStyles = getComputedStyle(document.documentElement);
-
-    // Extract hex color value corresponding to the provided variable name
-    const colorVar = rootStyles.getPropertyValue(`--${vartext}`).trim();
-
-    // Convert hex color value to #RRGGBB format
-    const hexToRRGGBB = (hex: string): string => {
-        return hex.startsWith('#') ? hex : `#${hex}`;
-    };
-
-    return hexToRRGGBB(colorVar);
+    return `var(--${vartext})`;
 };
 
 export const generateHoverColor = (hexColor: string) : string => {
@@ -187,4 +176,3 @@ export const generateActiveColor = (hexColor: string) : string => {
     const result = `#${activeR.toString(16).padStart(2, '0')}${activeG.toString(16).padStart(2, '0')}${activeB.toString(16).padStart(2, '0')}`;
     return result;
 }
-

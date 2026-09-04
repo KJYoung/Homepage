@@ -121,7 +121,7 @@ const MainPortraitButton = styled.button`
 
 const MainPortrait = styled.img`
   border-radius: 20px;
-  border: 1px solid #1b2532;
+  border: 1px solid var(--umich-navy);
   width: 185px;
   max-height: 480px;
 `;
@@ -151,7 +151,7 @@ const Overlay = styled.div`
   inset: 0;
   z-index: 1200;
   padding: 26px 18px;
-  background: rgba(11, 17, 26, 0.62);
+  background: var(--color-overlay);
   backdrop-filter: blur(7px) saturate(104%);
   display: flex;
   justify-content: center;
@@ -168,9 +168,9 @@ const GalleryCard = styled.div`
   width: min(94vw, 740px);
   max-height: calc(100vh - 52px);
   border-radius: 18px;
-  border: 1px solid rgba(190, 205, 224, 0.95);
-  background: linear-gradient(180deg, #ffffff 0%, #f5f9ff 100%);
-  box-shadow: 0 24px 58px rgba(7, 16, 31, 0.44);
+  border: 1px solid var(--color-border);
+  background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-surface-subtle) 100%);
+  box-shadow: var(--shadow-modal);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -186,8 +186,8 @@ const TopBar = styled.div`
   width: 100%;
   min-height: 66px;
   padding: 12px 14px;
-  border-bottom: 1px solid rgba(214, 223, 237, 0.95);
-  background: linear-gradient(180deg, #fafcff 0%, #f3f8ff 100%);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface-subtle);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -202,7 +202,7 @@ const CaptionBlock = styled.div`
 `;
 
 const CaptionTitle = styled.span`
-  color: #133155;
+  color: var(--color-text-strong);
   font-size: 17px;
   font-weight: 800;
   white-space: nowrap;
@@ -211,15 +211,15 @@ const CaptionTitle = styled.span`
 `;
 
 const CaptionSub = styled.span`
-  color: #4f6c8d;
+  color: var(--color-text-muted);
   font-size: 12px;
   font-weight: 700;
 `;
 
 const CloseButton = styled.button`
-  border: 1px solid rgba(203, 217, 236, 0.95);
-  background: #ffffff;
-  color: #355a86;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
   border-radius: 11px;
   width: 35px;
   height: 35px;
@@ -229,8 +229,8 @@ const CloseButton = styled.button`
   align-items: center;
 
   &:hover {
-    background: #edf4ff;
-    color: #1f5fc4;
+    background: var(--umich-maize-wash);
+    color: var(--umich-navy);
   }
 `;
 
@@ -239,7 +239,7 @@ const ImageViewport = styled.div`
   flex: 1;
   min-height: 320px;
   padding: 10px;
-  background: radial-gradient(circle at 50% 0%, #f0f6ff 0%, #e7eef9 100%);
+  background: radial-gradient(circle at 50% 0%, var(--umich-maize-wash) 0%, var(--color-surface-muted) 100%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -250,20 +250,20 @@ const MainImage = styled.img`
   max-height: calc(100vh - 310px);
   object-fit: contain;
   border-radius: 11px;
-  border: 1px solid rgba(204, 216, 233, 0.95);
-  box-shadow: 0 12px 28px rgba(15, 31, 55, 0.16);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
 `;
 
 const KeyboardHint = styled.span`
   width: 100%;
   padding: 9px 12px;
   text-align: center;
-  color: #4f6a89;
+  color: var(--color-text-muted);
   font-size: 12px;
   font-weight: 600;
-  border-top: 1px solid rgba(217, 227, 239, 0.9);
-  border-bottom: 1px solid rgba(217, 227, 239, 0.9);
-  background: #f8fbff;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface-subtle);
 `;
 
 const ThumbnailRow = styled.div`
@@ -272,7 +272,7 @@ const ThumbnailRow = styled.div`
   justify-content: center;
   gap: 8px;
   padding: 11px 12px 12px;
-  background: #f7fbff;
+  background: var(--color-surface-subtle);
   overflow-x: auto;
 
   &::-webkit-scrollbar {
@@ -281,19 +281,19 @@ const ThumbnailRow = styled.div`
 
   &::-webkit-scrollbar-thumb {
     border-radius: 999px;
-    background: rgba(130, 156, 188, 0.48);
+    background: var(--color-scrollbar);
   }
 `;
 
 const ThumbnailButton = styled.button<{ $active: boolean }>`
   padding: 0;
   min-width: 72px;
-  border: ${({ $active }) => ($active ? "2px solid #2f79df" : "1px solid #b7c9de")};
+  border: ${({ $active }) => ($active ? "2px solid var(--umich-navy)" : "1px solid var(--color-border-strong)")};
   border-radius: 10px;
-  background: #ffffff;
+  background: var(--color-surface);
   overflow: hidden;
   cursor: pointer;
-  box-shadow: ${({ $active }) => ($active ? "0 8px 17px rgba(32, 97, 191, 0.2)" : "none")};
+  box-shadow: ${({ $active }) => ($active ? "var(--shadow-card)" : "none")};
 `;
 
 const Thumbnail = styled.img`

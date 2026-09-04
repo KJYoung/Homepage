@@ -80,82 +80,82 @@
     right:20px
 }
 .rnc__notification-item--default{
-    background-color:#007bff;
-    border-left:8px solid #0562c7
+    background-color:var(--notification-default);
+    border-left:8px solid var(--notification-default-deep)
 }
 .rnc__notification-item--default .rnc__notification-timer{
-    background-color:#007bff
+    background-color:var(--notification-default)
 }
 .rnc__notification-item--default .rnc__notification-timer-filler{
-    background-color:#fff
+    background-color:var(--color-on-navy)
 }
 .rnc__notification-item--default .rnc__notification-close-mark{
-    background-color:#007bff
+    background-color:var(--notification-default)
 }
 .rnc__notification-item--success{
-    background-color:#28a745;
-    border-left:8px solid #1f8838
+    background-color:var(--notification-success);
+    border-left:8px solid var(--notification-success-deep)
 }
 .rnc__notification-item--success .rnc__notification-timer{
-    background-color:#28a745
+    background-color:var(--notification-success)
 }
 .rnc__notification-item--success .rnc__notification-timer-filler{
-    background-color:#fff
+    background-color:var(--color-on-navy)
 }
 .rnc__notification-item--success .rnc__notification-close-mark{
-    background-color:#28a745
+    background-color:var(--notification-success)
 }
 .rnc__notification-item--danger{
-    background-color:#dc3545;
-    border-left:8px solid #bd1120
+    background-color:var(--notification-danger);
+    border-left:8px solid var(--notification-danger-deep)
 }
 .rnc__notification-item--danger .rnc__notification-timer{
-    background-color:#dc3545
+    background-color:var(--notification-danger)
 }
 .rnc__notification-item--danger .rnc__notification-timer-filler{
-    background-color:#fff
+    background-color:var(--color-on-navy)
 }
 .rnc__notification-item--danger .rnc__notification-close-mark{
-    background-color:#dc3545
+    background-color:var(--notification-danger)
 }
 .rnc__notification-item--info{
-    background-color:#17a2b8;
-    border-left:8px solid #138b9e
+    background-color:var(--notification-info);
+    border-left:8px solid var(--umich-navy-hover)
 }
 .rnc__notification-item--info .rnc__notification-timer{
-    background-color:#17a2b8
+    background-color:var(--notification-info)
 }
 .rnc__notification-item--info .rnc__notification-timer-filler{
-    background-color:#fff
+    background-color:var(--color-on-navy)
 }
 .rnc__notification-item--info .rnc__notification-close-mark{
-    background-color:#17a2b8
+    background-color:var(--notification-info)
 }
 .rnc__notification-item--warning{
-    background-color:#eab000;
-    border-left:8px solid #ce9c09
+    background-color:var(--notification-warning);
+    border-left:8px solid var(--umich-navy)
 }
 .rnc__notification-item--warning .rnc__notification-timer{
-    background-color:#eab000
+    background-color:var(--notification-warning)
 }
 .rnc__notification-item--warning .rnc__notification-timer-filler{
-    background-color:#fff
+    background-color:var(--umich-navy)
 }
 .rnc__notification-item--warning .rnc__notification-close-mark{
-    background-color:#eab000
+    background-color:var(--notification-warning)
 }
 .rnc__notification-item--awesome{
-    background-color:#685dc3;
-    border-left:8px solid #4c3fb1
+    background-color:var(--notification-awesome);
+    border-left:8px solid var(--notification-awesome-deep)
 }
 .rnc__notification-item--awesome .rnc__notification-timer{
-    background-color:#685dc3
+    background-color:var(--notification-awesome)
 }
 .rnc__notification-item--awesome .rnc__notification-timer-filler{
-    background-color:#fff
+    background-color:var(--color-on-navy)
 }
 .rnc__notification-item--awesome .rnc__notification-close-mark{
-    background-color:#685dc3
+    background-color:var(--notification-awesome)
 }
 @keyframes timer{
     0%{
@@ -174,7 +174,7 @@
 }
 .rnc__notification-item{
     border-radius:3px;
-    box-shadow:1px 3px 4px rgba(0,0,0,.2);
+    box-shadow:var(--shadow-neutral);
     cursor:pointer;
     display:flex;
     margin-bottom:15px;
@@ -196,7 +196,7 @@
     height:3px
 }
 .rnc__notification-title{
-    color:#fff;
+    color:var(--color-on-navy);
     font-size:14px;
     font-weight:700;
     margin-bottom:5px;
@@ -204,7 +204,7 @@
 }
 .rnc__notification-message{
     word-wrap:break-word;
-    color:#fff;
+    color:var(--color-on-navy);
     font-size:14px;
     line-height:150%;
     margin-bottom:0;
@@ -226,7 +226,7 @@
     width:18px
 }
 .rnc__notification-close-mark:after{
-    color:#fff;
+    color:var(--color-on-navy);
     content:"\D7";
     font-size:12px;
     left:50%;

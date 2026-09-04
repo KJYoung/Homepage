@@ -16,7 +16,7 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     box-sizing: inherit;
     outline: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
     img {
       -webkit-user-drag: none;
     };

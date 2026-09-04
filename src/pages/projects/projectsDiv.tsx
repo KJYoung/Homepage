@@ -2,14 +2,8 @@ import { faChevronDown, faChevronUp, faTrophy } from "@fortawesome/free-solid-sv
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import styled from "styled-components";
-import { BR } from "../../customs/Basics";
 
 const DOCUMENT_ROOT = process.env.PUBLIC_URL + "/document/";
-
-const ProjectsBR = styled(BR)`
-  margin-top: 5px;
-  margin-bottom: 5px;
-`;
 
 type ProjectLink = {
   label: string;
@@ -80,7 +74,6 @@ export const ProjectsDiv = () => {
         <ProjectSectionTitle>Projects</ProjectSectionTitle>
         {/* <HeaderMeta>{PROJECT_ITEMS.length} highlighted works</HeaderMeta> */}
       </SectionHeader>
-      <ProjectsBR />
 
       <CardsColumn>
         {PROJECT_ITEMS.map((item) => {
@@ -146,38 +139,34 @@ const SectionHeader = styled.div`
 `;
 
 const ProjectSectionTitle = styled.h3`
-  color: #14304f;
+  color: var(--color-text-strong);
   font-size: 21px;
   font-weight: 700;
 `;
 
 const HeaderMeta = styled.span`
-  color: #5d789a;
+  color: var(--color-text-muted);
   font-size: 12px;
   font-weight: 700;
 `;
 
 const CardsColumn = styled.div`
-  margin-top: 10px;
+  margin-top: 8px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  border-top: 1px solid var(--color-border);
 `;
 
 const ProjectCard = styled.article<{ $open: boolean }>`
   width: 100%;
-  border-radius: 16px;
-  border: 1px solid ${({ $open }) => ($open ? "#bfd3eb" : "#d8e3f0")};
-  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
-  box-shadow: ${({ $open }) =>
-    $open ? "0 12px 26px rgba(13, 29, 55, 0.12)" : "0 6px 14px rgba(13, 29, 55, 0.06)"};
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  border-bottom: 1px solid ${({ $open }) => ($open ? "var(--color-border-strong)" : "var(--color-border)")};
+  background: ${({ $open }) => ($open ? "var(--color-surface-subtle)" : "transparent")};
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 
   &:hover {
-    border-color: #c2d6ee;
-    box-shadow: 0 11px 22px rgba(13, 29, 55, 0.11);
-    transform: translateY(-1px);
+    border-color: var(--umich-maize-deep);
+    background: var(--umich-navy-wash);
   }
 `;
 
@@ -185,7 +174,7 @@ const CardHeadButton = styled.button`
   width: 100%;
   border: 0;
   background: transparent;
-  padding: 14px 14px 13px;
+  padding: 14px 10px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -203,18 +192,14 @@ const HeadLeft = styled.div`
 
 const PeriodPill = styled.span`
   width: fit-content;
-  border-radius: 999px;
-  padding: 4px 10px;
-  border: 1px solid #c9d7e9;
-  background: #f4f8fe;
-  color: #4a6789;
-  font-size: 11px;
+  color: var(--color-text-faint);
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.12px;
+  letter-spacing: 0.02em;
 `;
 
 const ProjectTitle = styled.h3`
-  color: #152f4e;
+  color: var(--color-text-strong);
   font-size: clamp(16px, 1.9vw, 21px);
   font-weight: 800;
   line-height: 1.2;
@@ -228,17 +213,15 @@ const HeadRight = styled.div`
 `;
 
 const AwardPill = styled.div`
-  border-radius: 999px;
-  border: 1px solid rgba(223, 172, 62, 0.52);
-  background: linear-gradient(180deg, #fff7e9 0%, #fff0cb 100%);
-  color: #8b6100;
-  padding: 6px 10px;
+  color: var(--color-text-muted);
+  padding: 0;
   display: inline-flex;
   align-items: center;
   gap: 6px;
   max-width: 350px;
 
   svg {
+    color: var(--umich-maize-deep);
     font-size: 12px;
     flex-shrink: 0;
   }
@@ -251,12 +234,9 @@ const AwardPill = styled.div`
 `;
 
 const ChevronBadge = styled.div`
-  width: 30px;
-  height: 30px;
-  border-radius: 9px;
-  border: 1px solid #cddbed;
-  background: #f7fbff;
-  color: #3d6087;
+  width: 24px;
+  height: 24px;
+  color: var(--color-text-faint);
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -265,17 +245,16 @@ const ChevronBadge = styled.div`
 
 const CardBody = styled.div`
   width: 100%;
-  padding: 0 14px 14px;
-  border-top: 1px solid #e3ebf6;
+  padding: 0 10px 15px;
   display: flex;
   flex-direction: column;
   gap: 11px;
 `;
 
 const DescriptionList = styled.ul`
-  margin: 11px 0 0;
+  margin: 2px 0 0;
   padding-left: 18px;
-  color: #304c6d;
+  color: var(--color-text-muted);
 
   li {
     font-size: 14px;
@@ -295,18 +274,15 @@ const LinkRow = styled.div`
 `;
 
 const ProjectLinkChip = styled.a`
-  border-radius: 999px;
-  border: 1px solid #c5d8ef;
-  background: #f7fbff;
-  color: #205891;
+  color: var(--color-link);
   font-size: 12px;
   font-weight: 700;
-  padding: 6px 11px;
-  transition: transform 0.18s ease, filter 0.18s ease, border-color 0.18s ease;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.18s ease;
 
   &:hover {
-    border-color: #95b9e6;
-    transform: translateY(-1px);
-    filter: brightness(0.99);
+    color: var(--umich-navy);
   }
 `;

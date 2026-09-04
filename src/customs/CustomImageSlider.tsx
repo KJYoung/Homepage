@@ -339,8 +339,8 @@ const EmptyState = styled.div`
   padding: 24px;
   border-radius: 14px;
   text-align: center;
-  background: #f3f5f8;
-  color: #58606e;
+  background: var(--color-surface-muted);
+  color: var(--color-text-muted);
   font-weight: 600;
 `;
 
@@ -348,14 +348,14 @@ const SliderShell = styled.div<{ width: number }>`
   width: ${({ width }) => `${width}px`};
   max-width: 1200px;
   border-radius: 20px;
-  background: #f9fbff;
-  border: 1px solid #d7dfec;
-  box-shadow: 0 8px 20px rgba(15, 29, 52, 0.1);
+  background: var(--color-surface-subtle);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
   padding: 12px;
   outline: none;
 
   &:focus-visible {
-    box-shadow: 0 0 0 3px rgba(33, 117, 255, 0.35), 0 12px 28px rgba(15, 29, 52, 0.16);
+    box-shadow: 0 0 0 3px var(--umich-maize-glow-strong), var(--shadow-card);
   }
 `;
 
@@ -364,7 +364,7 @@ const Viewport = styled.div<{ height: number }>`
   height: ${({ height }) => `${height}px`};
   border-radius: 15px;
   overflow: hidden;
-  background: #1f252e;
+  background: var(--color-dark-surface);
   position: relative;
   user-select: none;
 `;
@@ -375,14 +375,14 @@ const ProgressTrack = styled.div`
   top: 0;
   width: 100%;
   height: 5px;
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--color-surface-glass-subtle);
   z-index: 3;
 `;
 
 const ProgressActive = styled.div<{ progress: number }>`
   width: ${({ progress }) => `${progress}%`};
   height: 100%;
-  background: linear-gradient(90deg, #4a9bff 0%, #9fd0ff 100%);
+  background: var(--umich-maize);
   transition: width 0.25s ease;
 `;
 
@@ -411,8 +411,8 @@ const NavButton = styled.button<{ $left?: boolean }>`
   height: 44px;
   border-radius: 999px;
   border: 0;
-  background: rgba(17, 24, 35, 0.54);
-  color: white;
+  background: var(--color-dark-control);
+  color: var(--color-on-navy);
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -424,7 +424,7 @@ const NavButton = styled.button<{ $left?: boolean }>`
   justify-content: center;
 
   &:hover {
-    background: rgba(17, 24, 35, 0.76);
+    background: var(--color-dark-control-hover);
   }
 `;
 
@@ -440,8 +440,8 @@ const TopActions = styled.div`
 const TopActionButton = styled.button`
   border: 0;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.9);
-  color: #1f3252;
+  background: var(--color-surface-glass);
+  color: var(--color-text-strong);
   padding: 6px 11px;
   font-size: 12px;
   font-weight: 700;
@@ -451,7 +451,7 @@ const TopActionButton = styled.button`
   align-items: center;
 
   &:hover {
-    background: #ffffff;
+    background: var(--color-surface);
   }
 `;
 
@@ -461,8 +461,8 @@ const IndexBadge = styled.div`
   top: 12px;
   z-index: 4;
   border-radius: 999px;
-  background: rgba(7, 12, 19, 0.62);
-  color: white;
+  background: var(--color-dark-badge);
+  color: var(--color-on-navy);
   font-size: 12px;
   font-weight: 700;
   padding: 5px 11px;
@@ -470,8 +470,8 @@ const IndexBadge = styled.div`
 
 const MetaPanel = styled.div`
   margin-top: 10px;
-  background: white;
-  border: 1px solid #d9e1ee;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 13px;
   padding: 12px 14px 11px;
 `;
@@ -484,13 +484,13 @@ const MetaTop = styled.div`
 `;
 
 const MetaTitle = styled.div`
-  color: #18263a;
+  color: var(--color-text);
   font-size: 18px;
   font-weight: 800;
 `;
 
 const LocationAnchor = styled.a`
-  color: #2e78ff;
+  color: var(--color-link);
   font-size: 13px;
   font-weight: 700;
   display: inline-flex;
@@ -501,14 +501,14 @@ const LocationAnchor = styled.a`
 
 const MetaSubtitle = styled.div`
   margin-top: 4px;
-  color: #3d516b;
+  color: var(--color-text-muted);
   font-size: 14px;
   font-weight: 600;
 `;
 
 const MetaDescription = styled.div`
   margin-top: 8px;
-  color: #49576b;
+  color: var(--color-text-muted);
   font-size: 14px;
   line-height: 1.36;
 `;
@@ -516,7 +516,7 @@ const MetaDescription = styled.div`
 const MetaHint = styled.div`
   margin-top: 8px;
   font-size: 12px;
-  color: #6f7f95;
+  color: var(--color-text-faint);
 `;
 
 const ThumbRail = styled.div`
@@ -530,7 +530,7 @@ const ThumbRail = styled.div`
     height: 7px;
   }
   &::-webkit-scrollbar-thumb {
-    background: #c2cfde;
+    background: var(--color-border-strong);
     border-radius: 999px;
   }
 `;
@@ -539,10 +539,10 @@ const ThumbButton = styled.button<{ $active: boolean }>`
   width: 74px;
   height: 52px;
   padding: 0;
-  border: ${({ $active }) => ($active ? "2px solid #2779ff" : "1px solid #bdcadc")};
+  border: ${({ $active }) => ($active ? "2px solid var(--umich-navy)" : "1px solid var(--color-border-strong)")};
   border-radius: 10px;
   overflow: hidden;
-  background: #f1f4f8;
+  background: var(--color-surface-muted);
   cursor: pointer;
   flex: 0 0 auto;
 `;
@@ -557,7 +557,7 @@ const FullscreenOverlay = styled.div`
   position: fixed;
   inset: 0;
   z-index: 40;
-  background: rgba(9, 14, 22, 0.88);
+  background: var(--color-overlay-strong);
   backdrop-filter: blur(2px);
   display: flex;
   justify-content: center;
@@ -569,8 +569,8 @@ const FullscreenPanel = styled.div`
   width: min(98vw, 1440px);
   max-height: 96vh;
   border-radius: 18px;
-  background: #131a23;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: var(--color-dark-surface);
+  border: 1px solid var(--color-dark-border);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -581,8 +581,8 @@ const FullscreenHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 10px 12px;
-  background: rgba(255, 255, 255, 0.06);
-  color: #edf3ff;
+  background: var(--color-dark-rail);
+  color: var(--color-on-dark);
 `;
 
 const FullscreenTitle = styled.div`
@@ -598,7 +598,7 @@ const FullscreenButtons = styled.div`
 
 const FullscreenLink = styled.a`
   text-decoration: none;
-  color: #9ec6ff;
+  color: var(--color-on-dark-link);
   font-size: 13px;
   font-weight: 700;
   display: inline-flex;
@@ -611,8 +611,8 @@ const CloseButton = styled.button`
   width: 34px;
   height: 34px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.14);
-  color: #fff;
+  background: var(--color-surface-glass-subtle);
+  color: var(--color-on-navy);
   cursor: pointer;
 `;
 
@@ -636,8 +636,8 @@ const FullscreenNavButton = styled.button<{ $left?: boolean }>`
   height: 52px;
   border-radius: 999px;
   border: 0;
-  background: rgba(255, 255, 255, 0.17);
-  color: white;
+  background: var(--color-surface-glass-subtle);
+  color: var(--color-on-navy);
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -653,7 +653,7 @@ const FullscreenThumbRail = styled.div`
   gap: 8px;
   overflow-x: auto;
   padding: 10px 12px 12px;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--color-dark-rail);
 `;
 
 export default CustomImageSlider;
